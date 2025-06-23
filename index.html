@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Free 1-minute and 5-minute typing speed test with accuracy tracking and personal high scores." />
+  <title>Typing Speed Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 { color: #333; }
+    .test-box {
+      background: #fff;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 600px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 1rem;
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+    .metrics {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <h1>Typing Speed Hub</h1>
+  <div class="test-box">
+    <p>Select test duration:</p>
+    <button onclick="startTest(60)">1 Minute</button>
+    <button onclick="startTest(300)">5 Minutes</button>
+    <div id="testArea" style="display:none;">
+      <p id="sampleText"></p>
+      <textarea id="userInput" oninput="checkTyping()"></textarea>
+      <p class="metrics">
+        Time Left: <span id="timeLeft"></span> | WPM: <span id="wpm"></span> | Accuracy: <span id="accuracy"></span>
+      </p>
+      <p id="errorMessage" class="error"></p>
+    </div>
+  </div>
+
+  <script>
+    const sample = "The quick brown fox jumps over the lazy dog.";
+    let timeLeft = 0, timerInterval = null, startTime = null;
+    function startTest(seconds) {
+      document.getElementById("testArea").style.display = "block";
+      document.getElementById("sampleText").innerText = sample;
+      document.getElementById("userInput").value = "";
+      document.getElementById("timeLeft").innerText = seconds;
+      document.getElementById("wpm").innerText = "0";
+      document.getElementById("accuracy").innerText = "100%";
+      timeLeft = seconds;
+      startTime = new Date();
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timeLeft").innerText = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          document.getElementById("userInput").disabled = true;
+        }
+      }, 1000);
+      document.getElementById("userInput").disabled = false;
+      document.getElementById("userInput").focus();
+    }
+
+    function checkTyping() {
+      const input = document.getElementById("userInput").value;
+      const correct = sample.substring(0, input.length);
+      const totalWords = input.trim().split(/\s+/).length;
+      const timeSpent = (new Date() - startTime) / 60000;
+      const wpm = Math.max(Math.floor(totalWords / timeSpent), 0);
+      const correctChars = [...input].filter((c, i) => c === sample[i]).length;
+      const accuracy = input.length > 0 ? Math.floor((correctChars / input.length) * 100) : 100;
+      document.getElementById("wpm").innerText = wpm;
+      document.getElementById("accuracy").innerText = accuracy + "%";
+      const sampleText = document.getElementById("sampleText");
+      if (sample.startsWith(input)) {
+        sampleText.style.color = "black";
+        document.getElementById("errorMessage").innerText = "";
+      } else {
+        sampleText.style.color = "red";
+        document.getElementById("errorMessage").innerText = "Typing error detected.";
+      }
+    }
+  </script>
+</body>
+</html>
