@@ -1,168 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Typing Speed Hub</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #f7f7f7;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      margin: 40px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      max-width: 600px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    textarea {
-      width: 90%;
-      height: 100px;
-      margin-top: 20px;
-    }
-    #result {
-      margin-top: 20px;
-      font-weight: bold;
-    }
-    .red {
-      color: red;
-    }
-  </style>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1607876440670769"
-     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Typing Speed Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .timer {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Typing Speed Hub</h1>
+<nav style="background-color: #f2f2f2; padding: 10px; text-align: center;">
+  <a href="index.html" style="margin: 0 10px;">Home</a>
+  <a href="about.html" style="margin: 0 10px;">About</a>
+  <a href="typing-tips.html" style="margin: 0 10px;">Typing Tips</a>
+  <a href="contact.html" style="margin: 0 10px;">Contact</a>
+  <a href="privacy-policy.html" style="margin: 0 10px;">Privacy</a>
+</nav>
 
+<div class="container">
+    <h1>Typing Speed Hub</h1>
     <p>Select test duration:</p>
     <button onclick="startTest(60)">1 Minute</button>
     <button onclick="startTest(300)">5 Minutes</button>
+    <p id="sampleText">Using the correct posture helps prevent fatigue.</p>
+    <div class="timer" id="timer">Time: 0s</div>
+    <textarea id="typingArea" disabled></textarea>
+    <div class="result" id="result"></div>
+</div>
 
-    <p id="test-text" class="red"></p>
-    <textarea id="input-area" disabled oninput="checkInput()"></textarea>
-
-    <div id="result"></div>
-
-    <button id="finishBtn" onclick="finishTest()" style="margin-top:20px;">Finish</button>
-  </div>
-
-  <script>
-    const texts = [
-      "The quick brown fox jumps over the lazy dog.",
-      "Typing is a valuable skill for many professions.",
-      "Speed and accuracy are important in typing tests.",
-      "Practice improves your typing performance greatly.",
-      "JavaScript is commonly used for web development.",
-      "Learning to type fast saves you time every day.",
-      "Keep your fingers on the home row keys while typing.",
-      "Avoid looking at the keyboard for faster learning.",
-      "Netlify makes it easy to deploy static websites.",
-      "GitHub is a popular platform for code collaboration.",
-      "Coding projects require discipline and consistency.",
-      "Google AdSense helps monetize your website.",
-      "Typing tests evaluate both speed and precision.",
-      "It is fun to compete in typing speed challenges.",
-      "This sentence helps you practice accuracy.",
-      "The wizard quickly jinxed the gnomes below.",
-      "She sells sea shells by the sea shore.",
-      "Pack my box with five dozen liquor jugs.",
-      "A quick movement of the enemy will jeopardize six gunboats.",
-      "The five boxing wizards jump quickly.",
-      "How quickly daft jumping zebras vex.",
-      "Just keep practicing every single day.",
-      "Efficient typing is useful in many areas.",
-      "Web design often requires HTML and CSS.",
-      "Debugging is part of every coder’s journey.",
-      "Typing without errors improves your score.",
-      "Using the correct posture helps prevent fatigue.",
-      "Consistent rhythm is key in speed typing.",
-      "Don't rush, let accuracy lead the way.",
-      "Feel free to take typing breaks to rest.",
-      "The cat silently leapt onto the windowsill.",
-      "Code once, debug forever — says the developer.",
-      "Typing tests can be both fun and stressful.",
-      "Stretch your fingers regularly during typing.",
-      "Try to beat your own previous high score.",
-      "Backspace is both a friend and a crutch.",
-      "Minimize distractions while practicing typing.",
-      "Stay relaxed and breathe evenly when typing.",
-      "Mistakes help identify where you can improve.",
-      "Keep both hands on the keyboard as you type.",
-      "Develop your own typing rhythm and flow.",
-      "Accuracy first, then build up your speed.",
-      "Test yourself weekly to measure progress.",
-      "Repetition is the mother of all skill.",
-      "Every word typed should be intentional.",
-      "Typing long paragraphs builds endurance.",
-      "Challenge yourself with difficult words.",
-      "Use typing games to keep things fun.",
-      "Improve bit by bit, not overnight.",
-      "Make typing a daily habit for growth."
-    ];
-
-    let currentText = "";
-    let startTime;
-    let timer;
-    let totalTime = 0;
+<script>
+    let timerInterval;
+    let startTime, testDuration;
 
     function startTest(duration) {
-      clearInterval(timer);
-      document.getElementById("input-area").value = "";
-      document.getElementById("result").innerText = "";
-      document.getElementById("input-area").disabled = false;
-      document.getElementById("input-area").focus();
+        document.getElementById("typingArea").value = "";
+        document.getElementById("typingArea").disabled = false;
+        document.getElementById("typingArea").focus();
+        document.getElementById("result").innerHTML = "";
+        testDuration = duration;
+        startTime = new Date();
+        document.getElementById("timer").innerText = `Time: ${duration}s`;
 
-      totalTime = duration;
-      startTime = new Date();
+        timerInterval = setInterval(() => {
+            const elapsed = Math.floor((new Date() - startTime) / 1000);
+            const remaining = testDuration - elapsed;
+            document.getElementById("timer").innerText = `Time: ${remaining}s`;
 
-      currentText = texts[Math.floor(Math.random() * texts.length)];
-      document.getElementById("test-text").innerText = currentText;
-
-      timer = setInterval(() => {
-        let now = new Date();
-        let elapsed = Math.floor((now - startTime) / 1000);
-        let remaining = totalTime - elapsed;
-        if (remaining <= 0) {
-          finishTest();
-        } else {
-          document.getElementById("result").innerText = `Time Left: ${remaining}s`;
-        }
-      }, 1000);
+            if (remaining <= 0) {
+                clearInterval(timerInterval);
+                finishTest();
+            }
+        }, 1000);
     }
 
     function finishTest() {
-      clearInterval(timer);
-      document.getElementById("input-area").disabled = true;
-      let typed = document.getElementById("input-area").value.trim();
-      let wordsTyped = typed.split(/\s+/).length;
-      let now = new Date();
-      let elapsedSeconds = Math.floor((now - startTime) / 1000);
-      let minutes = elapsedSeconds / 60;
-      let wpm = Math.round(wordsTyped / minutes);
-      let accuracy = calculateAccuracy(currentText, typed);
-      document.getElementById("result").innerText = `Finished! WPM: ${wpm} | Accuracy: ${accuracy}%`;
-    }
+        const text = document.getElementById("typingArea").value.trim();
+        const words = text.split(/\s+/).length;
+        const wpm = Math.round(words / (testDuration / 60));
+        const sample = document.getElementById("sampleText").innerText.trim();
+        const accuracy = text === sample ? 100 : Math.max(0, 100 - Math.abs(text.length - sample.length));
 
-    function calculateAccuracy(original, typed) {
-      let correct = 0;
-      let minLength = Math.min(original.length, typed.length);
-      for (let i = 0; i < minLength; i++) {
-        if (original[i] === typed[i]) correct++;
-      }
-      return Math.round((correct / original.length) * 100);
+        document.getElementById("typingArea").disabled = true;
+        document.getElementById("result").innerHTML = `Finished! WPM: ${wpm} | Accuracy: ${accuracy}%`;
     }
-
-    function checkInput() {
-      // Optional real-time error detection
-    }
-  </script>
+</script>
 </body>
 </html>
 
+    
+    
+
+  
