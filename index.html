@@ -1,13 +1,32 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Typing Speed Hub</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    #typingArea { width: 80%; height: 100px; margin-top: 10px; font-size: 16px; }
-    #results { margin-top: 20px; font-weight: bold; }
-    nav a { margin: 0 10px; }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    textarea {
+      width: 80%;
+      height: 100px;
+      margin: 20px 0;
+      font-size: 16px;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+    }
   </style>
 </head>
 <body>
@@ -24,93 +43,91 @@
   <button onclick="startTest(60)">1 Minute</button>
   <button onclick="startTest(300)">5 Minutes</button>
 
-  <p id="sampleText" style="margin-top:20px;"></p>
+  <p id="sampleText" style="font-weight: bold;"></p>
   <p id="timer">Time: 0s</p>
-  <textarea id="typingArea" disabled placeholder="Start the test to begin typing..."></textarea>
+  <textarea id="typingArea" placeholder="Start typing here..." oninput="trackTyping()" disabled></textarea>
   <br />
-  <button id="finishBtn" onclick="finishTest()" disabled>Finish</button>
+  <button onclick="finishTest()" id="finishButton" disabled>Finish</button>
 
-  <div id="results"></div>
+  <p id="results"></p>
 
   <script>
-    const sentences = [
+    const testSentences = [
+      "Practice typing every day to see improvement.",
       "Typing quickly helps you save time at work.",
-      "The fox jumps over the lazy dog every day.",
-      "Practice typing daily to improve speed.",
-      "Keyboard accuracy is key to productivity.",
-      "Learn to type without looking at your hands.",
-      "Home row keys are the foundation of typing.",
-      "Improve your posture while typing regularly.",
-      "Typing tests help track your daily progress.",
-      "Fast typing requires consistent practice.",
       "Accuracy is more important than speed.",
-      "Use all your fingers when you type words.",
-      "Stay relaxed and breathe while typing.",
-      "Typing games can improve your technique.",
-      "Daily typing helps build muscle memory.",
-      "WPM stands for words per minute typed.",
-      "Use the correct posture to prevent fatigue.",
-      "Avoid looking at the keyboard while typing.",
-      "Try to reduce the number of typos made.",
-      "Use a mechanical keyboard if you prefer.",
-      "Touch typing is a valuable skill to have.",
-      "Focus on the screen, not the keyboard.",
-      "Typing silently can reduce distractions.",
-      "Position your wrists above the keyboard.",
-      "Make fewer mistakes by typing mindfully.",
-      "Typing drills are great for learners.",
-      "Online tools can measure typing speed.",
-      "Typing faster can increase your workflow.",
-      "Mastering typing is useful in all jobs.",
-      "Build up speed by practicing every day.",
-      "Typing well takes time and patience.",
-      "A quiet environment helps with focus.",
-      "Use typing tutors for guided learning.",
-      "Take breaks to avoid finger strain.",
-      "Stretch your fingers between sessions.",
-      "Stay consistent with your typing habits.",
-      "Avoid backspace to simulate real typing.",
-      "Use online tests to track improvement.",
-      "Don't rush, focus on being accurate.",
-      "Typing rhythm helps maintain speed.",
-      "Set goals to improve your WPM weekly.",
-      "Practice short paragraphs or sentences.",
-      "Keep your eyes on the monitor always.",
-      "Familiarize with your keyboard layout.",
-      "Typing can be both fun and productive.",
-      "Use ergonomic chairs for comfort.",
-      "Adjust screen height to eye level.",
-      "Typing in proper light helps eyesight.",
-      "Drink water and stay hydrated too.",
-      "Improve gradually, don't force speed.",
-      "Monitor your typing statistics often."
+      "Use all your fingers while typing.",
+      "Typing games can make learning fun.",
+      "Don't look at the keyboard while typing.",
+      "Proper posture prevents fatigue.",
+      "Short practice sessions work best.",
+      "Typing is a valuable skill in any office job.",
+      "Keep your wrists relaxed and straight.",
+      "Consistency is the key to progress.",
+      "Always warm up with an easy sentence.",
+      "Focus on the screen, not your fingers.",
+      "Reduce typos by slowing down.",
+      "Challenge yourself with longer words.",
+      "Stay calm and don't rush.",
+      "Track your progress weekly.",
+      "Set realistic typing goals.",
+      "Eliminate distractions while practicing.",
+      "Typing drills build muscle memory.",
+      "A good keyboard improves comfort.",
+      "Repetition strengthens technique.",
+      "Make typing part of your daily routine.",
+      "Try typing unfamiliar words.",
+      "Monitor your WPM regularly.",
+      "Improvement takes time and effort.",
+      "Typing fast is useful in programming.",
+      "Use online tests to evaluate yourself.",
+      "Watch your accuracy rate closely.",
+      "Train both speed and precision.",
+      "Typing can be meditative and calming.",
+      "Keep your hands in the home row.",
+      "Take breaks to rest your hands.",
+      "Stretch your fingers gently.",
+      "Avoid bad posture habits early.",
+      "The more you type, the better you get.",
+      "Use typing to take digital notes.",
+      "Typing is essential in modern careers.",
+      "Avoid watching the keyboard.",
+      "Muscle memory is your best friend.",
+      "Correct mistakes without backspacing.",
+      "Finish typing even if you make an error.",
+      "Use rhythm when typing fast.",
+      "Speed improves with confidence.",
+      "Learn keyboard shortcuts too.",
+      "Typing should feel natural.",
+      "Practice typing different kinds of content.",
+      "Use both practice and testing.",
+      "Backspace is not your enemy—just a tool.",
+      "Keep practicing and don't give up."
     ];
 
     let startTime, timerInterval;
 
     function startTest(duration) {
-      const randomIndex = Math.floor(Math.random() * sentences.length);
-      const sentence = sentences[randomIndex];
+      const sentence = testSentences[Math.floor(Math.random() * testSentences.length)];
       document.getElementById("sampleText").textContent = sentence;
       document.getElementById("typingArea").value = "";
-      document.getElementById("typingArea").disabled = false;
-      document.getElementById("typingArea").focus();
-      document.getElementById("finishBtn").disabled = false;
       document.getElementById("results").textContent = "";
+      document.getElementById("typingArea").disabled = false;
+      document.getElementById("finishButton").disabled = false;
+      document.getElementById("typingArea").focus();
 
       startTime = new Date();
-      let remaining = duration;
-      document.getElementById("timer").textContent = `Time: ${remaining}s`;
+      document.getElementById("timer").textContent = "Time: 0s";
 
       clearInterval(timerInterval);
       timerInterval = setInterval(() => {
-        remaining--;
-        document.getElementById("timer").textContent = `Time: ${remaining}s`;
-        if (remaining <= 0) {
-          clearInterval(timerInterval);
-          finishTest();
-        }
+        const elapsed = Math.floor((new Date() - startTime) / 1000);
+        document.getElementById("timer").textContent = "Time: " + elapsed + "s";
       }, 1000);
+    }
+
+    function trackTyping() {
+      // optional
     }
 
     function finishTest() {
@@ -123,23 +140,25 @@
       const sampleText = document.getElementById("sampleText").textContent.trim();
       const typedText = document.getElementById("typingArea").value.trim();
 
-      const typedWords = typedText.split(/\s+/).filter(word => word).length;
-      const wpm = minutes > 0 ? Math.round(typedWords / minutes) : 0;
+      const charCount = typedText.length;
+      const wpm = minutes > 0 ? Math.round((charCount / 5) / minutes) : 0;
 
       let correctChars = 0;
       for (let i = 0; i < Math.min(sampleText.length, typedText.length); i++) {
         if (sampleText[i] === typedText[i]) correctChars++;
       }
-      const accuracy = Math.round((correctChars / sampleText.length) * 100);
+
+      const accuracy = sampleText.length > 0
+        ? Math.round((correctChars / sampleText.length) * 100)
+        : 0;
 
       document.getElementById("results").innerHTML = `Finished! WPM: ${wpm} | Accuracy: ${accuracy}%`;
       document.getElementById("typingArea").disabled = true;
-      document.getElementById("finishBtn").disabled = true;
+      document.getElementById("finishButton").disabled = true;
     }
   </script>
 </body>
 </html>
-
 
 
 
