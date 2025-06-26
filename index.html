@@ -1,36 +1,52 @@
 <!DOCTYPE html>
-<html lang="="en">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Typing Speed Hub</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
+      margin: 0;
       padding: 20px;
+      background-color: white;
+      color: black;
       transition: background-color 0.3s, color 0.3s;
     }
-    .dark-mode {
+    body.dark {
       background-color: #121212;
-      color: #f0f0f0;
-    }
-    textarea {
-      width: 80%;
-      height: 100px;
-      margin: 20px 0;
-    }
-    button {
-      padding: 6px 14px;
-      margin: 5px;
+      color: white;
     }
     nav a {
       margin: 0 10px;
       text-decoration: none;
       color: inherit;
     }
-    #results-log {
+    #text-to-type {
+      font-weight: bold;
       margin-top: 20px;
+    }
+    textarea {
+      width: 80%;
+      height: 100px;
+      font-size: 16px;
+      margin-top: 10px;
+      background: #f8f8f8;
+    }
+    button {
+      margin: 10px;
+      padding: 8px 16px;
+    }
+    select {
+      margin: 10px;
+    }
+    .results-log {
+      margin-top: 30px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
@@ -45,139 +61,144 @@
 
   <h1>Typing Speed Hub</h1>
 
-  <label for="level">Choose difficulty:</label>
-  <select id="level">
-    <option value="easy">Easy</option>
-    <option value="medium">Medium</option>
-    <option value="hard">Hard</option>
-  </select>
-
   <div>
-    <button onclick="setMode('light')">Light Mode</button>
-    <button onclick="setMode('dark')">Dark Mode</button>
+    <label>Select test duration:</label><br>
+    <button onclick="startTest(60)">1 Minute</button>
+    <button onclick="startTest(300)">5 Minutes</button>
   </div>
 
   <div>
-    <p>Select test duration:</p>
-    <button onclick="setDuration(60)">1 Minute</button>
-    <button onclick="setDuration(300)">5 Minutes</button>
+    <label>Choose difficulty:</label>
+    <select id="difficulty" onchange="updateSentence()">
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+    </select>
   </div>
 
-  <p id="sentence"></p>
-  <p id="timer">Time: 0s</p>
+  <div>
+    <label>Dark Mode:</label>
+    <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+  </div>
 
-  <textarea id="inputArea" oninput="checkTyping()" placeholder="Start typing..."></textarea><br />
+  <div id="text-to-type"></div>
+  <div id="timer">Time: 0s</div>
+  <textarea id="typed-text" disabled></textarea><br>
+  <button id="finish-btn" onclick="finishTest()" disabled>Finish</button>
+  <div id="result"></div>
 
-  <button id="finishBtn" onclick="finishTest()">Finish</button>
-
-  <p id="resultText"></p>
-  <button onclick="showLog()">Show Previous Results</button>
-  <div id="results-log"></div>
+  <div class="results-log">
+    <h3>Previous Results</h3>
+    <ul id="results-list"></ul>
+  </div>
 
   <script>
-    const sentences = {
-      easy: [
-        "Typing is fun and easy.",
-        "Practice makes perfect.",
-        "Type fast and accurate.",
-        "Use the correct posture.",
-        "Focus on the screen."
-      ],
-      medium: [
-        "Typing quickly helps you save time at work.",
-        "Keep your fingers on the home row.",
-        "Avoid looking at the keyboard while typing.",
-        "Backspace is not your enemy—just a tool.",
-        "Build muscle memory for better speed."
-      ],
-      hard: [
-        "To type efficiently, you must avoid unnecessary finger movements.",
-        "Accuracy is more important than speed at the beginning.",
-        "Consistent practice is the key to becoming a typing master.",
-        "Use all your fingers to improve overall typing fluency.",
-        "WPM stands for words per minute typed."
-      ]
-    };
+    const easySentences = [
+      "Typing is fun and useful.",
+      "Cats sit on warm laps.",
+      "Books are great friends.",
+      "Practice makes perfect.",
+      "Stay calm and type on."
+    ];
+    const mediumSentences = [
+      "Accuracy is more important than speed.",
+      "The quick brown fox jumps over the lazy dog.",
+      "Keep your fingers on the home row.",
+      "Typing tests can be addictive.",
+      "Improve typing through consistency."
+    ];
+    const hardSentences = [
+      "Backspacing is not your enemy—just a tool.",
+      "In programming, fast typing is not enough.",
+      "WPM stands for words per minute typed.",
+      "Short practice sessions work best.",
+      "Typing fluency leads to digital confidence."
+    ];
 
-    let currentSentence = "";
-    let startTime;
-    let timerInterval;
-    let duration = 60;
+    let startTime, interval, currentSentence = "", duration = 60;
 
-    function setDuration(sec) {
-      duration = sec;
-      startTest();
-    }
-
-    function startTest() {
-      const level = document.getElementById("level").value;
-      const options = sentences[level];
-      currentSentence = options[Math.floor(Math.random() * options.length)];
-      document.getElementById("sentence").textContent = currentSentence;
-      document.getElementById("inputArea").value = "";
-      document.getElementById("resultText").textContent = "";
-      document.getElementById("finishBtn").disabled = false;
+    function startTest(seconds) {
+      duration = seconds;
       startTime = new Date();
-      let seconds = 0;
-      clearInterval(timerInterval);
-      timerInterval = setInterval(() => {
-        seconds++;
-        document.getElementById("timer").textContent = "Time: " + seconds + "s";
-        if (seconds >= duration) finishTest();
-      }, 1000);
+      document.getElementById("typed-text").value = "";
+      document.getElementById("typed-text").disabled = false;
+      document.getElementById("finish-btn").disabled = false;
+      updateSentence();
+      interval = setInterval(updateTimer, 1000);
     }
 
-    function checkTyping() {}
+    function updateSentence() {
+      const difficulty = document.getElementById("difficulty").value;
+      const pool = difficulty === "easy" ? easySentences : difficulty === "medium" ? mediumSentences : hardSentences;
+      currentSentence = pool[Math.floor(Math.random() * pool.length)];
+      document.getElementById("text-to-type").innerText = currentSentence;
+    }
+
+    function updateTimer() {
+      const now = new Date();
+      const seconds = Math.floor((now - startTime) / 1000);
+      document.getElementById("timer").innerText = `Time: ${seconds}s`;
+      if (seconds >= duration) {
+        finishTest();
+      }
+    }
 
     function finishTest() {
-      clearInterval(timerInterval);
-      document.getElementById("finishBtn").disabled = true;
+      clearInterval(interval);
+      const endTime = new Date();
+      const seconds = Math.floor((endTime - startTime) / 1000);
+      const typed = document.getElementById("typed-text").value;
+      const wordsTyped = typed.trim().split(/\s+/).length;
+      const wpm = Math.round((wordsTyped / seconds) * 60);
 
-      const input = document.getElementById("inputArea").value.trim();
-      const elapsedSeconds = (new Date() - startTime) / 1000;
-      const wordsTyped = input.split(/\s+/).length;
-      const wpm = Math.round((wordsTyped / elapsedSeconds) * 60);
+      const accuracy = calculateAccuracy(typed, currentSentence);
+      document.getElementById("result").innerHTML = `<strong>Finished!</strong> WPM: ${wpm} | Accuracy: ${accuracy}%`;
+      document.getElementById("finish-btn").disabled = true;
+      logResult(wpm, accuracy);
+    }
 
-      let correctChars = 0;
-      for (let i = 0; i < input.length && i < currentSentence.length; i++) {
-        if (input[i] === currentSentence[i]) correctChars++;
+    function calculateAccuracy(input, target) {
+      let correct = 0;
+      const len = Math.min(input.length, target.length);
+      for (let i = 0; i < len; i++) {
+        if (input[i] === target[i]) correct++;
       }
-      const accuracy = Math.round((correctChars / currentSentence.length) * 100);
-
-      document.getElementById("resultText").innerHTML = "<strong>Finished!</strong> WPM: " + wpm + " | Accuracy: " + accuracy + "%";
-
-      const now = new Date().toLocaleString();
-      const level = document.getElementById("level").value;
-      const log = JSON.parse(localStorage.getItem("typingResults") || "[]");
-      log.push({ time: now, level, wpm, accuracy });
-      localStorage.setItem("typingResults", JSON.stringify(log));
+      return Math.round((correct / target.length) * 100);
     }
 
-    function showLog() {
-      const log = JSON.parse(localStorage.getItem("typingResults") || "[]");
-      const logDiv = document.getElementById("results-log");
-      logDiv.innerHTML = "<h3>Previous Results:</h3>" + log.map(entry => `
-        <p>${entry.time} – Level: ${entry.level}, WPM: ${entry.wpm}, Accuracy: ${entry.accuracy}%</p>
-      `).join("");
+    function logResult(wpm, accuracy) {
+      const results = JSON.parse(localStorage.getItem("typingResults") || "[]");
+      const time = new Date().toLocaleString();
+      results.unshift(`${time} - WPM: ${wpm}, Accuracy: ${accuracy}%`);
+      if (results.length > 10) results.pop();
+      localStorage.setItem("typingResults", JSON.stringify(results));
+      showResults();
     }
 
-    function setMode(mode) {
-      if (mode === "dark") {
-        document.body.classList.add("dark-mode");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.body.classList.remove("dark-mode");
-        localStorage.setItem("theme", "light");
-      }
+    function showResults() {
+      const results = JSON.parse(localStorage.getItem("typingResults") || "[]");
+      const list = document.getElementById("results-list");
+      list.innerHTML = "";
+      results.forEach(r => {
+        const li = document.createElement("li");
+        li.textContent = r;
+        list.appendChild(li);
+      });
     }
 
-    (function initializeTheme() {
-      const saved = localStorage.getItem("theme");
-      if (saved === "dark") document.body.classList.add("dark-mode");
-    })();
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+
+    window.onload = showResults;
   </script>
 </body>
 </html>
+
+
+
+   
+  
 
 
 
