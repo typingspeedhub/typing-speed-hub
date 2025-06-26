@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,23 +8,29 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 30px;
+      padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
     }
     textarea {
       width: 80%;
       height: 100px;
       margin: 20px 0;
-      font-size: 16px;
     }
     button {
+      padding: 6px 14px;
       margin: 5px;
-      padding: 10px 20px;
-      font-size: 16px;
     }
     nav a {
-      margin: 0 15px;
+      margin: 0 10px;
       text-decoration: none;
-      color: #333;
+      color: inherit;
+    }
+    #results-log {
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -39,126 +44,143 @@
   </nav>
 
   <h1>Typing Speed Hub</h1>
-  <p>Select test duration:</p>
-  <button onclick="startTest(60)">1 Minute</button>
-  <button onclick="startTest(300)">5 Minutes</button>
 
-  <p id="sampleText" style="font-weight: bold;"></p>
+  <label for="level">Choose difficulty:</label>
+  <select id="level">
+    <option value="easy">Easy</option>
+    <option value="medium">Medium</option>
+    <option value="hard">Hard</option>
+  </select>
+
+  <div>
+    <button onclick="setMode('light')">Light Mode</button>
+    <button onclick="setMode('dark')">Dark Mode</button>
+  </div>
+
+  <div>
+    <p>Select test duration:</p>
+    <button onclick="setDuration(60)">1 Minute</button>
+    <button onclick="setDuration(300)">5 Minutes</button>
+  </div>
+
+  <p id="sentence"></p>
   <p id="timer">Time: 0s</p>
-  <textarea id="typingArea" placeholder="Start typing here..." oninput="trackTyping()" disabled></textarea>
-  <br />
-  <button onclick="finishTest()" id="finishButton" disabled>Finish</button>
 
-  <p id="results"></p>
+  <textarea id="inputArea" oninput="checkTyping()" placeholder="Start typing..."></textarea><br />
+
+  <button id="finishBtn" onclick="finishTest()">Finish</button>
+
+  <p id="resultText"></p>
+  <button onclick="showLog()">Show Previous Results</button>
+  <div id="results-log"></div>
 
   <script>
-    const testSentences = [
-      "Practice typing every day to see improvement.",
-      "Typing quickly helps you save time at work.",
-      "Accuracy is more important than speed.",
-      "Use all your fingers while typing.",
-      "Typing games can make learning fun.",
-      "Don't look at the keyboard while typing.",
-      "Proper posture prevents fatigue.",
-      "Short practice sessions work best.",
-      "Typing is a valuable skill in any office job.",
-      "Keep your wrists relaxed and straight.",
-      "Consistency is the key to progress.",
-      "Always warm up with an easy sentence.",
-      "Focus on the screen, not your fingers.",
-      "Reduce typos by slowing down.",
-      "Challenge yourself with longer words.",
-      "Stay calm and don't rush.",
-      "Track your progress weekly.",
-      "Set realistic typing goals.",
-      "Eliminate distractions while practicing.",
-      "Typing drills build muscle memory.",
-      "A good keyboard improves comfort.",
-      "Repetition strengthens technique.",
-      "Make typing part of your daily routine.",
-      "Try typing unfamiliar words.",
-      "Monitor your WPM regularly.",
-      "Improvement takes time and effort.",
-      "Typing fast is useful in programming.",
-      "Use online tests to evaluate yourself.",
-      "Watch your accuracy rate closely.",
-      "Train both speed and precision.",
-      "Typing can be meditative and calming.",
-      "Keep your hands in the home row.",
-      "Take breaks to rest your hands.",
-      "Stretch your fingers gently.",
-      "Avoid bad posture habits early.",
-      "The more you type, the better you get.",
-      "Use typing to take digital notes.",
-      "Typing is essential in modern careers.",
-      "Avoid watching the keyboard.",
-      "Muscle memory is your best friend.",
-      "Correct mistakes without backspacing.",
-      "Finish typing even if you make an error.",
-      "Use rhythm when typing fast.",
-      "Speed improves with confidence.",
-      "Learn keyboard shortcuts too.",
-      "Typing should feel natural.",
-      "Practice typing different kinds of content.",
-      "Use both practice and testing.",
-      "Backspace is not your enemy—just a tool.",
-      "Keep practicing and don't give up."
-    ];
+    const sentences = {
+      easy: [
+        "Typing is fun and easy.",
+        "Practice makes perfect.",
+        "Type fast and accurate.",
+        "Use the correct posture.",
+        "Focus on the screen."
+      ],
+      medium: [
+        "Typing quickly helps you save time at work.",
+        "Keep your fingers on the home row.",
+        "Avoid looking at the keyboard while typing.",
+        "Backspace is not your enemy—just a tool.",
+        "Build muscle memory for better speed."
+      ],
+      hard: [
+        "To type efficiently, you must avoid unnecessary finger movements.",
+        "Accuracy is more important than speed at the beginning.",
+        "Consistent practice is the key to becoming a typing master.",
+        "Use all your fingers to improve overall typing fluency.",
+        "WPM stands for words per minute typed."
+      ]
+    };
 
-    let startTime, timerInterval;
+    let currentSentence = "";
+    let startTime;
+    let timerInterval;
+    let duration = 60;
 
-    function startTest(duration) {
-      const sentence = testSentences[Math.floor(Math.random() * testSentences.length)];
-      document.getElementById("sampleText").textContent = sentence;
-      document.getElementById("typingArea").value = "";
-      document.getElementById("results").textContent = "";
-      document.getElementById("typingArea").disabled = false;
-      document.getElementById("finishButton").disabled = false;
-      document.getElementById("typingArea").focus();
+    function setDuration(sec) {
+      duration = sec;
+      startTest();
+    }
 
+    function startTest() {
+      const level = document.getElementById("level").value;
+      const options = sentences[level];
+      currentSentence = options[Math.floor(Math.random() * options.length)];
+      document.getElementById("sentence").textContent = currentSentence;
+      document.getElementById("inputArea").value = "";
+      document.getElementById("resultText").textContent = "";
+      document.getElementById("finishBtn").disabled = false;
       startTime = new Date();
-      document.getElementById("timer").textContent = "Time: 0s";
-
+      let seconds = 0;
       clearInterval(timerInterval);
       timerInterval = setInterval(() => {
-        const elapsed = Math.floor((new Date() - startTime) / 1000);
-        document.getElementById("timer").textContent = "Time: " + elapsed + "s";
+        seconds++;
+        document.getElementById("timer").textContent = "Time: " + seconds + "s";
+        if (seconds >= duration) finishTest();
       }, 1000);
     }
 
-    function trackTyping() {
-      // optional
-    }
+    function checkTyping() {}
 
     function finishTest() {
       clearInterval(timerInterval);
+      document.getElementById("finishBtn").disabled = true;
 
-      const endTime = new Date();
-      const elapsedSeconds = (endTime - startTime) / 1000;
-      const minutes = elapsedSeconds / 60;
-
-      const sampleText = document.getElementById("sampleText").textContent.trim();
-      const typedText = document.getElementById("typingArea").value.trim();
-
-      const charCount = typedText.length;
-      const wpm = minutes > 0 ? Math.round((charCount / 5) / minutes) : 0;
+      const input = document.getElementById("inputArea").value.trim();
+      const elapsedSeconds = (new Date() - startTime) / 1000;
+      const wordsTyped = input.split(/\s+/).length;
+      const wpm = Math.round((wordsTyped / elapsedSeconds) * 60);
 
       let correctChars = 0;
-      for (let i = 0; i < Math.min(sampleText.length, typedText.length); i++) {
-        if (sampleText[i] === typedText[i]) correctChars++;
+      for (let i = 0; i < input.length && i < currentSentence.length; i++) {
+        if (input[i] === currentSentence[i]) correctChars++;
       }
+      const accuracy = Math.round((correctChars / currentSentence.length) * 100);
 
-      const accuracy = sampleText.length > 0
-        ? Math.round((correctChars / sampleText.length) * 100)
-        : 0;
+      document.getElementById("resultText").innerHTML = "<strong>Finished!</strong> WPM: " + wpm + " | Accuracy: " + accuracy + "%";
 
-      document.getElementById("results").innerHTML = `Finished! WPM: ${wpm} | Accuracy: ${accuracy}%`;
-      document.getElementById("typingArea").disabled = true;
-      document.getElementById("finishButton").disabled = true;
+      const now = new Date().toLocaleString();
+      const level = document.getElementById("level").value;
+      const log = JSON.parse(localStorage.getItem("typingResults") || "[]");
+      log.push({ time: now, level, wpm, accuracy });
+      localStorage.setItem("typingResults", JSON.stringify(log));
     }
+
+    function showLog() {
+      const log = JSON.parse(localStorage.getItem("typingResults") || "[]");
+      const logDiv = document.getElementById("results-log");
+      logDiv.innerHTML = "<h3>Previous Results:</h3>" + log.map(entry => `
+        <p>${entry.time} – Level: ${entry.level}, WPM: ${entry.wpm}, Accuracy: ${entry.accuracy}%</p>
+      `).join("");
+    }
+
+    function setMode(mode) {
+      if (mode === "dark") {
+        document.body.classList.add("dark-mode");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.body.classList.remove("dark-mode");
+        localStorage.setItem("theme", "light");
+      }
+    }
+
+    (function initializeTheme() {
+      const saved = localStorage.getItem("theme");
+      if (saved === "dark") document.body.classList.add("dark-mode");
+    })();
   </script>
 </body>
 </html>
+
+
+
 
 
 
