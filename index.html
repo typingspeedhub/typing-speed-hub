@@ -72,7 +72,8 @@
   let timerInterval;
   let startTime = null;
   let testDuration = 0;
-  let currentSampleText = ""; // új változó a mondathoz
+  let currentSampleText = "";
+  let testFinished = false;
 
   const sentences = [
     "The quick brown fox jumps over the lazy dog.",
@@ -131,6 +132,7 @@
     clearInterval(timerInterval);
     startTime = new Date();
     testDuration = duration;
+    testFinished = false;
 
     currentSampleText = sentences[Math.floor(Math.random() * sentences.length)];
     document.getElementById("sampleText").innerText = currentSampleText;
@@ -142,6 +144,7 @@
     document.getElementById("timer").innerText = `Time: ${duration}s`;
 
     timerInterval = setInterval(() => {
+      if (testFinished) return;
       const elapsed = Math.floor((new Date() - startTime) / 1000);
       const remaining = testDuration - elapsed;
       document.getElementById("timer").innerText = `Time: ${remaining}s`;
@@ -153,16 +156,15 @@
   }
 
   function finishTest() {
+    if (testFinished) return;
+    testFinished = true;
     clearInterval(timerInterval);
-    if (!startTime) {
-      return;
-    }
 
     const elapsedSeconds = (new Date() - startTime) / 1000;
     const minutes = elapsedSeconds / 60;
 
     const typedText = document.getElementById("typingArea").value.trim();
-    const words = typedText.length > 0 ? typedText.split(/\s+/).length : 0;
+    const words = typedText.length > 0 ? typedText.split(/\\s+/).length : 0;
     const wpm = minutes > 0 ? Math.round(words / minutes) : 0;
 
     const accuracy = typedText === currentSampleText
@@ -171,14 +173,11 @@
 
     document.getElementById("typingArea").disabled = true;
     document.getElementById("result").innerHTML = `Finished! WPM: ${wpm} | Accuracy: ${accuracy}%`;
-
-    startTime = null;
   }
 </script>
 
 </body>
 </html>
-
 
 
 
