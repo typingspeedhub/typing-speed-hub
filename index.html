@@ -46,12 +46,11 @@
     <option value="300">5 minutes</option>
   </select>
   <button onclick="startTest()">Start</button>
-  <button onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
+  <button type="button" onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
   <p id="timerDisplay"></p>
   <p id="sentenceDisplay"></p>
   <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
   <p id="resultDisplay"></p>
-
   <script>
     const beginnerSentences = [
       "The quick brown fox jumps over the lazy dog.",
@@ -104,9 +103,9 @@
       "Measure both speed and accuracy each time.",
       "Celebrate improvements, even small ones.",
       "You're building a lifetime skill.",
-      "Progress is better than perfection."
+      "Typing better improves your digital fluency."
     ];
-
+    
     const intermediateSentences = [
       "Typing helps improve brain-hand coordination and sharpens your focus.",
       "Even a few minutes of daily practice can lead to noticeable progress.",
@@ -156,8 +155,7 @@
       "Typing daily builds mental endurance too.",
       "Set weekly themes to keep practice fresh.",
       "Track progress visually to stay motivated.",
-      "Keep your keyboard clean—it affects performance.",
-      "Typing is a discipline worth mastering."
+      "Keep your keyboard clean—it affects performance."
     ];
 
     const advancedSentences = [
@@ -209,8 +207,7 @@
       "Typing brings clarity, rhythm, and flow to your digital life.",
       "As you grow more fluent, mistakes will naturally fade.",
       "Your thoughts deserve fast expression—give them speed.",
-      "Mastering typing helps you master your tools.",
-      "You are building a superpower—one keystroke at a time."
+      "Mastering typing helps you master your tools."
     ];
 
     let selectedSentences = beginnerSentences;
@@ -223,7 +220,9 @@
       document.getElementById("resultDisplay").textContent = "";
       const level = document.getElementById("levelSelect").value;
       const duration = parseInt(document.getElementById("durationSelect").value);
-      selectedSentences = level === "beginner" ? beginnerSentences : level === "intermediate" ? intermediateSentences : advancedSentences;
+      if (level === "beginner") selectedSentences = beginnerSentences;
+      else if (level === "intermediate") selectedSentences = intermediateSentences;
+      else selectedSentences = advancedSentences;
       currentSentence = selectedSentences[Math.floor(Math.random() * selectedSentences.length)];
       document.getElementById("sentenceDisplay").textContent = currentSentence;
       document.getElementById("inputArea").value = "";
@@ -247,7 +246,10 @@
       const wordsTyped = typedText.trim().split(/\s+/).length;
       const timeTaken = (Date.now() - startTime) / 1000 / 60;
       const wpm = Math.round(wordsTyped / timeTaken);
-      const correctChars = [...typedText].filter((ch, i) => ch === currentSentence[i]).length;
+      let correctChars = 0;
+      for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
+        if (typedText[i] === currentSentence[i]) correctChars++;
+      }
       const accuracy = Math.round((correctChars / currentSentence.length) * 100);
       document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
       document.getElementById("finishBtn").classList.add("hidden");
@@ -256,6 +258,7 @@
   </script>
 </body>
 </html>
+
 
   
 
