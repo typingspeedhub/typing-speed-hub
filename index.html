@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Typing Speed Hub</title>
 
-  <!-- ✅ Google AdSense -->
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1607876440670769"
     crossorigin="anonymous"></script>
 
-  <!-- ✅ Google Analytics -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YFC0C8GDBQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -21,155 +21,139 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #222;
+      transition: background-color 0.3s, color 0.3s;
+      margin: 0;
+      padding: 0;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #f4f4f4;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    h1 {
       text-align: center;
-      padding: 20px;
-      background-color: #f9f9f9;
+    }
+    select, button, textarea {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
     }
     textarea {
       width: 100%;
-      height: 120px;
-      font-size: 16px;
-      padding: 10px;
-      margin-top: 10px;
+      height: 100px;
     }
-    .result {
-      margin-top: 20px;
+    .info {
+      margin-top: 1rem;
+    }
+    #sentence {
+      margin: 1rem 0;
       font-weight: bold;
-      font-size: 18px;
-    }
-    button {
-      margin: 8px;
-      padding: 10px 25px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    #test-text {
-      color: #333;
-      font-weight: bold;
-      margin: 15px 0;
     }
   </style>
 </head>
 <body>
-  <h1>Typing Speed Hub</h1>
-  <p>Select test duration:</p>
-  <button onclick="startTest(60)">1 Minute</button>
-  <button onclick="startTest(300)">5 Minutes</button>
+  <div class="container">
+    <h1>Typing Speed Hub</h1>
 
-  <p id="test-text"></p>
-  <textarea id="input-area" oninput="checkInput()" disabled></textarea>
-  <div class="result" id="result"></div>
-  <button onclick="finishTest()" id="finish-button" disabled>Finish</button>
+    <div>
+      <label for="difficulty">Select difficulty:</label>
+      <select id="difficulty">
+        <option value="easy">Beginner</option>
+        <option value="medium">Intermediate</option>
+        <option value="hard">Advanced</option>
+      </select>
+      <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+
+    <div id="sentence">Click "Start" to begin typing.</div>
+    <textarea id="inputArea" disabled placeholder="Start typing here..."></textarea>
+
+    <div class="info">
+      <p>Time: <span id="timer">0</span> seconds</p>
+      <p>WPM: <span id="wpm">0</span></p>
+      <p>Accuracy: <span id="accuracy">0%</span></p>
+    </div>
+
+    <button onclick="startTest()">Start</button>
+    <button onclick="finishTest()">Finish</button>
+  </div>
 
   <script>
-    const texts = [
-      "The quick brown fox jumps over the lazy dog.",
-      "Practice makes perfect when it comes to typing.",
-      "Typing fast requires both speed and accuracy.",
-      "Stay focused and keep your fingers on the home row.",
-      "Consistency is key in improving typing speed.",
-      "Don't rush, learn to type smoothly and steadily.",
-      "Typing games can make learning more fun and engaging.",
-      "Remember to sit up straight while typing.",
-      "Your wrists should be relaxed and not strained.",
-      "Accuracy comes before speed in the beginning.",
-      "Type daily to build muscle memory.",
-      "Challenge yourself with longer sentences.",
-      "Shortcuts can save time in real typing scenarios.",
-      "Backspacing too much slows you down.",
-      "Keep your eyes on the screen, not the keyboard.",
-      "Set typing goals and track your progress.",
-      "Stretch your fingers if they feel tight.",
-      "Avoid looking at your fingers while typing.",
-      "Use all ten fingers when typing.",
-      "Make typing practice part of your daily routine.",
-      "Take breaks to avoid fatigue and maintain accuracy.",
-      "Typing long emails can be good practice too.",
-      "Test yourself weekly with speed tests.",
-      "Don't get discouraged by typos.",
-      "Gradually increase the length of test passages.",
-      "Use online tools to track words per minute.",
-      "Typing with background noise trains concentration.",
-      "Play typing races for motivation.",
-      "Accuracy scores can guide your improvement.",
-      "Finger placement matters more than you think.",
-      "Learn keyboard shortcuts alongside typing.",
-      "Avoid bad posture during long typing sessions.",
-      "Typing in dim light can strain your eyes.",
-      "Typing with rhythm makes it easier.",
-      "Every word you type builds your skill.",
-      "Don't let mistakes slow your momentum.",
-      "Compete with friends to stay motivated.",
-      "Typing is a core digital skill today.",
-      "Confidence improves typing fluency.",
-      "Push yourself but take it easy if tired.",
-      "Daily 10-minute practices beat weekly hours.",
-      "Good lighting helps reduce typing errors.",
-      "Try copying articles for real-world text.",
-      "Typing is as much mental as physical.",
-      "Find your weak keys and drill them.",
-      "Keep calm during typing challenges.",
-      "Type to music if it helps you focus.",
-      "Measure both speed and accuracy each time.",
-      "Celebrate improvements, even small ones.",
-      "You're building a lifetime skill."
-    ];
+    const sentences = {
+      easy: [
+        "The cat sat on the mat.",
+        "I like apples and oranges.",
+        "He ran fast.",
+        "She reads books.",
+        "It is sunny today."
+      ],
+      medium: [
+        "Typing helps improve your productivity.",
+        "Consistent practice leads to better results.",
+        "Learning to type fast is very useful.",
+        "This is a moderately difficult typing sentence.",
+        "Speed and accuracy are both important."
+      ],
+      hard: [
+        "Complexity increases with longer, technical sentences.",
+        "Accurate typing requires focus and concentration.",
+        "The quick brown fox jumps over the lazy dog.",
+        "In programming, syntax is extremely important.",
+        "Keyboard shortcuts can significantly boost your workflow."
+      ]
+    };
 
-    let currentText = "";
-    let startTime;
-    let timer;
-    let totalTime = 0;
+    let startTime, interval, currentSentence = "";
 
-    function startTest(duration) {
-      clearInterval(timer);
-      document.getElementById("input-area").value = "";
-      document.getElementById("result").innerText = "";
-      document.getElementById("input-area").disabled = false;
-      document.getElementById("input-area").focus();
-      totalTime = duration;
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    function startTest() {
+      const level = document.getElementById("difficulty").value;
+      const options = sentences[level];
+      currentSentence = options[Math.floor(Math.random() * options.length)];
+      document.getElementById("sentence").textContent = currentSentence;
+      document.getElementById("inputArea").disabled = false;
+      document.getElementById("inputArea").value = "";
+      document.getElementById("inputArea").focus();
+      document.getElementById("wpm").textContent = "0";
+      document.getElementById("accuracy").textContent = "0%";
+      document.getElementById("timer").textContent = "0";
       startTime = new Date();
-      currentText = texts[Math.floor(Math.random() * texts.length)];
-      document.getElementById("test-text").innerText = currentText;
-
-      timer = setInterval(() => {
-        let now = new Date();
-        let elapsed = (now - startTime) / 1000;
-        if (elapsed >= totalTime) {
-          finishTest();
-        }
+      clearInterval(interval);
+      interval = setInterval(() => {
+        const elapsed = Math.floor((new Date() - startTime) / 1000);
+        document.getElementById("timer").textContent = elapsed;
       }, 1000);
-
-      document.getElementById("finish-button").disabled = false;
     }
 
     function finishTest() {
-      clearInterval(timer);
-      document.getElementById("input-area").disabled = true;
-      document.getElementById("finish-button").disabled = true;
-      let endTime = new Date();
-      let elapsed = (endTime - startTime) / 1000;
-      let typedText = document.getElementById("input-area").value.trim();
-      let words = typedText.length > 0 ? typedText.split(/\s+/).length : 0;
-      let wpm = Math.round((words / elapsed) * 60);
-      let accuracy = calculateAccuracy(typedText, currentText);
-      document.getElementById("result").innerText = `Finished! WPM: ${wpm} | Accuracy: ${accuracy}%`;
-    }
-
-    function calculateAccuracy(typed, original) {
-      let correct = 0;
-      let minLength = Math.min(typed.length, original.length);
-      for (let i = 0; i < minLength; i++) {
-        if (typed[i] === original[i]) correct++;
-      }
-      return original.length > 0 ? Math.round((correct / original.length) * 100) : 0;
-    }
-
-    function checkInput() {
-      // optional: real-time highlighting or validation
+      clearInterval(interval);
+      const typed = document.getElementById("inputArea").value.trim();
+      const timeElapsed = (new Date() - startTime) / 60000; // in minutes
+      const wordCount = typed ? typed.split(/\s+/).length : 0;
+      const wpm = timeElapsed > 0 ? Math.round(wordCount / timeElapsed) : 0;
+      const correctChars = typed.split('').filter((c, i) => c === currentSentence[i]).length;
+      const accuracy = currentSentence.length > 0
+        ? Math.round((correctChars / currentSentence.length) * 100)
+        : 0;
+      document.getElementById("wpm").textContent = wpm;
+      document.getElementById("accuracy").textContent = accuracy + "%";
     }
   </script>
 </body>
 </html>
+
+  
+
+     
 
 
 
