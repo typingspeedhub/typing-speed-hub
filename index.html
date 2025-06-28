@@ -15,53 +15,99 @@
   <style>
     body {
       background-color: #121212;
-      color: #ffffff;
+      color: #f0f0f0;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 20px;
+      padding: 2rem;
     }
-    textarea {
-      width: 100%;
+    select, button, textarea {
+      margin: 0.5rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    #inputArea {
+      width: 80%;
       height: 100px;
-      font-size: 18px;
-      margin-top: 20px;
     }
-    .hidden {
-      display: none;
-    }
-    button {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-    }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
   <h1>Typing Speed Hub</h1>
-  <p>Select test duration:</p>
-  <select id="duration">
-    <option value="60">1 minute</option>
-    <option value="300">5 minutes</option>
-  </select>
-  <p>Select difficulty:</p>
-  <select id="difficulty">
+  <label for="levelSelect">Level:</label>
+  <select id="levelSelect">
     <option value="beginner">Beginner</option>
     <option value="intermediate">Intermediate</option>
     <option value="advanced">Advanced</option>
   </select>
-  <p id="sentence"></p>
-  <textarea id="inputArea" disabled></textarea>
-  <div>
-    <button onclick="startTest()">Start Test</button>
-    <button id="finishButton" class="hidden" onclick="finishTest()">Finish</button>
-  </div>
-  <p id="timer"></p>
-  <p id="result"></p>
+  <label for="durationSelect">Test duration:</label>
+  <select id="durationSelect">
+    <option value="60">1 minute</option>
+    <option value="300">5 minutes</option>
+  </select>
+  <button onclick="startTest()">Start</button>
+  <button onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
+  <p id="timerDisplay"></p>
+  <p id="sentenceDisplay"></p>
+  <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
+  <p id="resultDisplay"></p>
 
   <script>
-    const beginner = [...]; // same as before
+    const beginnerSentences = [
+      "The quick brown fox jumps over the lazy dog.",
+      "Practice makes perfect when it comes to typing.",
+      "Typing fast requires both speed and accuracy.",
+      "Stay focused and keep your fingers on the home row.",
+      "Consistency is key in improving typing speed.",
+      "Don't rush, learn to type smoothly and steadily.",
+      "Typing games can make learning more fun and engaging.",
+      "Remember to sit up straight while typing.",
+      "Your wrists should be relaxed and not strained.",
+      "Accuracy comes before speed in the beginning.",
+      "Type daily to build muscle memory.",
+      "Challenge yourself with longer sentences.",
+      "Shortcuts can save time in real typing scenarios.",
+      "Backspacing too much slows you down.",
+      "Keep your eyes on the screen, not the keyboard.",
+      "Set typing goals and track your progress.",
+      "Stretch your fingers if they feel tight.",
+      "Avoid looking at your fingers while typing.",
+      "Use all ten fingers when typing.",
+      "Make typing practice part of your daily routine.",
+      "Take breaks to avoid fatigue and maintain accuracy.",
+      "Typing long emails can be good practice too.",
+      "Test yourself weekly with speed tests.",
+      "Don't get discouraged by typos.",
+      "Gradually increase the length of test passages.",
+      "Use online tools to track words per minute.",
+      "Typing with background noise trains concentration.",
+      "Play typing races for motivation.",
+      "Accuracy scores can guide your improvement.",
+      "Finger placement matters more than you think.",
+      "Learn keyboard shortcuts alongside typing.",
+      "Avoid bad posture during long typing sessions.",
+      "Typing in dim light can strain your eyes.",
+      "Typing with rhythm makes it easier.",
+      "Every word you type builds your skill.",
+      "Don't let mistakes slow your momentum.",
+      "Compete with friends to stay motivated.",
+      "Typing is a core digital skill today.",
+      "Confidence improves typing fluency.",
+      "Push yourself but take it easy if tired.",
+      "Daily 10-minute practices beat weekly hours.",
+      "Good lighting helps reduce typing errors.",
+      "Try copying articles for real-world text.",
+      "Typing is as much mental as physical.",
+      "Find your weak keys and drill them.",
+      "Keep calm during typing challenges.",
+      "Type to music if it helps you focus.",
+      "Measure both speed and accuracy each time.",
+      "Celebrate improvements, even small ones.",
+      "You're building a lifetime skill.",
+      "Progress is better than perfection."
+    ];
 
-    const intermediate = [
+    const intermediateSentences = [
       "Typing helps improve brain-hand coordination and sharpens your focus.",
       "Even a few minutes of daily practice can lead to noticeable progress.",
       "Use online typing tests to challenge your current skill level regularly.",
@@ -71,46 +117,123 @@
       "Try typing longer texts like articles or essays to improve endurance.",
       "Stretch your hands before and after sessions to prevent strain.",
       "Speed is secondary to precision in professional typing tasks.",
-      "Distractions reduce both speed and comprehension while typing."
-      // Add 40 more intermediate sentences here
+      "Distractions reduce both speed and comprehension while typing.",
+      "Repetition helps you memorize difficult key positions.",
+      "Typing on different keyboards helps you stay adaptable.",
+      "Time yourself regularly to measure improvement realistically.",
+      "Don’t forget to review your most frequent errors after each session.",
+      "Typing with proper posture reduces physical fatigue significantly.",
+      "Practicing typing improves clarity of thought in communication.",
+      "Try transcribing short audio clips to boost typing reaction time.",
+      "Accurate typing reduces cognitive load while multitasking.",
+      "Your keyboard layout can affect your comfort and performance.",
+      "Challenge yourself to complete error-free passages at your pace.",
+      "Use typing as a warmup for writing tasks or creative work.",
+      "Switch between topics to avoid boredom during practice.",
+      "Mistake tracking software helps highlight your weak letters.",
+      "Learn to type without backspacing—it forces discipline.",
+      "Typing fast is like learning an instrument—it takes rhythm.",
+      "Adjust keyboard tilt to support your wrists ergonomically.",
+      "Typing in natural light helps reduce eye strain.",
+      "Use voice dictation occasionally to compare typing speed.",
+      "Try touch typing games that adapt to your level.",
+      "Test your typing speed after breaks to observe improvement.",
+      "Typing faster means you can express thoughts in real time.",
+      "Progress comes when practice feels comfortable and fluid.",
+      "Keep track of your WPM weekly, not daily.",
+      "Accuracy drills feel boring, but they work wonders.",
+      "Small goals build long-term habits.",
+      "You don’t need to look at the screen constantly—trust your muscle memory.",
+      "Stay relaxed, don’t force your fingers to race.",
+      "Alternate between speed and accuracy sessions.",
+      "Write emails or short stories as practice tasks.",
+      "Challenge yourself with new vocabulary lists.",
+      "Listen to music while typing to get into flow.",
+      "Make typing your digital meditation.",
+      "Slow down to type faster—it's paradoxical but true.",
+      "The more comfortable you are, the faster you'll type.",
+      "Don’t fear mistakes—embrace them as feedback.",
+      "Typing daily builds mental endurance too.",
+      "Set weekly themes to keep practice fresh.",
+      "Track progress visually to stay motivated.",
+      "Keep your keyboard clean—it affects performance.",
+      "Typing is a discipline worth mastering."
     ];
 
-    const advanced = [
-      "While rapid typing can enhance productivity, precision is paramount in professional writing.",
-      "Advanced typists anticipate common word sequences and type them as fluid units.",
-      "Balancing mental focus and finger dexterity is critical for mastering complex text.",
-      "Regular breaks during extended sessions help preserve both accuracy and comfort.",
-      "Editing typed text is faster when the original entry was accurate to begin with."
-      // Add 45 more advanced sentences here
+    const advancedSentences = [
+      "Touch typing has become an essential skill for professionals in nearly every digital industry today.",
+      "With consistent practice, your typing will feel more natural, reducing mental effort and increasing creativity.",
+      "Typing fluently allows writers and coders to maintain a steady stream of ideas without interruption.",
+      "By eliminating the need to glance at the keyboard, touch typing boosts your overall workflow efficiency.",
+      "The discipline of touch typing develops patience and long-term focus—rare skills in our fast-paced world.",
+      "Accurate typing can reduce communication errors, especially in time-sensitive or professional settings.",
+      "Practicing complex passages sharpens mental coordination between reading, thinking, and writing.",
+      "High-level typists report fewer posture-related injuries thanks to proper technique and ergonomics.",
+      "Writing without hesitating lets your thoughts flow directly to the screen, unfiltered and fast.",
+      "Real-time typing tests can simulate work pressure, preparing you for tight deadlines.",
+      "In coding, accurate typing reduces debugging caused by syntax errors and missing characters.",
+      "You may not realize how much typing impacts your productivity until you measure it.",
+      "High typing proficiency is often linked to better digital literacy overall.",
+      "Writing essays, blog posts, or project notes by touch typing saves significant time over months.",
+      "Fast typists often process written information more quickly due to increased reading speed.",
+      "With practice, typing becomes an unconscious reflex, freeing up brainpower for creativity.",
+      "Fluent typing mirrors fluent speaking—it allows expression without hesitation.",
+      "In meetings or lectures, fast typists capture key points without breaking focus.",
+      "The ability to type with both hands improves multitasking when using multiple screens.",
+      "Typing fatigue decreases as your fingers learn efficient movement patterns.",
+      "You’ll be surprised how often typing shows up even in non-digital tasks like entering data or forms.",
+      "Fast, accurate typing becomes your digital superpower—used across almost every tool.",
+      "Adapting to various keyboard layouts makes you resilient and versatile in new environments.",
+      "Typists who train for both speed and clarity usually write more thoughtfully.",
+      "Build your own typing challenges to target common mistakes.",
+      "Typing skills are often overlooked in productivity courses—but they are foundational.",
+      "Real-world tasks like budgeting or researching are easier when you can type quickly.",
+      "Advanced typing enables you to write and edit simultaneously.",
+      "Speed writing requires mental composure and steady rhythm—skills earned with practice.",
+      "Take occasional breaks, but make typing a lifetime habit.",
+      "Writing fiction or journaling can become a creative typing practice.",
+      "The key to typing fluency is building and sustaining momentum.",
+      "Use advanced software that visualizes your hand movement and weak points.",
+      "Your typing style is part of your digital identity—make it efficient and elegant.",
+      "Type unfamiliar language phrases to expand both typing skill and vocabulary.",
+      "Reflect on how your typing has evolved—it shows real learning growth.",
+      "Precision in typing mirrors precision in thought.",
+      "Professional writers, developers, and analysts all rely on fluent typing daily.",
+      "The fastest typists are often those who never stopped practicing.",
+      "Teach others to type—it will improve your own skill further.",
+      "Be patient—most people improve in small, consistent steps.",
+      "Tracking your typing data helps you set realistic goals.",
+      "Type with intent, not just for speed.",
+      "Once typing is second nature, you'll never go back.",
+      "Even slow typists can become pros with discipline.",
+      "Typing brings clarity, rhythm, and flow to your digital life.",
+      "As you grow more fluent, mistakes will naturally fade.",
+      "Your thoughts deserve fast expression—give them speed.",
+      "Mastering typing helps you master your tools.",
+      "You are building a superpower—one keystroke at a time."
     ];
 
+    let selectedSentences = beginnerSentences;
     let currentSentence = "";
-    let timeLeft, timerInterval, startTime;
-
-    function getSentenceByDifficulty() {
-      const level = document.getElementById("difficulty").value;
-      let source = beginner;
-      if (level === "intermediate") source = intermediate;
-      else if (level === "advanced") source = advanced;
-      return source[Math.floor(Math.random() * source.length)];
-    }
+    let startTime, timerInterval;
 
     function startTest() {
-      currentSentence = getSentenceByDifficulty();
-      document.getElementById("sentence").textContent = currentSentence;
+      document.getElementById("inputArea").classList.remove("hidden");
+      document.getElementById("finishBtn").classList.remove("hidden");
+      document.getElementById("resultDisplay").textContent = "";
+      const level = document.getElementById("levelSelect").value;
+      const duration = parseInt(document.getElementById("durationSelect").value);
+      selectedSentences = level === "beginner" ? beginnerSentences : level === "intermediate" ? intermediateSentences : advancedSentences;
+      currentSentence = selectedSentences[Math.floor(Math.random() * selectedSentences.length)];
+      document.getElementById("sentenceDisplay").textContent = currentSentence;
       document.getElementById("inputArea").value = "";
-      document.getElementById("inputArea").disabled = false;
       document.getElementById("inputArea").focus();
-      document.getElementById("result").textContent = "";
-      document.getElementById("finishButton").classList.remove("hidden");
-      
-      timeLeft = parseInt(document.getElementById("duration").value);
-      document.getElementById("timer").textContent = timeLeft + "s";
       startTime = Date.now();
-
+      let timeLeft = duration;
+      document.getElementById("timerDisplay").textContent = timeLeft + "s";
       timerInterval = setInterval(() => {
         timeLeft--;
-        document.getElementById("timer").textContent = timeLeft + "s";
+        document.getElementById("timerDisplay").textContent = timeLeft + "s";
         if (timeLeft <= 0) {
           clearInterval(timerInterval);
           finishTest();
@@ -120,22 +243,21 @@
 
     function finishTest() {
       clearInterval(timerInterval);
-      document.getElementById("inputArea").disabled = true;
-      const typed = document.getElementById("inputArea").value;
-      let correct = 0;
-      for (let i = 0; i < Math.min(currentSentence.length, typed.length); i++) {
-        if (typed[i] === currentSentence[i]) correct++;
-      }
-      const elapsedTime = (Date.now() - startTime) / 1000;
-      const wpm = Math.round((typed.length / 5) / (elapsedTime / 60));
-      const accuracy = Math.round((correct / typed.length) * 100);
-      document.getElementById("result").textContent =
-        `WPM: ${wpm} | Accuracy: ${isNaN(accuracy) ? 0 : accuracy}%`;
-      document.getElementById("finishButton").classList.add("hidden");
+      const typedText = document.getElementById("inputArea").value;
+      const wordsTyped = typedText.trim().split(/\s+/).length;
+      const timeTaken = (Date.now() - startTime) / 1000 / 60;
+      const wpm = Math.round(wordsTyped / timeTaken);
+      const correctChars = [...typedText].filter((ch, i) => ch === currentSentence[i]).length;
+      const accuracy = Math.round((correctChars / currentSentence.length) * 100);
+      document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
+      document.getElementById("finishBtn").classList.add("hidden");
+      document.getElementById("inputArea").classList.add("hidden");
     }
   </script>
 </body>
 </html>
+
+  
 
   
  
