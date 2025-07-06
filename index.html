@@ -286,6 +286,14 @@
       document.getElementById("inputArea").value = "";
       document.getElementById("inputArea").focus();
 document.getElementById("inputArea").addEventListener("input", () => {
+document.getElementById("inputArea").addEventListener("input", () => {
+  const typed = document.getElementById("inputArea").value.trim();
+  const target = currentSentence.trim();
+  if (typed === target) {
+    clearInterval(timerInterval);
+    finishTest();
+  }
+});
   const typed = document.getElementById("inputArea").value;
   if (typed === currentSentence) {
     finishTest();
