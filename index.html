@@ -317,19 +317,25 @@ document.getElementById("inputArea").addEventListener("input", () => {
     }
 
     function finishTest() {
-      clearInterval(timerInterval);
-      const typedText = document.getElementById("inputArea").value;
-      const wordsTyped = typedText.trim().split(/\s+/).length;
-      const timeTaken = (Date.now() - startTime) / 1000 / 60;
-      const wpm = Math.round(wordsTyped / timeTaken);
-      let correctChars = 0;
-      for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
-        if (typedText[i] === currentSentence[i]) correctChars++;
-      }
-      const accuracy = Math.round((correctChars / currentSentence.length) * 100);
-      document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
-      document.getElementById("finishBtn").classList.add("hidden");
-      document.getElementById("inputArea").classList.add("hidden");
+       clearInterval(timerInterval);
+  document.getElementById("finishSound").play(); // Hang lejátszása a befejezéskor
+
+  const typedText = document.getElementById("inputArea").value;
+  const wordsTyped = typedText.trim().split(/\s+/).length;
+  const timeTaken = (Date.now() - startTime) / 1000 / 60;
+  const wpm = Math.round(wordsTyped / timeTaken);
+
+  let correctChars = 0;
+  for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
+    if (typedText[i] === currentSentence[i]) correctChars++;
+  }
+
+  const accuracy = Math.round((correctChars / currentSentence.length) * 100);
+  document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
+
+  document.getElementById("finishBtn").classList.add("hidden");
+  document.getElementById("inputArea").classList.add("hidden");
+}
     }
   </script>
 </body>
