@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Typing Speed Hub</title>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1607876440670769" crossorigin="anonymous"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YFC0C8GDBQ"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YFC0C8GDBQ"></script> 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -109,59 +109,57 @@
     }
 
     const beginnerSentences = [
-      "The quick brown fox jumps over the lazy dog.",
       "Practice makes perfect when it comes to typing.",
-      "Typing fast requires both speed and accuracy.",
-      "Stay focused and keep your fingers on the home row.",
-      "Consistency is key in improving typing speed.",
-      "Don't rush, learn to type smoothly and steadily.",
-      "Typing games can make learning more fun and engaging.",
-      "Remember to sit up straight while typing.",
-      "Your wrists should be relaxed and not strained.",
-      "Accuracy comes before speed in the beginning.",
-      "Type daily to build muscle memory.",
-      "Challenge yourself with longer sentences.",
-      "Shortcuts can save time in real typing scenarios.",
-      "Backspacing too much slows you down.",
-      "Keep your eyes on the screen, not the keyboard.",
-      "Set typing goals and track your progress.",
-      "Stretch your fingers if they feel tight.",
-      "Avoid looking at your fingers while typing.",
-      "Use all ten fingers when typing.",
-      "Make typing practice part of your daily routine.",
-      "Take breaks to avoid fatigue and maintain accuracy.",
-      "Typing long emails can be good practice too.",
-      "Test yourself weekly with speed tests.",
-      "Don't get discouraged by typos.",
-      "Gradually increase the length of test passages.",
-      "Use online tools to track words per minute.",
-      "Typing with background noise trains concentration.",
-      "Play typing races for motivation.",
-      "Accuracy scores can guide your improvement.",
-      "Finger placement matters more than you think.",
-      "Learn keyboard shortcuts alongside typing.",
-      "Avoid bad posture during long typing sessions.",
-      "Typing in dim light can strain your eyes.",
-      "Typing with rhythm makes it easier.",
-      "Every word you type builds your skill.",
-      "Don't let mistakes slow your momentum.",
-      "Compete with friends to stay motivated.",
-      "Typing is a core digital skill today.",
-      "Confidence improves typing fluency.",
-      "Push yourself but take it easy if tired.",
-      "Daily 10-minute practices beat weekly hours.",
-      "Good lighting helps reduce typing errors.",
-      "Try copying articles for real-world text.",
-      "Typing is as much mental as physical.",
-      "Find your weak keys and drill them.",
-      "Keep calm during typing challenges.",
-      "Type to music if it helps you focus.",
-      "Measure both speed and accuracy each time.",
-      "Celebrate improvements, even small ones.",
-      "You're building a lifetime skill.",
-      "Typing better improves your digital fluency."
+  "Typing fast requires both speed and accuracy.",
+  "Stay focused and keep your fingers on the home row.",
+  "Don't rush, learn to type smoothly and steadily.",
+  "Typing games can make learning more fun and engaging.",
+  "Remember to sit up straight while typing.",
+  "Your wrists should be relaxed and not strained.",
+  "Accuracy comes before speed in the beginning.",
+  "Type daily to build muscle memory.",
+  "Challenge yourself with longer sentences.",
+  "Shortcuts can save time in real typing scenarios.",
+  "Backspacing too much slows you down.",
+  "Keep your eyes on the screen, not the keyboard.",
+  "Set typing goals and track your progress.",
+  "Stretch your fingers if they feel tight.",
+  "Avoid looking at your fingers while typing.",
+  "Use all ten fingers when typing.",
+  "Make typing practice part of your daily routine.",
+  "Take breaks to avoid fatigue and maintain accuracy.",
+  "Typing long emails can be good practice too.",
+  "Test yourself weekly with speed tests.",
+  "Don't get discouraged by typos.",
+  "Gradually increase the length of test passages.",
+  "Typing with background noise trains concentration.",
+  "Play typing races for motivation.",
+  "Accuracy scores can guide your improvement.",
+  "Finger placement matters more than you think.",
+  "Learn keyboard shortcuts alongside typing.",
+  "Avoid bad posture during long typing sessions.",
+  "Typing in dim light can strain your eyes.",
+  "Typing with rhythm makes it easier.",
+  "Every word you type builds your skill.",
+  "Don't let mistakes slow your momentum.",
+  "Compete with friends to stay motivated.",
+  "Typing is a core digital skill today.",
+  "Confidence improves typing fluency.",
+  "Push yourself but take it easy if tired.",
+  "Daily 10-minute practices beat weekly hours.",
+  "Good lighting helps reduce typing errors.",
+  "Try copying articles for real-world text.",
+  "Typing is as much mental as physical.",
+  "Find your weak keys and drill them.",
+  "Keep calm during typing challenges.",
+  "Type to music if it helps you focus.",
+  "Measure both speed and accuracy each time.",
+  "Celebrate improvements, even small ones.",
+  "You're building a lifetime skill.",
+  "Typing better improves your digital fluency.",
+  "Even slow progress builds solid typing habits.",
+  "Consistency is the key to typing mastery."
     ];
-
     const intermediateSentences = [
 "Typing helps improve brain-hand coordination and sharpens your focus.",
   "Even a few minutes of daily practice can lead to noticeable progress.",
@@ -212,10 +210,9 @@
   "Set weekly themes to keep practice fresh.",
   "Track progress visually to stay motivated.",
   "Keep your keyboard clean—it affects performance.",
-  "Practice makes permanent—train smart."
-];
+  "Practice makes permanent—train smart.")];
     const advancedSentences = [
-"Touch typing has become an essential skill for professionals in nearly every digital industry today.",
+ "Touch typing has become an essential skill for professionals in nearly every digital industry today.",
   "With consistent practice, your typing will feel more natural, reducing mental effort and increasing creativity.",
   "Typing fluently allows writers and coders to maintain a steady stream of ideas without interruption.",
   "By eliminating the need to glance at the keyboard, touch typing boosts your overall workflow efficiency.",
@@ -264,7 +261,7 @@
   "As you grow more fluent, mistakes will naturally fade.",
   "Your thoughts deserve fast expression—give them speed.",
   "Mastering typing helps you master your tools.",
-  "Advanced typists learn to think and write at the same pace.")];
+  "Advanced typists learn to think and write at the same pace.")]);
 
     let selectedSentences = beginnerSentences;
     let currentSentence = "";
@@ -283,6 +280,17 @@
       document.getElementById("sentenceDisplay").textContent = currentSentence;
       document.getElementById("inputArea").value = "";
       document.getElementById("inputArea").focus();
+
+      // Stop timer if sentence complete
+      document.getElementById("inputArea").addEventListener("input", () => {
+        const typed = document.getElementById("inputArea").value.trim();
+        const target = currentSentence.trim();
+        if (typed === target) {
+          clearInterval(timerInterval);
+          finishTest();
+        }
+      });
+
       startTime = Date.now();
       let timeLeft = duration;
       document.getElementById("timerDisplay").textContent = timeLeft + "s";
@@ -311,9 +319,14 @@
       document.getElementById("finishBtn").classList.add("hidden");
       document.getElementById("inputArea").classList.add("hidden");
     }
+
+    // Make functions global
+    window.startTest = startTest;
+    window.finishTest = finishTest;
   </script>
 </body>
 </html>
+
 
 
 
