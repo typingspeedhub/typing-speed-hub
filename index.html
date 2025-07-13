@@ -286,9 +286,12 @@
       document.getElementById("inputArea").focus();
 
       document.getElementById("inputArea").addEventListener("input", () => {
-        const typed = document.getElementById("inputArea").value.trim();
-        const target = currentSentence.trim();
-        if (typed === target) {
+   
+     
+const typed = document.getElementById("inputArea").value;
+const target = currentSentence;
+
+  if (typed === target) {
           clearInterval(timerInterval);
           finishTest();
         }
