@@ -285,18 +285,18 @@
       document.getElementById("inputArea").value = "";
       document.getElementById("inputArea").focus();
 
-      document.getElementById("inputArea").addEventListener("input", () => {
-   
-     
-const typed = document.getElementById("inputArea").value;
-const target = currentSentence;
+      
 
+document.getElementById("inputArea").addEventListener("keyup", () => {
+  const typed = document.getElementById("inputArea").value;
+  const target = currentSentence;
   if (typed === target) {
-          clearInterval(timerInterval);
-          finishTest();
-        }
-      });
+    clearInterval(timerInterval);
+    finishTest();
+  }
+});
 
+      
       startTime = Date.now();
       let timeLeft = duration;
       document.getElementById("timerDisplay").textContent = timeLeft + "s";
