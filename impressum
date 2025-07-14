@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Impressum</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    a {
+      color: #4CAF50;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Impressum</h1>
+  <p><strong>Website Operator:</strong><br>
+  Typing Speed Hub<br>
+  Email: <a href="mailto:typingspeedhub@gmail.com">typingspeedhub@gmail.com</a></p>
+
+  <p><strong>Responsible for Content:</strong><br>
+  The website operator named above is responsible for the content of this website under applicable laws.</p>
+
+  <p><strong>Disclaimer:</strong><br>
+  This website is for informational and entertainment purposes only. No guarantees are made regarding the accuracy or completeness of the content. External links are provided for convenience and are the responsibility of their respective owners.</p>
+
+  <p><strong>Contact:</strong><br>
+  If you have any questions about this website, feel free to contact us via email.</p>
+
+  <p style="margin-top: 2rem; font-size: 0.9rem;">Last updated: July 14, 2025</p>
+</body>
+</html>
