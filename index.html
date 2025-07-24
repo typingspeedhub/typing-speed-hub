@@ -2,393 +2,117 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Typing Speed Hub</title>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1607876440670769" crossorigin="anonymous"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YFC0C8GDBQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-YFC0C8GDBQ');
-  </script>
-  <style>
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #111;
-  min-width: 180px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-  white-space: nowrap;
-  flex-direction: column;
-  display: flex;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Speed Hub | Improve Typing Speed & Accuracy Online</title>
+  <meta name="description" content="Practice typing online with Typing Speed Hub. Improve your typing speed and accuracy with interactive drills, games, and tips for all levels.">
+  <meta name="keywords" content="typing speed, online typing test, typing accuracy, practice typing, learn to type, touch typing">
+  <meta name="author" content="TypingSpeedHub" />
+  <meta name="robots" content="index, follow" />
 
+  <!-- Optional structured data (SEO boost) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Typing Speed Hub",
+    "url": "https://typingspeedhub.com",
+    "description": "Improve your typing speed and accuracy with interactive tests, drills, and games.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "TypingSpeedHub"
+    }
   }
+  </script>
 
-    
+  <style>
     body {
-      margin: 0;
+      background-color: #0d0d0d;
+      color: #00ff66;
       font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #00ff66;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    li {
+      margin-bottom: 10px;
     }
     nav {
-      background-color: #1e1e1e;
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
+      margin-bottom: 30px;
     }
     nav a {
       color: white;
+      margin-right: 15px;
       text-decoration: none;
       font-weight: bold;
     }
-    .container {
-      padding: 2rem;
-      text-align: center;
-    }
-    select, button, textarea {
-      margin: 0.5rem;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-    #inputArea {
-      width: 80%;
-      height: 100px;
-    }
-    .hidden {
-      display: none;
-    }
-    footer {
-      margin-top: 4rem;
-      text-align: center;
-      color: #888;
+    nav a:hover {
+      color: #00ff66;
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="#" onclick="showPage('home')">Home</a>
-    
-<div class="dropdown">
-  <a href="#">Typing Guides ▾</a>
-  <div class="dropdown-content">
-    <a href="typing-tips.html">Typing Tips</a>
+    <a href="index.html">Home</a>
+    <a href="typing-tips.html">Tips</a>
+    <a href="10-minute-typing-drill.html">10-Minute Drill</a>
     <a href="increase-typing-speed-7days.html">Typing Speed in 7 Days</a>
+    <a href="best-free-typing-games.html">Typing Games</a>
+    <a href="best-keyboards-typing-practice.html">Best Keyboards</a>
     <a href="common-typing-mistakes.html">Typing Mistakes</a>
     <a href="typing-for-kids.html">Typing for Kids</a>
-  </div>
-</div>
-   
-    <a href="10-minute-typing-drill.html">10-Minute Drill</a>
-    <a href="increase-typing-speed-7days.html">How to Increase Typing Speed in 7 Days</a>
-    <a href="best-keyboards-typing-practice.html">Best Keyboards</a>
-    <a href="best-free-typing-games.html">Typing Games</a>
-    <a href="common-typing-mistakes.html">Typing Mistakes</a>
-    <a href="#" onclick="showPage('contact')">Contact</a>
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="terms-and-conditions.html">Terms & Conditions</a>
-     <a href="impressum.html">Impressum</a>
-    
-</nav>
-
+    <a href="impressum.html">Impressum</a>
   </nav>
 
-  <div id="home" class="container">
-    <h1>Typing Speed Hub</h1>
-    <label for="levelSelect">Level:</label>
-    <select id="levelSelect">
-      <option value="beginner">Beginner</option>
-      <option value="intermediate">Intermediate</option>
-      <option value="advanced">Advanced</option>
-    </select>
-    <label for="durationSelect">Test duration:</label>
-    <select id="durationSelect">
-      <option value="60">1 minute</option>
-      <option value="300">5 minutes</option>
-    </select>
-    <button onclick="startTest()">Start</button>
-    <button type="button" onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
-    <p id="timerDisplay"></p>
-    <p id="sentenceDisplay"></p>
-    <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
-    <p id="resultDisplay"></p>
-  </div>
+  <h1>Welcome to Typing Speed Hub – Practice and Improve Your Typing Skills</h1>
 
-  <div id="tips" class="container hidden">
-    <h2>Typing Tips</h2>
-    <ul style="text-align:left; max-width: 600px; margin:auto">
-      <li>Keep your fingers on the home row.</li>
-      <li>Don't look at the keyboard.</li>
-      <li>Practice daily for steady improvement.</li>
-      <li>Focus on accuracy before speed.</li>
-      <li>Use all 10 fingers while typing.</li>
+  <p>Typing Speed Hub helps you improve your typing speed and accuracy with easy-to-follow drills, interactive typing games, and professional tips. Whether you're a student, a job seeker, or just want to type faster, you're in the right place.</p>
+
+  <section>
+    <h2>Get Started</h2>
+    <ul>
+      <li>👉 <a href="10-minute-typing-drill.html">Try the 10-Minute Typing Drill</a></li>
+      <li>🎯 <a href="increase-typing-speed-7days.html">Boost your speed in 7 days</a></li>
+      <li>🧠 <a href="typing-tips.html">Read essential typing tips</a></li>
+      <li>🚫 <a href="common-typing-mistakes.html">Avoid common typing mistakes</a></li>
     </ul>
-  </div>
+  </section>
 
-  <div id="contact" class="container hidden">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:typingspeedhub@gmail.com" style="color:lightblue">typingspeedhub@gmail.com</a></p>
-  </div>
+  <section>
+    <h2>Resources for All Skill Levels</h2>
+    <p>Whether you’re a beginner or advanced, we’ve got tools tailored to your needs:</p>
+    <ul>
+      <li><a href="typing-for-kids.html">Typing for Kids</a> – fun games and learning</li>
+      <li><a href="best-free-typing-games.html">Best Free Typing Games</a> – practice while playing</li>
+      <li><a href="best-keyboards-typing-practice.html">Best Keyboards for Typing Practice</a> – improve comfort and speed</li>
+    </ul>
+  </section>
 
-  <footer>
-    &copy; 2025 Typing Speed Hub. All rights reserved.
-  </footer>
+  <section>
+    <h2>Why Typing Speed Matters</h2>
+    <p>Typing faster and more accurately helps you:</p>
+    <ul>
+      <li>✅ Save time on daily tasks</li>
+      <li>✅ Work more efficiently</li>
+      <li>✅ Reduce stress during timed exams or jobs</li>
+      <li>✅ Stand out in digital careers</li>
+    </ul>
+  </section>
 
-  <script>
-    function showPage(id) {
-      document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
-    }
-
-    const beginnerSentences = [
-      "The quick brown fox jumps over the lazy dog.",
-      "Practice makes perfect when it comes to typing.",
-      "Typing fast requires both speed and accuracy.",
-      "Stay focused and keep your fingers on the home row.",
-      "Consistency is key in improving typing speed.",
-      "Don't rush, learn to type smoothly and steadily.",
-      "Typing games can make learning more fun and engaging.",
-      "Remember to sit up straight while typing.",
-      "Your wrists should be relaxed and not strained.",
-      "Accuracy comes before speed in the beginning.",
-      "Type daily to build muscle memory.",
-      "Challenge yourself with longer sentences.",
-      "Shortcuts can save time in real typing scenarios.",
-      "Backspacing too much slows you down.",
-      "Keep your eyes on the screen, not the keyboard.",
-      "Set typing goals and track your progress.",
-      "Stretch your fingers if they feel tight.",
-      "Avoid looking at your fingers while typing.",
-      "Use all ten fingers when typing.",
-      "Make typing practice part of your daily routine.",
-      "Take breaks to avoid fatigue and maintain accuracy.",
-      "Typing long emails can be good practice too.",
-      "Test yourself weekly with speed tests.",
-      "Don't get discouraged by typos.",
-      "Gradually increase the length of test passages.",
-      "Use online tools to track words per minute.",
-      "Typing with background noise trains concentration.",
-      "Play typing races for motivation.",
-      "Accuracy scores can guide your improvement.",
-      "Finger placement matters more than you think.",
-      "Learn keyboard shortcuts alongside typing.",
-      "Avoid bad posture during long typing sessions.",
-      "Typing in dim light can strain your eyes.",
-      "Typing with rhythm makes it easier.",
-      "Every word you type builds your skill.",
-      "Don't let mistakes slow your momentum.",
-      "Compete with friends to stay motivated.",
-      "Typing is a core digital skill today.",
-      "Confidence improves typing fluency.",
-      "Push yourself but take it easy if tired.",
-      "Daily 10-minute practices beat weekly hours.",
-      "Good lighting helps reduce typing errors.",
-      "Try copying articles for real-world text.",
-      "Typing is as much mental as physical.",
-      "Find your weak keys and drill them.",
-      "Keep calm during typing challenges.",
-      "Type to music if it helps you focus.",
-      "Measure both speed and accuracy each time.",
-      "Celebrate improvements, even small ones.",
-      "You're building a lifetime skill.",
-      "Typing better improves your digital fluency."
-    ];
-    const intermediateSentences = [
-    "The quick brown fox jumps over the lazy dog.",
-      "Practice makes perfect when it comes to typing.",
-      "Typing fast requires both speed and accuracy.",
-      "Stay focused and keep your fingers on the home row.",
-      "Consistency is key in improving typing speed.",
-      "Don't rush, learn to type smoothly and steadily.",
-      "Typing games can make learning more fun and engaging.",
-      "Remember to sit up straight while typing.",
-      "Your wrists should be relaxed and not strained.",
-      "Accuracy comes before speed in the beginning.",
-      "Type daily to build muscle memory.",
-      "Challenge yourself with longer sentences.",
-      "Shortcuts can save time in real typing scenarios.",
-      "Backspacing too much slows you down.",
-      "Keep your eyes on the screen, not the keyboard.",
-      "Set typing goals and track your progress.",
-      "Stretch your fingers if they feel tight.",
-      "Avoid looking at your fingers while typing.",
-      "Use all ten fingers when typing.",
-      "Make typing practice part of your daily routine.",
-      "Take breaks to avoid fatigue and maintain accuracy.",
-      "Typing long emails can be good practice too.",
-      "Test yourself weekly with speed tests.",
-      "Don't get discouraged by typos.",
-      "Gradually increase the length of test passages.",
-      "Use online tools to track words per minute.",
-      "Typing with background noise trains concentration.",
-      "Play typing races for motivation.",
-      "Accuracy scores can guide your improvement.",
-      "Finger placement matters more than you think.",
-      "Learn keyboard shortcuts alongside typing.",
-      "Avoid bad posture during long typing sessions.",
-      "Typing in dim light can strain your eyes.",
-      "Typing with rhythm makes it easier.",
-      "Every word you type builds your skill.",
-      "Don't let mistakes slow your momentum.",
-      "Compete with friends to stay motivated.",
-      "Typing is a core digital skill today.",
-      "Confidence improves typing fluency.",
-      "Push yourself but take it easy if tired.",
-      "Daily 10-minute practices beat weekly hours.",
-      "Good lighting helps reduce typing errors.",
-      "Try copying articles for real-world text.",
-      "Typing is as much mental as physical.",
-      "Find your weak keys and drill them.",
-      "Keep calm during typing challenges.",
-      "Type to music if it helps you focus.",
-      "Measure both speed and accuracy each time.",
-      "Celebrate improvements, even small ones.",
-      "You're building a lifetime skill.",
-      "Typing better improves your digital fluency."
-    ];
-    const advancedSentences = [
-    "Touch typing has become an essential skill for professionals in nearly every digital industry today.",
-  "With consistent practice, your typing will feel more natural, reducing mental effort and increasing creativity.",
-  "Typing fluently allows writers and coders to maintain a steady stream of ideas without interruption.",
-  "By eliminating the need to glance at the keyboard, touch typing boosts your overall workflow efficiency.",
-  "The discipline of touch typing develops patience and long-term focus—rare skills in our fast-paced world.",
-  "Accurate typing can reduce communication errors, especially in time-sensitive or professional settings.",
-  "Practicing complex passages sharpens mental coordination between reading, thinking, and writing.",
-  "High-level typists report fewer posture-related injuries thanks to proper technique and ergonomics.",
-  "Writing without hesitating lets your thoughts flow directly to the screen, unfiltered and fast.",
-  "Real-time typing tests can simulate work pressure, preparing you for tight deadlines.",
-  "In coding, accurate typing reduces debugging caused by syntax errors and missing characters.",
-  "You may not realize how much typing impacts your productivity until you measure it.",
-  "High typing proficiency is often linked to better digital literacy overall.",
-  "Writing essays, blog posts, or project notes by touch typing saves significant time over months.",
-  "Fast typists often process written information more quickly due to increased reading speed.",
-  "With practice, typing becomes an unconscious reflex, freeing up brainpower for creativity.",
-  "Fluent typing mirrors fluent speaking—it allows expression without hesitation.",
-  "In meetings or lectures, fast typists capture key points without breaking focus.",
-  "The ability to type with both hands improves multitasking when using multiple screens.",
-  "Typing fatigue decreases as your fingers learn efficient movement patterns.",
-  "You’ll be surprised how often typing shows up even in non-digital tasks like entering data or forms.",
-  "Fast, accurate typing becomes your digital superpower—used across almost every tool.",
-  "Adapting to various keyboard layouts makes you resilient and versatile in new environments.",
-  "Typists who train for both speed and clarity usually write more thoughtfully.",
-  "Build your own typing challenges to target common mistakes.",
-  "Typing skills are often overlooked in productivity courses—but they are foundational.",
-  "Real-world tasks like budgeting or researching are easier when you can type quickly.",
-  "Advanced typing enables you to write and edit simultaneously.",
-  "Speed writing requires mental composure and steady rhythm—skills earned with practice.",
-  "Take occasional breaks, but make typing a lifetime habit.",
-  "Writing fiction or journaling can become a creative typing practice.",
-  "The key to typing fluency is building and sustaining momentum.",
-  "Use advanced software that visualizes your hand movement and weak points.",
-  "Your typing style is part of your digital identity—make it efficient and elegant.",
-  "Type unfamiliar language phrases to expand both typing skill and vocabulary.",
-  "Reflect on how your typing has evolved—it shows real learning growth.",
-  "Precision in typing mirrors precision in thought.",
-  "Professional writers, developers, and analysts all rely on fluent typing daily.",
-  "The fastest typists are often those who never stopped practicing.",
-  "Teach others to type—it will improve your own skill further.",
-  "Be patient—most people improve in small, consistent steps.",
-  "Tracking your typing data helps you set realistic goals.",
-  "Type with intent, not just for speed.",
-  "Once typing is second nature, you'll never go back.",
-  "Even slow typists can become pros with discipline.",
-  "Typing brings clarity, rhythm, and flow to your digital life.",
-  "As you grow more fluent, mistakes will naturally fade.",
-  "Your thoughts deserve fast expression—give them speed.",
-  "Mastering typing helps you master your tools.",
-  "Advanced typists learn to think and write at the same pace."
-    ];
-
-    let selectedSentences = beginnerSentences;
-    let currentSentence = "";
-    let startTime, timerInterval;
-
-    function startTest() {
-      document.getElementById("inputArea").classList.remove("hidden");
-      document.getElementById("finishBtn").classList.remove("hidden");
-      document.getElementById("resultDisplay").textContent = "";
-      const level = document.getElementById("levelSelect").value;
-      const duration = parseInt(document.getElementById("durationSelect").value);
-      selectedSentences =
-        level === "beginner" ? beginnerSentences :
-        level === "intermediate" ? intermediateSentences : advancedSentences;
-      currentSentence = selectedSentences[Math.floor(Math.random() * selectedSentences.length)];
-      document.getElementById("sentenceDisplay").textContent = currentSentence;
-      document.getElementById("inputArea").value = "";
-      document.getElementById("inputArea").focus();
-
-      
-
-document.getElementById("inputArea").addEventListener("keyup", () => {
-  const typed = document.getElementById("inputArea").value;
-  const target = currentSentence;
-  if (typed === target) {
-    clearInterval(timerInterval);
-    finishTest();
-  }
-});
-
-      
-      startTime = Date.now();
-      let timeLeft = duration;
-      document.getElementById("timerDisplay").textContent = timeLeft + "s";
-      timerInterval = setInterval(() => {
-        timeLeft--;
-        document.getElementById("timerDisplay").textContent = timeLeft + "s";
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          finishTest();
-        }
-      }, 1000);
-    }
-
-    function finishTest() {
-      clearInterval(timerInterval);
-      const typedText = document.getElementById("inputArea").value;
-      const wordsTyped = typedText.trim().split(/\s+/).length;
-      const timeTaken = (Date.now() - startTime) / 1000 / 60;
-      const wpm = Math.round(wordsTyped / timeTaken);
-      let correctChars = 0;
-      for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
-        if (typedText[i] === currentSentence[i]) correctChars++;
-      }
-      const accuracy = Math.round((correctChars / currentSentence.length) * 100);
-      document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
-      document.getElementById("finishBtn").classList.add("hidden");
-      document.getElementById("inputArea").classList.add("hidden");
-    }
-  </script>
-  
-
-<!-- Cookie Banner -->
-<div id="cookieBanner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #333; color: white; padding: 1rem; text-align: center; font-size: 0.9rem; z-index: 9999;">
-  This website uses cookies to ensure you get the best experience.
-  <a href="privacy-policy.html" style="color: #4CAF50; margin-left: 0.5rem; text-decoration: underline;">Learn more</a>
-  <button onclick="acceptCookies()" style="margin-left: 1rem; background: #4CAF50; border: none; padding: 0.4rem 0.8rem; color: white; cursor: pointer;">Got it</button>
-</div>
-
-
-
-  <script>
-    function acceptCookies() {
-      localStorage.setItem("cookiesAccepted", "true");
-      document.getElementById("cookieBanner").style.display = "none";
-    }
-
-    window.onload = function () {
-      if (localStorage.getItem("cookiesAccepted") === "true") {
-        document.getElementById("cookieBanner").style.display = "none";
-      }
-    };
-  </script>
+  <section>
+    <h2>Track Your Progress</h2>
+    <p>Use our built-in typing test tools and weekly challenges to measure your WPM and track improvement over time.</p>
+    <p>➡️ Learn more about <a href="what-is-wpm.html">What WPM Means</a>.</p>
+  </section>
 
 </body>
 </html>
-
-  
 
 
 
