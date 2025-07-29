@@ -120,6 +120,12 @@
 
   <div class="typing-test">
     <h2>Typing Practice</h2>
+
+    <div style="text-align:center; margin-bottom: 1rem;">
+  <img src="https://flagcdn.com/24x18/gb.png" alt="English" style="cursor:pointer;" onclick="setLanguage('en')" title="English">
+  <img src="https://flagcdn.com/24x18/hu.png" alt="Magyar" style="cursor:pointer; margin: 0 10px;" onclick="setLanguage('hu')" title="Magyar">
+</div>
+
     <label for="levelSelect">Level:</label>
     <select id="levelSelect">
       <option value="beginner">Beginner</option>
@@ -146,7 +152,14 @@
 <footer style="text-align:center; color:#888; margin-top: 2rem;">
   © 2025 Typing Speed Hub. All rights reserved.
 </footer>
+  
 <script>
+  let currentLang = 'en'; // alapértelmezett nyelv
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    alert("Nyelv beállítva: " + (lang === 'hu' ? "Magyar" : "English"));
+  }
 const beginnerSentences = [
   "Practice makes perfect when it comes to typing.",
   "Typing fast requires both speed and accuracy.",
@@ -305,8 +318,91 @@ const advancedSentences = [
   "Mastering typing helps you master your tools.",
   "Advanced typists learn to think and write at the same pace."
 ];
+const sentences = {
+  en: {
+    beginner: beginnerSentences,
+    intermediate: intermediateSentences,
+    advanced: advancedSentences
+  },
+  hu: {
+    beginner: [
+      "A gyakorlás teszi a mestert.",
+      "Tanulj gépelni minden nap egy kicsit.",
+      "Tartsd az ujjaid a kezdő soron.",
+      "Ne kapkodj, a pontosság a fontos.",
+      "Ülj egyenesen és lazítsd el a csuklód.",
+      "A rövid mondatok jók kezdésnek.",
+      "Ne nézd a billentyűzetet gépelés közben.",
+      "A tízujjas gépelés gyorsabb és pontosabb.",
+      "Minden nap tíz perc gyakorlás elég a fejlődéshez.",
+      "A hibák tanítanak a legtöbbet.",
+      "A jó szokások lassan alakulnak ki.",
+      "A gépelés fejleszti a koncentrációt.",
+      "A szorgalom mindig eredményt hoz.",
+"Használj tíz ujjat a gépeléshez.",
+"Ne csapkodd a billentyűket.",
+"A cél a pontos gépelés, nem a gyors.",
+"Minden leütés számít.",
+"A jó ritmus segít a fókuszálásban.",
+"Rövid mondatokkal könnyebb kezdeni.",
+"Ne hagyd abba, ha hibázol.",
+"A hibák mutatják, min kell javítani.",
+"Ülj kényelmesen a billentyűzet előtt.",
+"Ismétlés a tudás anyja.",
+"A kezek legyenek ellazultak gépelés közben.",
+"A gyakori gyakorlás segít a fejlődésben.",
+"Hallgass nyugtató zenét gyakorlás közben.",
+"Az ujjbegyekkel gépelj, ne az egész kézzel.",
+      // 
+    ],
+    intermediate: [
+      "A tízujjas gépelés segít a gondolatok gyors kifejezésében.",
+      "Minden egyes nap egy kicsit jobb leszel.",
+      "A rendszeres ellenőrzés segít nyomon követni a hibákat.",
+      "Az írás közbeni hibák csökkentik a hatékonyságot.",
+      "Próbálj meg egy teljes bekezdést hibamentesen legépelni.",
+"A pontos gépelés nagyobb önbizalmat ad írás közben.",
+"A gépelési hibák gyakran ismétlődnek – figyeld meg őket.",
+"Heti célkitűzésekkel motiválhatod magad a fejlődésre.",
+"A jó gépelési szokások csökkentik a stresszt munkavégzés közben.",
+"Használj gyakorló szövegeket különböző témákból.",
+"A billentyűzet elrendezésének ismerete gyorsítja a tanulást.",
+"Időnként gépelj új, ismeretlen szöveget a kihívás kedvéért.",
+"A kevesebb hiba hosszabb szövegnél is nagy előny.",
+"A helyes gépelés hosszú távon csökkenti a kézfájdalmat.",
+"A vakon gépelés fejlesztése sok türelmet igényel.",
+"A gyors gépelés nem mehet a minőség rovására.",
+"Próbálj egy-egy szöveget halkan diktálva is legépelni.",
+"Használj olyan gyakorló programot, ami hibákat is jelez.",
+"Ismételd át a leggyakrabban eltévesztett szavakat külön is.",
+      // 
+    ],
+    advanced: [
+"A gördülékeny gépelés támogatja a kreatív gondolkodást.",
+"A haladó gépelők szinte gondolkodás nélkül írnak.",
+"Az ujjmozgás automatizálása csökkenti a fáradtságot.",
+"A folyamatos gépelés fejleszti az íráskészséget és elősegíti a gondolatok rendezett kifejezését.",
+"Minél kevesebbet kell gondolkodnod az ujjaid mozgásán, annál gördülékenyebbé válik az írásfolyamat.",
+"A haladó szintű tízujjas gépelés lehetővé teszi az összetett gondolatok gyors rögzítését.",
+"A tempós és pontos gépelés segít elkerülni az írás közbeni gondolatvesztést.",
+"A szókincs fejlesztése és a gépelési rutin kéz a kézben járnak a haladó gyakorlás során.",
+"A kreatív szövegalkotás gördülékenyebben megy, ha nem kell a billentyűzetre nézni.",
+"A tudatos gépelési ritmus segíti a hosszabb szövegek strukturált megfogalmazását.",
+"A gyors gépelés különösen hasznos a határidős munkák során, amikor időt kell nyerni.",
+"A gépelési sebesség fejlődésével javulhat az általános produktivitásod is.",
+"A tízujjas vakon gépelés különösen fontos azoknak, akik naponta több ezer karaktert írnak.",
+"A gondolatok képernyőre juttatása akadálytalanul történik, ha nem zavar meg a gépelés technikája.",
+"A szöveg közbeni visszakeresés és szerkesztés is hatékonyabb, ha gyorsan és pontosan írsz.",
+"A haladó gépelési készség lehetővé teszi, hogy egyszerre írj és szerkessz valós időben.",
+"A technikai írás és a kódolás is profitál a stabil, precíz gépelési alapkészségekből.",
+"A folyamatos gyakorlás nemcsak a sebességet, hanem a gondolatmenet összeszedettségét is fejleszti.",
 
-let selectedSentences = beginnerSentences;
+      // 
+    ]
+  }
+};
+
+
 let currentSentence = "";
 let startTime, timerInterval;
 
@@ -318,9 +414,8 @@ function startTest() {
   const level = document.getElementById("levelSelect").value;
   const duration = parseInt(document.getElementById("durationSelect").value);
 
-  selectedSentences =
-    level === "beginner" ? beginnerSentences :
-    level === "intermediate" ? intermediateSentences : advancedSentences;
+  selectedSentences = sentences[currentLang][level];
+
 
   currentSentence = selectedSentences[Math.floor(Math.random() * selectedSentences.length)];
   document.getElementById("sentenceDisplay").textContent = currentSentence;
