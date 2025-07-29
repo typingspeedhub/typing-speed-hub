@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Typing Speed Hub – Link Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #e0e0e0;
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+    }
+    h1 {
+      color: #00ff88;
+    }
+    button {
+      background-color: #00ff88;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li.ok {
+      color: #00cc66;
+    }
+    li.broken {
+      color: #ff4444;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Typing Speed Hub – Link Checker</h1>
+  <p>Click the button to check if your main pages are working.</p>
+  <button onclick="checkLinks()">Check All Links</button>
+
+  <ul id="results"></ul>
+
+  <script>
+    const linksToCheck = [
+      "index.html",
+      "about.html",
+      "contact.html",
+      "typing-tips.html",
+      "privacy-policy.html",
+      "terms-and-conditions.html",
+      "common-typing-mistakes.html",
+      "typing-for-kids.html",
+      "increase-typing-speed-7days.html",
+      "10-minute-typing-drill.html",
+      "best-keyboards-typing-practice.html",
+      "best-free-typing-games.html",
+      "what-is-wpm.html",
+      "impressum.html"
+    ];
+
+    async function checkLinks() {
+      const list = document.getElementById("results");
+      list.innerHTML = "";
+      for (let path of linksToCheck) {
+        const url = location.origin + "/" + path;
+        try {
+          const response = await fetch(url, { method: 'HEAD' });
+          const li = document.createElement("li");
+          li.textContent = `${path}: ${response.status}`;
+          li.className = response.ok ? "ok" : "broken";
+          list.appendChild(li);
+        } catch (e) {
+          const li = document.createElement("li");
+          li.textContent = `${path}: ERROR`;
+          li.className = "broken";
+          list.appendChild(li);
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
