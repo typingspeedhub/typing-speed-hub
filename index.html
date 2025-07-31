@@ -144,6 +144,7 @@
 
 <div style="text-align:center; margin-top: 1rem;">
   <img src="https://flagcdn.com/24x18/gb.png" onclick="setLanguage('en')" style="cursor:pointer;" title="English">
+  <img src="flag-de.png" alt="Deutsch" onclick="setLanguage('de')" style="cursor:pointer;">
   <img src="https://flagcdn.com/24x18/hu.png" onclick="setLanguage('hu')" style="cursor:pointer; margin-left: 10px;" title="Magyar">
 </div>
 
@@ -163,9 +164,6 @@
   let currentLang = 'en'; // alapértelmezett nyelv
 
   function setLanguage(lang) {
-    currentLang = lang;
-    alert("Nyelv beállítva: " + (lang === 'hu' ? "Magyar" : "English"));
-  }
 const beginnerSentences = [
   "Practice makes perfect when it comes to typing.",
   "Typing fast requires both speed and accuracy.",
@@ -330,6 +328,56 @@ const sentences = {
     intermediate: intermediateSentences,
     advanced: advancedSentences
   },
+
+  de: {
+  beginner: [ 
+"Übung macht den Meister.",
+      "Tägliches Tippen verbessert deine Fähigkeiten.",
+      "Halte deine Finger in der Grundstellung.",
+      "Schau nicht auf die Tastatur beim Tippen.",
+      "Mit zehn Fingern tippst du schneller und genauer.",
+      "Geduld ist der Schlüssel zum Erfolg.",
+      "Tippe langsam und achte auf die Genauigkeit.",
+      "Eine gute Haltung hilft beim konzentrierten Schreiben.",
+      "Wiederholung ist der Weg zur Meisterschaft.",
+      "Lerne aus deinen Fehlern.",
+      "Ruhe dich aus, wenn du müde wirst.",
+      "Kurze Sätze sind gut zum Üben.",
+      "Täglich 10 Minuten reichen für den Fortschritt.",
+      "Tippen fördert die Konzentration.",
+      "Versuche regelmäßig zu üben."],
+  intermediate: [ "Zehnfingersystem verbessert deine Ausdrucksfähigkeit.",
+      "Weniger Fehler führen zu schnellerem Arbeiten.",
+      "Setze dir wöchentliche Tippziele.",
+      "Tippe ganze Absätze fehlerfrei.",
+      "Verwende Texte aus verschiedenen Themengebieten.",
+      "Wiederhole schwierige Wörter gezielt.",
+      "Beobachte deine häufigsten Tippfehler.",
+      "Nutze Tools, die deine Fehler anzeigen.",
+      "Blindtippen erfordert Geduld und Übung.",
+      "Das richtige Tippgefühl kommt mit der Zeit.",
+      "Vermeide Ablenkungen beim Schreiben.",
+      "Regelmäßiges Tippen reduziert Stress.",
+      "Tipp rhythmisch, nicht hektisch.",
+      "Nutze die Grundstellung effizient.",
+      "Tippe auch unter realistischen Bedingungen."],
+  advanced: ["Flüssiges Tippen unterstützt kreatives Denken.",
+      "Fortgeschrittene denken kaum über das Tippen nach.",
+      "Automatisierte Bewegungen reduzieren Ermüdung.",
+      "Schnelles Tippen hilft bei zeitkritischen Aufgaben.",
+      "Das Schreiben wird intuitiv und unterbrechungsfrei.",
+      "Schnelles Schreiben fördert deine Produktivität.",
+      "Fehlerfreies Tippen steigert das Selbstbewusstsein.",
+      "Kreative Texte fließen leichter mit sicherer Technik.",
+      "Tippen und Bearbeiten kann gleichzeitig erfolgen.",
+      "Stabile Tipptechnik hilft auch beim Programmieren.",
+      "Richtiger Rhythmus erhöht die Textqualität.",
+      "Ein gutes Tippniveau spart Zeit bei der Korrektur.",
+      "Routine macht den Schreibprozess mühelos.",
+      "Schnelligkeit darf nicht auf Kosten der Genauigkeit gehen.",
+      "Komplexe Gedanken lassen sich schneller niederschreiben." ]
+},
+
   hu: {
     beginner: [
       "A gyakorlás teszi a mestert.",
