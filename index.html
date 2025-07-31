@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Typing Speed Hub – Improve Your Typing</title>
-  <meta name="description" content="Practice typing with interactive drills, games, tips and typing tests. Boost your typing speed and accuracy." />
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
@@ -27,16 +26,6 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
-    }
-    .fb-icon {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 1000;
-    }
-    .fb-icon img {
-      width: 28px;
-      height: 28px;
     }
     main {
       display: flex;
@@ -68,61 +57,27 @@
   </style>
 </head>
 <body>
-  <div class="fb-icon">
-    <a href="https://www.facebook.com/profile.php?id=615768261054741" target="_blank" rel="noopener noreferrer">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
-    </a>
-  </div>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="typing-tips.html">Tips</a>
-    <a href="10-minute-typing-drill.html">10-Minute Drill</a>
-    <a href="increase-typing-speed-7days.html">Typing Speed in 7 Days</a>
-    <a href="best-free-typing-games.html">Typing Games</a>
-    <a href="best-keyboards-typing-practice.html">Best Keyboards</a>
-    <a href="common-typing-mistakes.html">Typing Mistakes</a>
-    <a href="typing-for-kids.html">Typing for Kids</a>
-    <a href="how-typing-improves-focus-memory.html">Focus & Memory</a>
-    <a href="what-is-wpm.html">What is WPM?</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="/privacy-policy.html">Privacy Policy</a>
-    <a href="terms-and-conditions.html">Terms & Conditions</a>
-    <a href="/impressum.html">Impressum</a>
-    <a href="https://www.facebook.com/typingspeedhub" target="_blank">
-      <img src="facebook-icon.png" alt="Facebook" style="height: 20px; vertical-align: middle;">
-    </a>
+    <a href="#">Home</a>
+    <a href="#">Tips</a>
+    <a href="#">Typing Games</a>
+    <a href="#">About</a>
   </nav>
 
   <main>
     <div class="content">
       <h1>Welcome to Typing Speed Hub</h1>
-      <p>Boost your typing skills with interactive drills, fun games, expert tips, and structured training plans. Whether you're a beginner or a seasoned typist, we've got something for you.</p>
-
-      <h2>Get Started</h2>
-      <ul>
-        <li><a href="#">👉 Try the 10-Minute Typing Drill</a></li>
-        <li><a href="#">🚀 Boost your speed in 7 days</a></li>
-        <li><a href="#">💬 Read essential typing tips</a></li>
-        <li><a href="#">🚫 Avoid common typing mistakes</a></li>
-      </ul>
-
-      <h2>Resources for All Skill Levels</h2>
-      <ul>
-        <li><a href="#">🎯 Typing for Kids</a></li>
-        <li><a href="#">🎮 Best Free Typing Games</a></li>
-        <li><a href="#">⌨️ Best Keyboards for Typing Practice</a></li>
-      </ul>
+      <p>Boost your typing skills with drills and fun games!</p>
     </div>
 
     <div class="typing-test">
       <h2>Typing Practice</h2>
 
       <div style="text-align:center; margin-bottom: 1rem;">
-        <img src="https://flagcdn.com/24x18/gb.png" alt="English" style="cursor:pointer;" onclick="setLanguage('en')" title="English">
-        <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" style="cursor:pointer; margin: 0 10px;" onclick="setLanguage('de')" title="Deutsch">
-        <img src="https://flagcdn.com/24x18/hu.png" alt="Magyar" style="cursor:pointer;" onclick="setLanguage('hu')" title="Magyar">
+        <img src="https://flagcdn.com/24x18/gb.png" onclick="setLanguage('en')" style="cursor:pointer;" title="English">
+        <img src="https://flagcdn.com/24x18/de.png" onclick="setLanguage('de')" style="cursor:pointer; margin-left: 10px;" title="Deutsch">
+        <img src="https://flagcdn.com/24x18/hu.png" onclick="setLanguage('hu')" style="cursor:pointer; margin-left: 10px;" title="Magyar">
       </div>
 
       <label for="levelSelect">Level:</label>
@@ -140,12 +95,6 @@
 
       <button onclick="startTest()">Start</button>
       <button type="button" onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
-
-      <div style="text-align:center; margin-top: 1rem;">
-        <img src="https://flagcdn.com/24x18/gb.png" onclick="setLanguage('en')" style="cursor:pointer;" title="English">
-        <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" onclick="setLanguage('de')" style="cursor:pointer; margin-left: 10px;" title="Deutsch">
-        <img src="https://flagcdn.com/24x18/hu.png" onclick="setLanguage('hu')" style="cursor:pointer; margin-left: 10px;" title="Magyar">
-      </div>
 
       <p id="timerDisplay"></p>
       <p id="sentenceDisplay"></p>
@@ -167,19 +116,46 @@
 
     const sentences = {
       en: {
-        beginner: ["Practice makes perfect when it comes to typing.", "Typing fast requires both speed and accuracy."],
-        intermediate: ["Typing helps improve brain-hand coordination.", "Even a few minutes of practice helps."],
-        advanced: ["Touch typing has become an essential skill.", "Fluent typing mirrors fluent speaking."]
+        beginner: [
+          "Practice makes perfect when it comes to typing.",
+          "Typing fast requires both speed and accuracy."
+        ],
+        intermediate: [
+          "Typing helps improve brain-hand coordination.",
+          "Daily practice leads to progress."
+        ],
+        advanced: [
+          "Touch typing has become an essential skill.",
+          "Typing fluently allows steady flow of ideas."
+        ]
       },
       de: {
-        beginner: ["Übung macht den Meister.", "Tägliches Tippen verbessert deine Fähigkeiten."],
-        intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit.", "Weniger Fehler führen zu schnellerem Arbeiten."],
-        advanced: ["Flüssiges Tippen unterstützt kreatives Denken.", "Fortgeschrittene denken kaum über das Tippen nach."]
+        beginner: [
+          "Übung macht den Meister.",
+          "Tägliches Tippen verbessert deine Fähigkeiten."
+        ],
+        intermediate: [
+          "Zehnfingersystem verbessert deine Ausdrucksfähigkeit.",
+          "Weniger Fehler führen zu schnellerem Arbeiten."
+        ],
+        advanced: [
+          "Flüssiges Tippen unterstützt kreatives Denken.",
+          "Fortgeschrittene denken kaum über das Tippen nach."
+        ]
       },
       hu: {
-        beginner: ["A gyakorlás teszi a mestert.", "Tanulj gépelni minden nap egy kicsit."],
-        intermediate: ["A tízujjas gépelés segít a gondolatok gyors kifejezésében.", "Minden egyes nap egy kicsit jobb leszel."],
-        advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást.", "A haladó gépelők szinte gondolkodás nélkül írnak."]
+        beginner: [
+          "A gyakorlás teszi a mestert.",
+          "Tanulj gépelni minden nap egy kicsit."
+        ],
+        intermediate: [
+          "A tízujjas gépelés segít a gondolatok gyors kifejezésében.",
+          "A rendszeres ellenőrzés segít nyomon követni a hibákat."
+        ],
+        advanced: [
+          "A gördülékeny gépelés támogatja a kreatív gondolkodást.",
+          "A haladó gépelők szinte gondolkodás nélkül írnak."
+        ]
       }
     };
 
@@ -187,23 +163,26 @@
     let startTime, timerInterval;
 
     function startTest() {
+      const level = document.getElementById("levelSelect").value;
+      const duration = parseInt(document.getElementById("durationSelect").value);
+      const sentencePool = sentences[currentLang]?.[level];
+
+      if (!sentencePool || sentencePool.length === 0) {
+        alert("No sentences available for selected language/level.");
+        return;
+      }
+
+      currentSentence = sentencePool[Math.floor(Math.random() * sentencePool.length)];
+      document.getElementById("sentenceDisplay").textContent = currentSentence;
+      document.getElementById("inputArea").value = "";
       document.getElementById("inputArea").classList.remove("hidden");
+      document.getElementById("inputArea").focus();
       document.getElementById("finishBtn").classList.remove("hidden");
       document.getElementById("resultDisplay").textContent = "";
 
-      const level = document.getElementById("levelSelect").value;
-      const duration = parseInt(document.getElementById("durationSelect").value);
-      const selectedSentences = sentences[currentLang][level];
-
-      currentSentence = selectedSentences[Math.floor(Math.random() * selectedSentences.length)];
-      document.getElementById("sentenceDisplay").textContent = currentSentence;
-      document.getElementById("inputArea").value = "";
-      document.getElementById("inputArea").focus();
-
       document.getElementById("inputArea").addEventListener("input", () => {
         const typed = document.getElementById("inputArea").value.trim();
-        const target = currentSentence.trim();
-        if (typed === target) {
+        if (typed === currentSentence.trim()) {
           clearInterval(timerInterval);
           finishTest();
         }
@@ -225,7 +204,6 @@
 
     function finishTest() {
       clearInterval(timerInterval);
-
       const typedText = document.getElementById("inputArea").value;
       const wordsTyped = typedText.trim().split(/\s+/).length;
       const timeTaken = (Date.now() - startTime) / 1000 / 60;
@@ -238,14 +216,10 @@
 
       const accuracy = Math.round((correctChars / currentSentence.length) * 100);
       document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
-
       document.getElementById("finishBtn").classList.add("hidden");
       document.getElementById("inputArea").classList.add("hidden");
     }
   </script>
 </body>
 </html>
-
-
- 
 
