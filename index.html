@@ -165,452 +165,239 @@
 <script>
   let currentLang = 'en'; // alapértelmezett nyelv
 
+ <script>
+  let currentLang = 'en'; // alapértelmezett nyelv
+
   function setLanguage(lang) {
-const beginnerSentences = [
-  "Practice makes perfect when it comes to typing.",
-  "Typing fast requires both speed and accuracy.",
-  "Stay focused and keep your fingers on the home row.",
-  "Don't rush, learn to type smoothly and steadily.",
-  "Typing games can make learning more fun and engaging.",
-  "Remember to sit up straight while typing.",
-  "Your wrists should be relaxed and not strained.",
-  "Accuracy comes before speed in the beginning.",
-  "Type daily to build muscle memory.",
-  "Challenge yourself with longer sentences.",
-  "Shortcuts can save time in real typing scenarios.",
-  "Backspacing too much slows you down.",
-  "Keep your eyes on the screen, not the keyboard.",
-  "Set typing goals and track your progress.",
-  "Stretch your fingers if they feel tight.",
-  "Avoid looking at your fingers while typing.",
-  "Use all ten fingers when typing.",
-  "Make typing practice part of your daily routine.",
-  "Take breaks to avoid fatigue and maintain accuracy.",
-  "Typing long emails can be good practice too.",
-  "Test yourself weekly with speed tests.",
-  "Don't get discouraged by typos.",
-  "Gradually increase the length of test passages.",
-  "Typing with background noise trains concentration.",
-  "Play typing races for motivation.",
-  "Accuracy scores can guide your improvement.",
-  "Finger placement matters more than you think.",
-  "Learn keyboard shortcuts alongside typing.",
-  "Avoid bad posture during long typing sessions.",
-  "Typing in dim light can strain your eyes.",
-  "Typing with rhythm makes it easier.",
-  "Every word you type builds your skill.",
-  "Don't let mistakes slow your momentum.",
-  "Compete with friends to stay motivated.",
-  "Typing is a core digital skill today.",
-  "Confidence improves typing fluency.",
-  "Push yourself but take it easy if tired.",
-  "Daily 10-minute practices beat weekly hours.",
-  "Good lighting helps reduce typing errors.",
-  "Try copying articles for real-world text.",
-  "Typing is as much mental as physical.",
-  "Find your weak keys and drill them.",
-  "Keep calm during typing challenges.",
-  "Type to music if it helps you focus.",
-  "Measure both speed and accuracy each time.",
-  "Celebrate improvements, even small ones.",
-  "You're building a lifetime skill.",
-  "Typing better improves your digital fluency.",
-  "Even slow progress builds solid typing habits.",
-  "Consistency is the key to typing mastery.",
-  "Good habits begin with mindful practice."
-];
-
-const intermediateSentences = [ 
-"Typing helps improve brain-hand coordination and sharpens your focus.",
-  "Even a few minutes of daily practice can lead to noticeable progress.",
-  "Use online typing tests to challenge your current skill level regularly.",
-  "Mistakes are part of learning—track them to improve faster.",
-  "The best typists are both fast and accurate under pressure.",
-  "Typing emails without looking at the keyboard builds confidence.",
-  "Try typing longer texts like articles or essays to improve endurance.",
-  "Stretch your hands before and after sessions to prevent strain.",
-  "Speed is secondary to precision in professional typing tasks.",
-  "Distractions reduce both speed and comprehension while typing.",
-  "Repetition helps you memorize difficult key positions.",
-  "Typing on different keyboards helps you stay adaptable.",
-  "Time yourself regularly to measure improvement realistically.",
-  "Don’t forget to review your most frequent errors after each session.",
-  "Typing with proper posture reduces physical fatigue significantly.",
-  "Practicing typing improves clarity of thought in communication.",
-  "Try transcribing short audio clips to boost typing reaction time.",
-  "Accurate typing reduces cognitive load while multitasking.",
-  "Your keyboard layout can affect your comfort and performance.",
-  "Challenge yourself to complete error-free passages at your pace.",
-  "Use typing as a warmup for writing tasks or creative work.",
-  "Switch between topics to avoid boredom during practice.",
-  "Mistake tracking software helps highlight your weak letters.",
-  "Learn to type without backspacing—it forces discipline.",
-  "Typing fast is like learning an instrument—it takes rhythm.",
-  "Adjust keyboard tilt to support your wrists ergonomically.",
-  "Typing in natural light helps reduce eye strain.",
-  "Use voice dictation occasionally to compare typing speed.",
-  "Try touch typing games that adapt to your level.",
-  "Test your typing speed after breaks to observe improvement.",
-  "Typing faster means you can express thoughts in real time.",
-  "Progress comes when practice feels comfortable and fluid.",
-  "Keep track of your WPM weekly, not daily.",
-  "Accuracy drills feel boring, but they work wonders.",
-  "Small goals build long-term habits.",
-  "You don’t need to look at the screen constantly—trust your muscle memory.",
-  "Stay relaxed, don’t force your fingers to race.",
-  "Alternate between speed and accuracy sessions.",
-  "Write emails or short stories as practice tasks.",
-  "Challenge yourself with new vocabulary lists.",
-  "Listen to music while typing to get into flow.",
-  "Make typing your digital meditation.",
-  "Slow down to type faster—it’s paradoxical but true.",
-  "The more comfortable you are, the faster you’ll type.",
-  "Don’t fear mistakes—embrace them as feedback.",
-  "Typing daily builds mental endurance too.",
-  "Set weekly themes to keep practice fresh.",
-  "Track progress visually to stay motivated.",
-  "Keep your keyboard clean—it affects performance.",
-  "Practice makes permanent—train smart."  
-];
-const advancedSentences = [
-  "Touch typing has become an essential skill for professionals in nearly every digital industry today.",
-  "With consistent practice, your typing will feel more natural, reducing mental effort and increasing creativity.",
-  "Typing fluently allows writers and coders to maintain a steady stream of ideas without interruption.",
-  "By eliminating the need to glance at the keyboard, touch typing boosts your overall workflow efficiency.",
-  "The discipline of touch typing develops patience and long-term focus—rare skills in our fast-paced world.",
-  "Accurate typing can reduce communication errors, especially in time-sensitive or professional settings.",
-  "Practicing complex passages sharpens mental coordination between reading, thinking, and writing.",
-  "High-level typists report fewer posture-related injuries thanks to proper technique and ergonomics.",
-  "Writing without hesitating lets your thoughts flow directly to the screen, unfiltered and fast.",
-  "Real-time typing tests can simulate work pressure, preparing you for tight deadlines.",
-  "In coding, accurate typing reduces debugging caused by syntax errors and missing characters.",
-  "You may not realize how much typing impacts your productivity until you measure it.",
-  "High typing proficiency is often linked to better digital literacy overall.",
-  "Writing essays, blog posts, or project notes by touch typing saves significant time over months.",
-  "Fast typists often process written information more quickly due to increased reading speed.",
-  "With practice, typing becomes an unconscious reflex, freeing up brainpower for creativity.",
-  "Fluent typing mirrors fluent speaking—it allows expression without hesitation.",
-  "In meetings or lectures, fast typists capture key points without breaking focus.",
-  "The ability to type with both hands improves multitasking when using multiple screens.",
-  "Typing fatigue decreases as your fingers learn efficient movement patterns.",
-  "You’ll be surprised how often typing shows up even in non-digital tasks like entering data or forms.",
-  "Fast, accurate typing becomes your digital superpower—used across almost every tool.",
-  "Adapting to various keyboard layouts makes you resilient and versatile in new environments.",
-  "Typists who train for both speed and clarity usually write more thoughtfully.",
-  "Build your own typing challenges to target common mistakes.",
-  "Typing skills are often overlooked in productivity courses—but they are foundational.",
-  "Real-world tasks like budgeting or researching are easier when you can type quickly.",
-  "Advanced typing enables you to write and edit simultaneously.",
-  "Speed writing requires mental composure and steady rhythm—skills earned with practice.",
-  "Take occasional breaks, but make typing a lifetime habit.",
-  "Writing fiction or journaling can become a creative typing practice.",
-  "The key to typing fluency is building and sustaining momentum.",
-  "Use advanced software that visualizes your hand movement and weak points.",
-  "Your typing style is part of your digital identity—make it efficient and elegant.",
-  "Type unfamiliar language phrases to expand both typing skill and vocabulary.",
-  "Reflect on how your typing has evolved—it shows real learning growth.",
-  "Precision in typing mirrors precision in thought.",
-  "Professional writers, developers, and analysts all rely on fluent typing daily.",
-  "The fastest typists are often those who never stopped practicing.",
-  "Teach others to type—it will improve your own skill further.",
-  "Be patient—most people improve in small, consistent steps.",
-  "Tracking your typing data helps you set realistic goals.",
-  "Type with intent, not just for speed.",
-  "Once typing is second nature, you’ll never go back.",
-  "Even slow typists can become pros with discipline.",
-  "Typing brings clarity, rhythm, and flow to your digital life.",
-  "As you grow more fluent, mistakes will naturally fade.",
-  "Your thoughts deserve fast expression—give them speed.",
-  "Mastering typing helps you master your tools.",
-  "Advanced typists learn to think and write at the same pace."
-];
-const sentences = {
-  en: {
-    beginner: beginnerSentences,
-    intermediate: intermediateSentences,
-    advanced: advancedSentences
-  },
-
-  de: {
-  beginner: [ 
-"Übung macht den Meister.",
-      "Tägliches Tippen verbessert deine Fähigkeiten.",
-      "Halte deine Finger in der Grundstellung.",
-      "Schau nicht auf die Tastatur beim Tippen.",
-      "Mit zehn Fingern tippst du schneller und genauer.",
-      "Geduld ist der Schlüssel zum Erfolg.",
-      "Tippe langsam und achte auf die Genauigkeit.",
-      "Eine gute Haltung hilft beim konzentrierten Schreiben.",
-      "Wiederholung ist der Weg zur Meisterschaft.",
-      "Lerne aus deinen Fehlern.",
-      "Ruhe dich aus, wenn du müde wirst.",
-      "Kurze Sätze sind gut zum Üben.",
-      "Täglich 10 Minuten reichen für den Fortschritt.",
-      "Tippen fördert die Konzentration.",
-      "Versuche regelmäßig zu üben."],
-  intermediate: [ "Zehnfingersystem verbessert deine Ausdrucksfähigkeit.",
-      "Weniger Fehler führen zu schnellerem Arbeiten.",
-      "Setze dir wöchentliche Tippziele.",
-      "Tippe ganze Absätze fehlerfrei.",
-      "Verwende Texte aus verschiedenen Themengebieten.",
-      "Wiederhole schwierige Wörter gezielt.",
-      "Beobachte deine häufigsten Tippfehler.",
-      "Nutze Tools, die deine Fehler anzeigen.",
-      "Blindtippen erfordert Geduld und Übung.",
-      "Das richtige Tippgefühl kommt mit der Zeit.",
-      "Vermeide Ablenkungen beim Schreiben.",
-      "Regelmäßiges Tippen reduziert Stress.",
-      "Tipp rhythmisch, nicht hektisch.",
-      "Nutze die Grundstellung effizient.",
-      "Tippe auch unter realistischen Bedingungen."],
-  advanced: ["Flüssiges Tippen unterstützt kreatives Denken.",
-      "Fortgeschrittene denken kaum über das Tippen nach.",
-      "Automatisierte Bewegungen reduzieren Ermüdung.",
-      "Schnelles Tippen hilft bei zeitkritischen Aufgaben.",
-      "Das Schreiben wird intuitiv und unterbrechungsfrei.",
-      "Schnelles Schreiben fördert deine Produktivität.",
-      "Fehlerfreies Tippen steigert das Selbstbewusstsein.",
-      "Kreative Texte fließen leichter mit sicherer Technik.",
-      "Tippen und Bearbeiten kann gleichzeitig erfolgen.",
-      "Stabile Tipptechnik hilft auch beim Programmieren.",
-      "Richtiger Rhythmus erhöht die Textqualität.",
-      "Ein gutes Tippniveau spart Zeit bei der Korrektur.",
-      "Routine macht den Schreibprozess mühelos.",
-      "Schnelligkeit darf nicht auf Kosten der Genauigkeit gehen.",
-      "Komplexe Gedanken lassen sich schneller niederschreiben." ]
-},
-
-  hu: {
-    beginner: [
-      "A gyakorlás teszi a mestert.",
-      "Tanulj gépelni minden nap egy kicsit.",
-      "Tartsd az ujjaid a kezdő soron.",
-      "Ne kapkodj, a pontosság a fontos.",
-      "Ülj egyenesen és lazítsd el a csuklód.",
-      "A rövid mondatok jók kezdésnek.",
-      "Ne nézd a billentyűzetet gépelés közben.",
-      "A tízujjas gépelés gyorsabb és pontosabb.",
-      "Minden nap tíz perc gyakorlás elég a fejlődéshez.",
-      "A hibák tanítanak a legtöbbet.",
-      "A jó szokások lassan alakulnak ki.",
-      "A gépelés fejleszti a koncentrációt.",
-      "A szorgalom mindig eredményt hoz.",
-"Használj tíz ujjat a gépeléshez.",
-"Ne csapkodd a billentyűket.",
-"A cél a pontos gépelés, nem a gyors.",
-"Minden leütés számít.",
-"A jó ritmus segít a fókuszálásban.",
-"Rövid mondatokkal könnyebb kezdeni.",
-"Ne hagyd abba, ha hibázol.",
-"A hibák mutatják, min kell javítani.",
-"Ülj kényelmesen a billentyűzet előtt.",
-"Ismétlés a tudás anyja.",
-"A kezek legyenek ellazultak gépelés közben.",
-"A gyakori gyakorlás segít a fejlődésben.",
-"Hallgass nyugtató zenét gyakorlás közben.",
-"Az ujjbegyekkel gépelj, ne az egész kézzel.",
-    "Figyelj a helyesírásra is gyakorlás közben.",
-    "Gyakorolj nyugodt környezetben.",
-    "A tempó javul, ha nem sietsz.",
-    "Lélegezz mélyeket, ha elfáradsz.",
-    "Tarts rendszeres szünetet a gyakorlás során.",
-    "A gépelés játék is lehet.",
-    "A cél az állandó fejlődés, nem a tökéletesség.",
-    "Olvasd vissza, amit gépeltél.",
-    "A kisbetűkkel kezdj, a nagybetűk jönnek később.",
-    "Gyakorolj minden nap ugyanabban az időben.",
-    "A nyugodt test segít a pontos gépelésben.",
-    "A világ legjobb gépírói is hibáztak valaha.",
-    "Ne hasonlítsd magad másokhoz, haladj a saját tempódban.",
-    "Használj gyakorló szavakat is a mondatok mellett.",
-    "A pontos ujjpozíció az alap.",
-    "Tartsd a könyököd a tested mellett.",
-    "Ne feledd: a szorgalom legyőzi a tehetséget.",
-    "A billentyűzet nem ellenség, hanem eszköz.",
-    "Néha a lassabb tempó visz előrébb.",
-    "Ha elfáradsz, inkább pihenj egyet.",
-    "Egy új készség elsajátítása időt igényel.",
-    "Kezdj azzal, ami ismerős.",
-    "A tanulás folyamata is lehet élvezetes."
-      // 
-    ],
-    intermediate: [
-      "A tízujjas gépelés segít a gondolatok gyors kifejezésében.",
-      "Minden egyes nap egy kicsit jobb leszel.",
-      "A rendszeres ellenőrzés segít nyomon követni a hibákat.",
-      "Az írás közbeni hibák csökkentik a hatékonyságot.",
-      "Próbálj meg egy teljes bekezdést hibamentesen legépelni.",
-"A pontos gépelés nagyobb önbizalmat ad írás közben.",
-"A gépelési hibák gyakran ismétlődnek – figyeld meg őket.",
-"Heti célkitűzésekkel motiválhatod magad a fejlődésre.",
-"A jó gépelési szokások csökkentik a stresszt munkavégzés közben.",
-"Használj gyakorló szövegeket különböző témákból.",
-"A billentyűzet elrendezésének ismerete gyorsítja a tanulást.",
-"Időnként gépelj új, ismeretlen szöveget a kihívás kedvéért.",
-"A kevesebb hiba hosszabb szövegnél is nagy előny.",
-"A helyes gépelés hosszú távon csökkenti a kézfájdalmat.",
-"A vakon gépelés fejlesztése sok türelmet igényel.",
-"A gyors gépelés nem mehet a minőség rovására.",
-"Próbálj egy-egy szöveget halkan diktálva is legépelni.",
-"Használj olyan gyakorló programot, ami hibákat is jelez.",
-"Ismételd át a leggyakrabban eltévesztett szavakat külön is.",
-      "A hosszabb mondatok gépelése fejleszti az állóképességet.",
-  "Figyeld meg, melyik ujjal gépeled leggyakrabban a hibás betűket.",
-  "Ne csak gyorsan, hanem egyenletes tempóban is gépelj.",
-  "A tudatos gyakorlás mindig hatékonyabb, mint a gépies ismétlés.",
-  "A billentyűkombinációk ismerete megkönnyíti a munkát.",
-  "A billentyűzethez való hozzászokás időt vesz igénybe – légy türelmes.",
-  "Gyakorolj idézetekkel vagy cikkrészletekkel a változatosság kedvéért.",
-  "A változó tempó segíthet rátalálni az optimális sebességedre.",
-  "A rendszeres gépelés javítja a nyelvtani tudatosságot is.",
-  "A visszajelzések figyelése segít a hibák kijavításában.",
-  "Ne hagyd, hogy a frusztráció elvegye a kedved a gyakorlástól.",
-  "Az apró hibák is befolyásolhatják a teljesítményed hosszú távon.",
-  "A szövegértés és a gépelés egyszerre fejleszthető.",
-  "Egy-egy nehéz szó begyakorlása segíti az ujjkoordinációt.",
-  "Figyeld meg a szöveg ritmusát gépelés közben.",
-  "A szoftveres segítség (pl. hibajelzés) gyorsítja a tanulást.",
-  "Ne csak szavakat, hanem egész mondatokat gyakorolj újra és újra.",
-  "A figyelem fenntartása elengedhetetlen hosszabb gyakorlásnál.",
-  "A kihívást jelentő szövegek növelik az önbizalmat.",
-  "Ha hibázol, lassíts és koncentrálj jobban a következő mondatra.",
-  "Próbáld ki a gépelést háttérzaj mellett is – így valósághűbb lesz.",
-  "Az összetett szavak gyakorlása segít az ujjmozgás pontosságában.",
-  "Ismerd meg a gyakori betűkapcsolatokat (pl. 'sz', 'gy').",
-  "Tarts szemkontaktust a képernyővel, ne a kezeiddel.",
-  "Egyéni statisztikáid elemzése segíti a célzott gyakorlást.",
-  "A rendszeres szünetek megelőzik az ujjfáradást.",
-  "Ne kerüld a nehéz szavakat, inkább gyakorold őket többször.",
-  "Az azonnali hibajavítás megtöri a ritmust – inkább gépelj végig, majd ellenőrizz.",
-  "A folyamatos írás gyakorlása fejleszti az agy-billentyű kapcsolatot.",
-  "Törekedj arra, hogy minden mondat pontos legyen, ne csak gyors.",
-  "A napi rutinba épített gyakorlás hozza a legjobb eredményeket."
-      // 
-    ],
-    advanced: [
-"A gördülékeny gépelés támogatja a kreatív gondolkodást.",
-"A haladó gépelők szinte gondolkodás nélkül írnak.",
-"Az ujjmozgás automatizálása csökkenti a fáradtságot.",
-"A folyamatos gépelés fejleszti az íráskészséget és elősegíti a gondolatok rendezett kifejezését.",
-"Minél kevesebbet kell gondolkodnod az ujjaid mozgásán, annál gördülékenyebbé válik az írásfolyamat.",
-"A haladó szintű tízujjas gépelés lehetővé teszi az összetett gondolatok gyors rögzítését.",
-"A tempós és pontos gépelés segít elkerülni az írás közbeni gondolatvesztést.",
-"A szókincs fejlesztése és a gépelési rutin kéz a kézben járnak a haladó gyakorlás során.",
-"A kreatív szövegalkotás gördülékenyebben megy, ha nem kell a billentyűzetre nézni.",
-"A tudatos gépelési ritmus segíti a hosszabb szövegek strukturált megfogalmazását.",
-"A gyors gépelés különösen hasznos a határidős munkák során, amikor időt kell nyerni.",
-"A gépelési sebesség fejlődésével javulhat az általános produktivitásod is.",
-"A tízujjas vakon gépelés különösen fontos azoknak, akik naponta több ezer karaktert írnak.",
-"A gondolatok képernyőre juttatása akadálytalanul történik, ha nem zavar meg a gépelés technikája.",
-"A szöveg közbeni visszakeresés és szerkesztés is hatékonyabb, ha gyorsan és pontosan írsz.",
-"A haladó gépelési készség lehetővé teszi, hogy egyszerre írj és szerkessz valós időben.",
-"A technikai írás és a kódolás is profitál a stabil, precíz gépelési alapkészségekből.",
-"A folyamatos gyakorlás nemcsak a sebességet, hanem a gondolatmenet összeszedettségét is fejleszti.",
-      "A zavartalan gépelés lehetővé teszi az elmélyült, áramlásszerű munkát.",
-  "Haladó szinten a gépelés szinte észrevétlenül válik a gondolkodás részévé.",
-  "A stabil gépelési alapok hozzájárulnak a precíz kommunikációhoz.",
-  "A ritmusos írás támogatja a gondolatok logikus kifejtését.",
-  "A gyors gépelés elősegíti a hatékony jegyzetelést élő előadások alatt is.",
-  "Az intuitív ujjelhelyezés csökkenti a hibák számát hosszú szövegek során.",
-  "A gondolkodás sebességével egyenletes gépelés lehetővé teszi az ötletek rögzítését még azok elhalványulása előtt.",
-  "A gépelési minta elemzése segíthet felismerni szokásos hibákat vagy visszatérő gyengeségeket.",
-  "A haladó gépelők kevesebbet használják a Delete billentyűt – ők pontosan írnak elsőre.",
-  "A produktív gépelés a kreatív írás fontos eszköze.",
-  "Minél kevesebb figyelmet igényel a gépelés, annál több marad az írás minőségére.",
-  "A dinamikus gondolkodás és a folyamatos írás egymást erősítik.",
-  "A haladó gépelők az ujjmozgást már nem is érzékelik – a gondolat azonnal szöveggé válik.",
-  "A tudatos légzés gépelés közben segít fenntartani a koncentrációt.",
-  "Az állandó gépelési gyakorlat fejleszti a munkamemóriát is.",
-  "A figyelem és a gépelési ritmus szoros kapcsolatban állnak egymással.",
-  "A hibajavítás minimalizálása növeli az írás folyamatosságát.",
-  "A sebesség és a pontosság egyensúlya a legfontosabb haladó szinten.",
-  "A gépelési komfortérzet hozzájárul a hosszú távú írási hatékonysághoz.",
-  "A nagy szövegmennyiségű feladatok elvégzése nem fárasztó, ha stabil a gépelési alap.",
-  "A szóképzés és a begépelt szó közötti idő minimálisra csökkenthető gyakorlással.",
-  "A kéz izmainak összehangolt működése csökkenti a terhelést.",
-  "Az aktív gépelők kevesebb időt töltenek a szerkesztéssel.",
-  "A gépelés átláthatóvá válik, ha az elrendezés automatikusan működik a háttérben.",
-  "Az ujjak automatikus mozgása lehetővé teszi az agy számára a komplexebb feladatokra való fókuszálást.",
-  "A gyakori szinonimák gyors begépelése javítja az írás gazdagságát.",
-  "A többnyelvű gépelés sem jelent kihívást a biztos gépelési technika mellett.",
-  "A szöveg hangulatának visszaadása gördülékenyen gépelve is lehetséges.",
-  "A gyors gépelés hozzájárulhat az időmenedzsment javításához.",
-  "A kreatív és technikai írásmód közti váltás egyszerűbb, ha biztos a gépelési készség.",
-  "A precíz gépelés az állásinterjúkon és munkahelyi feladatokban is előnyt jelent.",
-  "A tartalomgyártás hatékonyabb, ha a gépelés nem lassítja a gondolatmenetet."
-
-      // 
-    ]
+    currentLang = lang;
   }
-};
 
+  const beginnerSentences = [
+    "Practice makes perfect when it comes to typing.",
+    "Typing fast requires both speed and accuracy.",
+    "Stay focused and keep your fingers on the home row.",
+    "Don't rush, learn to type smoothly and steadily.",
+    "Typing games can make learning more fun and engaging.",
+    "Remember to sit up straight while typing.",
+    "Your wrists should be relaxed and not strained.",
+    "Accuracy comes before speed in the beginning.",
+    "Type daily to build muscle memory.",
+    "Challenge yourself with longer sentences.",
+    "Shortcuts can save time in real typing scenarios.",
+    "Backspacing too much slows you down.",
+    "Keep your eyes on the screen, not the keyboard.",
+    "Set typing goals and track your progress.",
+    "Stretch your fingers if they feel tight."
+  ];
 
-let currentSentence = "";
-let startTime, timerInterval;
+  const intermediateSentences = [
+    "Typing helps improve brain-hand coordination and sharpens your focus.",
+    "Even a few minutes of daily practice can lead to noticeable progress.",
+    "Use online typing tests to challenge your current skill level regularly.",
+    "Mistakes are part of learning—track them to improve faster.",
+    "The best typists are both fast and accurate under pressure.",
+    "Typing emails without looking at the keyboard builds confidence.",
+    "Try typing longer texts like articles or essays to improve endurance.",
+    "Stretch your hands before and after sessions to prevent strain.",
+    "Speed is secondary to precision in professional typing tasks.",
+    "Distractions reduce both speed and comprehension while typing.",
+    "Typing on different keyboards helps you stay adaptable.",
+    "Don’t forget to review your most frequent errors after each session.",
+    "Typing daily builds mental endurance too.",
+    "Typing faster means you can express thoughts in real time.",
+    "Accuracy drills feel boring, but they work wonders."
+  ];
 
-function startTest() {
-  document.getElementById("inputArea").classList.remove("hidden");
-  document.getElementById("finishBtn").classList.remove("hidden");
-  document.getElementById("resultDisplay").textContent = "";
+  const advancedSentences = [
+    "Touch typing has become an essential skill for professionals in nearly every digital industry today.",
+    "With consistent practice, your typing will feel more natural, reducing mental effort and increasing creativity.",
+    "Typing fluently allows writers and coders to maintain a steady stream of ideas without interruption.",
+    "By eliminating the need to glance at the keyboard, touch typing boosts your overall workflow efficiency.",
+    "Accurate typing can reduce communication errors, especially in time-sensitive or professional settings.",
+    "Writing without hesitating lets your thoughts flow directly to the screen, unfiltered and fast.",
+    "Real-time typing tests can simulate work pressure, preparing you for tight deadlines.",
+    "High typing proficiency is often linked to better digital literacy overall.",
+    "Advanced typing enables you to write and edit simultaneously.",
+    "Fast typists often process written information more quickly due to increased reading speed.",
+    "Fluent typing mirrors fluent speaking—it allows expression without hesitation.",
+    "The ability to type with both hands improves multitasking when using multiple screens.",
+    "Typing fatigue decreases as your fingers learn efficient movement patterns.",
+    "Typing is as much mental as physical.",
+    "You’re building a lifetime skill."
+  ];
 
-  const level = document.getElementById("levelSelect").value;
-  const duration = parseInt(document.getElementById("durationSelect").value);
-
-  selectedSentences = sentences[currentLang][level];
-
-
-  currentSentence = selectedSentences[Math.floor(Math.random() * selectedSentences.length)];
-  document.getElementById("sentenceDisplay").textContent = currentSentence;
-  document.getElementById("inputArea").value = "";
-  document.getElementById("inputArea").focus();
-
-  document.getElementById("inputArea").addEventListener("input", () => {
-    const typed = document.getElementById("inputArea").value.trim();
-    const target = currentSentence.trim();
-    if (typed === target) {
-      clearInterval(timerInterval);
-      finishTest();
+  const sentences = {
+    en: {
+      beginner: beginnerSentences,
+      intermediate: intermediateSentences,
+      advanced: advancedSentences
+    },
+    de: {
+      beginner: [
+        "Übung macht den Meister.",
+        "Tägliches Tippen verbessert deine Fähigkeiten.",
+        "Halte deine Finger in der Grundstellung.",
+        "Schau nicht auf die Tastatur beim Tippen.",
+        "Mit zehn Fingern tippst du schneller und genauer.",
+        "Geduld ist der Schlüssel zum Erfolg.",
+        "Tippe langsam und achte auf die Genauigkeit.",
+        "Eine gute Haltung hilft beim konzentrierten Schreiben.",
+        "Wiederholung ist der Weg zur Meisterschaft.",
+        "Lerne aus deinen Fehlern.",
+        "Kurze Sätze sind gut zum Üben.",
+        "Tippen fördert die Konzentration.",
+        "Versuche regelmäßig zu üben.",
+        "Täglich 10 Minuten reichen für den Fortschritt.",
+        "Ruhe dich aus, wenn du müde wirst."
+      ],
+      intermediate: [
+        "Zehnfingersystem verbessert deine Ausdrucksfähigkeit.",
+        "Weniger Fehler führen zu schnellerem Arbeiten.",
+        "Setze dir wöchentliche Tippziele.",
+        "Tippe ganze Absätze fehlerfrei.",
+        "Verwende Texte aus verschiedenen Themengebieten.",
+        "Wiederhole schwierige Wörter gezielt.",
+        "Beobachte deine häufigsten Tippfehler.",
+        "Nutze Tools, die deine Fehler anzeigen.",
+        "Blindtippen erfordert Geduld und Übung.",
+        "Das richtige Tippgefühl kommt mit der Zeit.",
+        "Vermeide Ablenkungen beim Schreiben.",
+        "Tipp rhythmisch, nicht hektisch.",
+        "Tippe auch unter realistischen Bedingungen.",
+        "Regelmäßiges Tippen reduziert Stress.",
+        "Nutze die Grundstellung effizient."
+      ],
+      advanced: [
+        "Flüssiges Tippen unterstützt kreatives Denken.",
+        "Fortgeschrittene denken kaum über das Tippen nach.",
+        "Automatisierte Bewegungen reduzieren Ermüdung.",
+        "Schnelles Tippen hilft bei zeitkritischen Aufgaben.",
+        "Das Schreiben wird intuitiv und unterbrechungsfrei.",
+        "Schnelles Schreiben fördert deine Produktivität.",
+        "Fehlerfreies Tippen steigert das Selbstbewusstsein.",
+        "Tippen und Bearbeiten kann gleichzeitig erfolgen.",
+        "Stabile Tipptechnik hilft auch beim Programmieren.",
+        "Routine macht den Schreibprozess mühelos.",
+        "Richtiger Rhythmus erhöht die Textqualität.",
+        "Ein gutes Tippniveau spart Zeit bei der Korrektur.",
+        "Komplexe Gedanken lassen sich schneller niederschreiben.",
+        "Schnelligkeit darf nicht auf Kosten der Genauigkeit gehen.",
+        "Kreative Texte fließen leichter mit sicherer Technik."
+      ]
+    },
+    hu: {
+      beginner: [
+        "A gyakorlás teszi a mestert.",
+        "Tanulj gépelni minden nap egy kicsit.",
+        "Tartsd az ujjaid a kezdő soron.",
+        "Ne kapkodj, a pontosság a fontos.",
+        "Ülj egyenesen és lazítsd el a csuklód.",
+        "A rövid mondatok jók kezdésnek.",
+        "Ne nézd a billentyűzetet gépelés közben.",
+        "A tízujjas gépelés gyorsabb és pontosabb.",
+        "A hibák tanítanak a legtöbbet.",
+        "Tarts rendszeres szünetet a gyakorlás során.",
+        "A tempó javul, ha nem sietsz.",
+        "A tanulás folyamata is lehet élvezetes.",
+        "A gépelés játék is lehet.",
+        "Ne hagyd abba, ha hibázol.",
+        "Törekedj a pontosságra, ne csak a gyorsaságra."
+      ],
+      intermediate: [
+        "A tízujjas gépelés segít a gondolatok gyors kifejezésében.",
+        "Minden egyes nap egy kicsit jobb leszel.",
+        "A rendszeres ellenőrzés segít nyomon követni a hibákat.",
+        "Az írás közbeni hibák csökkentik a hatékonyságot.",
+        "Próbálj meg egy teljes bekezdést hibamentesen legépelni.",
+        "A pontos gépelés nagyobb önbizalmat ad írás közben.",
+        "Heti célkitűzésekkel motiválhatod magad a fejlődésre.",
+        "Használj gyakorló szövegeket különböző témákból.",
+        "Időnként gépelj új, ismeretlen szöveget a kihívás kedvéért.",
+        "A helyes gépelés hosszú távon csökkenti a kézfájdalmat.",
+        "A gépelési hibák gyakran ismétlődnek – figyeld meg őket.",
+        "A kevesebb hiba hosszabb szövegnél is nagy előny.",
+        "Használj olyan gyakorló programot, ami hibákat is jelez.",
+        "Ismételd át a leggyakrabban eltévesztett szavakat külön is.",
+        "Próbálj egy-egy szöveget halkan diktálva is legépelni."
+      ],
+      advanced: [
+        "A gördülékeny gépelés támogatja a kreatív gondolkodást.",
+        "A haladó gépelők szinte gondolkodás nélkül írnak.",
+        "Az ujjmozgás automatizálása csökkenti a fáradtságot.",
+        "A folyamatos gépelés fejleszti az íráskészséget.",
+        "A gyors gépelés különösen hasznos a határidős munkák során.",
+        "A gondolatok képernyőre juttatása akadálytalanul történik.",
+        "A szöveg közbeni visszakeresés hatékonyabb, ha gyorsan írsz.",
+        "A szókincs fejlesztése és a gépelési rutin együtt fejlődik.",
+        "A gépelési minta elemzése segít a hibák felismerésében.",
+        "Minél kevesebb figyelmet igényel a gépelés, annál több marad az írás minőségére.",
+        "A gyors gépelés elősegíti a hatékony jegyzetelést.",
+        "A technikai írás és a kreatív írás egyaránt fejlődik általa.",
+        "A precíz gépelés előny a munka világában.",
+        "A kézmozdulatok összehangolása segíti az ujjkímélő írást.",
+        "A tudatos légzés gépelés közben növeli a koncentrációt."
+      ]
     }
-  });
+  };
 
-  startTime = Date.now();
-  let timeLeft = duration;
-  document.getElementById("timerDisplay").textContent = timeLeft + "s";
+  let currentSentence = "";
+  let startTime, timerInterval;
 
-  timerInterval = setInterval(() => {
-    timeLeft--;
+  function startTest() {
+    document.getElementById("inputArea").classList.remove("hidden");
+    document.getElementById("finishBtn").classList.remove("hidden");
+    document.getElementById("resultDisplay").textContent = "";
+
+    const level = document.getElementById("levelSelect").value;
+    const duration = parseInt(document.getElementById("durationSelect").value);
+    const selectedSentences = sentences[currentLang][level];
+
+    currentSentence = selectedSentences[Math.floor(Math.random() * selectedSentences.length)];
+    document.getElementById("sentenceDisplay").textContent = currentSentence;
+    document.getElementById("inputArea").value = "";
+    document.getElementById("inputArea").focus();
+
+    document.getElementById("inputArea").addEventListener("input", () => {
+      const typed = document.getElementById("inputArea").value.trim();
+      const target = currentSentence.trim();
+      if (typed === target) {
+        clearInterval(timerInterval);
+        finishTest();
+      }
+    });
+
+    startTime = Date.now();
+    let timeLeft = duration;
     document.getElementById("timerDisplay").textContent = timeLeft + "s";
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      finishTest();
-    }
-  }, 1000);
-}
 
-function finishTest() {
-  clearInterval(timerInterval);
-
-  const typedText = document.getElementById("inputArea").value;
-  const wordsTyped = typedText.trim().split(/\s+/).length;
-  const timeTaken = (Date.now() - startTime) / 1000 / 60;
-  const wpm = Math.round(wordsTyped / timeTaken);
-
-  let correctChars = 0;
-  for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
-    if (typedText[i] === currentSentence[i]) correctChars++;
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      document.getElementById("timerDisplay").textContent = timeLeft + "s";
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        finishTest();
+      }
+    }, 1000);
   }
 
-  const accuracy = Math.round((correctChars / currentSentence.length) * 100);
-  document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
+  function finishTest() {
+    clearInterval(timerInterval);
 
-  document.getElementById("finishBtn").classList.add("hidden");
-  document.getElementById("inputArea").classList.add("hidden");
-}
+    const typedText = document.getElementById("inputArea").value;
+    const wordsTyped = typedText.trim().split(/\s+/).length;
+    const timeTaken = (Date.now() - startTime) / 1000 / 60;
+    const wpm = Math.round(wordsTyped / timeTaken);
+
+    let correctChars = 0;
+    for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
+      if (typedText[i] === currentSentence[i]) correctChars++;
+    }
+
+    const accuracy = Math.round((correctChars / currentSentence.length) * 100);
+    document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
+
+    document.getElementById("finishBtn").classList.add("hidden");
+    document.getElementById("inputArea").classList.add("hidden");
+  }
 </script>
-
-
-
-
-
-
 
