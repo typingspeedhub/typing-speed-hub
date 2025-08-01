@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Typing Speed Hub</title>
   <style>
     body {
@@ -19,15 +19,12 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 1rem;
     }
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
-    }
-    nav a:hover {
-      color: #00ff66;
     }
     main {
       display: flex;
@@ -92,19 +89,32 @@
   </style>
 </head>
 <body>
-
   <nav>
     <a href="#">Home</a>
-    <a href="#">Tips</a>
-    <a href="#">Typing Games</a>
-    <a href="#">Articles</a>
-    <a href="#">About</a>
+    <a href="#">Why is typing practice important?</a>
+    <a href="#">Tips for faster typing</a>
+    <a href="#">How to improve typing accuracy?</a>
+    <a href="#">Best keyboards for typing</a>
   </nav>
 
   <main>
     <div class="content">
       <h1>Welcome to Typing Speed Hub</h1>
-      <p>Boost your typing skills with drills, fun games, and practical tips!</p>
+      <p>Boost your typing skills with drills and fun games!</p>
+    </div>
+
+    <div class="typing-test">
+      <h2>Typing Practice</h2>
+
+      <div class="flag-bar">
+        <img src="https://flagcdn.com/24x18/gb.png" onclick="setLanguage('en')" title="English">
+        <img src="https://flagcdn.com/24x18/de.png" onclick="setLanguage('de')" title="Deutsch">
+        <img src="https://flagcdn.com/24x18/hu.png" onclick="setLanguage('hu')" title="Magyar">
+      </div>
+  <main>
+    <div class="content">
+      <h1>Welcome to Typing Speed Hub</h1>
+      <p>Boost your typing skills with drills and fun games!</p>
     </div>
 
     <div class="typing-test">
@@ -138,7 +148,6 @@
       <p id="resultDisplay"></p>
     </div>
   </main>
-
   <footer>
     © 2025 Typing Speed Hub. All rights reserved.
     <div class="social-icons">
@@ -156,38 +165,23 @@
         beginner: [
           "Practice makes perfect when it comes to typing.",
           "Typing fast requires both speed and accuracy.",
-          "Keep your eyes on the screen, not the keyboard.",
-          "Set typing goals and track your progress.",
-          "Typing games can make learning more fun.",
-          "Type daily to build muscle memory.",
+          "Stay focused and keep your fingers on the home row.",
           "Don't rush, learn to type smoothly and steadily.",
-          "Accuracy comes before speed in the beginning.",
-          "Remember to sit up straight while typing.",
-          "Backspacing too much slows you down."
+          "Typing games can make learning more fun and engaging."
         ],
         intermediate: [
           "Typing helps improve brain-hand coordination.",
+          "Daily practice leads to progress.",
           "Even a few minutes of daily practice can lead to progress.",
-          "Distractions reduce both speed and comprehension.",
-          "Typing longer texts helps build stamina.",
-          "Typing fluently helps express your thoughts.",
-          "Mistakes are part of learning—track them.",
-          "Stretch your hands before and after typing.",
-          "Typing daily builds mental endurance too.",
-          "Use online tests to track progress.",
-          "Typing fluency boosts your confidence."
+          "Typing on different keyboards helps you stay adaptable.",
+          "Use online typing tests to challenge yourself regularly."
         ],
         advanced: [
-          "Touch typing is an essential professional skill.",
+          "Touch typing has become an essential skill.",
           "Typing fluently allows steady flow of ideas.",
-          "Real-time typing tests simulate pressure.",
-          "Accurate typing reduces communication errors.",
-          "Advanced typing helps with coding and editing.",
-          "Typing without looking improves efficiency.",
-          "Fast typists process information quicker.",
-          "Typing is a blend of physical and mental skill.",
-          "Typing becomes second nature with practice.",
-          "Creative writing flows better with fast typing."
+          "Accurate typing can reduce communication errors.",
+          "Typing is as much mental as physical.",
+          "Fluent typing mirrors fluent speaking."
         ]
       },
       de: {
@@ -196,36 +190,21 @@
           "Tägliches Tippen verbessert deine Fähigkeiten.",
           "Halte deine Finger in der Grundstellung.",
           "Schau nicht auf die Tastatur beim Tippen.",
-          "Tippe langsam und genau.",
-          "Geduld ist der Schlüssel zum Erfolg.",
-          "Tippen fördert die Konzentration.",
-          "Täglich 10 Minuten reichen für Fortschritt.",
-          "Wiederholung hilft beim Lernen.",
-          "Kurze Sätze sind gut zum Üben."
+          "Tippen fördert die Konzentration."
         ],
         intermediate: [
           "Zehnfingersystem verbessert deine Ausdrucksfähigkeit.",
           "Weniger Fehler führen zu schnellerem Arbeiten.",
           "Tippe ganze Absätze fehlerfrei.",
-          "Verwende Texte aus verschiedenen Themengebieten.",
-          "Wiederhole schwierige Wörter gezielt.",
-          "Blindtippen erfordert Übung.",
-          "Tipp rhythmisch, nicht hektisch.",
-          "Vermeide Ablenkungen beim Schreiben.",
-          "Routine macht den Schreibprozess mühelos.",
-          "Nutze Tools, die deine Fehler anzeigen."
+          "Blindtippen erfordert Geduld und Übung.",
+          "Das richtige Tippgefühl kommt mit der Zeit."
         ],
         advanced: [
           "Flüssiges Tippen unterstützt kreatives Denken.",
           "Fortgeschrittene denken kaum über das Tippen nach.",
+          "Automatisierte Bewegungen reduzieren Ermüdung.",
           "Schnelles Tippen hilft bei zeitkritischen Aufgaben.",
-          "Fehlerfreies Tippen steigert das Selbstbewusstsein.",
-          "Komplexe Gedanken lassen sich schneller schreiben.",
-          "Stabile Tipptechnik hilft auch beim Programmieren.",
-          "Ein gutes Tippniveau spart Zeit bei der Korrektur.",
-          "Routine macht den Schreibprozess mühelos.",
-          "Professionelles Tippen verbessert die Effizienz.",
-          "Hohe Tippgeschwindigkeit spart wertvolle Zeit."
+          "Fehlerfreies Tippen steigert das Selbstbewusstsein."
         ]
       },
       hu: {
@@ -234,36 +213,21 @@
           "Tanulj gépelni minden nap egy kicsit.",
           "Tartsd az ujjaid a kezdő soron.",
           "Ne kapkodj, a pontosság a fontos.",
-          "Ülj egyenesen és lazítsd el a csuklód.",
-          "Ne nézd a billentyűzetet gépelés közben.",
-          "A tízujjas gépelés gyorsabb és pontosabb.",
-          "A hibák tanítanak a legtöbbet.",
-          "Tarts rendszeres szünetet a gyakorlás során.",
-          "A gépelés játék is lehet."
+          "Ülj egyenesen és lazítsd el a csuklód."
         ],
         intermediate: [
           "A tízujjas gépelés segít a gondolatok gyors kifejezésében.",
-          "Minden nap egy kicsit jobb leszel.",
           "A rendszeres ellenőrzés segít nyomon követni a hibákat.",
-          "Az írás közbeni hibák csökkentik a hatékonyságot.",
-          "Próbálj egy teljes bekezdést hibamentesen gépelni.",
-          "A pontos gépelés nagyobb önbizalmat ad.",
-          "Használj gyakorló szövegeket különböző témákból.",
-          "A gyakorlás segíti a fejlődést.",
-          "A rövid szünetek hatékonyabbá tesznek.",
-          "Gépelés közben figyelj a testtartásodra."
+          "Próbálj meg egy teljes bekezdést hibamentesen legépelni.",
+          "A pontos gépelés nagyobb önbizalmat ad írás közben.",
+          "Használj gyakorló szövegeket különböző témákból."
         ],
         advanced: [
           "A gördülékeny gépelés támogatja a kreatív gondolkodást.",
           "A haladó gépelők szinte gondolkodás nélkül írnak.",
-          "A gyors gépelés hasznos határidők esetén.",
-          "A precíz gépelés csökkenti a hibákat.",
-          "A vakon gépelés növeli a hatékonyságot.",
-          "A gépelés támogatja az íráskészséget.",
-          "A tudatos légzés javítja a koncentrációt.",
-          "Az ujjak automatikus mozgása segíti a folyamatosságot.",
-          "A gépelés közbeni ritmus segíti a gondolkodást.",
-          "A gyors gépelés elősegíti a jegyzetelést."
+          "A gyors gépelés különösen hasznos a határidős munkák során.",
+          "A precíz gépelés előny a munka világában.",
+          "A vakon gépelés elmélyíti az írási flow állapotát."
         ]
       }
     };
@@ -290,10 +254,6 @@
       document.getElementById("finishBtn").classList.remove("hidden");
       document.getElementById("resultDisplay").textContent = "";
 
-      startTime = Date.now();
-      let timeLeft = duration;
-      document.getElementById("timerDisplay").textContent = timeLeft + "s";
-
       document.getElementById("inputArea").addEventListener("input", () => {
         const typed = document.getElementById("inputArea").value.trim();
         if (typed === currentSentence.trim()) {
@@ -301,6 +261,10 @@
           finishTest();
         }
       });
+
+      startTime = Date.now();
+      let timeLeft = duration;
+      document.getElementById("timerDisplay").textContent = timeLeft + "s";
 
       timerInterval = setInterval(() => {
         timeLeft--;
