@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,54 +11,35 @@
       background-color: #0d0d0d;
       color: #00ff66;
     }
-    nav {
-      display: flex;
-      overflow-x: auto;
+    header {
       background-color: black;
-      padding: 0.5rem;
+      padding: 1rem;
+      overflow-x: auto;
       white-space: nowrap;
     }
-    nav a {
+    header a {
       color: white;
       text-decoration: none;
-      margin-right: 20px;
+      margin-right: 1.5rem;
       font-weight: bold;
-      transition: color 0.3s;
     }
-    nav a:hover {
-      color: limegreen;
+    header a:hover {
+      color: #00ff66;
     }
-    .content {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 2rem;
-    }
-    .article {
-      display: none;
-    }
-    .article.active {
-      display: block;
-    }
-    footer {
-      text-align: center;
-      color: #888;
-      margin: 2rem 0;
     }
     .flag-bar img {
       cursor: pointer;
       margin: 0 5px;
-      height: 24px;
-    }
-    .typing-test {
-      background-color: #1e1e1e;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #00ff66;
-      margin-top: 2rem;
     }
     select, button, textarea {
       margin: 0.5rem 0;
       padding: 0.5rem;
       font-size: 1rem;
-      width: 100%;
       background-color: #0d0d0d;
       color: #00ff66;
       border: 1px solid #00ff66;
@@ -67,17 +48,180 @@
     button:hover {
       background-color: #00ff66;
       color: #0d0d0d;
-      cursor: pointer;
     }
     textarea {
-      height: 100px;
+      width: 100%;
+      max-width: 700px;
+      height: 120px;
     }
     .hidden {
       display: none;
     }
+    footer {
+      text-align: center;
+      color: #888;
+      margin: 2rem 0;
+    }
+    .social-icons a {
+      color: #00ff66;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1.5rem;
+    }
   </style>
 </head>
 <body>
-<!-- Body content omitted for brevity in this snippet -->
+
+  <header>
+    <a href="7-day-typing-plan.html">7 Day Typing Plan</a>
+    <a href="best-free-typing-games.html">Best Free Typing Games</a>
+    <a href="best-keyboards-typing-practice.html">Best Keyboards</a>
+    <a href="common-typing-mistakes.html">Common Typing Mistakes</a>
+    <a href="how-typing-improves-focus-memory.html">Typing & Focus</a>
+    <a href="increase-typing-speeds-7-day.html">Speed in 7 Days</a>
+    <a href="typing-for-kids.html">Typing for Kids</a>
+    <a href="typing-tips.html">Typing Tips</a>
+    <a href="what-is-typing.html">What Is Typing?</a>
+  </header>
+
+  <div class="container">
+    <h1>Typing Speed Hub</h1>
+    <p>Choose your language and start typing:</p>
+
+    <div class="flag-bar">
+      <img src="https://flagcdn.com/24x18/gb.png" onclick="setLanguage('en')" title="English">
+      <img src="https://flagcdn.com/24x18/de.png" onclick="setLanguage('de')" title="Deutsch">
+      <img src="https://flagcdn.com/24x18/hu.png" onclick="setLanguage('hu')" title="Magyar">
+    </div>
+
+    <select id="levelSelect">
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
+
+    <select id="durationSelect">
+      <option value="60">1 Minute</option>
+      <option value="300">5 Minutes</option>
+    </select>
+
+    <button onclick="startTest()">Start</button>
+    <button onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
+
+    <p id="timerDisplay"></p>
+    <p id="sentenceDisplay"></p>
+    <textarea id="inputArea" class="hidden" placeholder="Start typing..."></textarea>
+    <p id="resultDisplay"></p>
+  </div>
+
+  <footer>
+    © 2025 Typing Speed Hub
+    <div class="social-icons">
+      <a href="https://www.facebook.com/typingspeedhub" target="_blank" title="Facebook">📘</a>
+    </div>
+  </footer>
+
+  <script>
+    let currentLang = "en";
+    let currentSentence = "";
+    let startTime, timerInterval;
+
+    function setLanguage(lang) {
+      currentLang = lang;
+    }
+
+    const sentences = {
+      en: {
+        beginner: [
+          "Practice makes perfect.",
+          "Type slowly and accurately.",
+          "Keep your fingers on the home row.",
+          "Don't look at the keyboard while typing.",
+          "Typing games make learning fun."
+        ],
+        intermediate: [
+          "Typing improves coordination.",
+          "Try longer paragraphs without stopping.",
+          "Use online tools to track your progress.",
+          "Work on accuracy before speed.",
+          "Mix up your practice with different topics."
+        ],
+        advanced: [
+          "Touch typing allows seamless writing.",
+          "Advanced typists rarely make errors.",
+          "Typing should feel natural and automatic.",
+          "Practice under time pressure for challenge.",
+          "Focus on flow rather than key pressing."
+        ]
+      },
+      de: {
+        beginner: ["Übung macht den Meister."],
+        intermediate: ["Tägliches Üben bringt Fortschritt."],
+        advanced: ["Fortgeschrittene schreiben automatisch."]
+      },
+      hu: {
+        beginner: ["A gyakorlás teszi a mestert."],
+        intermediate: ["A gépelés javítja a koordinációt."],
+        advanced: ["A haladó gépelés természetessé válik."]
+      }
+    };
+
+    function startTest() {
+      const level = document.getElementById("levelSelect").value;
+      const duration = parseInt(document.getElementById("durationSelect").value);
+      const pool = sentences[currentLang]?.[level];
+
+      if (!pool || pool.length === 0) {
+        alert("No sentences available for this selection.");
+        return;
+      }
+
+      currentSentence = pool[Math.floor(Math.random() * pool.length)];
+      document.getElementById("sentenceDisplay").textContent = currentSentence;
+      document.getElementById("inputArea").value = "";
+      document.getElementById("inputArea").classList.remove("hidden");
+      document.getElementById("inputArea").focus();
+      document.getElementById("finishBtn").classList.remove("hidden");
+      document.getElementById("resultDisplay").textContent = "";
+
+      startTime = Date.now();
+      let timeLeft = duration;
+      document.getElementById("timerDisplay").textContent = `${timeLeft}s`;
+
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timerDisplay").textContent = `${timeLeft}s`;
+        if (timeLeft <= 0) finishTest();
+      }, 1000);
+
+      document.getElementById("inputArea").addEventListener("input", () => {
+        const typed = document.getElementById("inputArea").value;
+        if (typed.trim() === currentSentence.trim()) {
+          finishTest();
+        }
+      });
+    }
+
+    function finishTest() {
+      clearInterval(timerInterval);
+      const typed = document.getElementById("inputArea").value;
+      const words = typed.trim().split(/\s+/).filter(Boolean);
+      const wpm = Math.round(words.length / ((Date.now() - startTime) / 60000));
+
+      let correct = 0;
+      for (let i = 0; i < Math.min(typed.length, currentSentence.length); i++) {
+        if (typed[i] === currentSentence[i]) correct++;
+      }
+      const accuracy = Math.round((correct / currentSentence.length) * 100);
+
+      document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
+      document.getElementById("inputArea").classList.add("hidden");
+      document.getElementById("finishBtn").classList.add("hidden");
+    }
+  </script>
+
 </body>
 </html>
+
+
