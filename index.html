@@ -4,224 +4,323 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Typing Speed Hub</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
   <style>
     body {
-      margin: 0;
+      background-color: #111;
+      color: #0f0;
       font-family: Arial, sans-serif;
-      background-color: #0d0d0d;
-      color: #00ff66;
+      margin: 0;
+      padding: 0;
     }
-    header {
-      background-color: black;
-      padding: 1rem;
-      overflow-x: auto;
-      white-space: nowrap;
+
+    nav {
+      background-color: #000;
+      padding: 0.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-    header a {
+
+    nav a {
       color: white;
       text-decoration: none;
-      margin-right: 1.5rem;
       font-weight: bold;
     }
-    header a:hover {
-      color: #00ff66;
+
+    nav a:hover {
+      color: limegreen;
     }
+
     .container {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      justify-content: space-between;
       padding: 2rem;
     }
-    .flag-bar img {
-      cursor: pointer;
-      margin: 0 5px;
+
+    .left {
+      width: 50%;
     }
+
+    .right {
+      width: 40%;
+      background-color: #111;
+      border: 2px solid limegreen;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 10px #0f0;
+    }
+
     select, button, textarea {
+      width: 100%;
       margin: 0.5rem 0;
       padding: 0.5rem;
       font-size: 1rem;
-      background-color: #0d0d0d;
-      color: #00ff66;
-      border: 1px solid #00ff66;
       border-radius: 5px;
     }
-    button:hover {
-      background-color: #00ff66;
-      color: #0d0d0d;
+
+    #inputArea {
+      height: 100px;
     }
-    textarea {
-      width: 100%;
-      max-width: 700px;
-      height: 120px;
-    }
+
     .hidden {
       display: none;
     }
+
+    .language-flags {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
     footer {
       text-align: center;
+      margin-top: 3rem;
       color: #888;
-      margin: 2rem 0;
-    }
-    .social-icons a {
-      color: #00ff66;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 1.5rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-
-  <header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="what-is-wpm.html">Why is typing practice important?</a>
+    <a href="typing-tips.html">Tips for faster typing</a>
+    <a href="common-typing-mistakes.html">How to improve typing accuracy?</a>
+    <a href="best-keyboards-typing-practice.html">Best keyboards for typing</a>
     <a href="7-day-typing-plan.html">7 Day Typing Plan</a>
-    <a href="best-free-typing-games.html">Best Free Typing Games</a>
-    <a href="best-keyboards-typing-practice.html">Best Keyboards</a>
-    <a href="common-typing-mistakes.html">Common Typing Mistakes</a>
-    <a href="how-typing-improves-focus-memory.html">Typing & Focus</a>
-    <a href="increase-typing-speeds-7-day.html">Speed in 7 Days</a>
+    <a href="best-free-typing-games.html">Typing Games</a>
     <a href="typing-for-kids.html">Typing for Kids</a>
-    <a href="typing-tips.html">Typing Tips</a>
-    <a href="what-is-typing.html">What Is Typing?</a>
-  </header>
+  </nav>
 
   <div class="container">
-    <h1>Typing Speed Hub</h1>
-    <p>Choose your language and start typing:</p>
-
-    <div class="flag-bar">
-      <img src="https://flagcdn.com/24x18/gb.png" onclick="setLanguage('en')" title="English">
-      <img src="https://flagcdn.com/24x18/de.png" onclick="setLanguage('de')" title="Deutsch">
-      <img src="https://flagcdn.com/24x18/hu.png" onclick="setLanguage('hu')" title="Magyar">
+    <div class="left">
+      <h1>Welcome to Typing Speed Hub</h1>
+      <p>Boost your typing skills with drills and fun games!</p>
     </div>
+    <div class="right">
+      <h2>Typing Practice</h2>
+      <div class="language-flags">
+        <img src="https://flagcdn.com/24x18/gb.png" alt="English" onclick="setLanguage('en')" style="cursor:pointer;">
+        <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" onclick="setLanguage('de')" style="cursor:pointer;">
+        <img src="https://flagcdn.com/24x18/hu.png" alt="Magyar" onclick="setLanguage('hu')" style="cursor:pointer;">
+      </div>
 
-    <select id="levelSelect">
-      <option value="beginner">Beginner</option>
-      <option value="intermediate">Intermediate</option>
-      <option value="advanced">Advanced</option>
-    </select>
+      <label for="levelSelect">Level:</label>
+      <select id="levelSelect">
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select>
 
-    <select id="durationSelect">
-      <option value="60">1 Minute</option>
-      <option value="300">5 Minutes</option>
-    </select>
+      <label for="durationSelect">Test duration:</label>
+      <select id="durationSelect">
+        <option value="60">1 minute</option>
+        <option value="300">5 minutes</option>
+      </select>
 
-    <button onclick="startTest()">Start</button>
-    <button onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
+      <button onclick="startTest()">Start</button>
+      <button type="button" onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
 
-    <p id="timerDisplay"></p>
-    <p id="sentenceDisplay"></p>
-    <textarea id="inputArea" class="hidden" placeholder="Start typing..."></textarea>
-    <p id="resultDisplay"></p>
+      <p id="timerDisplay"></p>
+      <p id="sentenceDisplay"></p>
+      <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
+      <p id="resultDisplay"></p>
+    </div>
   </div>
 
   <footer>
-    © 2025 Typing Speed Hub
-    <div class="social-icons">
-      <a href="https://www.facebook.com/typingspeedhub" target="_blank" title="Facebook">📘</a>
-    </div>
+    © 2025 Typing Speed Hub. All rights reserved.
   </footer>
+<script>
+  let currentLang = 'en';
+  let currentSentence = "";
+  let startTime, timerInterval;
+  let selectedSentences = [];
 
-  <script>
-    let currentLang = "en";
-    let currentSentence = "";
-    let startTime, timerInterval;
-
-    function setLanguage(lang) {
-      currentLang = lang;
+  const sentences = {
+    en: {
+      beginner: [
+        "Practice makes perfect.",
+        "Typing fast requires accuracy.",
+        "Keep your fingers on the home row.",
+        "Don't rush, stay calm.",
+        "Type daily to improve.",
+        "Focus on typing smoothly.",
+        "Stretch your fingers.",
+        "Accuracy before speed.",
+        "Type without looking.",
+        "Use both hands when typing."
+      ],
+      intermediate: [
+        "Typing helps improve brain-hand coordination.",
+        "Daily practice leads to progress.",
+        "Track your common typing errors.",
+        "Focus improves typing speed.",
+        "Practice full paragraphs.",
+        "Typing fast helps productivity.",
+        "Typing without looking builds muscle memory.",
+        "Typing tools can guide your learning.",
+        "Typing rhythm is key.",
+        "Use new text samples to challenge yourself."
+      ],
+      advanced: [
+        "Touch typing is essential for professionals.",
+        "Fast typing boosts digital workflow.",
+        "Avoid looking at the keyboard.",
+        "Typing fluently aids creativity.",
+        "Editing while typing becomes easier.",
+        "Typing is a long-term skill.",
+        "Typing faster improves note-taking.",
+        "Typing trains mental focus.",
+        "Automated finger movement reduces strain.",
+        "Write articles with fewer interruptions."
+      ]
+    },
+    de: {
+      beginner: [
+        "Übung macht den Meister.",
+        "Tippen lernen braucht Geduld.",
+        "Finger auf der Grundreihe halten.",
+        "Nicht hetzen, ruhig bleiben.",
+        "Täglich tippen bringt Fortschritt.",
+        "Augen auf dem Bildschirm lassen.",
+        "Tippen ohne auf die Tasten zu schauen.",
+        "Beide Hände benutzen.",
+        "Fehler sind Teil des Lernens.",
+        "Kurze Sätze zum Üben nutzen."
+      ],
+      intermediate: [
+        "Zehnfingersystem verbessert deine Ausdrucksfähigkeit.",
+        "Weniger Fehler führen zu schnellerem Arbeiten.",
+        "Setze dir wöchentliche Tippziele.",
+        "Tippe ganze Absätze fehlerfrei.",
+        "Vermeide Ablenkungen beim Schreiben.",
+        "Tipp rhythmisch, nicht hektisch.",
+        "Regelmäßiges Tippen reduziert Stress.",
+        "Nutze die Grundstellung effizient.",
+        "Tägliches Üben bringt Erfolg.",
+        "Verwende Texte aus verschiedenen Themen."
+      ],
+      advanced: [
+        "Flüssiges Tippen unterstützt kreatives Denken.",
+        "Fortgeschrittene denken kaum über das Tippen nach.",
+        "Automatisierte Bewegungen reduzieren Ermüdung.",
+        "Fehlerfreies Tippen steigert das Selbstbewusstsein.",
+        "Stabile Tipptechnik hilft beim Programmieren.",
+        "Routine macht den Schreibprozess mühelos.",
+        "Richtiger Rhythmus erhöht die Textqualität.",
+        "Komplexe Gedanken lassen sich schneller niederschreiben.",
+        "Kreative Texte fließen leichter.",
+        "Tippgenauigkeit ist entscheidend im Beruf."
+      ]
+    },
+    hu: {
+      beginner: [
+        "A gyakorlás teszi a mestert.",
+        "Tartsd az ujjaid a kezdő soron.",
+        "Ne kapkodj, gépelj pontosan.",
+        "Ülj egyenesen a gépeléshez.",
+        "Gyakorolj minden nap.",
+        "Ne nézd a billentyűzetet.",
+        "A pontosság fontosabb mint a sebesség.",
+        "Gyakorolj rövid mondatokkal.",
+        "A hibákból tanulunk.",
+        "Tarts szünetet időnként."
+      ],
+      intermediate: [
+        "A tízujjas gépelés segít a gondolatok gyors kifejezésében.",
+        "Heti célkitűzésekkel motiválhatod magad.",
+        "Tartsd nyomon a gépelési hibáidat.",
+        "Próbálj meg hibátlan bekezdést gépelni.",
+        "Használj változatos szövegeket.",
+        "A gépelési rutin idővel kialakul.",
+        "A gépelés fejleszti az íráskészséget.",
+        "A koncentráció növeli a sebességet.",
+        "Néha diktált szöveget is gépelj.",
+        "Jelöld ki a gyakori hibákat."
+      ],
+      advanced: [
+        "A gördülékeny gépelés támogatja a kreatív gondolkodást.",
+        "A haladó gépelők szinte gondolkodás nélkül írnak.",
+        "Az ujjmozgás automatizálása csökkenti a fáradtságot.",
+        "A gyors gépelés segít határidős munkákban.",
+        "A pontos gépelés csökkenti a hibák számát.",
+        "A gépelés egy életre szóló készség.",
+        "A sebesség nem mehet a pontosság rovására.",
+        "A tipikus hibák elemzése segít a fejlődésben.",
+        "Írás közben ne zökkenj ki.",
+        "A ritmusos gépelés javítja a szöveg folyamatosságát."
+      ]
     }
+  };
 
-    const sentences = {
-      en: {
-        beginner: [
-          "Practice makes perfect.",
-          "Type slowly and accurately.",
-          "Keep your fingers on the home row.",
-          "Don't look at the keyboard while typing.",
-          "Typing games make learning fun."
-        ],
-        intermediate: [
-          "Typing improves coordination.",
-          "Try longer paragraphs without stopping.",
-          "Use online tools to track your progress.",
-          "Work on accuracy before speed.",
-          "Mix up your practice with different topics."
-        ],
-        advanced: [
-          "Touch typing allows seamless writing.",
-          "Advanced typists rarely make errors.",
-          "Typing should feel natural and automatic.",
-          "Practice under time pressure for challenge.",
-          "Focus on flow rather than key pressing."
-        ]
-      },
-      de: {
-        beginner: ["Übung macht den Meister."],
-        intermediate: ["Tägliches Üben bringt Fortschritt."],
-        advanced: ["Fortgeschrittene schreiben automatisch."]
-      },
-      hu: {
-        beginner: ["A gyakorlás teszi a mestert."],
-        intermediate: ["A gépelés javítja a koordinációt."],
-        advanced: ["A haladó gépelés természetessé válik."]
+  function setLanguage(lang) {
+    currentLang = lang;
+  }
+
+  function startTest() {
+    const level = document.getElementById("levelSelect").value;
+    const duration = parseInt(document.getElementById("durationSelect").value);
+
+    selectedSentences = sentences[currentLang][level];
+    currentSentence = selectedSentences[Math.floor(Math.random() * selectedSentences.length)];
+
+    document.getElementById("sentenceDisplay").textContent = currentSentence;
+    document.getElementById("inputArea").value = "";
+    document.getElementById("resultDisplay").textContent = "";
+    document.getElementById("inputArea").classList.remove("hidden");
+    document.getElementById("finishBtn").classList.remove("hidden");
+    document.getElementById("inputArea").focus();
+
+    startTime = Date.now();
+    let timeLeft = duration;
+    document.getElementById("timerDisplay").textContent = timeLeft + "s";
+
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      document.getElementById("timerDisplay").textContent = timeLeft + "s";
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        finishTest();
       }
-    };
+    }, 1000);
 
-    function startTest() {
-      const level = document.getElementById("levelSelect").value;
-      const duration = parseInt(document.getElementById("durationSelect").value);
-      const pool = sentences[currentLang]?.[level];
+    document.getElementById("inputArea").addEventListener("input", checkMatch);
+  }
 
-      if (!pool || pool.length === 0) {
-        alert("No sentences available for this selection.");
-        return;
-      }
-
-      currentSentence = pool[Math.floor(Math.random() * pool.length)];
-      document.getElementById("sentenceDisplay").textContent = currentSentence;
-      document.getElementById("inputArea").value = "";
-      document.getElementById("inputArea").classList.remove("hidden");
-      document.getElementById("inputArea").focus();
-      document.getElementById("finishBtn").classList.remove("hidden");
-      document.getElementById("resultDisplay").textContent = "";
-
-      startTime = Date.now();
-      let timeLeft = duration;
-      document.getElementById("timerDisplay").textContent = `${timeLeft}s`;
-
+  function checkMatch() {
+    const typed = document.getElementById("inputArea").value.trim();
+    const target = currentSentence.trim();
+    if (typed === target) {
       clearInterval(timerInterval);
-      timerInterval = setInterval(() => {
-        timeLeft--;
-        document.getElementById("timerDisplay").textContent = `${timeLeft}s`;
-        if (timeLeft <= 0) finishTest();
-      }, 1000);
+      finishTest();
+    }
+  }
 
-      document.getElementById("inputArea").addEventListener("input", () => {
-        const typed = document.getElementById("inputArea").value;
-        if (typed.trim() === currentSentence.trim()) {
-          finishTest();
-        }
-      });
+  function finishTest() {
+    clearInterval(timerInterval);
+
+    const typedText = document.getElementById("inputArea").value;
+    const wordsTyped = typedText.trim().split(/\s+/).length;
+    const timeTaken = (Date.now() - startTime) / 1000 / 60;
+    const wpm = Math.round(wordsTyped / timeTaken);
+
+    let correctChars = 0;
+    for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
+      if (typedText[i] === currentSentence[i]) correctChars++;
     }
 
-    function finishTest() {
-      clearInterval(timerInterval);
-      const typed = document.getElementById("inputArea").value;
-      const words = typed.trim().split(/\s+/).filter(Boolean);
-      const wpm = Math.round(words.length / ((Date.now() - startTime) / 60000));
-
-      let correct = 0;
-      for (let i = 0; i < Math.min(typed.length, currentSentence.length); i++) {
-        if (typed[i] === currentSentence[i]) correct++;
-      }
-      const accuracy = Math.round((correct / currentSentence.length) * 100);
-
-      document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
-      document.getElementById("inputArea").classList.add("hidden");
-      document.getElementById("finishBtn").classList.add("hidden");
-    }
-  </script>
-
+    const accuracy = Math.round((correctChars / currentSentence.length) * 100);
+    document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
+    document.getElementById("finishBtn").classList.add("hidden");
+    document.getElementById("inputArea").classList.add("hidden");
+  }
+</script>
 </body>
 </html>
+
+
+
 
 
