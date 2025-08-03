@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,138 +10,139 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #0d0d0d;
-    background-image: radial-gradient(#00ff6633 1px, transparent 1px);
-    background-size: 40px 40px;
-    color: #00ff66;
-    display: flex;
-    flex-direction: column;
-  }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0d0d0d;
+      background-image: radial-gradient(#00ff6633 1px, transparent 1px);
+      background-size: 40px 40px;
+      color: #00ff66;
+      display: flex;
+      flex-direction: column;
+    }
 
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
 
-  h2 {
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
-  }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
 
-  .nav-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    background-color: #333;
-    padding: 30px 0;
-  }
+    .nav-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      background-color: #333;
+      padding: 30px 0;
+    }
 
-  .nav-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
-  }
+    .nav-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+    }
 
-  .nav-group a {
-    font-size: 1.2em;
-    font-weight: bold;
-    text-decoration: none;
-    color: #fff;
-    padding: 8px 14px;
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
-  }
+    .nav-group a {
+      font-size: 1.2em;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+    }
 
-  .nav-group a:hover {
-    background-color: #0f0;
-    color: #000;
-  }
+    .nav-group a:hover {
+      background-color: #0f0;
+      color: #000;
+    }
 
-  main {
-    display: flex;
-    flex-direction: row;
-    padding: 4rem 3rem;
-    gap: 3rem;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
+    main {
+      display: flex;
+      flex-direction: row;
+      padding: 4rem 3rem;
+      gap: 3rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
 
-  .content {
-    flex: 1.5;
-    max-width: 50%;
-  }
+    .content {
+      flex: 1.5;
+      max-width: 50%;
+    }
 
-  .typing-test {
-    flex: 1;
-    min-width: 300px;
-    background-color: #1e1e1e;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 0 12px #00ff66;
-  }
+    .typing-test {
+      flex: 1;
+      min-width: 300px;
+      background-color: #1e1e1e;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 12px #00ff66;
+    }
 
-  select, button, textarea {
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    font-size: 1rem;
-    width: 100%;
-    background-color: #0d0d0d;
-    color: #00ff66;
-    border: 1px solid #00ff66;
-    border-radius: 5px;
-  }
+    select, button, textarea {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 100%;
+      background-color: #0d0d0d;
+      color: #00ff66;
+      border: 1px solid #00ff66;
+      border-radius: 5px;
+    }
 
-  button:hover {
-    background-color: #00ff66;
-    color: #0d0d0d;
-    cursor: pointer;
-  }
+    button:hover {
+      background-color: #00ff66;
+      color: #0d0d0d;
+      cursor: pointer;
+    }
 
-  textarea {
-    height: 100px;
-  }
+    textarea {
+      height: 100px;
+    }
 
-  .hidden {
-    display: none;
-  }
+    .hidden {
+      display: none;
+    }
 
-  .flag-bar {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
+    .flag-bar {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
 
-  .flag-bar img {
-    cursor: pointer;
-    margin: 0 5px;
-  }
+    .flag-bar img {
+      cursor: pointer;
+      margin: 0 5px;
+    }
 
-  footer {
-    text-align: center;
-    color: #888;
-    margin: 2rem 0;
-  }
+    footer {
+      text-align: center;
+      color: #888;
+      margin: 2rem 0;
+    }
 
-  .social-icons {
-    margin-top: 1rem;
-  }
+    .social-icons {
+      margin-top: 1rem;
+    }
 
-  .social-icons a {
-    color: #00ff66;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 1.5rem;
-  }
+    .social-icons a {
+      color: #00ff66;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1.5rem;
+    }
 
-  .social-icons a:hover {
-    color: #0f0;
-  }
-</style>
-
+    .social-icons a:hover {
+      color: #0f0;
+    }
+  </style>
+</head>
+<body>
 
   <!-- Navigáció -->
   <nav class="nav-wrapper">
@@ -165,7 +167,6 @@
     </div>
   </nav>
 
-  <!-- Fő tartalom -->
   <main>
     <div class="content">
       <h1>Welcome to Typing Speed Hub</h1>
@@ -174,7 +175,6 @@
 
     <div class="typing-test">
       <h2>Typing Practice</h2>
-
       <div class="flag-bar">
         <img src="https://flagcdn.com/24x18/gb.png" onclick="setLanguage('en')" title="English">
         <img src="https://flagcdn.com/24x18/de.png" onclick="setLanguage('de')" title="Deutsch">
@@ -204,7 +204,6 @@
     </div>
   </main>
 
-  <!-- Lábléc -->
   <footer>
     <div class="social-icons">
       <p style="margin-bottom: 0.5rem; color: #aaa;">Follow us:</p>
@@ -215,15 +214,10 @@
     <p style="margin-top: 1rem;">© 2025 Typing Speed Hub. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript -->
   <script>
     let currentLang = 'en';
     let currentSentence = "";
     let startTime, timerInterval;
-
-    function setLanguage(lang) {
-      currentLang = lang;
-    }
 
     const sentences = {
       en: {
@@ -242,6 +236,10 @@
         advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást."]
       }
     };
+
+    function setLanguage(lang) {
+      currentLang = lang;
+    }
 
     function startTest() {
       const level = document.getElementById("levelSelect").value;
@@ -303,233 +301,3 @@
   </script>
 </body>
 </html>
-
-
-    const sentences = {
-      en: {
-        beginner: [
-          "Practice makes perfect.",
-          "Typing helps you communicate faster.",
-          "Use all your fingers to type properly.",
-          "Keep your eyes on the screen.",
-          "Try typing simple sentences every day.",
-          "Don't worry about mistakes, just keep practicing.",
-          "Position your fingers on the home row.",
-          "Typing games are fun and helpful.",
-          "Sit up straight while typing.",
-          "Use backspace only when necessary.",
-          "Accuracy is more important than speed.",
-          "Take breaks to avoid fatigue.",
-          "Stretch your fingers before starting.",
-          "Daily practice improves your skills.",
-          "Learn to type without looking.",
-        ],
-        intermediate: [
-          "Typing helps improve brain-hand coordination.",
-          "Daily practice leads to progress.",
-          "Even a few minutes daily helps a lot.",
-          "Use online tests to challenge your speed.",
-          "Mistakes are part of learning.",
-          "The best typists are accurate under pressure.",
-          "Try typing full articles to build flow.",
-          "Switch keyboards to stay adaptable.",
-          "Build a habit of correcting errors.",
-          "Type steadily, not just fast.",
-          "Typing helps improve spelling naturally.",
-          "Practice typing without using backspace.",
-          "Typing with rhythm improves consistency.",
-          "Avoid distractions while practicing.",
-          "Typing longer texts builds endurance.",
-        ],
-        advanced: [
-          "Touch typing boosts creativity.",
-          "Advanced typists rarely think about keys.",
-          "Typing fluently supports long-form writing.",
-          "High WPM helps with tight deadlines.",
-          "Typing is a core digital skill.",
-          "Writers benefit from fluent typing.",
-          "Less effort spent on typing = more on thinking.",
-          "Fast typing supports brainstorming.",
-          "You can edit while you type at high speed.",
-          "Typing fluency equals communication power.",
-          "Speed and precision matter equally.",
-          "Touch typing frees your focus.",
-          "Typing fatigue drops with practice.",
-          "Typing becomes second nature over time.",
-          "Advanced typing enables multitasking.",
-        ]
-      },
-      de: {
-        beginner: [
-          "Übung macht den Meister.",
-          "Tägliches Tippen verbessert deine Fähigkeiten.",
-          "Halte deine Finger in der Grundstellung.",
-          "Tippe langsam und genau.",
-          "Tippen hilft beim Schreibenlernen.",
-          "Schaue nicht auf die Tastatur.",
-          "Richte deinen Sitzplatz ergonomisch ein.",
-          "Vermeide Ablenkung während des Tippens.",
-          "Nutze alle zehn Finger.",
-          "Tippfehler sind normal.",
-          "Langsam ist besser als falsch.",
-          "Spiele können das Lernen unterstützen.",
-          "Lerne Schritt für Schritt.",
-          "Tägliche Übung zahlt sich aus.",
-          "Geduld ist wichtig beim Lernen.",
-        ],
-        intermediate: [
-          "Zehnfingersystem verbessert deine Ausdrucksfähigkeit.",
-          "Weniger Fehler führen zu schnellerem Arbeiten.",
-          "Tippe ganze Absätze fehlerfrei.",
-          "Verwende Texte aus verschiedenen Themen.",
-          "Wiederhole schwierige Wörter gezielt.",
-          "Blindtippen erfordert Geduld.",
-          "Der richtige Rhythmus hilft beim Schreiben.",
-          "Vermeide zu viel Korrektur.",
-          "Analysiere deine Fehler regelmäßig.",
-          "Stelle dir realistische Ziele.",
-          "Tipp ohne Unterbrechung für besseren Flow.",
-          "Halte deine Handgelenke gerade.",
-          "Konzentriere dich auf Genauigkeit.",
-          "Wechsle Tastaturen zur Übung.",
-          "Nutze Tests zur Leistungskontrolle.",
-        ],
-        advanced: [
-          "Flüssiges Tippen unterstützt kreatives Denken.",
-          "Automatisierte Bewegungen reduzieren Ermüdung.",
-          "Tippgeschwindigkeit hilft bei Fristen.",
-          "Professionelles Tippen spart Zeit.",
-          "Fehlerfreies Tippen stärkt dein Selbstvertrauen.",
-          "Du kannst beim Schreiben gleichzeitig bearbeiten.",
-          "Blindtippen steigert deine Produktivität.",
-          "Hohe Tippgeschwindigkeit spart Zeit.",
-          "Schnelles Tippen verbessert die Konzentration.",
-          "Fortgeschrittene nutzen Shortcuts effizient.",
-          "Multitasking gelingt besser mit Routine.",
-          "Du denkst beim Schreiben nicht mehr ans Tippen.",
-          "Du erreichst einen Schreib-Flow.",
-          "Fehlerquote sinkt mit Erfahrung.",
-          "Tippen wird zur Gewohnheit.",
-        ]
-      },
-      hu: {
-        beginner: [
-          "A gyakorlás teszi a mestert.",
-          "Tanulj gépelni minden nap egy kicsit.",
-          "Tartsd az ujjaid a kezdő soron.",
-          "Ne kapkodj, a pontosság a fontos.",
-          "Ülj egyenesen és lazítsd el a csuklód.",
-          "A rövid mondatok jók kezdésnek.",
-          "Ne nézd a billentyűzetet gépelés közben.",
-          "A tízujjas gépelés gyorsabb és pontosabb.",
-          "A hibák tanítanak a legtöbbet.",
-          "Tarts rendszeres szünetet a gyakorlás során.",
-          "A tanulás folyamata is lehet élvezetes.",
-          "A gépelés játék is lehet.",
-          "Törekedj a pontosságra, ne csak a gyorsaságra.",
-          "A napi néhány perc gépelés sokat számít.",
-          "Ismételd át gyakran az alapokat.",
-        ],
-        intermediate: [
-          "A tízujjas gépelés segít a gondolatok gyors kifejezésében.",
-          "A rendszeres ellenőrzés segít nyomon követni a hibákat.",
-          "Próbálj meg egy teljes bekezdést hibamentesen legépelni.",
-          "Heti célkitűzésekkel motiválhatod magad.",
-          "Használj gyakorló szövegeket különböző témákból.",
-          "A helyes gépelés csökkenti a kézfájdalmat.",
-          "Figyeld meg a gépelési hibáidat.",
-          "Használj olyan gyakorló programot, ami hibát is jelez.",
-          "Ismételd át a leggyakoribb elírásokat.",
-          "Tanulj különböző szövegtípusokkal.",
-          "A ritmusos gépelés javítja az írás folyamatosságát.",
-          "Próbáld ki a vakon gépelést.",
-          "Gyakorolj hangosolvasással gépelés közben.",
-          "Kezeld tudatosan az elírásokat.",
-          "Mérd rendszeresen a fejlődésed.",
-        ],
-        advanced: [
-          "A gördülékeny gépelés támogatja a kreatív gondolkodást.",
-          "A haladó gépelők szinte gondolkodás nélkül írnak.",
-          "Az ujjmozgás automatizálása csökkenti a fáradtságot.",
-          "A gyors gépelés hasznos határidős munkáknál.",
-          "A folyamatos gépelés javítja az íráskészséget.",
-          "A precíz gépelés előny a munka világában.",
-          "A tudatos légzés növeli a koncentrációt.",
-          "A gépelés tempója támogatja az ötletelést.",
-          "A szövegszerkesztés hatékonyabb lesz.",
-          "A kevesebb hiba jobb szövegminőséget eredményez.",
-          "A tízujjas gépelés felszabadítja az elmét.",
-          "A vakon gépelés segíti az összpontosítást.",
-          "A rutin csökkenti az írás alatti stresszt.",
-          "Haladó szinten az írás teljesen áramlik.",
-          "A tipikus hibák elkerülése automatikus lesz.",
-        ]
-      }
-    };
-
-          function startTest() {
-      const level = document.getElementById("levelSelect").value;
-      const duration = parseInt(document.getElementById("durationSelect").value);
-      const sentencePool = sentences[currentLang]?.[level];
-
-      if (!sentencePool || sentencePool.length === 0) {
-        alert("No sentences available for selected language/level.");
-        return;
-      }
-
-      currentSentence = sentencePool[Math.floor(Math.random() * sentencePool.length)];
-      document.getElementById("sentenceDisplay").textContent = currentSentence;
-      document.getElementById("inputArea").value = "";
-      document.getElementById("inputArea").classList.remove("hidden");
-      document.getElementById("inputArea").focus();
-      document.getElementById("finishBtn").classList.remove("hidden");
-      document.getElementById("resultDisplay").textContent = "";
-      document.getElementById("timerDisplay").textContent = "";
-
-      // Figyeli, ha teljes mondatot begépelted
-      document.getElementById("inputArea").addEventListener("input", () => {
-        const typed = document.getElementById("inputArea").value.trim();
-        if (typed === currentSentence.trim()) {
-          finishTest();
-        }
-      });
-
-      startTime = Date.now();
-      let timeLeft = duration;
-      document.getElementById("timerDisplay").textContent = timeLeft + "s";
-
-      timerInterval = setInterval(() => {
-        timeLeft--;
-        document.getElementById("timerDisplay").textContent = timeLeft + "s";
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          finishTest();
-        }
-      }, 1000);
-    }
-
-    function finishTest() {
-      clearInterval(timerInterval);
-      const typedText = document.getElementById("inputArea").value;
-      const wordsTyped = typedText.trim().split(/\s+/).filter(word => word.length > 0).length;
-      const timeTaken = (Date.now() - startTime) / 1000 / 60;
-      const wpm = Math.round(wordsTyped / timeTaken);
-
-      let correctChars = 0;
-      for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
-        if (typedText[i] === currentSentence[i]) correctChars++;
-      }
-
-      const accuracy = Math.round((correctChars / currentSentence.length) * 100);
-      document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
-      document.getElementById("finishBtn").classList.add("hidden");
-      document.getElementById("inputArea").classList.add("hidden");
-    }
-  </script>
-</body>
-</html>
-
-
-
-
-
