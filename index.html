@@ -14,24 +14,36 @@
       flex-direction: column;
     }
 
-    nav {
+    .nav-wrapper {
       display: flex;
-      overflow-x: auto;
-      background-color: black;
-      padding: 0.5rem;
-      white-space: nowrap;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      background-color: #333;
+      padding: 20px 0;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-right: 20px;
+    .nav-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .nav-group a {
+      font-size: 1.15em;
       font-weight: bold;
-      transition: color 0.3s;
+      text-decoration: none;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
     }
 
-    nav a:hover {
-      color: limegreen;
+    .nav-group a:hover {
+      background-color: #0f0;
+      color: #000;
     }
 
     main {
@@ -108,7 +120,7 @@
   </style>
 </head>
 <body>
-<body>
+
 
   <nav class="nav-wrapper">
     <div class="nav-group">
