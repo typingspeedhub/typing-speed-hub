@@ -152,10 +152,8 @@
     </div>
   </nav>
 
-
-
-
-   <main>
+  <!-- Fő tartalom -->
+  <main>
     <div class="content">
       <h1>Welcome to Typing Speed Hub</h1>
       <p>Boost your typing skills with drills and fun games!</p>
@@ -193,19 +191,19 @@
     </div>
   </main>
 
- <footer>
-  <div class="social-icons">
-    <p style="margin-bottom: 0.5rem; color: #aaa;">Follow us:</p>
-    <a href="https://www.facebook.com/typingspeedhub/" target="_blank">
-      <i class="fab fa-facebook fa-2x"></i>
-    </a>
-  </div>
-  <p style="margin-top: 1rem;">© 2025 Typing Speed Hub. All rights reserved.</p>
-</footer>
+  <!-- Lábléc -->
+  <footer>
+    <div class="social-icons">
+      <p style="margin-bottom: 0.5rem; color: #aaa;">Follow us:</p>
+      <a href="https://www.facebook.com/typingspeedhub/" target="_blank">
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+    </div>
+    <p style="margin-top: 1rem;">© 2025 Typing Speed Hub. All rights reserved.</p>
+  </footer>
 
-
-
-    <script>
+  <!-- JavaScript -->
+  <script>
     let currentLang = 'en';
     let currentSentence = "";
     let startTime, timerInterval;
@@ -213,6 +211,86 @@
     function setLanguage(lang) {
       currentLang = lang;
     }
+
+    const sentences = {
+      en: {
+        beginner: ["Practice makes perfect."],
+        intermediate: ["Typing helps improve brain-hand coordination."],
+        advanced: ["Touch typing boosts creativity."]
+      },
+      de: {
+        beginner: ["Übung macht den Meister."],
+        intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit."],
+        advanced: ["Flüssiges Tippen unterstützt kreatives Denken."]
+      },
+      hu: {
+        beginner: ["A gyakorlás teszi a mestert."],
+        intermediate: ["A tízujjas gépelés segít a gondolatok gyors kifejezésében."],
+        advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást."]
+      }
+    };
+
+    function startTest() {
+      const level = document.getElementById("levelSelect").value;
+      const duration = parseInt(document.getElementById("durationSelect").value);
+      const sentencePool = sentences[currentLang]?.[level];
+
+      if (!sentencePool || sentencePool.length === 0) {
+        alert("No sentences available for selected language/level.");
+        return;
+      }
+
+      currentSentence = sentencePool[Math.floor(Math.random() * sentencePool.length)];
+      document.getElementById("sentenceDisplay").textContent = currentSentence;
+      document.getElementById("inputArea").value = "";
+      document.getElementById("inputArea").classList.remove("hidden");
+      document.getElementById("inputArea").focus();
+      document.getElementById("finishBtn").classList.remove("hidden");
+      document.getElementById("resultDisplay").textContent = "";
+      document.getElementById("timerDisplay").textContent = "";
+
+      document.getElementById("inputArea").addEventListener("input", () => {
+        const typed = document.getElementById("inputArea").value.trim();
+        if (typed === currentSentence.trim()) {
+          finishTest();
+        }
+      });
+
+      startTime = Date.now();
+      let timeLeft = duration;
+      document.getElementById("timerDisplay").textContent = timeLeft + "s";
+
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timerDisplay").textContent = timeLeft + "s";
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          finishTest();
+        }
+      }, 1000);
+    }
+
+    function finishTest() {
+      clearInterval(timerInterval);
+      const typedText = document.getElementById("inputArea").value;
+      const wordsTyped = typedText.trim().split(/\s+/).filter(word => word.length > 0).length;
+      const timeTaken = (Date.now() - startTime) / 1000 / 60;
+      const wpm = Math.round(wordsTyped / timeTaken);
+
+      let correctChars = 0;
+      for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
+        if (typedText[i] === currentSentence[i]) correctChars++;
+      }
+
+      const accuracy = Math.round((correctChars / currentSentence.length) * 100);
+      document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
+      document.getElementById("finishBtn").classList.add("hidden");
+      document.getElementById("inputArea").classList.add("hidden");
+    }
+  </script>
+</body>
+</html>
+
 
     const sentences = {
       en: {
