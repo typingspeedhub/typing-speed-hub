@@ -106,29 +106,133 @@
         advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást.","A profi gépelés segíti az elmélyült munkát.","A gyors gépelés elengedhetetlen a hatékony íráshoz.","Gépelj anélkül, hogy a billentyűzetre néznél.","A gépelési rutin csökkenti a mentális terhelést.","Gyorsabban hozhatsz létre tartalmat.","A ritmusos gépelés javítja a szöveg áramlását.","A tapasztalt gépelők menet közben javítanak hibát.","Hosszú írás közben is fenntartható a koncentráció.","A billentyűparancsok növelik a hatékonyságot.","A gyors gépelés támogatja az együttműködést.","A gépelési készség fokozza a multitasking képességet.","A gépelés gyakorlása növeli az önbizalmat.","A gyakorlott gépelők szinte automatikusan írnak.","A gyors gépelés a digitális kommunikáció alapja."]
       }
     };
+<script>
+function setLanguage(lang) {
+  currentLang = lang;
+}
 
-    function setLanguage(lang) {
-      currentLang = lang;
+function startTest() {
+  const level = document.getElementById("levelSelect").value;
+  const duration = parseInt(document.getElementById("durationSelect").value);
+  const sentencePool = sentences[currentLang]?.[level];
+
+  if (!sentencePool || sentencePool.length === 0) {
+    alert("No sentences available for selected language/level.");
+    return;
+  }
+
+  currentSentence = sentencePool[Math.floor(Math.random() * sentencePool.length)];
+  document.getElementById("sentenceDisplay").textContent = currentSentence;
+
+  const inputArea = document.getElementById("inputArea");
+  inputArea.value = "";
+  inputArea.classList.remove("hidden");
+  inputArea.focus();
+
+  document.getElementById("finishBtn").classList.remove("hidden");
+  document.getElementById("resultDisplay").textContent = "";
+  document.getElementById("timerDisplay").textContent = "";
+
+  clearInterval(timerInterval);
+  let timeLeft = duration;
+  document.getElementById("timerDisplay").textContent = timeLeft + "s";
+
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    document.getElementById("timerDisplay").textContent = timeLeft + "s";
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      finishTest();
     }
+  }, 1000);
 
-    function startTest() {
-      const level = document.getElementById("levelSelect").value;
-      const duration = parseInt(document.getElementById("durationSelect").value);
-      const sentencePool = sentences[currentLang]?.[level];
+  function handleInput() {
+    const typed = inputArea.value.trim();
+    if (typed === currentSentence.trim()) {
+      clearInterval(timerInterval);
+      finishTest();
+    }
+  }
 
-      if (!sentencePool || sentencePool.length === 0) {
-        alert("No sentences available for selected language/level.");
-        return;
-      }
+  inputArea.removeEventListener("input", handleInput);
+  inputArea.addEventListener("input", handleInput);
+}
+</script>
 
-      currentSentence = sentencePool[Math.floor(Math.random() * sentencePool.length)];
-      document.getElementById("sentenceDisplay").textContent = currentSentence;
-      document.getElementById("inputArea").value = "";
-      document.getElementById("inputArea").classList.remove("hidden");
-      document.getElementById("inputArea").focus();
-      document.getElementById("finishBtn").classList.remove("hidden");
-      document.getElementById("resultDisplay").textContent = "";
-      document.getElementById("timerDisplay").textContent = "";
+
+// Remove previous listener (if any) and add the current one
+inputArea.removeEventListener("input", handleInput);
+inputArea.addEventListener("input", handleInput);
+
+    }
+  }
+
+  // Remove previous listener (if any) and add the current one
+  inputArea.removeEventListener("input", handleInput);
+  inputArea.addEventListener("input", handleInput);
+
+  startTime = Date.now();
+  let timeLeft = duration;
+  document.getElementById("timerDisplay").textContent = timeLeft + "s";
+
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    document.getElementById("timerDisplay").textContent = timeLeft + "s";
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      finishTest();
+    }
+  }, 1000);
+}
+
+
+  // Remove any previous event listener and add a new one
+  inputArea.removeEventListener("input", handleInput);
+  inputArea.addEventListener("input", handleInput);
+
+  startTime = Date.now();
+  let timeLeft = duration;
+  document.getElementById("timerDisplay").textContent = timeLeft + "s";
+
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    document.getElementById("timerDisplay").textContent = timeLeft + "s";
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      finishTest();
+    }
+  }, 1000);
+}
+
+
+   currentSentence = sentencePool[Math.floor(Math.random() * sentencePool.length)];
+document.getElementById("sentenceDisplay").textContent = currentSentence;
+
+const inputArea = document.getElementById("inputArea");
+inputArea.value = "";
+inputArea.classList.remove("hidden");
+inputArea.focus();
+
+document.getElementById("finishBtn").classList.remove("hidden");
+document.getElementById("resultDisplay").textContent = "";
+document.getElementById("timerDisplay").textContent = "";
+
+// Eseményfigyelő eltávolítása, ha már volt
+inputArea.removeEventListener("input", handleInput);
+
+// Új eseményfigyelő hozzáadása
+function handleInput() {
+  const typed = inputArea.value.trim();
+  if (typed === currentSentence.trim()) {
+    finishTest();
+  }
+}
+
+inputArea.addEventListener("input", handleInput);
+
+  }
+});
+
 
       document.getElementById("inputArea").addEventListener("input", () => {
         const typed = document.getElementById("inputArea").value.trim();
