@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,25 +9,25 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #0d2611;
-      background-image: radial-gradient(#003d1f 1px, transparent 1px);
-      background-size: 20px 20px;
+      background-color: #0d0d0d;
       color: #00ff66;
+      background-image: radial-gradient(#00ff66 1px, transparent 1px);
+      background-size: 20px 20px;
     }
     h1 {
       font-size: 2.5rem;
-      text-align: center;
       margin: 1rem;
+      text-align: center;
     }
     .container {
       padding: 2rem;
     }
     .typing-test {
-      background-color: #112d1a;
-      padding: 1.5rem;
-      border-radius: 12px;
+      background-color: #1e1e1e;
+      padding: 1rem;
+      border-radius: 10px;
       box-shadow: 0 0 12px #00ff66;
-      max-width: 700px;
+      max-width: 600px;
       margin: auto;
     }
     select, button, textarea {
@@ -50,11 +51,15 @@
     .hidden {
       display: none;
     }
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
+  <h1>Typing Speed Hub</h1>
   <div class="container">
-    <h1>Typing Speed Hub</h1>
     <div class="typing-test">
       <label for="langSelect">Language:</label>
       <select id="langSelect" onchange="setLanguage(this.value)">
@@ -86,6 +91,11 @@
     </div>
   </div>
 
+  <div class="footer">
+    <p>Follow us:</p>
+    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook" width="40"/></a>
+  </div>
+
   <script>
     let currentLang = 'en';
     let currentSentence = "";
@@ -93,19 +103,62 @@
 
     const sentences = {
       en: {
-        beginner: ["Practice makes perfect.","Typing is fun and useful.","Use all your fingers to type."],
-        intermediate: ["Typing helps improve brain-hand coordination.","Type full sentences to build fluency.","Make accuracy your top priority."],
-        advanced: ["Touch typing boosts creativity.","Typing becomes second nature with practice.","Typing mastery enhances digital communication."]
+        beginner: [
+          "Practice makes perfect.",
+          "Typing is fun and useful.",
+          "Use all your fingers to type.",
+          "Keep your eyes on the screen.",
+          "Do not look at the keyboard.",
+          "Type slowly and carefully.",
+          "Sit up straight while typing.",
+          "Use backspace only when needed.",
+          "Try not to make mistakes.",
+          "Start with short sentences.",
+          "Repeat each exercise often.",
+          "Accuracy is more important than speed.",
+          "Take short breaks between sessions.",
+          "Use both hands when typing.",
+          "Typing gets easier with time.",
+          "Focus on hitting the right keys."
+        ]
       },
       de: {
-        beginner: ["Übung macht den Meister.","Tägliches Tippen verbessert deine Fähigkeiten.","Benutze alle Finger beim Tippen."],
-        intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit.","Tippe vollständige Sätze zur Übung.","Genauigkeit ist dein wichtigstes Ziel."],
-        advanced: ["Flüssiges Tippen unterstützt kreatives Denken.","Tippen wird zur zweiten Natur.","Gutes Tippen erhöht die Konzentration."]
+        beginner: [
+          "Übung macht den Meister.",
+          "Tägliches Tippen verbessert deine Fähigkeiten.",
+          "Benutze alle Finger beim Tippen.",
+          "Halte die Augen auf dem Bildschirm.",
+          "Schau nicht auf die Tastatur.",
+          "Tippe langsam und präzise.",
+          "Sitze beim Tippen gerade.",
+          "Nutze die Rücktaste nur bei Bedarf.",
+          "Vermeide Tippfehler bewusst.",
+          "Beginne mit kurzen Sätzen.",
+          "Wiederhole jede Übung regelmäßig.",
+          "Genauigkeit ist wichtiger als Geschwindigkeit.",
+          "Mach kurze Pausen zwischen den Übungen.",
+          "Verwende beide Hände beim Tippen.",
+          "Tippen wird mit der Zeit einfacher."
+        ]
       },
       hu: {
-        beginner: ["A gyakorlás teszi a mestert.","A gépelés szórakoztató és hasznos.","Használd az összes ujjad gépeléskor."],
-        intermediate: ["A tízujjas gépelés segít a gondolatok gyors kifejezésében.","Gépelj teljes mondatokat a folyékonyságért.","A pontosság mindig legyen elsődleges."],
-        advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást.","A gyakorlott gépelők szinte automatikusan írnak.","A gyors gépelés a digitális kommunikáció alapja."]
+        beginner: [
+          "A gyakorlás teszi a mestert.",
+          "A gépelés szórakoztató és hasznos.",
+          "Használd az összes ujjad gépeléskor.",
+          "Tartsd a szemed a képernyőn.",
+          "Ne nézd a billentyűzetet.",
+          "Gépelj lassan és figyelmesen.",
+          "Ülj egyenesen gépelés közben.",
+          "Használd a törlést csak ha szükséges.",
+          "Próbáld elkerülni a hibákat.",
+          "Kezdj rövid mondatokkal.",
+          "Ismételd meg gyakran a gyakorlatokat.",
+          "A pontosság fontosabb mint a sebesség.",
+          "Tarts rövid szüneteket a gyakorlások között.",
+          "Használd mindkét kezed a gépeléshez.",
+          "A gépelés idővel könnyebbé válik."
+        ]
       }
     };
 
@@ -114,7 +167,6 @@
     }
 
     function startTest() {
-      
       const level = document.getElementById("levelSelect").value;
       const duration = parseInt(document.getElementById("durationSelect").value);
       const sentencePool = sentences[currentLang]?.[level];
@@ -134,6 +186,9 @@
 
       document.getElementById("finishBtn").classList.remove("hidden");
       document.getElementById("resultDisplay").textContent = "";
+      document.getElementById("timerDisplay").textContent = "";
+
+      startTime = Date.now();
 
       clearInterval(timerInterval);
       let timeLeft = duration;
@@ -158,7 +213,6 @@
 
       inputArea.removeEventListener("input", handleInput);
       inputArea.addEventListener("input", handleInput);
-      startTime = Date.now();
     }
 
     function finishTest() {
@@ -166,7 +220,7 @@
       const typedText = document.getElementById("inputArea").value;
       const wordsTyped = typedText.trim().split(/\s+/).filter(word => word.length > 0).length;
       const timeTaken = (Date.now() - startTime) / 1000 / 60;
-      const wpm = timeTaken > 0 ? Math.round(wordsTyped / timeTaken) : 0;
+      const wpm = Math.round(wordsTyped / timeTaken);
 
       let correctChars = 0;
       for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
