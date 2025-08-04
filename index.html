@@ -15,20 +15,17 @@
       background-size: 20px 20px;
     }
     h1 {
-      font-size: 2.5rem;
-      margin: 1rem;
       text-align: center;
-    }
-    .container {
-      padding: 2rem;
+      margin-top: 1rem;
+      font-size: 2.5rem;
     }
     .typing-test {
       background-color: #1e1e1e;
-      padding: 1rem;
+      padding: 1.5rem;
       border-radius: 10px;
-      box-shadow: 0 0 12px #00ff66;
+      box-shadow: 0 0 15px #00ff66;
       max-width: 600px;
-      margin: auto;
+      margin: 2rem auto;
     }
     select, button, textarea {
       margin: 0.5rem 0;
@@ -51,49 +48,52 @@
     .hidden {
       display: none;
     }
-    .footer {
+    #footer {
       text-align: center;
-      margin-top: 2rem;
+      margin-top: 3rem;
+      font-size: 1rem;
+    }
+    #footer img {
+      width: 40px;
+      margin-top: 0.5rem;
     }
   </style>
 </head>
 <body>
   <h1>Typing Speed Hub</h1>
-  <div class="container">
-    <div class="typing-test">
-      <label for="langSelect">Language:</label>
-      <select id="langSelect" onchange="setLanguage(this.value)">
-        <option value="en">English</option>
-        <option value="de">Deutsch</option>
-        <option value="hu">Magyar</option>
-      </select>
+  <div class="typing-test">
+    <label for="langSelect">Language:</label>
+    <select id="langSelect" onchange="setLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+      <option value="hu">Magyar</option>
+    </select>
 
-      <label for="levelSelect">Level:</label>
-      <select id="levelSelect">
-        <option value="beginner">Beginner</option>
-        <option value="intermediate">Intermediate</option>
-        <option value="advanced">Advanced</option>
-      </select>
+    <label for="levelSelect">Level:</label>
+    <select id="levelSelect">
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
 
-      <label for="durationSelect">Test duration:</label>
-      <select id="durationSelect">
-        <option value="60">1 minute</option>
-        <option value="300">5 minutes</option>
-      </select>
+    <label for="durationSelect">Test duration:</label>
+    <select id="durationSelect">
+      <option value="60">1 minute</option>
+      <option value="300">5 minutes</option>
+    </select>
 
-      <button onclick="startTest()">Start</button>
-      <button type="button" onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
+    <button onclick="startTest()">Start</button>
+    <button type="button" onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
 
-      <p id="timerDisplay"></p>
-      <p id="sentenceDisplay"></p>
-      <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
-      <p id="resultDisplay"></p>
-    </div>
+    <p id="timerDisplay"></p>
+    <p id="sentenceDisplay"></p>
+    <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
+    <p id="resultDisplay"></p>
   </div>
 
-  <div class="footer">
-    <p>Follow us:</p>
-    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook" width="40"/></a>
+  <div id="footer">
+    Follow us:<br/>
+    <img src="facebook.png" alt="Facebook logo"/>
   </div>
 
   <script>
@@ -103,62 +103,19 @@
 
     const sentences = {
       en: {
-        beginner: [
-          "Practice makes perfect.",
-          "Typing is fun and useful.",
-          "Use all your fingers to type.",
-          "Keep your eyes on the screen.",
-          "Do not look at the keyboard.",
-          "Type slowly and carefully.",
-          "Sit up straight while typing.",
-          "Use backspace only when needed.",
-          "Try not to make mistakes.",
-          "Start with short sentences.",
-          "Repeat each exercise often.",
-          "Accuracy is more important than speed.",
-          "Take short breaks between sessions.",
-          "Use both hands when typing.",
-          "Typing gets easier with time.",
-          "Focus on hitting the right keys."
-        ]
+        beginner: ["Practice makes perfect.", "Typing is fun and useful."],
+        intermediate: ["Typing helps improve brain-hand coordination."],
+        advanced: ["Touch typing boosts creativity."]
       },
       de: {
-        beginner: [
-          "Übung macht den Meister.",
-          "Tägliches Tippen verbessert deine Fähigkeiten.",
-          "Benutze alle Finger beim Tippen.",
-          "Halte die Augen auf dem Bildschirm.",
-          "Schau nicht auf die Tastatur.",
-          "Tippe langsam und präzise.",
-          "Sitze beim Tippen gerade.",
-          "Nutze die Rücktaste nur bei Bedarf.",
-          "Vermeide Tippfehler bewusst.",
-          "Beginne mit kurzen Sätzen.",
-          "Wiederhole jede Übung regelmäßig.",
-          "Genauigkeit ist wichtiger als Geschwindigkeit.",
-          "Mach kurze Pausen zwischen den Übungen.",
-          "Verwende beide Hände beim Tippen.",
-          "Tippen wird mit der Zeit einfacher."
-        ]
+        beginner: ["Übung macht den Meister."],
+        intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit."],
+        advanced: ["Flüssiges Tippen unterstützt kreatives Denken."]
       },
       hu: {
-        beginner: [
-          "A gyakorlás teszi a mestert.",
-          "A gépelés szórakoztató és hasznos.",
-          "Használd az összes ujjad gépeléskor.",
-          "Tartsd a szemed a képernyőn.",
-          "Ne nézd a billentyűzetet.",
-          "Gépelj lassan és figyelmesen.",
-          "Ülj egyenesen gépelés közben.",
-          "Használd a törlést csak ha szükséges.",
-          "Próbáld elkerülni a hibákat.",
-          "Kezdj rövid mondatokkal.",
-          "Ismételd meg gyakran a gyakorlatokat.",
-          "A pontosság fontosabb mint a sebesség.",
-          "Tarts rövid szüneteket a gyakorlások között.",
-          "Használd mindkét kezed a gépeléshez.",
-          "A gépelés idővel könnyebbé válik."
-        ]
+        beginner: ["A gyakorlás teszi a mestert."],
+        intermediate: ["A tízujjas gépelés segít a gondolatok gyors kifejezésében."],
+        advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást."]
       }
     };
 
@@ -186,22 +143,12 @@
 
       document.getElementById("finishBtn").classList.remove("hidden");
       document.getElementById("resultDisplay").textContent = "";
-      document.getElementById("timerDisplay").textContent = "";
-
-      startTime = Date.now();
 
       clearInterval(timerInterval);
-      let timeLeft = duration;
-      document.getElementById("timerDisplay").textContent = timeLeft + "s";
+      document.getElementById("timerDisplay").textContent = duration + "s";
 
-      timerInterval = setInterval(() => {
-        timeLeft--;
-        document.getElementById("timerDisplay").textContent = timeLeft + "s";
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          finishTest();
-        }
-      }, 1000);
+      startTime = Date.now();
+      let timeLeft = duration;
 
       function handleInput() {
         const typed = inputArea.value.trim();
@@ -213,6 +160,15 @@
 
       inputArea.removeEventListener("input", handleInput);
       inputArea.addEventListener("input", handleInput);
+
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timerDisplay").textContent = timeLeft + "s";
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          finishTest();
+        }
+      }, 1000);
     }
 
     function finishTest() {
