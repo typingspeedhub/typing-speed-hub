@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Typing Speed Hub</title>
 
+  <!-- Font Awesome Facebook ikonhoz -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -18,14 +20,17 @@
       display: flex;
       flex-direction: column;
     }
+
     h1 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
+
     h2 {
       font-size: 1.8rem;
       margin-bottom: 0.8rem;
     }
+
     .nav-wrapper {
       display: flex;
       flex-direction: column;
@@ -34,12 +39,14 @@
       background-color: #333;
       padding: 30px 0;
     }
+
     .nav-group {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 18px;
     }
+
     .nav-group a {
       font-size: 1.2em;
       font-weight: bold;
@@ -49,10 +56,12 @@
       border-radius: 6px;
       transition: background-color 0.2s ease;
     }
+
     .nav-group a:hover {
       background-color: #0f0;
       color: #000;
     }
+
     main {
       display: flex;
       flex-direction: row;
@@ -61,10 +70,12 @@
       flex-wrap: wrap;
       justify-content: space-between;
     }
+
     .content {
       flex: 1.5;
       max-width: 50%;
     }
+
     .typing-test {
       flex: 1;
       min-width: 300px;
@@ -73,6 +84,7 @@
       border-radius: 10px;
       box-shadow: 0 0 12px #00ff66;
     }
+
     select, button, textarea {
       margin: 0.5rem 0;
       padding: 0.5rem;
@@ -83,39 +95,48 @@
       border: 1px solid #00ff66;
       border-radius: 5px;
     }
+
     button:hover {
       background-color: #00ff66;
       color: #0d0d0d;
       cursor: pointer;
     }
+
     textarea {
       height: 100px;
     }
+
     .hidden {
       display: none;
     }
+
     .flag-bar {
       text-align: center;
       margin-bottom: 1rem;
     }
+
     .flag-bar img {
       cursor: pointer;
       margin: 0 5px;
     }
+
     footer {
       text-align: center;
       color: #888;
       margin: 2rem 0;
     }
+
     .social-icons {
       margin-top: 1rem;
     }
+
     .social-icons a {
       color: #00ff66;
       text-decoration: none;
       margin: 0 10px;
       font-size: 1.5rem;
     }
+
     .social-icons a:hover {
       color: #0f0;
     }
@@ -123,25 +144,26 @@
 </head>
 <body>
 
+  <!-- Navigáció -->
   <nav class="nav-wrapper">
     <div class="nav-group">
-      <a href="#">Typing Plan</a>
-      <a href="#">Speed Improvement</a>
-      <a href="#">Typing Tips</a>
-      <a href="#">Mistakes</a>
+      <a href="7-day-typing-plan.html">Typing Plan</a>
+      <a href="increase-typing-speed-7days.html">Speed Improvement</a>
+      <a href="typing-tips.html">Typing Tips</a>
+      <a href="common-typing-mistakes.html">Mistakes</a>
     </div>
     <div class="nav-group">
-      <a href="#">Typing Games</a>
-      <a href="#">Typing for Kids</a>
-      <a href="#">Keyboards</a>
-      <a href="#">Typing & Memory</a>
+      <a href="best-free-typing-games.html">Typing Games</a>
+      <a href="typing-for-kids.html">Typing for Kids</a>
+      <a href="best-keyboards-typing-practice.html">Keyboards</a>
+      <a href="how-typing-improves-focus-memory.html">Typing & Memory</a>
     </div>
     <div class="nav-group">
-      <a href="#">What is WPM?</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-      <a href="#">Impressum</a>
-      <a href="#">Privacy</a>
+      <a href="what-is-wpm.html">What is WPM?</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="privacy-policy.html">Privacy</a>
     </div>
   </nav>
 
@@ -182,15 +204,21 @@
     </div>
   </main>
 
-  <footer>
-    <p>Follow us:</p>
-    <div class="social-icons">
-      <a href="https://www.facebook.com/typingspeedhub/" target="_blank" aria-label="Facebook">
-        <i class="fab fa-facebook-square"></i>
-      </a>
-    </div>
-    <p>© 2025 Typing Speed Hub. All rights reserved.</p>
-  </footer>
+<footer style="text-align: center; color: #888; margin: 2rem 0;">
+  <p style="margin-bottom: 0.5rem;">Follow us:</p>
+
+  <a href="https://www.facebook.com/typingspeedhub/" 
+     target="_blank" 
+     aria-label="Facebook"
+     style="display: inline-block; width: 40px; height: 40px;">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#00ff66" viewBox="0 0 24 24" width="32px" height="32px">
+      <path d="M22,12A10,10,0,1,0,10.93,21.94V14.89H8.07v-3H10.93V9.41c0-2.83,1.68-4.39,4.26-4.39a17.33,17.33,0,0,1,2.53.22v2.78H16.5c-1.4,0-1.84.87-1.84,1.76v2.11h3.13l-.5,3H14.66v7.05A10,10,0,0,0,22,12Z"/>
+    </svg>
+  </a>
+
+  <p style="margin-top: 1rem;">© 2025 Typing Speed Hub. All rights reserved.</p>
+</footer>
+
 
   <script>
     let currentLang = 'en';
@@ -199,157 +227,73 @@
 
     const sentences = {
       en: {
-        beginner:         "Practice makes perfect.",
-        "Typing is fun and useful.",
-        "Use all your fingers to type.",
-        "Keep your eyes on the screen.",
-        "Do not look at the keyboard.",
-        "Type slowly and carefully.",
-        "Sit up straight while typing.",
-        "Use backspace only when needed.",
-        "Try not to make mistakes.",
-        "Start with short sentences.",
-        "Repeat each exercise often.",
-        "Accuracy is more important than speed.",
-        "Take short breaks between sessions.",
-        "Use both hands when typing.",
-        "Typing gets easier with time.",
-        "Focus on hitting the right keys."
-[...], // Töltsd be az angol mondatokat, amit már megadtál
+        beginner: ["Practice makes perfect.",
+                  "Typing is fun and useful.",
+    "Use all your fingers to type.",
+    "Keep your eyes on the screen.",
+    "Do not look at the keyboard.",
+    "Type slowly and carefully.",
+    "Sit up straight while typing.",
+    "Use backspace only when needed.",
+    "Try not to make mistakes.",
+    "Start with short sentences.",
+    "Repeat each exercise often.",
+    "Accuracy is more important than speed.",
+    "Take short breaks between sessions.",
+    "Use both hands when typing.",
+    "Typing gets easier with time.",
+    "Focus on hitting the right keys."
+                    ],
+  
+        
         intermediate: ["Typing helps improve brain-hand coordination.",
-        "Daily practice leads to real improvement.",
-        "Type full sentences to build fluency.",
-        "Avoid looking at the keyboard while typing.",
-        "Focus on consistency, not just speed.",
-        "Make accuracy your top priority.",
-        "Typing tests are great for tracking progress.",
-        "Use online tools to measure your WPM.",
-        "Practice with longer and more complex texts.",
-        "Avoid using backspace too often.",
-        "Build muscle memory through repetition.",
-        "Stretch your hands before and after typing.",
-        "Type without pausing to think about keys.",
-        "Use varied content to challenge yourself.",
-        "Stay relaxed and maintain good posture.",
-        "Track your mistakes and correct them consciously."
-...],
-        advanced: [        "Touch typing boosts creativity.",
-        "Advanced typing frees your focus for thinking.",
-        "Typing fluently supports deep work.",
-        "High WPM is essential for professional writing.",
-        "Typing without looking increases mental flow.",
-        "Mastery of typing reduces cognitive load.",
-        "Fast typing enables quicker content creation.",
-        "Typing with rhythm improves clarity and tone.",
-        "Experienced typists correct errors on the fly.",
-        "Long typing sessions feel effortless over time.",
-        "Keyboard shortcuts boost typing productivity.",
-        "Fluent typing supports real-time collaboration.",
-        "Typing speed supports multitasking and flow.",
-        "Typing becomes second nature with practice.",
-        "Typing mastery enhances digital communication.",
-        "Expert typists rarely think about the keyboard."
-...]
-      },
+  "Daily practice leads to real improvement.",
+  "Type full sentences to build fluency.",
+  "Avoid looking at the keyboard while typing.",
+  "Focus on consistency, not just speed.",
+  "Make accuracy your top priority.",
+  "Typing tests are great for tracking progress.",
+  "Use online tools to measure your WPM.",
+  "Practice with longer and more complex texts.",
+  "Avoid using backspace too often.",
+  "Build muscle memory through repetition.",
+  "Stretch your hands before and after typing.",
+  "Type without pausing to think about keys.",
+  "Use varied content to challenge yourself.",
+  "Stay relaxed and maintain good posture.",
+  "Track your mistakes and correct them consciously.", 
+                        ],
+                        
+                      
+        advanced: ["Touch typing boosts creativity.",
+                   "Advanced typing frees your focus for thinking.",
+  "Typing fluently supports deep work.",
+  "High WPM is essential for professional writing.",
+  "Typing without looking increases mental flow.",
+  "Mastery of typing reduces cognitive load.",
+  "Fast typing enables quicker content creation.",
+  "Typing with rhythm improves clarity and tone.",
+  "Experienced typists correct errors on the fly.",
+  "Long typing sessions feel effortless over time.",
+  "Keyboard shortcuts boost typing productivity.",
+  "Fluent typing supports real-time collaboration.",
+  "Typing speed supports multitasking and flow.",
+  "Typing becomes second nature with practice.",
+  "Typing mastery enhances digital communication.",
+  "Expert typists rarely think about the keyboard."
+                      ]
+  }
+};
+                  
       de: {
-        beginner: ["Übung macht den Meister.",
-        "Tägliches Tippen verbessert deine Fähigkeiten.",
-        "Benutze alle Finger beim Tippen.",
-        "Halte die Augen auf dem Bildschirm.",
-        "Schau nicht auf die Tastatur.",
-        "Tippe langsam und präzise.",
-        "Sitze beim Tippen gerade.",
-        "Nutze die Rücktaste nur bei Bedarf.",
-        "Vermeide Tippfehler bewusst.",
-        "Beginne mit kurzen Sätzen.",
-        "Wiederhole jede Übung regelmäßig.",
-        "Genauigkeit ist wichtiger als Geschwindigkeit.",
-        "Mach kurze Pausen zwischen den Übungen.",
-        "Verwende beide Hände beim Tippen.",
-        "Tippen wird mit der Zeit einfacher."
-...], // A német kezdő mondatok: 
-        intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit.",
-        "Übung macht dich schneller und genauer.",
-        "Tippe vollständige Sätze zur Übung.",
-        "Vermeide es, auf die Tastatur zu schauen.",
-        "Konzentriere dich auf gleichmäßiges Tippen.",
-        "Genauigkeit ist dein wichtigstes Ziel.",
-        "Nimm regelmäßig an Tipp-Tests teil.",
-        "Verfolge deine Tippgeschwindigkeit online.",
-        "Tippe komplexere Texte zur Herausforderung.",
-        "Verwende die Rücktaste nur bei Fehlern.",
-        "Wiederholung führt zu Muskelgedächtnis.",
-        "Dehne deine Finger vor dem Üben.",
-        "Vermeide Pausen beim Schreiben.",
-        "Nutze verschiedene Inhalte zum Lernen.",
-        "Bleib locker und halte eine gute Haltung."
-...],
-        advanced: ["Flüssiges Tippen unterstützt kreatives Denken.",
-        "Schnelles Tippen erleichtert komplexe Aufgaben.",
-        "Tastenkombinationen steigern deine Effizienz.",
-        "Tippen ohne Blick auf die Tastatur spart Zeit.",
-        "Experten korrigieren Fehler im Fluss.",
-        "Gutes Tippen entlastet dein Gehirn.",
-        "Profis schreiben mit Rhythmus und Tempo.",
-        "Lange Tipp-Sessions werden mühelos.",
-        "Erfahrene Nutzer beherrschen Tastaturkürzel.",
-        "Multitasking gelingt besser mit Tippgeschick.",
-        "Tippen unterstützt kollaboratives Arbeiten.",
-        "Flüssiges Tippen fördert den Arbeitsfluss.",
-        "Textverarbeitung wird schneller und einfacher.",
-        "Gutes Tippen erhöht die Konzentration.",
-        "Tippen wird zur zweiten Natur."
-...]
+        beginner: ["Übung macht den Meister."],
+        intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit."],
+        advanced: ["Flüssiges Tippen unterstützt kreatives Denken."]
       },
       hu: {
-        beginner: [        "A gyakorlás teszi a mestert.",
-        "A gépelés szórakoztató és hasznos.",
-        "Használd az összes ujjad gépeléskor.",
-        "Tartsd a szemed a képernyőn.",
-        "Ne nézd a billentyűzetet.",
-        "Gépelj lassan és figyelmesen.",
-        "Ülj egyenesen gépelés közben.",
-        "Használd a törlést csak ha szükséges.",
-        "Próbáld elkerülni a hibákat.",
-        "Kezdj rövid mondatokkal.",
-        "Ismételd meg gyakran a gyakorlatokat.",
-        "A pontosság fontosabb mint a sebesség.",
-        "Tarts rövid szüneteket a gyakorlások között.",
-        "Használd mindkét kezed a gépeléshez.",
-        "A gépelés idővel könnyebbé válik."
-...], // A magyar kezdő mondatok
-        intermediate: [        "A tízujjas gépelés segít a gondolatok gyors kifejezésében.",
-        "A napi gyakorlás látványos fejlődést hoz.",
-        "Gépelj teljes mondatokat a folyékonyságért.",
-        "Kerüld a billentyűzet nézegetését.",
-        "Koncentrálj az egyenletes ritmusra.",
-        "A pontosság mindig legyen elsődleges.",
-        "Tipp tesztek segítenek mérni a haladást.",
-        "Használj online eszközöket a WPM méréséhez.",
-        "Gyakorolj hosszabb és összetettebb szövegekkel.",
-        "Ne használd túl sokszor a törlést.",
-        "Ismétlés által fejlődik az izommemória.",
-        "Nyújtsd le az ujjaid gépelés előtt és után.",
-        "Ne állj meg gépelés közben gondolkodni.",
-        "Használj változatos szövegeket a kihíváshoz.",
-        "Maradj nyugodt és tarts helyes testtartást."
-...],
-        advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást.",
-        "A profi gépelés segíti az elmélyült munkát.",
-        "A gyors gépelés elengedhetetlen a hatékony íráshoz.",
-        "Gépelj anélkül, hogy a billentyűzetre néznél.",
-        "A gépelési rutin csökkenti a mentális terhelést.",
-        "Gyorsabban hozhatsz létre tartalmat.",
-        "A ritmusos gépelés javítja a szöveg áramlását.",
-        "A tapasztalt gépelők menet közben javítanak hibát.",
-        "Hosszú írás közben is fenntartható a koncentráció.",
-        "A billentyűparancsok növelik a hatékonyságot.",
-        "A gyors gépelés támogatja az együttműködést.",
-        "A gépelési készség fokozza a multitasking képességet.",
-        "A gépelés gyakorlása növeli az önbizalmat.",
-        "A gyakorlott gépelők szinte automatikusan írnak.",
-        "A gyors gépelés a digitális kommunikáció alapja."
-...]
+        beginner: ["A gyakorlás teszi a mestert."],
+        intermediate: ["A tízujjas gépelés segít a gondolatok gyors kifejezésében."],
+        advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást."]
       }
     };
 
