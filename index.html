@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,26 +8,26 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #0d0d0d;
-      color: #00ff66;
-      background-image: radial-gradient(#00ff6655 1px, transparent 1px);
+      background-color: #0d2611;
+      background-image: radial-gradient(#003d1f 1px, transparent 1px);
       background-size: 20px 20px;
+      color: #00ff66;
     }
     h1 {
+      font-size: 2.5rem;
       text-align: center;
-      font-size: 3rem;
-      margin: 1rem 0;
+      margin: 1rem;
     }
     .container {
       padding: 2rem;
-      max-width: 800px;
-      margin: auto;
     }
     .typing-test {
-      background-color: #1e1e1e;
+      background-color: #112d1a;
       padding: 1.5rem;
-      border-radius: 10px;
+      border-radius: 12px;
       box-shadow: 0 0 12px #00ff66;
+      max-width: 700px;
+      margin: auto;
     }
     select, button, textarea {
       margin: 0.5rem 0;
@@ -51,24 +50,17 @@
     .hidden {
       display: none;
     }
-    .social {
-      margin-top: 2rem;
-      text-align: center;
-    }
-    .social img {
-      width: 48px;
-    }
   </style>
 </head>
 <body>
-  <h1>Typing Speed Hub</h1>
   <div class="container">
+    <h1>Typing Speed Hub</h1>
     <div class="typing-test">
       <label for="langSelect">Language:</label>
       <select id="langSelect" onchange="setLanguage(this.value)">
-        <option value="en">🇬🇧 English</option>
-        <option value="de">🇩🇪 Deutsch</option>
-        <option value="hu">🇭🇺 Magyar</option>
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+        <option value="hu">Magyar</option>
       </select>
 
       <label for="levelSelect">Level:</label>
@@ -92,11 +84,6 @@
       <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
       <p id="resultDisplay"></p>
     </div>
-
-    <div class="social">
-      <p>Follow us:</p>
-      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook"/></a>
-    </div>
   </div>
 
   <script>
@@ -106,19 +93,19 @@
 
     const sentences = {
       en: {
-        beginner: ["Practice makes perfect.", "Typing is fun and useful.", "Use all your fingers to type."],
-        intermediate: ["Typing helps improve brain-hand coordination.", "Daily practice leads to real improvement."],
-        advanced: ["Touch typing boosts creativity.", "Advanced typing frees your focus for thinking."]
+        beginner: ["Practice makes perfect.","Typing is fun and useful.","Use all your fingers to type."],
+        intermediate: ["Typing helps improve brain-hand coordination.","Type full sentences to build fluency.","Make accuracy your top priority."],
+        advanced: ["Touch typing boosts creativity.","Typing becomes second nature with practice.","Typing mastery enhances digital communication."]
       },
       de: {
-        beginner: ["Übung macht den Meister."],
-        intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit."],
-        advanced: ["Flüssiges Tippen unterstützt kreatives Denken."]
+        beginner: ["Übung macht den Meister.","Tägliches Tippen verbessert deine Fähigkeiten.","Benutze alle Finger beim Tippen."],
+        intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit.","Tippe vollständige Sätze zur Übung.","Genauigkeit ist dein wichtigstes Ziel."],
+        advanced: ["Flüssiges Tippen unterstützt kreatives Denken.","Tippen wird zur zweiten Natur.","Gutes Tippen erhöht die Konzentration."]
       },
       hu: {
-        beginner: ["A gyakorlás teszi a mestert."],
-        intermediate: ["A tízujjas gépelés segít a gondolatok gyors kifejezésében."],
-        advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást."]
+        beginner: ["A gyakorlás teszi a mestert.","A gépelés szórakoztató és hasznos.","Használd az összes ujjad gépeléskor."],
+        intermediate: ["A tízujjas gépelés segít a gondolatok gyors kifejezésében.","Gépelj teljes mondatokat a folyékonyságért.","A pontosság mindig legyen elsődleges."],
+        advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást.","A gyakorlott gépelők szinte automatikusan írnak.","A gyors gépelés a digitális kommunikáció alapja."]
       }
     };
 
@@ -146,7 +133,6 @@
 
       document.getElementById("finishBtn").classList.remove("hidden");
       document.getElementById("resultDisplay").textContent = "";
-      document.getElementById("timerDisplay").textContent = "";
 
       clearInterval(timerInterval);
       let timeLeft = duration;
@@ -171,6 +157,7 @@
 
       inputArea.removeEventListener("input", handleInput);
       inputArea.addEventListener("input", handleInput);
+      startTime = Date.now();
     }
 
     function finishTest() {
@@ -178,7 +165,7 @@
       const typedText = document.getElementById("inputArea").value;
       const wordsTyped = typedText.trim().split(/\s+/).filter(word => word.length > 0).length;
       const timeTaken = (Date.now() - startTime) / 1000 / 60;
-      const wpm = Math.round(wordsTyped / timeTaken);
+      const wpm = timeTaken > 0 ? Math.round(wordsTyped / timeTaken) : 0;
 
       let correctChars = 0;
       for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
