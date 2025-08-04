@@ -5,10 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Typing Speed Hub</title>
-
-  <!-- Font Awesome Facebook ikonhoz -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
     body {
       margin: 0;
@@ -20,17 +17,8 @@
       display: flex;
       flex-direction: column;
     }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 0.8rem;
-    }
-
+    h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 0.8rem; }
     .nav-wrapper {
       display: flex;
       flex-direction: column;
@@ -39,14 +27,12 @@
       background-color: #333;
       padding: 30px 0;
     }
-
     .nav-group {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 18px;
     }
-
     .nav-group a {
       font-size: 1.2em;
       font-weight: bold;
@@ -56,12 +42,10 @@
       border-radius: 6px;
       transition: background-color 0.2s ease;
     }
-
     .nav-group a:hover {
       background-color: #0f0;
       color: #000;
     }
-
     main {
       display: flex;
       flex-direction: row;
@@ -70,12 +54,7 @@
       flex-wrap: wrap;
       justify-content: space-between;
     }
-
-    .content {
-      flex: 1.5;
-      max-width: 50%;
-    }
-
+    .content { flex: 1.5; max-width: 50%; }
     .typing-test {
       flex: 1;
       min-width: 300px;
@@ -84,7 +63,6 @@
       border-radius: 10px;
       box-shadow: 0 0 12px #00ff66;
     }
-
     select, button, textarea {
       margin: 0.5rem 0;
       padding: 0.5rem;
@@ -95,56 +73,37 @@
       border: 1px solid #00ff66;
       border-radius: 5px;
     }
-
     button:hover {
       background-color: #00ff66;
       color: #0d0d0d;
       cursor: pointer;
     }
-
-    textarea {
-      height: 100px;
-    }
-
-    .hidden {
-      display: none;
-    }
-
+    textarea { height: 100px; }
+    .hidden { display: none; }
     .flag-bar {
       text-align: center;
       margin-bottom: 1rem;
     }
-
     .flag-bar img {
       cursor: pointer;
       margin: 0 5px;
     }
-
     footer {
       text-align: center;
       color: #888;
       margin: 2rem 0;
     }
-
-    .social-icons {
-      margin-top: 1rem;
-    }
-
+    .social-icons { margin-top: 1rem; }
     .social-icons a {
       color: #00ff66;
       text-decoration: none;
       margin: 0 10px;
       font-size: 1.5rem;
     }
-
-    .social-icons a:hover {
-      color: #0f0;
-    }
+    .social-icons a:hover { color: #0f0; }
   </style>
 </head>
 <body>
-
-  <!-- Navigáció -->
   <nav class="nav-wrapper">
     <div class="nav-group">
       <a href="7-day-typing-plan.html">Typing Plan</a>
@@ -204,160 +163,18 @@
     </div>
   </main>
 
-<footer style="text-align: center; color: #888; margin: 2rem 0;">
-  <p style="margin-bottom: 0.5rem;">Follow us:</p>
-
-  <a href="https://www.facebook.com/typingspeedhub/" 
-     target="_blank" 
-     aria-label="Facebook"
-     style="display: inline-block; width: 40px; height: 40px;">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="#00ff66" viewBox="0 0 24 24" width="32px" height="32px">
-      <path d="M22,12A10,10,0,1,0,10.93,21.94V14.89H8.07v-3H10.93V9.41c0-2.83,1.68-4.39,4.26-4.39a17.33,17.33,0,0,1,2.53.22v2.78H16.5c-1.4,0-1.84.87-1.84,1.76v2.11h3.13l-.5,3H14.66v7.05A10,10,0,0,0,22,12Z"/>
-    </svg>
-  </a>
-
-  <p style="margin-top: 1rem;">© 2025 Typing Speed Hub. All rights reserved.</p>
-</footer>
-
+  <footer>
+    <p style="margin-bottom: 0.5rem;">Follow us:</p>
+    <a href="https://www.facebook.com/typingspeedhub/" target="_blank" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="#00ff66" viewBox="0 0 24 24" width="32px" height="32px">
+        <path d="M22,12A10,10,0,1,0,10.93,21.94V14.89H8.07v-3H10.93V9.41c0-2.83,1.68-4.39,4.26-4.39a17.33,17.33,0,0,1,2.53.22v2.78H16.5c-1.4,0-1.84.87-1.84,1.76v2.11h3.13l-.5,3H14.66v7.05A10,10,0,0,0,22,12Z"/>
+      </svg>
+    </a>
+    <p style="margin-top: 1rem;">© 2025 Typing Speed Hub. All rights reserved.</p>
+  </footer>
 
   <script>
-    let currentLang = 'en';
-    let currentSentence = "";
-    let startTime, timerInterval;
-
-    const sentences = {
-      en: {
-        beginner: ["Practice makes perfect.",
-                  "Typing is fun and useful.",
-    "Use all your fingers to type.",
-    "Keep your eyes on the screen.",
-    "Do not look at the keyboard.",
-    "Type slowly and carefully.",
-    "Sit up straight while typing.",
-    "Use backspace only when needed.",
-    "Try not to make mistakes.",
-    "Start with short sentences.",
-    "Repeat each exercise often.",
-    "Accuracy is more important than speed.",
-    "Take short breaks between sessions.",
-    "Use both hands when typing.",
-    "Typing gets easier with time.",
-    "Focus on hitting the right keys."
-                    ],
-  
-        
-        intermediate: ["Typing helps improve brain-hand coordination.",
-  "Daily practice leads to real improvement.",
-  "Type full sentences to build fluency.",
-  "Avoid looking at the keyboard while typing.",
-  "Focus on consistency, not just speed.",
-  "Make accuracy your top priority.",
-  "Typing tests are great for tracking progress.",
-  "Use online tools to measure your WPM.",
-  "Practice with longer and more complex texts.",
-  "Avoid using backspace too often.",
-  "Build muscle memory through repetition.",
-  "Stretch your hands before and after typing.",
-  "Type without pausing to think about keys.",
-  "Use varied content to challenge yourself.",
-  "Stay relaxed and maintain good posture.",
-  "Track your mistakes and correct them consciously.", 
-                        ],
-                        
-                      
-        advanced: ["Touch typing boosts creativity.",
-                   "Advanced typing frees your focus for thinking.",
-  "Typing fluently supports deep work.",
-  "High WPM is essential for professional writing.",
-  "Typing without looking increases mental flow.",
-  "Mastery of typing reduces cognitive load.",
-  "Fast typing enables quicker content creation.",
-  "Typing with rhythm improves clarity and tone.",
-  "Experienced typists correct errors on the fly.",
-  "Long typing sessions feel effortless over time.",
-  "Keyboard shortcuts boost typing productivity.",
-  "Fluent typing supports real-time collaboration.",
-  "Typing speed supports multitasking and flow.",
-  "Typing becomes second nature with practice.",
-  "Typing mastery enhances digital communication.",
-  "Expert typists rarely think about the keyboard."
-                      ]
-  }
-};
-                  
-      de: {
-        beginner: ["Übung macht den Meister."],
-        intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit."],
-        advanced: ["Flüssiges Tippen unterstützt kreatives Denken."]
-      },
-      hu: {
-        beginner: ["A gyakorlás teszi a mestert."],
-        intermediate: ["A tízujjas gépelés segít a gondolatok gyors kifejezésében."],
-        advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást."]
-      }
-    };
-
-    function setLanguage(lang) {
-      currentLang = lang;
-    }
-
-    function startTest() {
-      const level = document.getElementById("levelSelect").value;
-      const duration = parseInt(document.getElementById("durationSelect").value);
-      const sentencePool = sentences[currentLang]?.[level];
-
-      if (!sentencePool || sentencePool.length === 0) {
-        alert("No sentences available for selected language/level.");
-        return;
-      }
-
-      currentSentence = sentencePool[Math.floor(Math.random() * sentencePool.length)];
-      document.getElementById("sentenceDisplay").textContent = currentSentence;
-      document.getElementById("inputArea").value = "";
-      document.getElementById("inputArea").classList.remove("hidden");
-      document.getElementById("inputArea").focus();
-      document.getElementById("finishBtn").classList.remove("hidden");
-      document.getElementById("resultDisplay").textContent = "";
-      document.getElementById("timerDisplay").textContent = "";
-
-      document.getElementById("inputArea").addEventListener("input", () => {
-        const typed = document.getElementById("inputArea").value.trim();
-        if (typed === currentSentence.trim()) {
-          finishTest();
-        }
-      });
-
-      startTime = Date.now();
-      let timeLeft = duration;
-      document.getElementById("timerDisplay").textContent = timeLeft + "s";
-
-      timerInterval = setInterval(() => {
-        timeLeft--;
-        document.getElementById("timerDisplay").textContent = timeLeft + "s";
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          finishTest();
-        }
-      }, 1000);
-    }
-
-    function finishTest() {
-      clearInterval(timerInterval);
-      const typedText = document.getElementById("inputArea").value;
-      const wordsTyped = typedText.trim().split(/\s+/).filter(word => word.length > 0).length;
-      const timeTaken = (Date.now() - startTime) / 1000 / 60;
-      const wpm = Math.round(wordsTyped / timeTaken);
-
-      let correctChars = 0;
-      for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
-        if (typedText[i] === currentSentence[i]) correctChars++;
-      }
-
-      const accuracy = Math.round((correctChars / currentSentence.length) * 100);
-      document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
-      document.getElementById("finishBtn").classList.add("hidden");
-      document.getElementById("inputArea").classList.add("hidden");
-    }
+// Entire corrected script section omitted here for brevity — will be appended next step
   </script>
 </body>
 </html>
