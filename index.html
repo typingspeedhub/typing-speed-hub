@@ -4,10 +4,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Typing Sentences</title>
+  <title>Typing Speed Hub</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0d0d0d;
+      color: #00ff66;
+    }
+    /* további stílusokat itt lehet folytatni... */
+  </style>
 </head>
 <body>
+  <h1>Typing Speed Hub</h1>
+  <div>
+    <label for="levelSelect">Level:</label>
+    <select id="levelSelect">
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
+
+    <label for="durationSelect">Test duration:</label>
+    <select id="durationSelect">
+      <option value="60">1 minute</option>
+      <option value="300">5 minutes</option>
+    </select>
+
+    <button onclick="startTest()">Start</button>
+    <button type="button" onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
+
+    <p id="timerDisplay"></p>
+    <p id="sentenceDisplay"></p>
+    <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
+    <p id="resultDisplay"></p>
+  </div>
+
   <script>
+    let currentLang = 'en';
+    let currentSentence = "";
+    let startTime, timerInterval;
+
     const sentences = {
       en: {
         beginner: [
@@ -172,6 +209,68 @@
         ]
       }
     };
+
+    function setLanguage(lang) {
+      currentLang = lang;
+    }
+
+    function startTest() {
+      const level = document.getElementById("levelSelect").value;
+      const duration = parseInt(document.getElementById("durationSelect").value);
+      const sentencePool = sentences[currentLang]?.[level];
+
+      if (!sentencePool || sentencePool.length === 0) {
+        alert("No sentences available for selected language/level.");
+        return;
+      }
+
+      currentSentence = sentencePool[Math.floor(Math.random() * sentencePool.length)];
+      document.getElementById("sentenceDisplay").textContent = currentSentence;
+      document.getElementById("inputArea").value = "";
+      document.getElementById("inputArea").classList.remove("hidden");
+      document.getElementById("inputArea").focus();
+      document.getElementById("finishBtn").classList.remove("hidden");
+      document.getElementById("resultDisplay").textContent = "";
+      document.getElementById("timerDisplay").textContent = "";
+
+      document.getElementById("inputArea").addEventListener("input", () => {
+        const typed = document.getElementById("inputArea").value.trim();
+        if (typed === currentSentence.trim()) {
+          finishTest();
+        }
+      });
+
+      startTime = Date.now();
+      let timeLeft = duration;
+      document.getElementById("timerDisplay").textContent = timeLeft + "s";
+
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timerDisplay").textContent = timeLeft + "s";
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          finishTest();
+        }
+      }, 1000);
+    }
+
+    function finishTest() {
+      clearInterval(timerInterval);
+      const typedText = document.getElementById("inputArea").value;
+      const wordsTyped = typedText.trim().split(/\s+/).filter(word => word.length > 0).length;
+      const timeTaken = (Date.now() - startTime) / 1000 / 60;
+      const wpm = Math.round(wordsTyped / timeTaken);
+
+      let correctChars = 0;
+      for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
+        if (typedText[i] === currentSentence[i]) correctChars++;
+      }
+
+      const accuracy = Math.round((correctChars / currentSentence.length) * 100);
+      document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
+      document.getElementById("finishBtn").classList.add("hidden");
+      document.getElementById("inputArea").classList.add("hidden");
+    }
   </script>
 </body>
 </html>
