@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,37 +56,40 @@
       width: 40px;
       margin-top: 0.5rem;
     }
+    a {
+      color: #00ff66;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-<div style="display: flex; justify-content: space-between; margin: 1rem 2rem; font-size: 1rem;">
-  <!-- Bal oldal: cikkek -->
-  <div>
-    <strong>Articles</strong><br/>
-    <a href="10-minute-typing-drill.html">10-minute typing drill</a><br/>
-    <a href="7-day-typing-plan.html">7-day typing plan</a><br/>
-    <a href="best-free-typing-games.html">Best free typing games</a><br/>
-    <a href="best-keyboards-typing-practice.html">Best keyboards for typing</a><br/>
-    <a href="common-typing-mistakes.html">Common typing mistakes</a><br/>
-    <a href="how-typing-improves-focus-memory.html">Typing & memory</a><br/>
-    <a href="increase-typing-speed-7days.html">Speed up in 7 days</a><br/>
-    <a href="typing-for-kids.html">Typing for kids</a><br/>
-    <a href="typing-tips.html">Typing tips</a><br/>
-    <a href="what-is-wpm.html">What is WPM?</a>
+  <div style="display: flex; justify-content: space-between; margin: 1rem 2rem; font-size: 1rem;">
+    <div>
+      <strong>Articles</strong><br/>
+      <a href="10-minute-typing-drill.html">10-minute typing drill</a><br/>
+      <a href="7-day-typing-plan.html">7-day typing plan</a><br/>
+      <a href="best-free-typing-games.html">Best free typing games</a><br/>
+      <a href="best-keyboards-typing-practice.html">Best keyboards for typing</a><br/>
+      <a href="common-typing-mistakes.html">Common typing mistakes</a><br/>
+      <a href="how-typing-improves-focus-memory.html">Typing & memory</a><br/>
+      <a href="increase-typing-speed-7days.html">Speed up in 7 days</a><br/>
+      <a href="typing-for-kids.html">Typing for kids</a><br/>
+      <a href="typing-tips.html">Typing tips</a><br/>
+      <a href="what-is-wpm.html">What is WPM?</a>
+    </div>
+    <div style="text-align: right;">
+      <strong>Info</strong><br/>
+      <a href="about.html">About</a><br/>
+      <a href="contact.html">Contact</a><br/>
+      <a href="privacy-policy.html">Privacy Policy</a><br/>
+      <a href="terms-and-conditions.html">Terms & Conditions</a><br/>
+      <a href="impressum.html">Impressum</a>
+    </div>
   </div>
 
-  <!-- Jobb oldal: információs oldalak -->
-  <div style="text-align: right;">
-    <strong>Info</strong><br/>
-    <a href="about.html">About</a><br/>
-    <a href="contact.html">Contact</a><br/>
-    <a href="privacy-policy.html">Privacy Policy</a><br/>
-    <a href="terms-and-conditions.html">Terms & Conditions</a><br/>
-    <a href="impressum.html">Impressum</a>
-  </div>
-</div>
-
-  
   <h1>Typing Speed Hub</h1>
   <div class="typing-test">
     <label for="langSelect">Language:</label>
@@ -120,8 +122,10 @@
   </div>
 
   <div id="footer">
-    Follow us:<br/>
-    <img src="facebook.png" alt="Facebook logo"/>
+    <p>Follow us:</p>
+    <a href="https://facebook.com/yourpage" target="_blank">
+      <img src="facebook.png" alt="Facebook logo" />
+    </a>
   </div>
 
   <script>
@@ -130,21 +134,9 @@
     let startTime, timerInterval;
 
     const sentences = {
-      en: {
-        beginner: ["Practice makes perfect.", "Typing is fun and useful."],
-        intermediate: ["Typing helps improve brain-hand coordination."],
-        advanced: ["Touch typing boosts creativity."]
-      },
-      de: {
-        beginner: ["Übung macht den Meister."],
-        intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit."],
-        advanced: ["Flüssiges Tippen unterstützt kreatives Denken."]
-      },
-      hu: {
-        beginner: ["A gyakorlás teszi a mestert."],
-        intermediate: ["A tízujjas gépelés segít a gondolatok gyors kifejezésében."],
-        advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást."]
-      }
+      en: { beginner: ["Typing is fun and useful."], intermediate: ["Practice your typing daily."], advanced: ["Touch typing boosts productivity."] },
+      de: { beginner: ["Tippen macht Spaß."], intermediate: ["Übe das Tippen täglich."], advanced: ["Zehnfingersystem erhöht die Produktivität."] },
+      hu: { beginner: ["A gyakorlás teszi a mestert."], intermediate: ["Gyakorolj minden nap gépelni."], advanced: ["A tízujjas gépelés növeli a hatékonyságot."] }
     };
 
     function setLanguage(lang) {
@@ -171,12 +163,21 @@
 
       document.getElementById("finishBtn").classList.remove("hidden");
       document.getElementById("resultDisplay").textContent = "";
+      document.getElementById("timerDisplay").textContent = "";
 
       clearInterval(timerInterval);
-      document.getElementById("timerDisplay").textContent = duration + "s";
-
-      startTime = Date.now();
       let timeLeft = duration;
+      startTime = Date.now();
+      document.getElementById("timerDisplay").textContent = timeLeft + "s";
+
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timerDisplay").textContent = timeLeft + "s";
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          finishTest();
+        }
+      }, 1000);
 
       function handleInput() {
         const typed = inputArea.value.trim();
@@ -188,15 +189,6 @@
 
       inputArea.removeEventListener("input", handleInput);
       inputArea.addEventListener("input", handleInput);
-
-      timerInterval = setInterval(() => {
-        timeLeft--;
-        document.getElementById("timerDisplay").textContent = timeLeft + "s";
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          finishTest();
-        }
-      }, 1000);
     }
 
     function finishTest() {
