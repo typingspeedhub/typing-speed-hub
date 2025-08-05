@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,5 +143,99 @@
     <a href="https://facebook.com" target="_blank"><img src="facebook.png" alt="Facebook logo"/></a>
     <p>&copy; 2025 Typing Speed Hub. All rights reserved.</p>
   </div>
+
+<script>
+let currentLang = 'en';
+let currentSentence = "";
+let startTime, timerInterval;
+
+const sentences = {
+  en: {
+    beginner: ["Typing is fun.", "Practice makes perfect."],
+    intermediate: ["Typing helps coordination.", "Practice leads to improvement."],
+    advanced: ["Touch typing boosts creativity.", "Typing fluently supports deep work."]
+  },
+  de: {
+    beginner: ["Übung macht den Meister.", "Tippen ist wichtig."],
+    intermediate: ["Tippen verbessert Koordination.", "Tägliche Übung bringt Erfolg."],
+    advanced: ["Zehnfinger-Schreiben steigert Produktivität.", "Flüssiges Tippen hilft im Beruf."]
+  },
+  hu: {
+    beginner: ["A gépelés szórakoztató.", "A gyakorlás teszi a mestert."],
+    intermediate: ["A gépelés segíti a koordinációt.", "A napi gyakorlás fejlődést hoz."],
+    advanced: ["A tízujjas gépelés növeli a hatékonyságot.", "A folyamatos gépelés elmélyíti a munkát."]
+  }
+};
+
+function setLanguage(lang) {
+  currentLang = lang;
+}
+
+function startTest() {
+  const level = document.getElementById("levelSelect").value;
+  const duration = parseInt(document.getElementById("durationSelect").value);
+  const sentencePool = sentences[currentLang][level];
+
+  if (!sentencePool || sentencePool.length === 0) {
+    alert("No sentences available.");
+    return;
+  }
+
+  currentSentence = sentencePool[Math.floor(Math.random() * sentencePool.length)];
+  document.getElementById("sentenceDisplay").textContent = currentSentence;
+
+  const inputArea = document.getElementById("inputArea");
+  inputArea.value = "";
+  inputArea.classList.remove("hidden");
+  inputArea.focus();
+
+  document.getElementById("finishBtn").classList.remove("hidden");
+  document.getElementById("resultDisplay").textContent = "";
+  document.getElementById("timerDisplay").textContent = "";
+
+  clearInterval(timerInterval);
+  let timeLeft = duration;
+  document.getElementById("timerDisplay").textContent = timeLeft + "s";
+  startTime = Date.now();
+
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    document.getElementById("timerDisplay").textContent = timeLeft + "s";
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      finishTest();
+    }
+  }, 1000);
+
+  function handleInput() {
+    const typed = inputArea.value.trim();
+    if (typed === currentSentence.trim()) {
+      clearInterval(timerInterval);
+      finishTest();
+    }
+  }
+
+  inputArea.removeEventListener("input", handleInput);
+  inputArea.addEventListener("input", handleInput);
+}
+
+function finishTest() {
+  clearInterval(timerInterval);
+  const typedText = document.getElementById("inputArea").value;
+  const wordsTyped = typedText.trim().split(/\s+/).filter(w => w.length > 0).length;
+  const timeTaken = (Date.now() - startTime) / 1000 / 60;
+  const wpm = Math.round(wordsTyped / timeTaken);
+
+  let correctChars = 0;
+  for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
+    if (typedText[i] === currentSentence[i]) correctChars++;
+  }
+
+  const accuracy = Math.round((correctChars / currentSentence.length) * 100);
+  document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
+  document.getElementById("finishBtn").classList.add("hidden");
+  document.getElementById("inputArea").classList.add("hidden");
+}
+</script>
 </body>
 </html>
