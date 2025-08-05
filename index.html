@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Typing Speed Hub</title>
   <style>
     body {
@@ -17,18 +16,19 @@
     h1 {
       text-align: center;
       font-size: 2.5rem;
-      margin-top: 1.5rem;
+      margin: 1rem 0 0 0;
     }
     .layout {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin: 0 2rem;
+      margin: 1rem 2rem;
       font-size: 1rem;
+      align-items: flex-start;
     }
     .typing-test-wrapper {
       display: flex;
       justify-content: center;
+      margin-top: 0;
     }
     .typing-test {
       background-color: #1e1e1e;
@@ -36,6 +36,7 @@
       border-radius: 10px;
       box-shadow: 0 0 15px #00ff66;
       max-width: 600px;
+      margin: 0 auto 1rem auto;
       width: 100%;
     }
     select, button, textarea {
@@ -78,11 +79,6 @@
     .menu {
       font-size: 1rem;
     }
-    .center {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
   </style>
 </head>
 <body>
@@ -100,10 +96,10 @@
       <a href="typing-tips.html">Typing tips</a><br />
       <a href="what-is-wpm.html">What is WPM?</a>
     </div>
-    <div class="center">
+    <div style="flex-grow: 1;">
       <h1>Typing Speed Hub</h1>
       <div class="typing-test-wrapper">
-        <div class="typing-test">
+        <div class="typing-test" id="typingTestContainer">
           <label for="langSelect">Language:</label>
           <select id="langSelect" onchange="setLanguage(this.value)">
             <option value="en">English</option>
@@ -127,7 +123,7 @@
           <button onclick="startTest()">Start</button>
           <button type="button" onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
 
-          <p id="timerDisplay">60s</p>
+          <p id="timerDisplay"></p>
           <p id="sentenceDisplay"></p>
           <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
           <p id="resultDisplay"></p>
@@ -146,93 +142,8 @@
 
   <div id="footer">
     <p>Follow us:</p>
-    <a href="https://facebook.com" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+    <a href="#"><img src="facebook.png" alt="Facebook"></a>
     <p>&copy; 2025 Typing Speed Hub. All rights reserved.</p>
   </div>
-
-<script>
-// --- JavaScript for Typing Logic + Sentences ---
-let currentLang = 'en';
-let currentSentence = '';
-let startTime, timerInterval;
-
-const sentences = {
-  en: {
-    beginner: ["Typing is fun and useful.", "Practice makes perfect.", "Use all your fingers to type.", "Keep your eyes on the screen."],
-    intermediate: ["Typing helps improve brain-hand coordination.", "Daily practice leads to real improvement."],
-    advanced: ["Touch typing boosts creativity.", "Typing fluently supports deep work."]
-  },
-  de: {
-    beginner: ["Übung macht den Meister.", "Tägliches Tippen verbessert deine Fähigkeiten."],
-    intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit.", "Übung macht dich schneller und genauer."],
-    advanced: ["Flüssiges Tippen unterstützt kreatives Denken.", "Schnelles Tippen erleichtert komplexe Aufgaben."]
-  },
-  hu: {
-    beginner: ["A gépelés szórakoztató és hasznos.", "A gyakorlás teszi a mestert."],
-    intermediate: ["A tízujjas gépelés segít a gondolatok gyors kifejezésében.", "A napi gyakorlás látványos fejlődést hoz."],
-    advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást.", "A profi gépelés segíti az elmélyült munkát."]
-  }
-};
-
-function setLanguage(lang) {
-  currentLang = lang;
-}
-
-function startTest() {
-  const level = document.getElementById("levelSelect").value;
-  const duration = parseInt(document.getElementById("durationSelect").value);
-  const pool = sentences[currentLang]?.[level] || [];
-  currentSentence = pool[Math.floor(Math.random() * pool.length)];
-  document.getElementById("sentenceDisplay").textContent = currentSentence;
-
-  const inputArea = document.getElementById("inputArea");
-  inputArea.value = "";
-  inputArea.classList.remove("hidden");
-  inputArea.focus();
-
-  document.getElementById("finishBtn").classList.remove("hidden");
-  document.getElementById("resultDisplay").textContent = "";
-
-  clearInterval(timerInterval);
-  let timeLeft = duration;
-  document.getElementById("timerDisplay").textContent = timeLeft + "s";
-  startTime = Date.now();
-
-  timerInterval = setInterval(() => {
-    timeLeft--;
-    document.getElementById("timerDisplay").textContent = timeLeft + "s";
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      finishTest();
-    }
-  }, 1000);
-
-  inputArea.addEventListener("input", () => {
-    const typed = inputArea.value.trim();
-    if (typed === currentSentence.trim()) {
-      clearInterval(timerInterval);
-      finishTest();
-    }
-  });
-}
-
-function finishTest() {
-  clearInterval(timerInterval);
-  const typedText = document.getElementById("inputArea").value;
-  const wordsTyped = typedText.trim().split(/\s+/).filter(word => word).length;
-  const timeTaken = (Date.now() - startTime) / 1000 / 60;
-  const wpm = Math.round(wordsTyped / timeTaken);
-
-  let correct = 0;
-  for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
-    if (typedText[i] === currentSentence[i]) correct++;
-  }
-
-  const accuracy = Math.round((correct / currentSentence.length) * 100);
-  document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
-  document.getElementById("finishBtn").classList.add("hidden");
-  document.getElementById("inputArea").classList.add("hidden");
-}
-</script>
 </body>
 </html>
