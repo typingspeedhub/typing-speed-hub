@@ -370,10 +370,19 @@ function finishTest() {
   }
 
   const accuracy = Math.round((correctChars / currentSentence.length) * 100);
+
   document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
   document.getElementById("finishBtn").classList.add("hidden");
   document.getElementById("inputArea").classList.add("hidden");
+
+  // 🌟 Eredmények mentése LocalStorage-be
+  const stats = JSON.parse(localStorage.getItem("typingStats") || "[]");
+  const date = new Date().toISOString().split("T")[0]; // pl. 2025-08-07
+
+  stats.push({ date, wpm, accuracy });
+  localStorage.setItem("typingStats", JSON.stringify(stats));
 }
+
 </script>
 
 </body>
