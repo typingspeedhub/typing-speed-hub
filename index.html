@@ -16,47 +16,26 @@
       line-height: 1.8;
     }
 
-    .top-links, .right-links {
-      position: absolute;
-      top: 1rem;
-      font-size: 1.1rem;
-      line-height: 1.8rem;
-    }
-
-    .top-links {
-      left: 1.5rem;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .right-links {
-      right: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      text-align: right;
+    h1 {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 2.5rem;
     }
 
     a {
       color: #00ff66;
       text-decoration: underline;
-      margin-bottom: 4px;
     }
 
-    .main-container {
+    .header {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding-top: 4rem;
-      padding-bottom: 3rem;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
+      justify-content: space-between;
+      margin: 1.5rem 2rem;
+      flex-wrap: wrap;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
+    .header div {
+      min-width: 200px;
     }
 
     .typing-test {
@@ -65,8 +44,8 @@
       border-radius: 10px;
       box-shadow: 0 0 15px #00ff66;
       max-width: 600px;
-      width: 100%;
-      margin-top: 1rem;
+      margin: 2rem auto;
+      text-align: center;
     }
 
     select, button, textarea {
@@ -93,22 +72,22 @@
 
     #typingText {
       font-size: 1.4rem;
-      margin: 1rem 0;
+      margin-bottom: 1rem;
+    }
+
+    .hidden {
+      display: none;
     }
 
     #footer {
       text-align: center;
-      margin-top: 2rem;
+      margin: 2rem auto;
       font-size: 0.9rem;
     }
 
     #footer img {
       width: 40px;
       margin-top: 0.5rem;
-    }
-
-    .hidden {
-      display: none;
     }
 
     @media (max-width: 600px) {
@@ -121,74 +100,78 @@
         font-size: 1.2rem;
       }
 
-      textarea {
+      textarea#inputArea {
         font-size: 1rem;
         height: 100px;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Bal oldali cikkek -->
-  <div class="top-links">
-    <strong>Articles</strong>
-    <a href="10-minute-typing-drill.html">10-minute typing drill</a>
-    <a href="7-day-typing-plan.html">7-day typing plan</a>
-    <a href="best-free-typing-games.html">Best free typing games</a>
-    <a href="best-keyboards-typing-practice.html">Best keyboards for typing</a>
-    <a href="common-typing-mistakes.html">Common typing mistakes</a>
-    <a href="how-typing-improves-focus-memory.html">Typing & memory</a>
-    <a href="increase-typing-speed-7days.html">Speed up in 7 days</a>
-    <a href="typing-for-kids.html">Typing for kids</a>
-    <a href="typing-tips.html">Typing tips</a>
-    <a href="what-is-wpm.html">What is WPM?</a>
+  <h1>Typing Speed Hub</h1>
+
+  <div class="typing-test">
+    <label for="langSelect">Language:</label>
+    <select id="langSelect" onchange="setLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+      <option value="hu">Magyar</option>
+    </select>
+
+    <label for="levelSelect">Level:</label>
+    <select id="levelSelect">
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
+
+    <label for="durationSelect">Test duration:</label>
+    <select id="durationSelect">
+      <option value="60">1 minute</option>
+      <option value="300">5 minutes</option>
+    </select>
+
+    <button onclick="startTest()">Start</button>
+    <button type="button" onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
+
+    <p id="timerDisplay"></p>
+    <p id="sentenceDisplay"></p>
+    <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
+    <p id="resultDisplay"></p>
   </div>
 
-  <!-- Jobb oldali infók -->
-  <div class="right-links">
-    <strong>Info</strong>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy-policy.html">Privacy Policy</a>
-    <a href="terms-and-conditions.html">Terms & Conditions</a>
-    <a href="impressum.html">Impressum</a>
-  </div>
-
-  <!-- Középső gépelés -->
-  <div class="main-container">
-    <h1>Typing Speed Hub</h1>
-
-    <div class="typing-test">
-      <label for="langSelect">Language:</label>
-      <select id="langSelect">
-        <option value="en">English</option>
-        <option value="de">Deutsch</option>
-        <option value="hu">Magyar</option>
-      </select>
-
-      <label for="levelSelect">Level:</label>
-      <select id="levelSelect">
-        <option value="beginner">Beginner</option>
-        <option value="intermediate">Intermediate</option>
-        <option value="advanced">Advanced</option>
-      </select>
-
-      <label for="durationSelect">Test duration:</label>
-      <select id="durationSelect">
-        <option value="60">1 minute</option>
-        <option value="300">5 minutes</option>
-      </select>
-
-      <button onclick="startTest()">Start</button>
-      <button type="button" onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
-
-      <p id="timerDisplay"></p>
-      <p id="sentenceDisplay"></p>
-      <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
-      <p id="resultDisplay"></p>
+  <div class="header">
+    <div>
+      <strong>Articles</strong><br/>
+      <a href="10-minute-typing-drill.html">10-minute typing drill</a><br/>
+      <a href="7-day-typing-plan.html">7-day typing plan</a><br/>
+      <a href="best-free-typing-games.html">Best free typing games</a><br/>
+      <a href="best-keyboards-typing-practice.html">Best keyboards for typing</a><br/>
+      <a href="common-typing-mistakes.html">Common typing mistakes</a><br/>
+      <a href="how-typing-improves-focus-memory.html">Typing & memory</a><br/>
+      <a href="increase-typing-speed-7days.html">Speed up in 7 days</a><br/>
+      <a href="typing-for-kids.html">Typing for kids</a><br/>
+      <a href="typing-tips.html">Typing tips</a><br/>
+      <a href="what-is-wpm.html">What is WPM?</a>
+    </div>
+    <div style="text-align: right;">
+      <strong>Info</strong><br/>
+      <a href="about.html">About</a><br/>
+      <a href="contact.html">Contact</a><br/>
+      <a href="privacy-policy.html">Privacy Policy</a><br/>
+      <a href="terms-and-conditions.html">Terms & Conditions</a><br/>
+      <a href="impressum.html">Impressum</a>
     </div>
   </div>
+
 
 
 const sentences = {
