@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,313 +67,340 @@
       width: 40px;
       margin-top: 0.5rem;
     }
+
+    /* --- ÚJ: nyelvválasztó sáv --- */
+    .langbar {
+      position: fixed;
+      top: 10px;
+      right: 12px;
+      display: flex;
+      gap: .5rem;
+      z-index: 1000;
+    }
+    .langbar a {
+      border: 1px solid #00ff66;
+      padding: .2rem .4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #00ff66;
+    }
+    .langbar a:hover { background: #00ff66; color: #0d0d0d; }
   </style>
 </head>
 <body>
-
-<div class="top-links">
-  <div>
-    <strong>Articles</strong><br/>
-    <a href="10-minute-typing-drill.html">10-minute typing drill</a><br/>
-    <a href="7-day-typing-plan.html">7-day typing plan</a><br/>
-    <a href="best-free-typing-games.html">Best free typing games</a><br/>
-    <a href="best-keyboards-typing-practice.html">Best keyboards for typing</a><br/>
-    <a href="common-typing-mistakes.html">Common typing mistakes</a><br/>
-    <a href="how-typing-improves-focus-memory.html">Typing & memory</a><br/>
-    <a href="increase-typing-speed-7days.html">Speed up in 7 days</a><br/>
-    <a href="typing-for-kids.html">Typing for kids</a><br/>
-    <a href="typing-tips.html">Typing tips</a><br/>
-    <a href="what-is-wpm.html">What is WPM?</a>
+  <!-- Zászlók a BODY elején -->
+  <div class="langbar">
+    <a href="?lang=en" aria-label="English">🇬🇧 EN</a>
+    <a href="?lang=hu" aria-label="Magyar">🇭🇺 HU</a>
+    <a href="?lang=de" aria-label="Deutsch">🇩🇪 DE</a>
   </div>
-  <div style="text-align: right;">
-    <strong>Info</strong><br/>
-    <a href="about.html">About</a><br/>
-    <a href="contact.html">Contact</a><br/>
-    <a href="privacy-policy.html">Privacy Policy</a><br/>
-    <a href="terms-and-conditions.html">Terms & Conditions</a><br/>
-    <a href="impressum.html">Impressum</a>
+
+  <div class="top-links">
+    <div>
+      <strong>Articles</strong><br/>
+      <a href="10-minute-typing-drill.html">10-minute typing drill</a><br/>
+      <a href="7-day-typing-plan.html">7-day typing plan</a><br/>
+      <a href="best-free-typing-games.html">Best free typing games</a><br/>
+      <a href="best-keyboards-typing-practice.html">Best keyboards for typing</a><br/>
+      <a href="common-typing-mistakes.html">Common typing mistakes</a><br/>
+      <a href="how-typing-improves-focus-memory.html">Typing & memory</a><br/>
+      <a href="increase-typing-speed-7days.html">Speed up in 7 days</a><br/>
+      <a href="typing-for-kids.html">Typing for kids</a><br/>
+      <a href="typing-tips.html">Typing tips</a><br/>
+      <a href="what-is-wpm.html">What is WPM?</a>
+    </div>
+    <div style="text-align: right;">
+      <strong>Info</strong><br/>
+      <a href="about.html">About</a><br/>
+      <a href="contact.html">Contact</a><br/>
+      <a href="privacy-policy.html">Privacy Policy</a><br/>
+      <a href="terms-and-conditions.html">Terms & Conditions</a><br/>
+      <a href="impressum.html">Impressum</a>
+    </div>
   </div>
-</div>
 
-<h1>Typing Speed Hub</h1>
+  <h1>Typing Speed Hub</h1>
 
-<div class="typing-test">
-  <label for="langSelect">Language:</label>
-  <select id="langSelect" onchange="setLanguage(this.value)">
-    <option value="en">English</option>
-    <option value="de">Deutsch</option>
-    <option value="hu">Magyar</option>
-  </select>
+  <div class="typing-test">
+    <label for="langSelect">Language:</label>
+    <select id="langSelect" onchange="setLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+      <option value="hu">Magyar</option>
+    </select>
 
-  <label for="levelSelect">Level:</label>
-  <select id="levelSelect">
-    <option value="beginner">Beginner</option>
-    <option value="intermediate">Intermediate</option>
-    <option value="advanced">Advanced</option>
-  </select>
+    <label for="levelSelect">Level:</label>
+    <select id="levelSelect">
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
 
-  <label for="durationSelect">Test duration:</label>
-  <select id="durationSelect">
-    <option value="60">1 minute</option>
-    <option value="300">5 minutes</option>
-  </select>
+    <label for="durationSelect">Test duration:</label>
+    <select id="durationSelect">
+      <option value="60">1 minute</option>
+      <option value="300">5 minutes</option>
+    </select>
 
-  <button onclick="startTest()">Start</button>
-  <button type="button" onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
+    <button onclick="startTest()">Start</button>
+    <button type="button" onclick="finishTest()" id="finishBtn" class="hidden">Finish</button>
 
-  <p id="timerDisplay"></p>
-  <p id="sentenceDisplay"></p>
-  <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
-  <p id="resultDisplay"></p>
-</div>
+    <p id="timerDisplay"></p>
+    <p id="sentenceDisplay"></p>
+    <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
+    <p id="resultDisplay"></p>
+  </div>
 
-<div id="footer">
-  <p>Follow us:</p>
-  <a href="https://facebook.com" target="_blank"><img src="facebook.png" alt="Facebook logo"/></a>
-  <p>&copy; 2025 Typing Speed Hub. All rights reserved.</p>
-</div>
+  <div id="footer">
+    <p>Follow us:</p>
+    <a href="https://facebook.com" target="_blank"><img src="facebook.png" alt="Facebook logo"/></a>
+    <p>&copy; 2025 Typing Speed Hub. All rights reserved.</p>
+  </div>
 
-<script>
-let currentLang = 'en';
-let currentSentence = "";
-let startTime, timerInterval;
+  <script>
+  let currentLang = 'en';
+  let currentSentence = "";
+  let startTime, timerInterval;
 
-const sentences = {
-  en: {
-    beginner: ["Typing is fun and useful.", 
-                          
-               "Practice makes perfect.",
-                            "Use all your fingers to type.",
-              "Keep your eyes on the screen.",
-              "Do not look at the keyboard.",
-              "Type slowly and carefully.",
-        "Sit up straight while typing.",
-        "Use backspace only when needed.",
-        "Try not to make mistakes.",
-        "Start with short sentences.",
-        "Repeat each exercise often.",
-        "Accuracy is more important than speed.",
-        "Take short breaks between sessions.",
-        "Use both hands when typing.",
-        "Typing gets easier with time.",
-        "Focus on hitting the right keys."
+  const sentences = {
+    en: {
+      beginner: ["Typing is fun and useful.",
+                 "Practice makes perfect.",
+                 "Use all your fingers to type.",
+                 "Keep your eyes on the screen.",
+                 "Do not look at the keyboard.",
+                 "Type slowly and carefully.",
+                 "Sit up straight while typing.",
+                 "Use backspace only when needed.",
+                 "Try not to make mistakes.",
+                 "Start with short sentences.",
+                 "Repeat each exercise often.",
+                 "Accuracy is more important than speed.",
+                 "Take short breaks between sessions.",
+                 "Use both hands when typing.",
+                 "Typing gets easier with time.",
+                 "Focus on hitting the right keys."
+      ],
+      intermediate: ["Typing helps improve brain-hand coordination.",
+                     "Daily practice leads to real improvement.",
+                     "Type full sentences to build fluency.",
+                     "Avoid looking at the keyboard while typing.",
+                     "Focus on consistency, not just speed.",
+                     "Make accuracy your top priority.",
+                     "Typing tests are great for tracking progress.",
+                     "Use online tools to measure your WPM.",
+                     "Practice with longer and more complex texts.",
+                     "Avoid using backspace too often.",
+                     "Build muscle memory through repetition.",
+                     "Stretch your hands before and after typing.",
+                     "Type without pausing to think about keys.",
+                     "Use varied content to challenge yourself.",
+                     "Stay relaxed and maintain good posture.",
+                     "Track your mistakes and correct them consciously."
+      ],
+      advanced: ["Touch typing boosts creativity.",
+                 "Advanced typing frees your focus for thinking.",
+                 "Typing fluently supports deep work.",
+                 "High WPM is essential for professional writing.",
+                 "Typing without looking increases mental flow.",
+                 "Mastery of typing reduces cognitive load.",
+                 "Fast typing enables quicker content creation.",
+                 "Typing with rhythm improves clarity and tone.",
+                 "Experienced typists correct errors on the fly.",
+                 "Long typing sessions feel effortless over time.",
+                 "Keyboard shortcuts boost typing productivity.",
+                 "Fluent typing supports real-time collaboration.",
+                 "Typing speed supports multitasking and flow.",
+                 "Typing becomes second nature with practice.",
+                 "Typing mastery enhances digital communication.",
+                 "Expert typists rarely think about the keyboard."
+      ]
+    },
+    de: {
+      beginner: ["Übung macht den Meister.",
+                 "Tägliches Tippen verbessert deine Fähigkeiten.",
+                 "Benutze alle Finger beim Tippen.",
+                 "Halte die Augen auf dem Bildschirm.",
+                 "Schau nicht auf die Tastatur.",
+                 "Tippe langsam und präzise.",
+                 "Sitze beim Tippen gerade.",
+                 "Nutze die Rücktaste nur bei Bedarf.",
+                 "Vermeide Tippfehler bewusst.",
+                 "Beginne mit kurzen Sätzen.",
+                 "Wiederhole jede Übung regelmäßig.",
+                 "Genauigkeit ist wichtiger als Geschwindigkeit.",
+                 "Mach kurze Pausen zwischen den Übungen.",
+                 "Verwende beide Hände beim Tippen.",
+                 "Tippen wird mit der Zeit einfacher."
+      ],
+      intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit.",
+                     "Übung macht dich schneller und genauer.",
+                     "Tippe vollständige Sätze zur Übung.",
+                     "Vermeide es, auf die Tastatur zu schauen.",
+                     "Konzentriere dich auf gleichmäßiges Tippen.",
+                     "Genauigkeit ist dein wichtigstes Ziel.",
+                     "Nimm regelmäßig an Tipp-Tests teil.",
+                     "Verfolge deine Tippgeschwindigkeit online.",
+                     "Tippe komplexere Texte zur Herausforderung.",
+                     "Verwende die Rücktaste nur bei Fehlern.",
+                     "Wiederholung führt zu Muskelgedächtnis.",
+                     "Dehne deine Finger vor dem Üben.",
+                     "Vermeide Pausen beim Schreiben.",
+                     "Nutze verschiedene Inhalte zum Lernen.",
+                     "Bleib locker und halte eine gute Haltung."
+      ],
+      advanced: ["Flüssiges Tippen unterstützt kreatives Denken.",
+                 "Schnelles Tippen erleichtert komplexe Aufgaben.",
+                 "Tastenkombinationen steigern deine Effizienz.",
+                 "Tippen ohne Blick auf die Tastatur spart Zeit.",
+                 "Experten korrigieren Fehler im Fluss.",
+                 "Gutes Tippen entlastet dein Gehirn.",
+                 "Profis schreiben mit Rhythmus und Tempo.",
+                 "Lange Tipp-Sessions werden mühelos.",
+                 "Erfahrene Nutzer beherrschen Tastaturkürzel.",
+                 "Multitasking gelingt besser mit Tippgeschick.",
+                 "Tippen unterstützt kollaboratives Arbeiten.",
+                 "Flüssiges Tippen fördert den Arbeitsfluss.",
+                 "Textverarbeitung wird schneller und einfacher.",
+                 "Gutes Tippen erhöht die Konzentration.",
+                 "Tippen wird zur zweiten Natur."
+      ]
+    },
+    hu: {
+      beginner: ["Használd az összes ujjad gépeléskor.",
+                 "A gyakorlás teszi a mestert.",
+                 "A gépelés szórakoztató és hasznos.",
+                 "Tartsd a szemed a képernyőn.",
+                 "Ne nézd a billentyűzetet.",
+                 "Gépelj lassan és figyelmesen.",
+                 "Ülj egyenesen gépelés közben.",
+                 "Használd a törlést csak ha szükséges.",
+                 "Próbáld elkerülni a hibákat.",
+                 "Kezdj rövid mondatokkal.",
+                 "Ismételd meg gyakran a gyakorlatokat.",
+                 "A pontosság fontosabb mint a sebesség.",
+                 "Tarts rövid szüneteket a gyakorlások között.",
+                 "Használd mindkét kezed a gépeléshez.",
+                 "A gépelés idővel könnyebbé válik."
+      ],
+      intermediate: ["A tízujjas gépelés segít a gondolatok gyors kifejezésében.",
+                     "A napi gyakorlás látványos fejlődést hoz.",
+                     "Gépelj teljes mondatokat a folyékonyságért.",
+                     "Kerüld a billentyűzet nézegetését.",
+                     "Koncentrálj az egyenletes ritmusra.",
+                     "A pontosság mindig legyen elsődleges.",
+                     "Tipp tesztek segítenek mérni a haladást.",
+                     "Használj online eszközöket a WPM méréséhez.",
+                     "Gyakorolj hosszabb és összetettebb szövegekkel.",
+                     "Ne használd túl sokszor a törlést.",
+                     "Ismétlés által fejlődik az izommemória.",
+                     "Nyújtsd le az ujjaid gépelés előtt és után.",
+                     "Ne állj meg gépelés közben gondolkodni.",
+                     "Használj változatos szövegeket a kihíváshoz.",
+                     "Maradj nyugodt és tarts helyes testtartást."
+      ],
+      advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást.",
+                 "A profi gépelés segíti az elmélyült munkát.",
+                 "A gyors gépelés elengedhetetlen a hatékony íráshoz.",
+                 "Gépelj anélkül, hogy a billentyűzetre néznél.",
+                 "A gépelési rutin csökkenti a mentális terhelést.",
+                 "Gyorsabban hozhatsz létre tartalmat.",
+                 "A ritmusos gépelés javítja a szöveg áramlását.",
+                 "A tapasztalt gépelők menet közben javítanak hibát.",
+                 "Hosszú írás közben is fenntartható a koncentráció.",
+                 "A billentyűparancsok növelik a hatékonyságot.",
+                 "A gyors gépelés támogatja az együttműködést.",
+                 "A gépelési készség fokozza a multitasking képességet.",
+                 "A gépelés gyakorlása növeli az önbizalmat.",
+                 "A gyakorlott gépelők szinte automatikusan írnak.",
+                 "A gyors gépelés a digitális kommunikáció alapja."
+      ]
+    }
+  };
 
-              ],
-    intermediate: ["Typing helps improve brain-hand coordination.",
-                 "Daily practice leads to real improvement.",
-        "Type full sentences to build fluency.",
-        "Avoid looking at the keyboard while typing.",
-        "Focus on consistency, not just speed.",
-        "Make accuracy your top priority.",
-        "Typing tests are great for tracking progress.",
-        "Use online tools to measure your WPM.",
-        "Practice with longer and more complex texts.",
-        "Avoid using backspace too often.",
-        "Build muscle memory through repetition.",
-        "Stretch your hands before and after typing.",
-         "Type without pausing to think about keys.",
-        "Use varied content to challenge yourself.",
-        "Stay relaxed and maintain good posture.",
-        "Track your mistakes and correct them consciously."
-
-                  ],
-    advanced: ["Touch typing boosts creativity.",
-                      "Advanced typing frees your focus for thinking.",
-        "Typing fluently supports deep work.",
-        "High WPM is essential for professional writing.",
-        "Typing without looking increases mental flow.",
-        "Mastery of typing reduces cognitive load.",
-        "Fast typing enables quicker content creation.",
-        "Typing with rhythm improves clarity and tone.",
-        "Experienced typists correct errors on the fly.",
-        "Long typing sessions feel effortless over time.",
-        "Keyboard shortcuts boost typing productivity.",
-        "Fluent typing supports real-time collaboration.",
-        "Typing speed supports multitasking and flow.",
-        "Typing becomes second nature with practice.",
-        "Typing mastery enhances digital communication.",
-        "Expert typists rarely think about the keyboard."
-
-              ]
-  },
-  de: {
-    beginner: ["Übung macht den Meister.",
-              "Tägliches Tippen verbessert deine Fähigkeiten.",
-        "Benutze alle Finger beim Tippen.",
-        "Halte die Augen auf dem Bildschirm.",
-        "Schau nicht auf die Tastatur.",
-        "Tippe langsam und präzise.",
-        "Sitze beim Tippen gerade.",
-        "Nutze die Rücktaste nur bei Bedarf.",
-        "Vermeide Tippfehler bewusst.",
-        "Beginne mit kurzen Sätzen.",
-        "Wiederhole jede Übung regelmäßig.",
-        "Genauigkeit ist wichtiger als Geschwindigkeit.",
-        "Mach kurze Pausen zwischen den Übungen.",
-        "Verwende beide Hände beim Tippen.",
-        "Tippen wird mit der Zeit einfacher."
-
-              ],
-    intermediate: ["Zehnfingersystem verbessert deine Ausdrucksfähigkeit.",
-                          "Übung macht dich schneller und genauer.",
-        "Tippe vollständige Sätze zur Übung.",
-        "Vermeide es, auf die Tastatur zu schauen.",
-        "Konzentriere dich auf gleichmäßiges Tippen.",
-        "Genauigkeit ist dein wichtigstes Ziel.",
-        "Nimm regelmäßig an Tipp-Tests teil.",
-        "Verfolge deine Tippgeschwindigkeit online.",
-        "Tippe komplexere Texte zur Herausforderung.",
-        "Verwende die Rücktaste nur bei Fehlern.",
-        "Wiederholung führt zu Muskelgedächtnis.",
-        "Dehne deine Finger vor dem Üben.",
-        "Vermeide Pausen beim Schreiben.",
-        "Nutze verschiedene Inhalte zum Lernen.",
-        "Bleib locker und halte eine gute Haltung."
-
-                  ],
-    advanced: ["Flüssiges Tippen unterstützt kreatives Denken.",
-              "Schnelles Tippen erleichtert komplexe Aufgaben.",
-        "Tastenkombinationen steigern deine Effizienz.",
-        "Tippen ohne Blick auf die Tastatur spart Zeit.",
-        "Experten korrigieren Fehler im Fluss.",
-        "Gutes Tippen entlastet dein Gehirn.",
-        "Profis schreiben mit Rhythmus und Tempo.",
-        "Lange Tipp-Sessions werden mühelos.",
-        "Erfahrene Nutzer beherrschen Tastaturkürzel.",
-        "Multitasking gelingt besser mit Tippgeschick.",
-        "Tippen unterstützt kollaboratives Arbeiten.",
-        "Flüssiges Tippen fördert den Arbeitsfluss.",
-        "Textverarbeitung wird schneller und einfacher.",
-        "Gutes Tippen erhöht die Konzentration.",
-        "Tippen wird zur zweiten Natur."
-              ]
-  },
-  hu: {
-    beginner: ["Használd az összes ujjad gépeléskor.",
-                       "A gyakorlás teszi a mestert.",
-        "A gépelés szórakoztató és hasznos.",
-       
-       "Tartsd a szemed a képernyőn.",
-        "Ne nézd a billentyűzetet.",
-        "Gépelj lassan és figyelmesen.",
-        "Ülj egyenesen gépelés közben.",
-        "Használd a törlést csak ha szükséges.",
-        "Próbáld elkerülni a hibákat.",
-        "Kezdj rövid mondatokkal.",
-        "Ismételd meg gyakran a gyakorlatokat.",
-        "A pontosság fontosabb mint a sebesség.",
-        "Tarts rövid szüneteket a gyakorlások között.",
-        "Használd mindkét kezed a gépeléshez.",
-        "A gépelés idővel könnyebbé válik."
-
-              
-              ],
-    intermediate: ["A tízujjas gépelés segít a gondolatok gyors kifejezésében.",
-                          "A napi gyakorlás látványos fejlődést hoz.",
-        "Gépelj teljes mondatokat a folyékonyságért.",
-        "Kerüld a billentyűzet nézegetését.",
-        "Koncentrálj az egyenletes ritmusra.",
-        "A pontosság mindig legyen elsődleges.",
-        "Tipp tesztek segítenek mérni a haladást.",
-        "Használj online eszközöket a WPM méréséhez.",
-        "Gyakorolj hosszabb és összetettebb szövegekkel.",
-        "Ne használd túl sokszor a törlést.",
-        "Ismétlés által fejlődik az izommemória.",
-        "Nyújtsd le az ujjaid gépelés előtt és után.",
-        "Ne állj meg gépelés közben gondolkodni.",
-        "Használj változatos szövegeket a kihíváshoz.",
-        "Maradj nyugodt és tarts helyes testtartást."
-
-                  ],
-    advanced: ["A gördülékeny gépelés támogatja a kreatív gondolkodást.",
-              "A profi gépelés segíti az elmélyült munkát.",
-        "A gyors gépelés elengedhetetlen a hatékony íráshoz.",
-        "Gépelj anélkül, hogy a billentyűzetre néznél.",
-        "A gépelési rutin csökkenti a mentális terhelést.",
-        "Gyorsabban hozhatsz létre tartalmat.",
-        "A ritmusos gépelés javítja a szöveg áramlását.",
-        "A tapasztalt gépelők menet közben javítanak hibát.",
-        "Hosszú írás közben is fenntartható a koncentráció.",
-                       "A billentyűparancsok növelik a hatékonyságot.",
-        "A gyors gépelés támogatja az együttműködést.",
-        "A gépelési készség fokozza a multitasking képességet.",
-        "A gépelés gyakorlása növeli az önbizalmat.",
-        "A gyakorlott gépelők szinte automatikusan írnak.",
-        "A gyors gépelés a digitális kommunikáció alapja."
-             ]
-  }
-};
-
-function setLanguage(lang) {
-  currentLang = lang;
-}
-
-function startTest() {
-  const level = document.getElementById("levelSelect").value;
-  const duration = parseInt(document.getElementById("durationSelect").value);
-  const sentencePool = sentences[currentLang]?.[level];
-
-  if (!sentencePool || sentencePool.length === 0) {
-    alert("No sentences available for selected language/level.");
-    return;
+  // --- B változat szerinti nyelvállítás
+  function setLanguage(lang){
+    const allowed = ['en','hu','de'];
+    currentLang = allowed.includes(lang) ? lang : 'en';
+    localStorage.setItem('lang', currentLang);
+    document.documentElement.lang = currentLang;
+    const sel = document.getElementById('langSelect');
+    if (sel) sel.value = currentLang; // szinkron a legördülővel
   }
 
-  currentSentence = sentencePool[Math.floor(Math.random() * sentencePool.length)];
-  document.getElementById("sentenceDisplay").textContent = currentSentence;
+  function startTest() {
+    const level = document.getElementById("levelSelect").value;
+    const duration = parseInt(document.getElementById("durationSelect").value);
+    const sentencePool = sentences[currentLang]?.[level];
 
-  const inputArea = document.getElementById("inputArea");
-  inputArea.value = "";
-  inputArea.classList.remove("hidden");
-  inputArea.focus();
+    if (!sentencePool || sentencePool.length === 0) {
+      alert("No sentences available for selected language/level.");
+      return;
+    }
 
-  document.getElementById("finishBtn").classList.remove("hidden");
-  document.getElementById("resultDisplay").textContent = "";
-  document.getElementById("timerDisplay").textContent = "";
+    currentSentence = sentencePool[Math.floor(Math.random() * sentencePool.length)];
+    document.getElementById("sentenceDisplay").textContent = currentSentence;
 
-  clearInterval(timerInterval);
-  let timeLeft = duration;
-  document.getElementById("timerDisplay").textContent = timeLeft + "s";
-  startTime = Date.now();
+    const inputArea = document.getElementById("inputArea");
+    inputArea.value = "";
+    inputArea.classList.remove("hidden");
+    inputArea.focus();
 
-  timerInterval = setInterval(() => {
-    timeLeft--;
+    document.getElementById("finishBtn").classList.remove("hidden");
+    document.getElementById("resultDisplay").textContent = "";
+    document.getElementById("timerDisplay").textContent = "";
+
+    clearInterval(timerInterval);
+    let timeLeft = duration;
     document.getElementById("timerDisplay").textContent = timeLeft + "s";
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      finishTest();
-    }
-  }, 1000);
+    startTime = Date.now();
 
-  function handleInput() {
-    const typed = inputArea.value.trim();
-    if (typed === currentSentence.trim()) {
-      clearInterval(timerInterval);
-      finishTest();
-    }
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      document.getElementById("timerDisplay").textContent = timeLeft + "s";
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        finishTest();
+      }
+    }, 1000);
+
+    // ne halmozódjon: mindig ezt írjuk felül
+    inputArea.oninput = function handleInput() {
+      const typed = inputArea.value.trim();
+      if (typed === currentSentence.trim()) {
+        clearInterval(timerInterval);
+        finishTest();
+      }
+    };
   }
 
-  inputArea.removeEventListener("input", handleInput);
-  inputArea.addEventListener("input", handleInput);
-}
+  function finishTest() {
+    clearInterval(timerInterval);
+    const typedText = document.getElementById("inputArea").value;
+    const wordsTyped = typedText.trim().split(/\s+/).filter(word => word.length > 0).length;
+    const timeTaken = (Date.now() - startTime) / 1000 / 60;
+    const wpm = Math.round(wordsTyped / timeTaken);
 
-function finishTest() {
-  clearInterval(timerInterval);
-  const typedText = document.getElementById("inputArea").value;
-  const wordsTyped = typedText.trim().split(/\s+/).filter(word => word.length > 0).length;
-  const timeTaken = (Date.now() - startTime) / 1000 / 60;
-  const wpm = Math.round(wordsTyped / timeTaken);
+    let correctChars = 0;
+    for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
+      if (typedText[i] === currentSentence[i]) correctChars++;
+    }
 
-  let correctChars = 0;
-  for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
-    if (typedText[i] === currentSentence[i]) correctChars++;
+    const accuracy = Math.round((correctChars / currentSentence.length) * 100);
+    document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
+    document.getElementById("finishBtn").classList.add("hidden");
+    document.getElementById("inputArea").classList.add("hidden");
   }
 
-  const accuracy = Math.round((correctChars / currentSentence.length) * 100);
-  document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
-  document.getElementById("finishBtn").classList.add("hidden");
-  document.getElementById("inputArea").classList.add("hidden");
-}
-</script>
-
+  // --- Inicializálás: URL > localStorage > böngésző nyelv
+  (function(){
+    const urlLang = new URLSearchParams(location.search).get('lang');
+    const saved   = localStorage.getItem('lang');
+    const guess   = (navigator.language || 'en').slice(0,2);
+    const init    = urlLang || saved || (['en','hu','de'].includes(guess) ? guess : 'en');
+    setLanguage(init);
+  })();
+  </script>
 </body>
 </html>
+
