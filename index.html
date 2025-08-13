@@ -16,7 +16,7 @@
     }
     h1 {
       text-align: center;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       font-size: 2.6rem;
     }
     a { color: #00ff66; text-decoration: underline; }
@@ -25,12 +25,12 @@
     .top-links {
       display: flex;
       justify-content: space-between;
-      margin: 1.5rem 2rem;
+      margin: 1.5rem 3rem;
       font-size: 1.2rem;
       line-height: 1.9rem;
     }
     .top-links strong { font-size: 1.6rem; letter-spacing: .01em; }
-    .top-links a     { font-size: 1.25rem; line-height: 2rem; display: inline-block; }
+    .top-links a     { font-size: 1.25rem; line-height: 2rem; display: inline-block; font-weight: 600; }
 
     .typing-test {
       background-color: #1e1e1e;
@@ -72,7 +72,7 @@
       align-items: center;
       gap: .35rem;
       border: 1px solid #00ff66;
-      padding: .22rem .5rem;
+      padding: .18rem .48rem;
       border-radius: 999px;
       text-decoration: none;
       color: #00ff66;
@@ -86,11 +86,25 @@
       display: inline-block;
     }
 
-    @media (max-width: 900px){
-      .top-links { font-size: 1.1rem; line-height: 1.7rem; }
-      .top-links strong { font-size: 1.4rem; }
-      .top-links a { font-size: 1.1rem; line-height: 1.7rem; }
-    }
+   /* ... egyéb stílusok ... */
+
+/* ÚJ, felülíró mobil blokk */
+@media (max-width: 900px){
+  .top-links{
+    flex-direction: column;
+    gap: .5rem;
+    margin: 1rem;
+    font-size: 1rem;
+    line-height: 1.6rem;
+  }
+  .top-links strong{ font-size: 1.25rem; }
+  .top-links a{ font-size: 1.05rem; line-height: 1.6rem; }
+  .top-links div:last-child{ text-align: left !important; }
+  .typing-test{ max-width: 100%; margin: 1rem; }
+  .langbar a{ padding: .16rem .44rem; font-size: .9rem; }
+  body{ padding-top: 56px; }
+}
+
   </style>
 </head>
 <body>
