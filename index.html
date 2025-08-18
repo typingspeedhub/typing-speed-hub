@@ -6,8 +6,8 @@
   <title>Typing Speed Hub</title>
   <style>
     :root{
-      /* Itt állítod a gépelő doboz és a „My results” szélességét */
-      --panel-width: 800px; /* 760 / 800 / 840 px ízlés szerint */
+      /* A gépelő doboz és a „My results” szélessége */
+      --panel-width: 800px; /* állítható: 760 / 800 / 840 px */
     }
 
     body {
@@ -17,9 +17,10 @@
       color: #00ff66;
       background-image: radial-gradient(#00ff66 1px, transparent 1px);
       background-size: 20px 20px;
-      /* több hely fent: zászlók + fix oldalsó oszlopok miatt */
+      /* hely a zászlóknak + a fix oldalsó listáknak */
       padding-top: 96px;
     }
+
     h1 {
       text-align: center;
       margin-top: .4rem; /* közelebb a zászlókhoz */
@@ -27,7 +28,7 @@
     }
     a { color: #00ff66; text-decoration: underline; }
 
-    /* Bal/jobb oldali listák – fixen a két szélen, nem nyomják le a közepet */
+    /* Bal/jobb oldali listák – fix két szélen, nem nyomják le a közepet */
     .top-links {
       position: fixed;
       top: 56px;                 /* a zászlók alatt */
@@ -36,7 +37,7 @@
       justify-content: space-between;
       align-items: flex-start;
       padding: 0 2rem;
-      pointer-events: none;      /* a konténer nem fogja meg a kattintást */
+      pointer-events: none;      /* a konténer ne fogja meg a kattintást */
       z-index: 400;
     }
     .top-links > div {
@@ -46,7 +47,7 @@
     }
     .top-links > div:last-child { text-align: right; }
 
-    /* nagyobb betűk a listában */
+    /* nagyobb betűk a listákhoz */
     .top-links strong { font-size: 1.6rem; letter-spacing: .01em; }
     .top-links a     { font-size: 1.25rem; line-height: 2rem; display: inline-block; font-weight: 600; }
 
@@ -76,7 +77,6 @@
     .hidden { display: none; }
 
     #footer { text-align: center; margin: 2rem auto; font-size: 0.9rem; }
-    #footer img { width: 40px; margin-top: 0.5rem; }
 
     /* Nyelvváltó – felül középen, saját kis zászló SVG-kkel */
     .langbar {
@@ -145,6 +145,16 @@
       .langbar a{ padding: .16rem .44rem; font-size: .9rem; }
       body{ padding-top: 56px; } /* mobilon csak a zászlóknak kell hely */
     }
+
+    /* Footer – Facebook badge */
+    #footer .social { margin:.5rem 0; }
+    #footer .fb-badge{
+      display:inline-flex; align-items:center; gap:.4rem;
+      border:1px solid #00ff66; border-radius:999px;
+      padding:.2rem .55rem; color:#00ff66; text-decoration:none;
+    }
+    #footer .fb-badge:hover{ background:#00ff66; color:#0d0d0d; }
+    #footer .fb-icon{ width:18px; height:18px; fill: currentColor; }
   </style>
 </head>
 <body>
@@ -263,7 +273,17 @@
 
   <div id="footer">
     <p>Follow us:</p>
-    <a href="https://facebook.com" target="_blank"><img src="facebook.png" alt="Facebook logo"/></a>
+    <p class="social">
+      <a class="fb-badge"
+         href="https://www.facebook.com/typingspeedhub"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Typing Speed Hub on Facebook">
+        <svg class="fb-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.3.2 2.3.2v2.6h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/>
+        </svg>
+        Facebook
+      </a>
+    </p>
     <p>&copy; 2025 Typing Speed Hub. All rights reserved.</p>
   </div>
 
@@ -612,4 +632,3 @@
   </script>
 </body>
 </html>
-
