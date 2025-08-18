@@ -86,25 +86,46 @@
       display: inline-block;
     }
 
-   /* ... egyéb stílusok ... */
+    /* ... egyéb stílusok ... */
 
-/* ÚJ, felülíró mobil blokk */
-@media (max-width: 900px){
-  .top-links{
-    flex-direction: column;
-    gap: .5rem;
-    margin: 1rem;
-    font-size: 1rem;
-    line-height: 1.6rem;
-  }
-  .top-links strong{ font-size: 1.25rem; }
-  .top-links a{ font-size: 1.05rem; line-height: 1.6rem; }
-  .top-links div:last-child{ text-align: left !important; }
-  .typing-test{ max-width: 100%; margin: 1rem; }
-  .langbar a{ padding: .16rem .44rem; font-size: .9rem; }
-  body{ padding-top: 56px; }
-}
+    /* ÚJ, felülíró mobil blokk */
+    @media (max-width: 900px){
+      .top-links{
+        flex-direction: column;
+        gap: .5rem;
+        margin: 1rem;
+        font-size: 1rem;
+        line-height: 1.6rem;
+      }
+      .top-links strong{ font-size: 1.25rem; }
+      .top-links a{ font-size: 1.05rem; line-height: 1.6rem; }
+      .top-links div:last-child{ text-align: left !important; }
+      .typing-test{ max-width: 100%; margin: 1rem; }
+      .langbar a{ padding: .16rem .44rem; font-size: .9rem; }
+      body{ padding-top: 56px; }
+    }
 
+    /* ===== ÚJ: eredmények táblázat (csak stílus) ===== */
+    #results{
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #1e1e1e;
+      box-shadow: 0 0 15px #00ff66;
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    #results h2{ margin: 0 0 1rem; text-align: center; }
+    .results-controls{ display:flex; gap:.5rem; justify-content:center; margin-bottom:.75rem; }
+    #results button{
+      background:#0d0d0d; color:#00ff66; border:1px solid #00ff66; border-radius:6px;
+      padding:.4rem .7rem; cursor:pointer;
+    }
+    #results button:hover{ background:#00ff66; color:#0d0d0d; }
+    #resultsTable{ width:100%; border-collapse:collapse; font-size:.95rem; }
+    #resultsTable th, #resultsTable td{
+      border:1px solid #00ff66; padding:.45rem .5rem; text-align:left;
+    }
+    #resultsTable thead th{ background:#0d0d0d; }
   </style>
 </head>
 <body>
@@ -208,6 +229,23 @@
     <p>Follow us:</p>
     <a href="https://facebook.com" target="_blank"><img src="facebook.png" alt="Facebook logo"/></a>
     <p>&copy; 2025 Typing Speed Hub. All rights reserved.</p>
+  </div>
+
+  <!-- ===== ÚJ: Eredmények blokk (HTML) ===== -->
+  <div id="results">
+    <h2>My results</h2>
+    <div class="results-controls">
+      <button type="button" onclick="exportResultsCSV()">Export CSV</button>
+      <button type="button" onclick="clearResults()">Clear</button>
+    </div>
+    <table id="resultsTable">
+      <thead>
+        <tr>
+          <th>Date</th><th>Lang</th><th>Level</th><th>Duration</th><th>WPM</th><th>Accuracy</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
   </div>
 
   <script>
@@ -314,7 +352,7 @@
                  "Multitasking gelingt besser mit Tippgeschick.",
                  "Tippen unterstützt kollaboratives Arbeiten.",
                  "Flüssiges Tippen fördert den Arbeitsfluss.",
-                 "Textverarbeitung wird schneller und einfacher.",
+                 "Textverarbeitung wird schneller és einfacher.",
                  "Gutes Tippen erhöht die Konzentration.",
                  "Tippen wird zur zweiten Natur."
       ]
@@ -446,7 +484,91 @@
     document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
     document.getElementById("finishBtn").classList.add("hidden");
     document.getElementById("inputArea").classList.add("hidden");
+
+    /* ===== ÚJ: mentés + táblázat frissítés ===== */
+    const level = document.getElementById("levelSelect").value;
+    const duration = parseInt(document.getElementById("durationSelect").value);
+    saveResult({
+      date: new Date().toLocaleString(),
+      lang: currentLang,
+      level,
+      duration,  // másodperc
+      wpm,
+      accuracy
+    });
+    renderResults();
   }
+
+  // ===== ÚJ: Eredménykezelő függvények (localStorage) =====
+  const RESULTS_KEY = 'tsh_results_v1';
+
+  function saveResult(record){
+    const list = loadResults();
+    list.unshift(record);
+    localStorage.setItem(RESULTS_KEY, JSON.stringify(list.slice(0, 200)));
+  }
+
+  function loadResults(){
+    try { return JSON.parse(localStorage.getItem(RESULTS_KEY) || '[]'); }
+    catch(e){ return []; }
+  }
+
+  function renderResults(){
+    const tbody = document.querySelector('#resultsTable tbody');
+    if (!tbody) return;
+    const rows = loadResults();
+    tbody.innerHTML = rows.map(r => `
+      <tr>
+        <td>${escapeHtml(r.date)}</td>
+        <td>${String(r.lang).toUpperCase()}</td>
+        <td>${escapeHtml(r.level)}</td>
+        <td>${formatDuration(r.duration)}</td>
+        <td>${r.wpm}</td>
+        <td>${r.accuracy}%</td>
+      </tr>
+    `).join('');
+  }
+
+  function exportResultsCSV(){
+    const rows = loadResults();
+    const header = ['date','lang','level','duration_s','wpm','accuracy'];
+    const csv = [header.join(',')].concat(
+      rows.map(r => [
+        safeCsv(r.date),
+        safeCsv(r.lang),
+        safeCsv(r.level),
+        r.duration,
+        r.wpm,
+        r.accuracy
+      ].join(','))
+    ).join('\n');
+    const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'typing_results.csv';
+    document.body.appendChild(a); a.click();
+    a.remove(); URL.revokeObjectURL(url);
+  }
+
+  function clearResults(){
+    if (confirm('Delete all saved results?')) {
+      localStorage.removeItem(RESULTS_KEY);
+      renderResults();
+    }
+  }
+
+  function formatDuration(sec){
+    const s = Number(sec)||0;
+    return s % 60 === 0 ? `${s/60}m` : `${s}s`;
+  }
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+  function safeCsv(s){
+    const t = String(s).replace(/"/g,'""');
+    return /[",\n]/.test(t) ? `"${t}"` : t;
+  }
+  // ===== /ÚJ eredménykezelő =====
 
   // Zászlók: azonnali váltás + URL frissítése, oldal-újratöltés nélkül
   document.querySelectorAll('.langbar a').forEach(a=>{
@@ -467,10 +589,8 @@
     const guess   = (navigator.language || 'en').slice(0,2);
     const init    = urlLang || saved || (['en','hu','de'].includes(guess) ? guess : 'en');
     setLanguage(init);
+    renderResults(); // <-- ÚJ: eredmények megjelenítése betöltéskor
   })();
   </script>
 </body>
 </html>
-
-
-
