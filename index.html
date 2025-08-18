@@ -86,8 +86,6 @@
       display: inline-block;
     }
 
-    /* ... egyéb stílusok ... */
-
     /* ÚJ, felülíró mobil blokk */
     @media (max-width: 900px){
       .top-links{
@@ -105,9 +103,9 @@
       body{ padding-top: 56px; }
     }
 
-    /* ===== ÚJ: eredmények táblázat (csak stílus) ===== */
+    /* ===== Eredmények táblázat (stílus) ===== */
     #results{
-      max-width: 800px;
+      max-width: 640px;           /* egyezzen a typing panel szélességével */
       margin: 2rem auto;
       background: #1e1e1e;
       box-shadow: 0 0 15px #00ff66;
@@ -126,6 +124,12 @@
       border:1px solid #00ff66; padding:.45rem .5rem; text-align:left;
     }
     #resultsTable thead th{ background:#0d0d0d; }
+
+    /* ===== Finomhangolás: húzzuk fel a középső részt ===== */
+    .top-links { margin: .5rem 3rem; }     /* kevesebb hely felül */
+    h1 { margin-top: .75rem; }             /* közelebb a zászlókhoz */
+    .typing-test { margin: .5rem auto 1rem; }
+    #results { margin: .5rem auto 2rem; }
   </style>
 </head>
 <body>
@@ -225,13 +229,7 @@
     <p id="resultDisplay"></p>
   </div>
 
-  <div id="footer">
-    <p>Follow us:</p>
-    <a href="https://facebook.com" target="_blank"><img src="facebook.png" alt="Facebook logo"/></a>
-    <p>&copy; 2025 Typing Speed Hub. All rights reserved.</p>
-  </div>
-
-  <!-- ===== ÚJ: Eredmények blokk (HTML) ===== -->
+  <!-- IDE költözött: My results a typing-test után -->
   <div id="results">
     <h2>My results</h2>
     <div class="results-controls">
@@ -246,6 +244,12 @@
       </thead>
       <tbody></tbody>
     </table>
+  </div>
+
+  <div id="footer">
+    <p>Follow us:</p>
+    <a href="https://facebook.com" target="_blank"><img src="facebook.png" alt="Facebook logo"/></a>
+    <p>&copy; 2025 Typing Speed Hub. All rights reserved.</p>
   </div>
 
   <script>
@@ -352,7 +356,7 @@
                  "Multitasking gelingt besser mit Tippgeschick.",
                  "Tippen unterstützt kollaboratives Arbeiten.",
                  "Flüssiges Tippen fördert den Arbeitsfluss.",
-                 "Textverarbeitung wird schneller és einfacher.",
+                 "Textverarbeitung wird schneller und einfacher.",
                  "Gutes Tippen erhöht die Konzentration.",
                  "Tippen wird zur zweiten Natur."
       ]
@@ -429,7 +433,7 @@
     const duration = parseInt(document.getElementById("durationSelect").value);
     const sentencePool = sentences[currentLang]?.[level];
 
-    if (!sentencePool || sentencePool.length === 0) {
+    if (!sentencePool vagy sentencePool.length === 0) {
       alert("No sentences available for selected language/level.");
       return;
     }
@@ -485,7 +489,7 @@
     document.getElementById("finishBtn").classList.add("hidden");
     document.getElementById("inputArea").classList.add("hidden");
 
-    /* ===== ÚJ: mentés + táblázat frissítés ===== */
+    /* Mentés + táblázat frissítés */
     const level = document.getElementById("levelSelect").value;
     const duration = parseInt(document.getElementById("durationSelect").value);
     saveResult({
@@ -499,7 +503,7 @@
     renderResults();
   }
 
-  // ===== ÚJ: Eredménykezelő függvények (localStorage) =====
+  /* Eredménykezelő (localStorage) */
   const RESULTS_KEY = 'tsh_results_v1';
 
   function saveResult(record){
@@ -545,7 +549,7 @@
     const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = 'typing_results.csv';
+    a.href = url; a.download = 'typing_results_' + new Date().toISOString().slice(0,10) + '.csv';
     document.body.appendChild(a); a.click();
     a.remove(); URL.revokeObjectURL(url);
   }
@@ -568,7 +572,6 @@
     const t = String(s).replace(/"/g,'""');
     return /[",\n]/.test(t) ? `"${t}"` : t;
   }
-  // ===== /ÚJ eredménykezelő =====
 
   // Zászlók: azonnali váltás + URL frissítése, oldal-újratöltés nélkül
   document.querySelectorAll('.langbar a').forEach(a=>{
@@ -589,7 +592,7 @@
     const guess   = (navigator.language || 'en').slice(0,2);
     const init    = urlLang || saved || (['en','hu','de'].includes(guess) ? guess : 'en');
     setLanguage(init);
-    renderResults(); // <-- ÚJ: eredmények megjelenítése betöltéskor
+    renderResults(); // eredmények megjelenítése betöltéskor
   })();
   </script>
 </body>
