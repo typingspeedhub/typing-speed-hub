@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Typing Speed Hub</title>
   <style>
+    :root{
+      /* Itt állítod a gépelő doboz és a „My results” szélességét */
+      --panel-width: 800px; /* 760 / 800 / 840 px ízlés szerint */
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -12,23 +17,36 @@
       color: #00ff66;
       background-image: radial-gradient(#00ff66 1px, transparent 1px);
       background-size: 20px 20px;
-      padding-top: 60px; /* hely a fix nyelvváltónak */
+      /* több hely fent: zászlók + fix oldalsó oszlopok miatt */
+      padding-top: 96px;
     }
     h1 {
       text-align: center;
-      margin-top: 1.5rem;
+      margin-top: .4rem; /* közelebb a zászlókhoz */
       font-size: 2.6rem;
     }
     a { color: #00ff66; text-decoration: underline; }
 
-    /* Bal/jobb oldali listák – nagyobb betűk */
+    /* Bal/jobb oldali listák – fixen a két szélen, nem nyomják le a közepet */
     .top-links {
+      position: fixed;
+      top: 56px;                 /* a zászlók alatt */
+      left: 0; right: 0;
       display: flex;
       justify-content: space-between;
-      margin: 1.5rem 3rem;
-      font-size: 1.2rem;
-      line-height: 1.9rem;
+      align-items: flex-start;
+      padding: 0 2rem;
+      pointer-events: none;      /* a konténer nem fogja meg a kattintást */
+      z-index: 400;
     }
+    .top-links > div {
+      width: 280px;
+      pointer-events: auto;      /* a linkek kattinthatók maradnak */
+      text-align: left;
+    }
+    .top-links > div:last-child { text-align: right; }
+
+    /* nagyobb betűk a listában */
     .top-links strong { font-size: 1.6rem; letter-spacing: .01em; }
     .top-links a     { font-size: 1.25rem; line-height: 2rem; display: inline-block; font-weight: 600; }
 
@@ -37,19 +55,22 @@
       padding: 1.5rem;
       border-radius: 10px;
       box-shadow: 0 0 15px #00ff66;
-      max-width: 640px;
-      margin: 1rem auto 2rem auto;
+      max-width: var(--panel-width) !important;   /* nagyobb doboz */
+      margin: .35rem auto .75rem;                 /* feljebb húzva */
     }
     select, button, textarea {
       margin: 0.5rem 0;
-      padding: 0.5rem;
-      font-size: 1rem;
+      padding: .6rem;                /* kicsit nagyobb */
+      font-size: 1.08rem;            /* kicsit nagyobb */
       width: 100%;
       background-color: #0d0d0d;
       color: #00ff66;
       border: 1px solid #00ff66;
       border-radius: 5px;
     }
+    #sentenceDisplay { font-size: 1.16rem; }
+    #timerDisplay, #resultDisplay { font-size: 1.06rem; }
+
     button:hover { background-color: #00ff66; color: #0d0d0d; cursor: pointer; }
     textarea { height: 100px; }
     .hidden { display: none; }
@@ -86,27 +107,10 @@
       display: inline-block;
     }
 
-    /* ÚJ, felülíró mobil blokk */
-    @media (max-width: 900px){
-      .top-links{
-        flex-direction: column;
-        gap: .5rem;
-        margin: 1rem;
-        font-size: 1rem;
-        line-height: 1.6rem;
-      }
-      .top-links strong{ font-size: 1.25rem; }
-      .top-links a{ font-size: 1.05rem; line-height: 1.6rem; }
-      .top-links div:last-child{ text-align: left !important; }
-      .typing-test{ max-width: 100%; margin: 1rem; }
-      .langbar a{ padding: .16rem .44rem; font-size: .9rem; }
-      body{ padding-top: 56px; }
-    }
-
     /* ===== Eredmények táblázat (stílus) ===== */
     #results{
-      max-width: 640px;           /* egyezzen a typing panel szélességével */
-      margin: 2rem auto;
+      max-width: var(--panel-width) !important;  /* egyezzen a typing panellel */
+      margin: .5rem auto 1.25rem;
       background: #1e1e1e;
       box-shadow: 0 0 15px #00ff66;
       border-radius: 10px;
@@ -125,11 +129,22 @@
     }
     #resultsTable thead th{ background:#0d0d0d; }
 
-    /* ===== Finomhangolás: húzzuk fel a középső részt ===== */
-    .top-links { margin: .5rem 3rem; }     /* kevesebb hely felül */
-    h1 { margin-top: .75rem; }             /* közelebb a zászlókhoz */
-    .typing-test { margin: .5rem auto 1rem; }
-    #results { margin: .5rem auto 2rem; }
+    /* ===== Mobil: ne legyen fix, álljon vissza normálra ===== */
+    @media (max-width: 900px){
+      .top-links{
+        position: static;
+        flex-direction: column;
+        gap: .5rem;
+        padding: 0 1rem;
+        pointer-events: auto;
+      }
+      .top-links > div{ width: auto; text-align: left; }
+      .top-links strong{ font-size: 1.25rem; }
+      .top-links a{ font-size: 1.05rem; line-height: 1.6rem; }
+      .typing-test, #results { max-width: 100% !important; margin: 1rem; }
+      .langbar a{ padding: .16rem .44rem; font-size: .9rem; }
+      body{ padding-top: 56px; } /* mobilon csak a zászlóknak kell hely */
+    }
   </style>
 </head>
 <body>
@@ -187,7 +202,7 @@
       <a href="typing-tips.html">Typing tips</a><br/>
       <a href="what-is-wpm.html">What is WPM?</a>
     </div>
-    <div style="text-align: right;">
+    <div>
       <strong>Info</strong><br/>
       <a href="about.html">About</a><br/>
       <a href="contact.html">Contact</a><br/>
@@ -229,7 +244,7 @@
     <p id="resultDisplay"></p>
   </div>
 
-  <!-- IDE költözött: My results a typing-test után -->
+  <!-- My results a gépelő doboz alatt -->
   <div id="results">
     <h2>My results</h2>
     <div class="results-controls">
@@ -433,7 +448,7 @@
     const duration = parseInt(document.getElementById("durationSelect").value);
     const sentencePool = sentences[currentLang]?.[level];
 
-    if (!sentencePool vagy sentencePool.length === 0) {
+    if (!sentencePool || sentencePool.length === 0) {
       alert("No sentences available for selected language/level.");
       return;
     }
@@ -597,3 +612,4 @@
   </script>
 </body>
 </html>
+
