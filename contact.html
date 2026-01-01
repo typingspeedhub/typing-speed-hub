@@ -3,63 +3,160 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | Typing Speed Hub</title>
-  <meta name="description" content="Contact Typing Speed Hub. Reach out with questions, feedback, or partnership inquiries via email." />
-  <meta name="keywords" content="contact typing website, typing speed hub email, typing help, support" />
+
+  <title>Contact | Typing Speed Hub</title>
+  <meta name="description" content="Contact Typing Speed Hub with questions, feedback, or partnership inquiries. Email us directly and we’ll respond as soon as possible." />
   <meta name="author" content="Typing Speed Hub" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://typingspeedhub.com/contact.html" />
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Typing Speed Hub" />
+  <meta property="og:title" content="Contact | Typing Speed Hub" />
+  <meta property="og:description" content="Questions or feedback? Contact Typing Speed Hub by email." />
+  <meta property="og:url" content="https://typingspeedhub.com/contact.html" />
+  <meta property="og:image" content="https://typingspeedhub.com/images/logo.png" />
+
+  <!-- Structured data: ContactPage + Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": "https://typingspeedhub.com/contact.html",
+        "url": "https://typingspeedhub.com/contact.html",
+        "name": "Contact | Typing Speed Hub",
+        "inLanguage": "en",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://typingspeedhub.com/#website",
+          "url": "https://typingspeedhub.com",
+          "name": "Typing Speed Hub"
+        }
+      },
+      {
+        "@type": "Organization",
+        "name": "Typing Speed Hub",
+        "url": "https://typingspeedhub.com",
+        "logo": "https://typingspeedhub.com/images/logo.png",
+        "email": "typingspeedhub@gmail.com",
+        "sameAs": [
+          "https://www.facebook.com/typingspeedhub"
+        ],
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "typingspeedhub@gmail.com",
+          "availableLanguage": ["en", "hu", "de"]
+        }]
+      }
+    ]
+  }
+  </script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
       padding: 0;
       background-color: #0d0d0d;
       color: #ffffff;
+      line-height: 1.75;
     }
     nav {
-      background-color: #1f1f1f;
-      padding: 10px;
+      background-color: #141414;
+      border-bottom: 1px solid rgba(0,255,136,.25);
+      padding: 12px 16px;
       text-align: center;
     }
     nav a {
-      margin: 0 10px;
+      display: inline-block;
+      margin: 6px 10px;
       text-decoration: none;
       color: #00ff88;
-      font-weight: bold;
+      font-weight: 700;
+      border: 1px solid rgba(0,255,136,.25);
+      padding: .35rem .6rem;
+      border-radius: 999px;
+    }
+    nav a:hover {
+      background: #00ff88;
+      color: #0d0d0d;
+      border-color: #00ff88;
     }
     .container {
-      max-width: 600px;
-      margin: 30px auto;
+      max-width: 760px;
+      margin: 28px auto;
+      padding: 18px;
+    }
+    .card{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(0,255,136,.25);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 0 18px rgba(0,255,136,.12);
       text-align: center;
     }
-    a {
-      color: #00ff88;
+    h1 { color: #00ff88; margin-top: 6px; }
+    a { color: #00ff88; }
+    .muted { color: #cfcfcf; }
+    footer{
+      margin-top: 18px;
+      text-align: center;
+      color: #aaaaaa;
+      padding: 16px;
+      border-top: 1px solid rgba(0,255,136,.18);
     }
+    footer a{
+      color:#cfeedd;
+      text-decoration:none;
+      border-bottom: 1px solid rgba(0,255,136,.25);
+      margin: 0 8px;
+    }
+    footer a:hover{ color:#00ff88; border-bottom-color:#00ff88; }
   </style>
 </head>
+
 <body>
 
-<nav>
+<nav aria-label="Primary navigation">
   <a href="index.html">Home</a>
-  <a href="about.html">About</a>
+  <a href="typing-speed-test.html">Typing Test</a>
   <a href="typing-tips.html">Typing Tips</a>
-  <a href="contact.html">Contact</a>
-  <a href="privacy-policy.html">Privacy</a>
+  <a href="about.html">About</a>
+  <a href="contact.html" aria-current="page">Contact</a>
 </nav>
 
-<div class="container">
-  <h1>Contact Us</h1>
-  <p>Have a question about typing, found a bug, or just want to say hello? We'd love to hear from you.</p>
-  <p>Please email us directly at <a href="mailto:typingspeedhub@gmail.com">typingspeedhub@gmail.com</a> and we'll get back to you as soon as possible — typically within 1–2 business days.</p>
-  <p>We currently do not use contact forms to keep things simple and private. All communication goes directly through email.</p>
-  <p>Thank you for visiting Typing Speed Hub!</p>
-</div>
+<main class="container">
+  <section class="card">
+    <h1>Contact Us</h1>
+    <p>Have a question, found a bug, or want to share feedback? We’d love to hear from you.</p>
 
+    <p>
+      Email us at:
+      <strong><a href="mailto:typingspeedhub@gmail.com">typingspeedhub@gmail.com</a></strong>
+    </p>
+
+    <p class="muted">
+      We usually reply within 1–2 business days. We don’t use contact forms to keep things simple and private.
+    </p>
+
+    <p class="muted">
+      For policy details, please see our <a href="privacy-policy.html">Privacy Policy</a>.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <a href="privacy-policy.html">Privacy Policy</a>
+  <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+  <a href="impressum.html">Impressum</a>
+</footer>
 
 </body>
 </html>
 
-
+ 
 
