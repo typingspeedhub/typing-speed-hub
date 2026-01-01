@@ -3,14 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Typing Speed Hub | Typing Practice Tools</title>
-  <meta name="description" content="Learn about Typing Speed Hub – a site dedicated to helping you improve your typing speed and accuracy through fun, simple, and effective tools." />
-  <meta name="keywords" content="about typing site, typing speed hub, who we are, typing practice tools" />
+
+  <title>About Typing Speed Hub | Free Typing Practice & Speed Tests</title>
+  <meta name="description" content="Learn about Typing Speed Hub — a free typing practice site with speed tests, drills, games, and guides to help you improve WPM and accuracy." />
   <meta name="author" content="Typing Speed Hub" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://typingspeedhub.com/about.html" />
 
-  <!-- ✅ JSON-LD Schema markup -->
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Typing Speed Hub" />
+  <meta property="og:title" content="About Typing Speed Hub" />
+  <meta property="og:description" content="Free typing practice, speed tests, drills, and guides to help you improve WPM and accuracy." />
+  <meta property="og:url" content="https://typingspeedhub.com/about.html" />
+  <meta property="og:image" content="https://typingspeedhub.com/images/logo.png" />
+
+  <!-- ✅ JSON-LD (Organization) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -18,45 +26,81 @@
     "name": "Typing Speed Hub",
     "url": "https://typingspeedhub.com",
     "logo": "https://typingspeedhub.com/images/logo.png",
-    "description": "Typing Speed Hub helps users improve their typing speed and accuracy through drills, games, and guides.",
+    "description": "Typing Speed Hub helps users improve typing speed and accuracy through free tests, drills, games, and guides.",
+    "email": "typingspeedhub@gmail.com",
     "sameAs": [
       "https://www.facebook.com/typingspeedhub"
-    ]
+    ],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "typingspeedhub@gmail.com",
+      "availableLanguage": ["en", "hu", "de"]
+    }]
   }
   </script>
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
-      padding: 20px;
-      line-height: 1.6;
+      padding: 24px;
+      line-height: 1.75;
       background-color: #0d0d0d;
       color: #ffffff;
     }
-    h1 {
-      color: #00ff88;
+    h1, h2 { color: #00ff88; }
+    a { color: #00ff88; }
+    .card {
+      border: 1px solid rgba(0,255,136,.25);
+      border-radius: 12px;
+      padding: 18px;
+      background: rgba(255,255,255,.03);
     }
-    a {
-      color: #00ff88;
-    }
+    ul { padding-left: 18px; }
+    .links a { display:inline-block; margin-right: 14px; margin-bottom: 8px; }
+    .muted { color: #cfcfcf; }
   </style>
 </head>
 
 <body>
-  <h1>About Typing Speed Hub</h1>
+  <main class="card">
+    <h1>About Typing Speed Hub</h1>
+    <p class="muted">
+      Typing Speed Hub is a free typing practice website built to help you improve your <strong>typing speed (WPM)</strong> and <strong>accuracy</strong> with simple tools and practical guides.
+    </p>
 
-  <p><strong>Typing Speed Hub</strong> was founded with a single goal: to make typing practice simple, effective, and accessible to everyone — no account needed, no distractions, just results.</p>
+    <h2>What we offer</h2>
+    <ul>
+      <li>Typing tests with WPM and accuracy tracking</li>
+      <li>Short daily drills (beginner to advanced)</li>
+      <li>Helpful articles and tips to build real typing habits</li>
+      <li>Kid-friendly practice ideas and learning resources</li>
+    </ul>
 
-  <p>Whether you're a student preparing for exams, a remote worker trying to boost productivity, or a complete beginner, our tools and guides are designed to help you type faster and more accurately with just a few minutes of daily effort.</p>
+    <p>
+      Whether you’re a student, a remote worker, or a complete beginner, our goal is to keep typing practice
+      <strong>simple, effective, and accessible</strong> — no account required.
+    </p>
 
-  <p>This site is managed by a small, independent creator with a background in digital learning tools. Every article and typing aid is written and built with clarity, privacy, and usability in mind.</p>
+    <p>
+      This site is managed by an independent creator focused on clarity, privacy, and usability.
+      We do not sell personal data, and we aim to keep the experience clean and user-friendly.
+    </p>
 
-  <p>We don’t use intrusive ads or sell your data. Our mission is to support learners by offering free, trustworthy resources.</p>
+    <p>
+      Questions or feedback? Contact us at
+      <a href="mailto:typingspeedhub@gmail.com">typingspeedhub@gmail.com</a>
+      (or visit our <a href="contact.html">Contact</a> page).
+    </p>
 
-  <p>Have feedback or questions? Feel free to reach out at <a href="mailto:typingspeedhub@gmail.com">typingspeedhub@gmail.com</a>.</p>
-
-  <p><a href="index.html">← Back to homepage</a></p>
+    <div class="links" aria-label="Helpful links">
+      <a href="index.html">← Home</a>
+      <a href="typing-speed-test.html">Typing Speed Test</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+    </div>
+  </main>
 </body>
 </html>
