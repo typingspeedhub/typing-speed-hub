@@ -145,6 +145,28 @@
     }
     #resultsTable thead th{ background:#0d0d0d; }
 
+    /* ===== AdSense-barát szöveg blokk a Start alatt ===== */
+    #homepage-content{
+      max-width: var(--panel-width);
+      margin: 0 auto 1rem;
+      background: #1e1e1e;
+      box-shadow: 0 0 15px #00ff66;
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      line-height: 1.6;
+    }
+    #homepage-content h1{
+      font-size: 1.55rem;
+      margin: 0 0 .75rem;
+      text-align: left;
+    }
+    #homepage-content h2{
+      font-size: 1.2rem;
+      margin: 1rem 0 .5rem;
+      text-align: left;
+    }
+    #homepage-content p{ margin: .55rem 0; }
+
     /* ===== Mobil: ne legyen fix, álljon vissza normálra ===== */
     @media (max-width: 900px){
       .top-links{
@@ -157,7 +179,7 @@
       .top-links > div{ width: auto; text-align: left; }
       .top-links strong{ font-size: 1.25rem; }
       .top-links a{ font-size: 1.05rem; line-height: 1.6rem; }
-      .typing-test, #results { max-width: 100% !important; margin: 1rem; }
+      .typing-test, #results, #homepage-content { max-width: 100% !important; margin: 1rem; }
       .langbar a{ padding: .16rem .44rem; font-size: .9rem; }
       body{ padding-top: 56px; } /* mobilon csak a zászlóknak kell hely */
     }
@@ -278,6 +300,69 @@
     <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
     <p id="resultDisplay"></p>
   </div>
+
+  <!-- ✅ AdSense-barát szöveg blokk: közvetlenül a Start teszt után -->
+  <section id="homepage-content" aria-label="Typing Speed Hub information">
+    <h1>Improve Your Typing Speed with Typing Speed Hub</h1>
+
+    <p>
+      Typing Speed Hub is an interactive online platform designed to help you test, train, and improve your typing speed and accuracy.
+      Whether you are a beginner learning touch typing or an experienced typist aiming to increase your words per minute (WPM),
+      our tools and resources are built to support steady and measurable progress.
+    </p>
+
+    <p>
+      Typing faster is not only about speed. Accuracy, consistency, and muscle memory play a crucial role in real-world typing performance.
+      Typing Speed Hub focuses on all these aspects by combining practical typing tests with structured learning content,
+      allowing users to improve their skills in a balanced and effective way.
+    </p>
+
+    <h2>How the Typing Speed Test Works</h2>
+    <p>
+      Our typing speed test allows you to measure your performance in real time. You can select your preferred language, difficulty level,
+      and test duration before starting. Once the test begins, you type a given text while the system tracks your typing speed, accuracy,
+      and error rate.
+    </p>
+    <p>
+      At the end of each test, you receive clear results including words per minute (WPM) and accuracy percentage.
+      These metrics help you understand your current level and identify areas that need improvement.
+      The test is suitable for short practice sessions as well as longer, more focused training runs.
+    </p>
+
+    <h2>Track Your Progress and Build Consistency</h2>
+    <p>
+      Typing Speed Hub allows you to save and review your typing results over time. By tracking your performance history,
+      you can see how regular practice improves your speed and accuracy. Consistent training is one of the most effective ways
+      to develop long-term typing skills, and monitoring your progress helps maintain motivation.
+    </p>
+    <p>
+      You can export your results and use them to set realistic goals for future practice sessions.
+      Whether your goal is professional productivity, academic work, or personal development, structured tracking makes improvement easier
+      and more rewarding.
+    </p>
+
+    <h2>Learning Resources and Practical Typing Tips</h2>
+    <p>
+      In addition to the typing test, Typing Speed Hub provides educational articles focused on typing techniques, common mistakes,
+      keyboard layouts, and speed-building strategies. These resources are designed to complement hands-on practice by explaining the
+      principles behind efficient typing.
+    </p>
+    <p>
+      Understanding correct finger placement, posture, and rhythm can significantly reduce errors and fatigue.
+      Our articles are written to be accessible for beginners while still offering useful insights for advanced users.
+    </p>
+
+    <h2>Who Is Typing Speed Hub For?</h2>
+    <p>
+      Typing Speed Hub is suitable for students, professionals, programmers, writers, and anyone who uses a keyboard regularly.
+      It is also helpful for children and beginners who want to learn typing in a structured and user-friendly environment.
+    </p>
+    <p>
+      The platform is web-based and works across modern browsers, making it easy to practice anytime without installing additional software.
+      Whether you want to test your current typing speed or commit to long-term improvement, Typing Speed Hub offers a practical and
+      accessible solution.
+    </p>
+  </section>
 
   <!-- My results a gépelő doboz alatt -->
   <div id="results">
@@ -657,3 +742,5 @@
   </script>
 </body>
 </html>
+
+
