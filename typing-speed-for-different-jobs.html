@@ -1,638 +1,770 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>Typing Speed for Different Jobs: Office, Programmer, Writer, Student (What’s Good WPM?)</title>
   <meta name="description" content="What is a good typing speed for office work, programmers, writers, and students? See realistic WPM benchmarks by job and age, plus practical goals and tips." />
+  <meta name="author" content="Typing Speed Hub" />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://typingspeedhub.com/typing-speed-for-different-jobs.html" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Typing Speed for Different Jobs: Office, Programmer, Writer, Student" />
-  <meta property="og:description" content="Realistic typing speed benchmarks by job and age. Learn what WPM you actually need for office work, coding, writing, and school—and how to improve." />
   <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Typing Speed Hub" />
+  <meta property="og:title" content="Typing Speed for Different Jobs: Office, Programmer, Writer, Student" />
+  <meta property="og:description" content="Realistic WPM benchmarks by job and age. Learn what typing speed you actually need for office work, coding, writing, and school—and how to improve." />
   <meta property="og:url" content="https://typingspeedhub.com/typing-speed-for-different-jobs.html" />
 
-  <style>
-    :root { color-scheme: dark light; }
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.6; }
-    main { max-width: 950px; margin: 0 auto; padding: 24px 16px 64px; }
-    h1, h2, h3 { line-height: 1.25; }
-    h1 { margin-top: 8px; font-size: 2rem; }
-    h2 { margin-top: 2.4rem; font-size: 1.45rem; }
-    h3 { margin-top: 1.4rem; font-size: 1.15rem; }
-    .meta { opacity: 0.85; font-size: 0.95rem; margin: 6px 0 18px; }
-    .callout { border-left: 4px solid rgba(255,255,255,0.25); padding: 12px 16px; margin: 20px 0; border-radius: 10px; background: rgba(255,255,255,0.05); }
-    .table-wrap { overflow-x: auto; margin: 18px 0; }
-    table { width: 100%; border-collapse: collapse; min-width: 680px; }
-    th, td { padding: 10px 12px; border: 1px solid rgba(255,255,255,0.15); text-align: left; vertical-align: top; }
-    th { background: rgba(255,255,255,0.07); }
-    .btnrow { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
-    .btn { display: inline-block; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.06); text-decoration: none; }
-    .btn:hover { background: rgba(255,255,255,0.1); }
-    .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
-    @media (min-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
-    .card { border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 14px; background: rgba(255,255,255,0.03); }
-    .faq details { border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 12px 14px; margin: 10px 0; background: rgba(255,255,255,0.04); }
-    .faq summary { cursor: pointer; font-weight: 600; }
-    .note { font-size: 0.95rem; opacity: 0.85; }
-    hr { border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 30px 0; }
-    .toc { border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 14px 14px 10px; margin: 18px 0 24px; }
-    .toc strong { display: block; margin-bottom: 6px; }
-    .toc ul { margin: 0; padding-left: 18px; }
-    a { text-decoration: none; }
-    a:hover { text-decoration: underline; }
-  </style>
-
-  <!-- FAQ Schema (expanded, still concise) -->
+  <!-- Structured Data: Article + FAQ -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
+    "@context": "https://schema.org",
+    "@graph": [
       {
-        "@type":"Question",
-        "name":"What is the average typing speed?",
-        "acceptedAnswer":{"@type":"Answer","text":"A common average range for adults is about 35–45 WPM. Many office professionals fall around 45–55 WPM, while experienced typists often reach 60+ WPM with strong accuracy."}
+        "@type": "Article",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://typingspeedhub.com/typing-speed-for-different-jobs.html"
+        },
+        "headline": "Typing Speed for Different Jobs: Office, Programmer, Writer, Student (What’s Good WPM?)",
+        "description": "What is a good typing speed for office work, programmers, writers, and students? See realistic WPM benchmarks by job and age, plus practical goals and tips.",
+        "author": {
+          "@type": "Organization",
+          "name": "Typing Speed Hub"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Typing Speed Hub",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://typingspeedhub.com/images/logo.png"
+          }
+        },
+        "datePublished": "2026-02-20",
+        "dateModified": "2026-02-20"
       },
       {
-        "@type":"Question",
-        "name":"Is 60 WPM good for a job?",
-        "acceptedAnswer":{"@type":"Answer","text":"Yes. 60 WPM with high accuracy (about 95%+) is considered very good for most office, academic, customer support, and professional writing tasks."}
-      },
-      {
-        "@type":"Question",
-        "name":"Do programmers need high typing speed?",
-        "acceptedAnswer":{"@type":"Answer","text":"Programmers benefit more from accuracy, symbols comfort, and workflow than from extreme speed. A consistent 45–70 WPM is typically sufficient for coding work."}
-      },
-      {
-        "@type":"Question",
-        "name":"What typing speed should students aim for?",
-        "acceptedAnswer":{"@type":"Answer","text":"Students should aim for about 40–50 WPM for comfortable essays, note-taking, and online exams. Faster speeds reduce stress during timed work."}
-      },
-      {
-        "@type":"Question",
-        "name":"Should I put typing speed on my resume?",
-        "acceptedAnswer":{"@type":"Answer","text":"If the role involves heavy typing (admin, support, transcription, data entry), listing a verified WPM with accuracy can help. For roles where typing is not central, it’s optional."}
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the average typing speed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A common average range for adults is about 35–45 WPM. Many office professionals fall around 45–55 WPM, while experienced typists often reach 60+ WPM with strong accuracy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is 60 WPM good for a job?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. 60 WPM with high accuracy (about 95%+) is considered very good for most office, academic, customer support, and professional writing tasks."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do programmers need high typing speed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Programmers benefit more from accuracy, symbol comfort, and workflow than from extreme speed. A consistent 45–70 WPM is typically sufficient for coding work."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What typing speed should students aim for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Students should aim for about 40–50 WPM for comfortable essays, note-taking, and online exams. Faster speeds reduce stress during timed work."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I put typing speed on my resume?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If the role involves heavy typing (admin, support, transcription, data entry), listing a verified WPM with accuracy can help. For roles where typing is not central, it’s optional."
+            }
+          }
+        ]
       }
     ]
   }
   </script>
+
+  <style>
+    :root{
+      --bg: #121212;
+      --text: #e0e0e0;
+      --muted: #9a9a9a;
+      --accent: #4CAF50;
+      --accent2: #66ff99;
+      --card: #1e1e1e;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+      line-height: 1.8;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      color: var(--accent);
+      font-size: 2.2rem;
+      margin-bottom: .6rem;
+      text-align: center;
+    }
+
+    .subtitle{
+      text-align:center;
+      color: var(--muted);
+      margin: 0 0 1.2rem 0;
+      font-size: 1rem;
+    }
+
+    .badge-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.55rem;
+      justify-content:center;
+      margin-bottom: 1.25rem;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      border:1px solid rgba(102,255,153,.35);
+      background: rgba(102,255,153,.08);
+      padding:.35rem .65rem;
+      border-radius:999px;
+      font-size:.92rem;
+      color:#c8ffd9;
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 1.6rem;
+      margin-top: 2rem;
+      margin-bottom: .5rem;
+    }
+
+    h3 {
+      color: var(--accent2);
+      margin-top: .75rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      margin: 0.8rem 0;
+    }
+
+    ul, ol { padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+
+    a {
+      color: #33ff99;
+      text-decoration: underline;
+    }
+    a:hover { text-decoration:none; }
+
+    code{
+      background: #0f0f0f;
+      padding: 0.12rem 0.35rem;
+      border-radius: 8px;
+      color: #c8ffd9;
+    }
+
+    .toc{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      margin: 1.15rem 0 1.35rem;
+    }
+    .toc h2{ margin-top:0; font-size: 1.2rem; }
+    .toc ul{ margin:.3rem 0 0; }
+    .toc li{ margin:.35rem 0; }
+
+    .related{
+      background: rgba(76,175,80,.10);
+      border: 1px solid rgba(76,175,80,.25);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      margin: 1.15rem 0 1.35rem;
+    }
+    .related h2{ margin-top:0; font-size: 1.2rem; }
+    .related ul{ margin:.35rem 0 0; }
+
+    .step {
+      background-color: var(--card);
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.1rem;
+      margin: 1.2rem 0;
+      border-radius: var(--radius);
+    }
+
+    .cta {
+      background: linear-gradient(180deg, rgba(76,175,80,.18), rgba(30,30,30,1));
+      border: 1px solid rgba(76,175,80,.35);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.2rem;
+      margin: 1.4rem 0 1.6rem;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset;
+    }
+    .cta h2{ margin-top: 0; }
+
+    .cta .cta-actions{
+      display:flex;
+      flex-wrap: wrap;
+      gap: .7rem;
+      margin-top: .9rem;
+    }
+
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: .55rem .9rem;
+      border: 1px solid rgba(76,175,80,.6);
+      color: var(--bg);
+      background: var(--accent);
+    }
+    .btn:hover{ filter: brightness(1.05); }
+
+    .btn.secondary{
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(102,255,153,.6);
+    }
+    .btn.secondary:hover{
+      background: rgba(102,255,153,.12);
+    }
+
+    .mini-note{
+      color: var(--muted);
+      font-size: .95rem;
+      margin-top: .35rem;
+    }
+
+    .note{
+      background-color: #1e1e1e;
+      border: 1px solid #2b2b2b;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: .98rem;
+    }
+    .note strong{ color: #d9ffe8; }
+
+    /* Tables */
+    .table-wrap{
+      overflow-x:auto;
+      margin-top: .8rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+    }
+    table{
+      width:100%;
+      border-collapse: collapse;
+      min-width: 520px;
+    }
+    th, td{
+      padding: .75rem .85rem;
+      text-align:left;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      vertical-align: top;
+      font-size: 1rem;
+    }
+    th{
+      color:#d9ffe8;
+      font-weight: 700;
+    }
+    tr:last-child td{ border-bottom:none; }
+    .table-note{
+      margin-top:.6rem;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .faq{
+      margin-top: 1.6rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(76,175,80,.35);
+      border-radius: 12px;
+      background: rgba(255,255,255,.03);
+    }
+    .faq p{ margin:.5rem 0; }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #888;
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 1rem;
+    }
+    footer a{
+      color:#a7ffd0;
+      text-decoration:none;
+      border-bottom: 1px solid rgba(51,255,153,.25);
+      margin: 0 8px;
+    }
+    footer a:hover{ border-bottom-color:#33ff99; color:#33ff99; }
+
+    @media (max-width: 700px){
+      body{ padding: 1.25rem; }
+      h1{ font-size: 1.9rem; }
+      table{ min-width: 480px; }
+    }
+  </style>
 </head>
 
 <body>
-<main>
 
-  <header>
-    <h1>Typing Speed for Different Jobs: Office, Programmer, Writer, Student</h1>
-    <p class="meta">
-      What’s a <strong>good typing speed</strong> for your job? The right target depends on what you type:
-      emails and spreadsheets, code and symbols, long-form writing, or school assignments.
-      This guide breaks down realistic <strong>WPM goals by job</strong>, plus how to improve without obsessing over speed.
+  <h1>Typing Speed for Different Jobs</h1>
+  <p class="subtitle">Office work, coding, writing, and school benchmarks — plus realistic “good WPM” goals.</p>
+
+  <div class="badge-row" aria-label="Page update and summary badges">
+    <span class="badge">🆕 Last updated: <strong>2026</strong></span>
+    <span class="badge">🎯 Focus: <strong>WPM by job</strong></span>
+    <span class="badge">✅ Best practice: <strong>95%+ accuracy</strong></span>
+  </div>
+
+  <p>
+    A “good” typing speed depends on what you type: emails and spreadsheets, code and symbols, long-form writing, or timed school assignments.
+    This guide breaks down realistic <strong>WPM goals by job</strong>, plus how to improve without obsessing over speed.
+  </p>
+
+  <div class="cta">
+    <h2>✅ Quick action: Test your WPM and accuracy</h2>
+    <p>
+      Take a 1-minute test to see your current <strong>WPM + accuracy</strong>, then compare your result to the job benchmarks below.
     </p>
-
-    <div class="callout">
-      <strong>Quick Benchmark (with 95%+ accuracy):</strong><br>
-      35–45 WPM = average adult<br>
-      45–60 WPM = solid professional level<br>
-      60+ WPM = strong / advanced<br>
-      80+ WPM = very fast (often niche advantage)
-      <div class="btnrow">
-        <a class="btn" href="https://typingspeedhub.com/typing-speed-test.html">Test Your Typing Speed</a>
-        <a class="btn" href="https://typingspeedhub.com/10-minute-typing-drill.html">10-Minute Typing Drill</a>
-        <a class="btn" href="https://typingspeedhub.com/typing-tips.html">Typing Tips (Accuracy)</a>
-      </div>
-      <p class="note">
-        Best practice: track <strong>WPM + accuracy</strong>. “Fast but messy” typing often slows you down in real work because you spend more time fixing errors.
-      </p>
+    <div class="cta-actions">
+      <a class="btn" href="typing-speed-test.html">Take the Typing Speed Test</a>
+      <a class="btn secondary" href="10-minute-typing-drill.html">Try the 10-Minute Drill</a>
+      <a class="btn secondary" href="typing-tips.html">Typing Tips</a>
     </div>
+    <p class="mini-note">Tip: Track weekly averages — not a single best score.</p>
+  </div>
 
-    <nav class="toc" aria-label="Table of contents">
-      <strong>Table of contents</strong>
-      <ul>
-        <li><a href="#age">Average Typing Speed by Age</a></li>
-        <li><a href="#office">Typing Speed for Office Work</a></li>
-        <li><a href="#coding">Typing Speed for Programmers (Coding)</a></li>
-        <li><a href="#writing">Typing Speed for Writers & Content Creators</a></li>
-        <li><a href="#school">Typing Speed for Students & School</a></li>
-        <li><a href="#roles">Extra Job Benchmarks (Support, Data Entry, Transcription, More)</a></li>
-        <li><a href="#time">How Much Time Faster Typing Really Saves</a></li>
-        <li><a href="#holdingback">Is Your Typing Speed Holding You Back?</a></li>
-        <li><a href="#hiring">Hiring, Interviews, and Resumes: Does WPM Matter?</a></li>
-        <li><a href="#improve">How to Improve (Without Burnout)</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="toc" aria-label="Table of contents">
+    <h2>On this page</h2>
+    <ul>
+      <li><a href="#age">Average typing speed by age</a></li>
+      <li><a href="#office">Office work</a></li>
+      <li><a href="#coding">Coding (programmers)</a></li>
+      <li><a href="#writing">Writing (writers & creators)</a></li>
+      <li><a href="#school">School / studying</a></li>
+      <li><a href="#roles">Extra job benchmarks (support, data entry, transcription)</a></li>
+      <li><a href="#time-saved">How much time faster typing really saves</a></li>
+      <li><a href="#holding-back">Is your typing speed holding you back?</a></li>
+      <li><a href="#hiring">Hiring & resumes: does WPM matter?</a></li>
+      <li><a href="#improve">How to improve (without burnout)</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </div>
+
+  <div class="related" aria-label="Related pages">
+    <h2>Related pages (recommended)</h2>
+    <ul>
+      <li><a href="what-is-a-good-wpm-by-age-and-job.html">Good WPM by age &amp; job</a></li>
+      <li><a href="average-typing-speed-statistics-2024.html">Average typing speed statistics (2024)</a></li>
+      <li><a href="what-is-wpm.html">What is WPM? (Meaning + formula)</a></li>
+      <li><a href="how-to-practice-typing-without-getting-bored.html">How to practice typing without getting bored</a></li>
+    </ul>
+  </div>
 
   <section id="age">
     <h2>Average Typing Speed by Age</h2>
     <p>
-      Typing speed usually improves with regular keyboard time rather than age itself.
-      Teens who game or type daily can be faster than adults who type occasionally.
-      The biggest separator is typically <strong>habit + technique</strong> (touch typing, posture, accuracy control).
+      Typing speed improves mainly with regular keyboard use and consistent technique, not age itself.
+      People who type daily (school, work, gaming, coding) typically develop faster rhythm and fewer pauses.
     </p>
 
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Average typing speed by age table">
       <table>
         <thead>
           <tr>
-            <th>Age Group</th>
-            <th>Average WPM (Typical)</th>
-            <th>Good WPM (Comfortable)</th>
+            <th>Age group</th>
+            <th>Average WPM (typical)</th>
+            <th>Good WPM (comfortable)</th>
             <th>Notes</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>10–14</td>
-            <td>25–35 WPM</td>
-            <td>40+ WPM</td>
-            <td>Rapid gains possible with short daily practice.</td>
+            <td><strong>10–14</strong></td>
+            <td>25–35</td>
+            <td>40+</td>
+            <td>Fast improvement possible with short daily practice.</td>
           </tr>
           <tr>
-            <td>15–24</td>
-            <td>35–45 WPM</td>
-            <td>55+ WPM</td>
-            <td>Often improves quickly with games, school work, or coding.</td>
+            <td><strong>15–24</strong></td>
+            <td>35–45</td>
+            <td>55+</td>
+            <td>Often improves quickly with school, games, or coding.</td>
           </tr>
           <tr>
-            <td>25–44</td>
-            <td>40–50 WPM</td>
-            <td>60+ WPM</td>
-            <td>Consistency matters most; work demands can raise daily volume.</td>
+            <td><strong>25–44</strong></td>
+            <td>40–50</td>
+            <td>60+</td>
+            <td>Consistency matters; work demands can increase daily volume.</td>
           </tr>
           <tr>
-            <td>45+</td>
-            <td>35–45 WPM</td>
-            <td>55+ WPM</td>
+            <td><strong>45+</strong></td>
+            <td>35–45</td>
+            <td>55+</td>
             <td>Comfort + ergonomics can matter more than pushing speed.</td>
           </tr>
         </tbody>
       </table>
     </div>
-
-    <p class="note">
-      If your accuracy is below ~95%, start with control and rhythm. See:
-      <a href="https://typingspeedhub.com/typing-tips.html">typing tips</a>.
+    <p class="table-note">
+      These are general ranges. For job-specific benchmarks, keep reading — and compare your own result with the
+      <a href="typing-speed-test.html">Typing Speed Test</a>.
     </p>
+
+    <div class="note">
+      <strong>Accuracy matters:</strong> If you’re below ~95% accuracy, prioritize accuracy and rhythm first.
+      See <a href="typing-tips.html">Typing Tips</a> and <a href="typing-accuracy-tips.html">Typing Accuracy Tips</a>.
+    </div>
   </section>
 
   <section id="office">
-    <h2>Typing Speed for Office Work</h2>
-
-    <h3>Recommended WPM: 45–60+ (with high accuracy)</h3>
+    <h2>Office Work</h2>
+    <h3>Recommended: 45–60+ WPM (with high accuracy)</h3>
     <p>
-      Office jobs involve emails, reports, spreadsheets, CRM notes, chats, and meeting follow-ups.
-      Most tasks reward <strong>consistent speed</strong> rather than “test-speed.”
-      You’ll type a lot of short bursts, often while switching between tabs and tools.
+      Office roles involve emails, reports, spreadsheets, CRM notes, and chat communication.
+      Most tasks are short bursts, so consistency and low error rate matter more than a single “fast test run.”
     </p>
 
-    <div class="grid">
-      <div class="card">
-        <h3>What matters most in office roles</h3>
-        <ul>
-          <li><strong>Accuracy:</strong> fewer corrections and less editing time</li>
-          <li><strong>Consistency:</strong> steady pace across many short tasks</li>
-          <li><strong>Comfort:</strong> lower fatigue across a full workday</li>
-          <li><strong>Formatting confidence:</strong> numbers, punctuation, and basic shortcuts</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Realistic office targets</h3>
-        <ul>
-          <li><strong>Entry-level:</strong> 40–50 WPM can be enough</li>
-          <li><strong>Comfortable professional:</strong> 50–60 WPM</li>
-          <li><strong>Heavy typing/admin roles:</strong> 60+ WPM helps</li>
-        </ul>
-        <p class="note">
-          If you type daily for work, a short routine like the
-          <a href="https://typingspeedhub.com/10-minute-typing-drill.html">10-minute typing drill</a>
-          is usually the fastest way to improve.
-        </p>
-      </div>
+    <div class="step">
+      <h3>What matters most in office roles</h3>
+      <ul>
+        <li><strong>Accuracy:</strong> fewer corrections and less time editing</li>
+        <li><strong>Consistency:</strong> steady pace across many small tasks</li>
+        <li><strong>Formatting confidence:</strong> punctuation, numbers, and basic shortcuts</li>
+        <li><strong>Comfort:</strong> less fatigue across a full workday</li>
+      </ul>
+      <p class="mini-note">
+        Fast improvement route: <a href="10-minute-typing-drill.html">10-minute typing drill</a> (daily for 2–3 weeks).
+      </p>
     </div>
 
     <p>
-      In practice, going from 40 → 55 WPM often feels like a superpower: emails are faster, meeting notes are less stressful,
-      and you spend less time fixing typos. Beyond ~70 WPM, gains are smaller unless your role is very typing-heavy.
+      In real life, going from 40 → 55 WPM often improves comfort dramatically.
+      Beyond ~70 WPM, gains are smaller unless your role is typing-heavy (admin, support, transcription).
     </p>
   </section>
 
   <section id="coding">
-    <h2>Typing Speed for Programmers (Coding)</h2>
-
-    <h3>Recommended WPM: 45–70 (but accuracy and symbols matter more)</h3>
+    <h2>Coding (Programmers)</h2>
+    <h3>Recommended: 45–70 WPM (symbols + accuracy matter more than raw speed)</h3>
     <p>
-      Programmers don’t “type all day” in the same way writers do. Coding includes thinking time, debugging, reading,
-      and short bursts of typing with symbols and structure. That means <strong>raw WPM</strong> isn’t the whole story.
+      Coding includes thinking time, reading, debugging, and short bursts of typing with symbols and structure.
+      That means raw WPM isn’t the whole story — reliability and workflow often matter more.
     </p>
 
-    <h3>Key coding skills that beat pure speed</h3>
-    <ul>
-      <li><strong>Low typo rate:</strong> fewer broken builds and wasted minutes</li>
-      <li><strong>Comfort with symbols:</strong> parentheses, braces, quotes, semicolons</li>
-      <li><strong>Keyboard shortcuts:</strong> navigation, selection, multi-cursor, search</li>
-      <li><strong>Touch typing:</strong> staying in “flow” without looking down</li>
-    </ul>
+    <div class="step">
+      <h3>What matters more than peak WPM</h3>
+      <ul>
+        <li><strong>Low typo rate:</strong> fewer broken builds and wasted minutes</li>
+        <li><strong>Comfort with symbols:</strong> parentheses, braces, quotes, semicolons</li>
+        <li><strong>Shortcuts:</strong> navigation, selection, search, multi-cursor</li>
+        <li><strong>Touch typing:</strong> staying in flow without looking down</li>
+      </ul>
+      <p class="mini-note">
+        If punctuation slows you down, revisit technique basics: <a href="typing-tips.html">Typing Tips</a>.
+      </p>
+    </div>
 
     <p>
-      If you’re at 45–55 WPM with good accuracy, you’re already in a solid zone for coding.
-      If you want a meaningful upgrade, focus on punctuation accuracy and rhythm. The technique basics in
-      <a href="https://typingspeedhub.com/typing-tips.html">Typing Tips</a>
-      often improve coding comfort quickly.
+      If you’re already 50–65 WPM with good accuracy, you’re in a strong zone for coding.
+      Improvements beyond that often come more from shortcuts and editor workflow than from pure speed practice.
     </p>
   </section>
 
   <section id="writing">
-    <h2>Typing Speed for Writers & Content Creators</h2>
-
-    <h3>Recommended WPM: 55–80+ (for heavy writing days)</h3>
+    <h2>Writing (Writers & Content Creators)</h2>
+    <h3>Recommended: 55–80+ WPM (for heavy writing days)</h3>
     <p>
-      Writers benefit from higher typing speed because output volume can be large: drafting articles, newsletters,
-      scripts, reports, or books. But writing is also thinking. What matters most is staying in flow and reducing friction.
+      Writers benefit from higher typing speeds because they produce large volumes of text.
+      But writing is also thinking, so the best “writer speed” is usually your comfortable average — not your peak.
     </p>
 
-    <div class="callout">
-      <strong>Writer’s shortcut:</strong> Instead of chasing peak WPM, aim for a higher <em>comfortable average</em>.
-      Consistent 65 WPM with accuracy beats a shaky 85 WPM that forces editing every sentence.
+    <div class="step">
+      <h3>Why speed helps writers</h3>
+      <ul>
+        <li>Captures ideas quickly (less “lost thought” time)</li>
+        <li>Reduces stop-start editing interruptions</li>
+        <li>Improves drafting flow and output volume</li>
+      </ul>
+      <p class="mini-note">
+        If practice feels boring, rotate formats:
+        <a href="how-to-practice-typing-without-getting-bored.html">How to practice typing without getting bored</a>.
+      </p>
     </div>
 
-    <h3>Why speed helps writers</h3>
-    <ul>
-      <li>Captures ideas before they disappear</li>
-      <li>Reduces “stop-start” editing interruptions</li>
-      <li>Helps drafting sessions feel smoother and more enjoyable</li>
-    </ul>
-
     <p>
-      If practice feels boring or you struggle to stay consistent, use a rotation approach:
-      <a href="https://typingspeedhub.com/how-to-practice-typing-without-getting-bored.html">How to Practice Typing Without Getting Bored</a>.
-      It’s designed for engagement-first improvement.
+      A common sweet spot for professional writers is 60–75 WPM with strong accuracy.
+      Very high speeds (80+) are a bonus mainly for heavy drafting schedules.
     </p>
   </section>
 
   <section id="school">
-    <h2>Typing Speed for Students & School Work</h2>
-
-    <h3>Recommended WPM: 40–60</h3>
+    <h2>School / Studying</h2>
+    <h3>Recommended: 40–60 WPM</h3>
     <p>
-      Students write essays, take notes, answer timed questions, and communicate digitally.
-      A comfortable typing speed reduces stress during deadlines and online exams.
-      It also frees mental energy for the actual thinking part.
+      Students type essays, take notes, complete online tests, and communicate digitally.
+      Faster typing reduces stress during timed exams and deadlines.
     </p>
 
-    <h3>Student-friendly targets</h3>
-    <ul>
-      <li><strong>Middle school:</strong> 30–40 WPM is a solid start</li>
-      <li><strong>High school:</strong> 40–55 WPM for essays and projects</li>
-      <li><strong>College:</strong> 50–60 WPM helps with long papers and fast note-taking</li>
-    </ul>
-
-    <div class="callout">
-      The easiest routine to stick with: the
-      <a href="https://typingspeedhub.com/10-minute-typing-drill.html">10-minute typing drill</a>.
-      It’s short enough to do daily and long enough to improve.
+    <div class="step">
+      <h3>Student-friendly targets</h3>
+      <ul>
+        <li><strong>Middle school:</strong> 30–40 WPM is a strong start</li>
+        <li><strong>High school:</strong> 40–55 WPM for essays and projects</li>
+        <li><strong>College:</strong> 50–60 WPM helps with long papers and faster note-taking</li>
+      </ul>
+      <p class="mini-note">
+        Easiest routine: <a href="10-minute-typing-drill.html">10-minute typing drill</a>.
+      </p>
     </div>
   </section>
 
-  <!-- EXPANSION BLOCKS (800–1200+ words) -->
   <section id="roles">
-    <h2>Extra Job Benchmarks: Customer Support, Data Entry, Transcription, and More</h2>
+    <h2>Extra Job Benchmarks (Support, Data Entry, Transcription, More)</h2>
     <p>
-      Not all “office jobs” are the same. Some roles require short bursts of typing, while others involve constant keyboard input.
-      Here are realistic ranges for common job categories, plus what matters most in each one.
+      Some roles are truly typing-heavy. In these jobs, speed and accuracy can directly affect performance metrics.
+      Here are practical ranges and what matters most.
     </p>
 
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Job benchmarks table">
       <table>
         <thead>
           <tr>
-            <th>Job Type</th>
-            <th>Good WPM Range</th>
-            <th>What Matters Most</th>
+            <th>Job type</th>
+            <th>Good WPM range</th>
+            <th>What matters most</th>
             <th>Why</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Customer Support / Chat Support</td>
-            <td>50–70 WPM</td>
-            <td>Accuracy, speed consistency, shortcuts</td>
-            <td>Fast, clear replies and fewer corrections improve customer experience.</td>
+            <td><strong>Customer support / chat</strong></td>
+            <td>50–70</td>
+            <td>Accuracy, consistency, shortcuts</td>
+            <td>Fast, clear replies and fewer corrections improve response time.</td>
           </tr>
           <tr>
-            <td>Data Entry</td>
-            <td>55–80 WPM (or KPH metrics)</td>
+            <td><strong>Data entry</strong></td>
+            <td>55–80 (or KPH)</td>
             <td>Numeric accuracy, rhythm, low error rate</td>
-            <td>One typo can cause downstream issues; accuracy often beats raw speed.</td>
+            <td>Errors can create downstream issues; accuracy often beats raw speed.</td>
           </tr>
           <tr>
-            <td>Transcription (general)</td>
-            <td>60–90 WPM</td>
+            <td><strong>Transcription (general)</strong></td>
+            <td>60–90</td>
             <td>Accuracy, endurance, punctuation</td>
             <td>Long sessions require stamina; clean text reduces editing time.</td>
           </tr>
           <tr>
-            <td>Medical / Legal Transcription</td>
-            <td>70–100+ WPM</td>
+            <td><strong>Medical/legal transcription</strong></td>
+            <td>70–100+</td>
             <td>Precision, terminology, formatting</td>
-            <td>Specialized vocabulary and high stakes push accuracy requirements up.</td>
+            <td>Specialized vocabulary and higher stakes raise accuracy demands.</td>
           </tr>
           <tr>
-            <td>Journalist / Reporter</td>
-            <td>55–85 WPM</td>
-            <td>Speed under pressure, accuracy, quotes</td>
-            <td>Fast notes and drafts help during deadlines and live events.</td>
+            <td><strong>Administrative assistant</strong></td>
+            <td>50–70</td>
+            <td>Consistency, formatting, low mistakes</td>
+            <td>Lots of emails/docs each day — reliable speed matters most.</td>
           </tr>
           <tr>
-            <td>Administrative Assistant</td>
-            <td>50–70 WPM</td>
-            <td>Consistency, formatting, fewer mistakes</td>
-            <td>Emails, documents, scheduling notes—lots of small tasks all day.</td>
-          </tr>
-          <tr>
-            <td>Student (timed essays/exams)</td>
-            <td>45–65 WPM</td>
-            <td>Accuracy, comfort, low stress</td>
-            <td>Typing should not be the bottleneck in timed writing.</td>
-          </tr>
-          <tr>
-            <td>Software Engineer</td>
-            <td>45–70 WPM</td>
-            <td>Symbols, shortcuts, low typos</td>
-            <td>Coding is “think + type”; reliability beats peak speed.</td>
+            <td><strong>Journalist / reporter</strong></td>
+            <td>55–85</td>
+            <td>Speed under pressure, accuracy</td>
+            <td>Deadlines and fast note-taking reward solid typing habits.</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <p class="note">
-      Quick tip: if your role involves a lot of typing, improving from “okay” to “comfortable” is usually a 2–6 week project with short daily practice.
-      Start here: <a href="https://typingspeedhub.com/typing-speed-test.html">Typing Speed Test</a>.
-    </p>
-
     <h3>What if your job uses KPH instead of WPM?</h3>
     <p>
-      Some employers (especially for data entry) use <strong>KPH</strong> (keystrokes per hour) or numeric entry tests.
-      The principle is the same: accuracy first, then speed. If you notice errors on numbers, dates, or IDs, slow down slightly and focus on clean inputs.
-      A consistent workflow will outperform sporadic “fast but messy” bursts.
+      Some employers use <strong>KPH</strong> (keystrokes per hour), especially in data entry.
+      The principle is the same: accuracy first, then speed. If numbers are the issue, slow down slightly and aim for clean inputs.
     </p>
   </section>
 
-  <section id="time">
+  <section id="time-saved">
     <h2>How Much Time Faster Typing Really Saves (Realistic Examples)</h2>
     <p>
-      Faster typing isn’t just a bragging number. It can save real time—especially if you type a lot for work or school.
-      Here’s an easy way to think about it: speed gains matter most when you type many minutes per day and when your accuracy stays high.
+      Speed isn’t just a number. It can save time — especially if you type frequently and keep accuracy high.
+      The biggest wins come from reducing errors and typing with less hesitation.
     </p>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Example A: Office emails and notes</h3>
-        <p>
-          Imagine you type the equivalent of <strong>20 minutes of continuous text</strong> per workday (emails, notes, docs).
-          That’s not constant typing—just the total “hands on keyboard” writing time.
-        </p>
-        <ul>
-          <li><strong>40 WPM:</strong> ~800 words in 20 minutes</li>
-          <li><strong>60 WPM:</strong> ~1200 words in 20 minutes</li>
-        </ul>
-        <p class="note">
-          Difference: you can finish the same writing workload with less pressure, or produce more in the same time.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Example B: Student essays</h3>
-        <p>
-          A 1200-word essay draft (not counting research) is easier when typing isn’t the bottleneck.
-        </p>
-        <ul>
-          <li><strong>40 WPM:</strong> about 30 minutes of pure typing time</li>
-          <li><strong>60 WPM:</strong> about 20 minutes of pure typing time</li>
-        </ul>
-        <p class="note">
-          The bigger win is mental: faster typing helps you keep ideas flowing without constant pauses.
-        </p>
-      </div>
+    <div class="step">
+      <h3>Example A: Office emails and notes</h3>
+      <p>
+        If you type the equivalent of <strong>20 minutes of continuous text</strong> per workday:
+      </p>
+      <ul>
+        <li><strong>40 WPM:</strong> ~800 words in 20 minutes</li>
+        <li><strong>60 WPM:</strong> ~1200 words in 20 minutes</li>
+      </ul>
+      <p class="mini-note">Even if you don’t “write more,” faster typing usually means less stress and smoother work.</p>
     </div>
 
-    <h3>The “hidden cost”: error correction</h3>
-    <p>
-      If your accuracy drops, time savings disappear. Backspacing, retyping words, and fixing punctuation can easily add minutes back.
-      That’s why most professionals should prioritize <strong>high-accuracy speed</strong>:
-      aim for 95–97%+ accuracy, then gradually push pace.
-      If you want a clean routine, use the <a href="https://typingspeedhub.com/10-minute-typing-drill.html">10-minute typing drill</a>.
-    </p>
+    <div class="step">
+      <h3>Example B: Student essays</h3>
+      <p>For a 1200-word draft (typing time only):</p>
+      <ul>
+        <li><strong>40 WPM:</strong> ~30 minutes</li>
+        <li><strong>60 WPM:</strong> ~20 minutes</li>
+      </ul>
+      <p class="mini-note">The bigger benefit is keeping your ideas flowing without constant pauses.</p>
+    </div>
 
-    <div class="callout">
-      <strong>Rule of thumb:</strong> A “good WPM” is the speed you can maintain with high accuracy when you’re tired, distracted, and multitasking.
-      That’s the speed you’ll actually use at work.
+    <div class="note">
+      <strong>Hidden cost:</strong> If accuracy drops, time savings disappear. Backspacing and retyping can erase speed gains.
+      Aim for 95–97%+ accuracy first, then push speed gradually.
     </div>
   </section>
 
-  <section id="holdingback">
+  <section id="holding-back">
     <h2>Is Your Typing Speed Holding You Back?</h2>
     <p>
-      Many people worry they’re “too slow” for a job. In reality, the question is more specific:
-      <strong>Is typing limiting your performance in the tasks you do most?</strong>
+      The real question isn’t “Am I fast?” but: <strong>Is typing limiting my performance in my daily tasks?</strong>
     </p>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Signs typing speed is a bottleneck</h3>
-        <ul>
-          <li>You avoid writing long messages because it feels slow.</li>
-          <li>You lose your train of thought while typing.</li>
-          <li>You struggle in timed tests/exams.</li>
-          <li>You constantly look down at the keyboard.</li>
-          <li>You make frequent typos and spend time fixing them.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Signs it’s NOT the main problem</h3>
-        <ul>
-          <li>You type comfortably for your daily workload.</li>
-          <li>Your errors are rare and easy to spot.</li>
-          <li>You finish tasks on time, even if you’re not “fast.”</li>
-          <li>The job is mostly thinking/analysis with short typing bursts.</li>
-        </ul>
-      </div>
+    <div class="step">
+      <h3>Signs typing is a bottleneck</h3>
+      <ul>
+        <li>You avoid writing longer messages because it feels slow.</li>
+        <li>You lose your train of thought while typing.</li>
+        <li>You struggle during timed tests or exams.</li>
+        <li>You look down at the keyboard frequently.</li>
+        <li>You make many typos and spend time correcting them.</li>
+      </ul>
     </div>
 
-    <h3>A simple self-test</h3>
+    <div class="step">
+      <h3>Signs it’s probably not the main issue</h3>
+      <ul>
+        <li>You type comfortably for your workload.</li>
+        <li>Your error rate is low and you can self-correct quickly.</li>
+        <li>Your job is mostly thinking/analysis with short typing bursts.</li>
+      </ul>
+    </div>
+
     <p>
-      Do this once:
-    </p>
-    <ol>
-      <li>Take a baseline on our <a href="https://typingspeedhub.com/typing-speed-test.html">Typing Speed Test</a>.</li>
-      <li>Note your WPM and accuracy.</li>
-      <li>Then ask: “Do I feel limited by typing in real life?”</li>
-    </ol>
-    <p>
-      If you’re under ~40 WPM and you do a lot of writing, improving to 50 WPM can noticeably reduce stress.
-      If you’re already 50–60 WPM with good accuracy, the biggest improvements often come from shortcuts, organization, and clarity—not just more speed.
+      If you’re under ~40 WPM and you do a lot of writing, getting to 50 WPM often changes everything.
+      If you’re already 50–60 WPM with good accuracy, your biggest improvements may come from shortcuts and consistency.
     </p>
   </section>
 
   <section id="hiring">
-    <h2>Hiring, Interviews, and Resumes: Does WPM Matter?</h2>
+    <h2>Hiring & Resumes: Does WPM Matter?</h2>
     <p>
-      Sometimes. It depends on the role. For positions where typing is a core skill (administrative support, transcription, data entry, chat support),
-      typing speed can be a real hiring factor. For many other roles, employers care more about communication quality and results.
+      Sometimes. For roles where typing is a core skill (admin, transcription, data entry, chat support),
+      WPM can be a hiring factor. For many roles, employers care more about communication quality and results.
     </p>
 
-    <h3>When WPM can help you</h3>
-    <ul>
-      <li><strong>Admin / assistant roles:</strong> fast, accurate typing supports daily workload.</li>
-      <li><strong>Customer support:</strong> quick replies improve response time.</li>
-      <li><strong>Data entry / transcription:</strong> typing is a direct productivity metric.</li>
-      <li><strong>Student internships:</strong> “basic professional readiness” signal.</li>
-    </ul>
-
-    <h3>Should you put typing speed on your resume?</h3>
-    <p>
-      If typing is relevant to the job, yes—<strong>but make it credible</strong>:
-    </p>
-    <ul>
-      <li>Include your speed as: <strong>“XX WPM (95%+ accuracy)”</strong></li>
-      <li>Prefer a verified result (take a test right before applying)</li>
-      <li>Don’t exaggerate; accuracy is what employers notice</li>
-    </ul>
-
-    <div class="callout">
-      Want a clean number to list? Take a fresh run on the
-      <a href="https://typingspeedhub.com/typing-speed-test.html">Typing Speed Test</a>,
-      then maintain it with a short daily routine like the
-      <a href="https://typingspeedhub.com/10-minute-typing-drill.html">10-minute typing drill</a>.
+    <div class="step">
+      <h3>Should you put typing speed on your resume?</h3>
+      <ul>
+        <li>If typing is relevant, include <strong>“XX WPM (95%+ accuracy)”</strong></li>
+        <li>Prefer a verified result (test close to application time)</li>
+        <li>Don’t exaggerate — accuracy is what employers notice</li>
+      </ul>
+      <p class="mini-note">
+        Get a clean number from the <a href="typing-speed-test.html">Typing Speed Test</a>.
+      </p>
     </div>
-
-    <h3>What interview tests actually measure</h3>
-    <p>
-      Many typing tests in hiring are less about hitting a huge WPM and more about:
-      <strong>staying accurate under pressure</strong>. A calm 55 WPM with 97% accuracy often beats a shaky 70 WPM with lots of mistakes.
-      If you want more control, the fundamentals in <a href="https://typingspeedhub.com/typing-tips.html">Typing Tips</a> will help.
-    </p>
   </section>
 
   <section id="improve">
-    <h2>How to Improve Typing Speed (Without Burnout)</h2>
+    <h2>How to Improve (Without Burnout)</h2>
     <p>
-      If you want noticeable progress without making typing practice boring, use a simple weekly structure:
-      short sessions, clear goals, and just enough variety to stay engaged.
+      You’ll get better results with short sessions, simple goals, and a bit of variety than with long, exhausting practice.
     </p>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Weekly plan (simple and effective)</h3>
-        <ul>
-          <li><strong>3 days:</strong> 10-minute drill (accuracy + rhythm)</li>
-          <li><strong>2 days:</strong> games or challenges for motivation</li>
-          <li><strong>1 day:</strong> benchmark test + light practice</li>
-          <li><strong>1 day:</strong> rest or “real writing” practice</li>
-        </ul>
-        <p class="note">
-          For the “fun days,” rotate from:
-          <a href="https://typingspeedhub.com/best-free-typing-games.html">Best Free Typing Games</a>.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Best goal for most people</h3>
-        <p>
-          Aim to raise your <strong>comfortable speed</strong>, not just your peak.
-          A practical goal is improving your average by <strong>+2 to +5 WPM</strong> over two weeks while keeping accuracy high.
-        </p>
-        <p class="note">
-          Need help staying consistent? Use:
-          <a href="https://typingspeedhub.com/how-to-practice-typing-without-getting-bored.html">How to Practice Typing Without Getting Bored</a>.
-        </p>
-      </div>
+    <div class="step">
+      <h3>Weekly plan (simple and effective)</h3>
+      <ul>
+        <li><strong>3 days:</strong> 10-minute drill (accuracy + rhythm)</li>
+        <li><strong>2 days:</strong> games/challenges for motivation</li>
+        <li><strong>1 day:</strong> benchmark test + light practice</li>
+        <li><strong>1 day:</strong> rest or “real typing” practice</li>
+      </ul>
+      <p class="mini-note">
+        For fun days: <a href="best-free-typing-games.html">Best Free Typing Games</a>
+      </p>
     </div>
 
-    <h3>One warning: don’t train bad habits</h3>
-    <p>
-      If you constantly type at a speed where you spam backspace, you may be training panic typing.
-      Slow down slightly until you can maintain accuracy and relaxed rhythm. Speed will come back—and usually jump higher after a week of cleaner practice.
-    </p>
+    <div class="note">
+      <strong>Common mistake:</strong> practicing too fast too early. If you constantly spam backspace, slow down until accuracy stabilizes.
+      Clean habits build speed faster than “panic typing.”
+    </div>
   </section>
 
-  <section>
-    <h2>Is Faster Always Better?</h2>
-    <p>
-      Not always. There’s a point of diminishing returns.
-      Going from 30 → 50 WPM often dramatically improves productivity and comfort.
-      Going from 80 → 95 WPM may feel impressive, but it’s a smaller practical gain unless you type all day.
-    </p>
-    <p>
-      For most jobs, reliable accuracy, comfort, and endurance matter more than extreme speed.
-    </p>
+  <section class="faq" id="faq" aria-label="FAQ">
+    <h2>FAQ: Typing Speed by Job</h2>
+
+    <h3>What is the average typing speed?</h3>
+    <p>For many adults, average typing speed is around 35–45 WPM, but daily typists often sit in the 45–60 WPM range.</p>
+
+    <h3>Is 60 WPM good for a job?</h3>
+    <p>Yes. 60 WPM with high accuracy is very good for most office, academic, support, and writing tasks.</p>
+
+    <h3>Do programmers need high typing speed?</h3>
+    <p>No. Programmers benefit more from accuracy, symbol comfort, and workflow. A consistent 45–70 WPM is typically enough.</p>
+
+    <h3>What typing speed should students aim for?</h3>
+    <p>Students should aim for around 40–50 WPM for comfort. Faster speeds help during timed writing and exams.</p>
+
+    <h3>Should I put typing speed on my resume?</h3>
+    <p>If typing is central to the role, yes. List a credible number like “60 WPM (95%+ accuracy)”. Otherwise it’s optional.</p>
+
+    <div class="note">
+      <strong>Educational disclaimer:</strong> This page is informational. Results vary based on practice consistency, typing technique, and keyboard setup.
+    </div>
   </section>
 
-  <hr>
-
-  <section id="faq" class="faq">
-    <h2>Frequently Asked Questions</h2>
-
-    <details>
-      <summary>Is 40 WPM good enough for office work?</summary>
-      <p>
-        Often yes, especially for entry-level roles. But improving to 50–60 WPM usually makes daily tasks feel easier and reduces stress.
-      </p>
-    </details>
-
-    <details>
-      <summary>Can I get a job with 50 WPM?</summary>
-      <p>
-        Absolutely. Many employers consider 45–55 WPM sufficient, especially with strong accuracy. For typing-heavy roles, higher speeds can be a bonus.
-      </p>
-    </details>
-
-    <details>
-      <summary>What typing speed do employers look for?</summary>
-      <p>
-        It depends on the role. Admin and support may prefer 50+ WPM. Data entry and transcription often prefer 60+ WPM. Many professional roles care more about accuracy and communication than WPM.
-      </p>
-    </details>
-
-    <details>
-      <summary>Should I mention my WPM on my resume?</summary>
-      <p>
-        If typing is central to the job (admin, support, data entry, transcription), yes—add your speed with accuracy, like “60 WPM (95%+ accuracy).” If typing isn’t central, it’s optional.
-      </p>
-    </details>
-
-    <details>
-      <summary>How can I improve quickly without getting bored?</summary>
-      <p>
-        Keep practice short (10–20 minutes), rotate formats (drills + games), and use small weekly goals. Try the
-        <a href="https://typingspeedhub.com/10-minute-typing-drill.html">10-minute typing drill</a> and rotate games from
-        <a href="https://typingspeedhub.com/best-free-typing-games.html">Best Free Typing Games</a>.
-      </p>
-    </details>
-  </section>
-
-  <hr>
+  <div class="cta">
+    <h2>Ready to check your WPM?</h2>
+    <p>Take a quick test, then follow a simple routine for the next 2 weeks.</p>
+    <div class="cta-actions">
+      <a class="btn" href="typing-speed-test.html">Start the Typing Test</a>
+      <a class="btn secondary" href="10-minute-typing-drill.html">Do the 10-Minute Drill</a>
+      <a class="btn secondary" href="7-day-typing-plan.html">Follow the 7-Day Plan</a>
+    </div>
+    <p class="mini-note">Best results come from daily consistency — even 10 minutes helps.</p>
+  </div>
 
   <footer>
-    <h2>Related Resources</h2>
-    <ul>
-      <li><a href="https://typingspeedhub.com/typing-speed-test.html">Typing Speed Test</a> — measure WPM and accuracy.</li>
-      <li><a href="https://typingspeedhub.com/typing-tips.html">Typing Tips</a> — posture, accuracy, finger placement, and common mistakes.</li>
-      <li><a href="https://typingspeedhub.com/10-minute-typing-drill.html">10-Minute Typing Drill</a> — quick daily routine.</li>
-      <li><a href="https://typingspeedhub.com/best-free-typing-games.html">Best Free Typing Games</a> — engagement-friendly practice.</li>
-      <li><a href="https://typingspeedhub.com/how-to-practice-typing-without-getting-bored.html">How to Practice Typing Without Getting Bored</a> — games, challenges, goals.</li>
-    </ul>
-
-    <p class="note">
-      © <span id="year"></span> TypingSpeedHub — Improve speed, accuracy, and typing confidence.
-    </p>
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    <div style="margin-bottom:.6rem;">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms</a>
+      <a href="impressum.html">Impressum</a>
+    </div>
+    © 2026 Typing Speed Hub. All rights reserved.
   </footer>
 
-</main>
 </body>
 </html>
