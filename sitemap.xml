@@ -4,7 +4,7 @@
   <!-- Home -->
   <url>
     <loc>https://typingspeedhub.com/</loc>
-    <lastmod>2026-01-05</lastmod>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -59,13 +59,13 @@
     <priority>0.8</priority>
   </url>
 
-<url>
+  <url>
     <loc>https://typingspeedhub.com/why-youre-stuck-at-the-same-typing-speed.html</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://typingspeedhub.com/how-typing-improves-focus-memory.html</loc>
     <lastmod>2026-01-05</lastmod>
@@ -80,14 +80,13 @@
     <priority>0.8</priority>
   </url>
 
-<url>
-  <loc>https://typingspeedhub.com/how-to-practice-typing-without-getting-bored.html</loc>
-  <lastmod>2026-02-13</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
+  <url>
+    <loc>https://typingspeedhub.com/how-to-practice-typing-without-getting-bored.html</loc>
+    <lastmod>2026-02-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  
   <url>
     <loc>https://typingspeedhub.com/best-free-typing-software-tools.html</loc>
     <lastmod>2026-01-23</lastmod>
@@ -95,14 +94,13 @@
     <priority>0.8</priority>
   </url>
 
- <url>
+  <url>
     <loc>https://typingspeedhub.com/best-paid-typing-software-courses.html</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  
   <url>
     <loc>https://typingspeedhub.com/best-keyboards-typing-practice.html</loc>
     <lastmod>2026-01-05</lastmod>
@@ -119,14 +117,14 @@
 
   <url>
     <loc>https://typingspeedhub.com/what-is-wpm.html</loc>
-    <lastmod>2026-01-05</lastmod>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://typingspeedhub.com/what-is-a-good-wpm-by-age-and-job.html</loc>
-    <lastmod>2026-01-05</lastmod>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -137,7 +135,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <url>
     <loc>https://typingspeedhub.com/10-ways-to-improve-typing-speed.html</loc>
     <lastmod>2026-01-05</lastmod>
@@ -147,7 +145,7 @@
 
   <url>
     <loc>https://typingspeedhub.com/average-typing-speed-statistics-2024.html</loc>
-    <lastmod>2026-01-05</lastmod>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -204,6 +202,3 @@
   </url>
 
 </urlset>
-
-
-
