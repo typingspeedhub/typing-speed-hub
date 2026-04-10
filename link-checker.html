@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Typing Speed Hub – Link Checker</title>
+
+  <title>Link Checker Tool | Typing Speed Hub</title>
+
+  <meta name="description" content="Internal link checker tool for Typing Speed Hub. Verify that key pages are accessible and returning valid responses." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="author" content="Typing Speed Hub" />
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,10 +18,26 @@
       max-width: 800px;
       margin: auto;
       padding: 2rem;
+      line-height: 1.7;
     }
+
     h1 {
       color: #00ff88;
+      text-align: center;
     }
+
+    p {
+      margin: 0.8rem 0;
+    }
+
+    .info-box {
+      background: #1e1e1e;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid #00ff88;
+    }
+
     button {
       background-color: #00ff88;
       color: #000;
@@ -24,33 +46,91 @@
       cursor: pointer;
       font-weight: bold;
       margin-bottom: 20px;
+      border-radius: 6px;
     }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
     ul {
       list-style: none;
       padding-left: 0;
+      margin-top: 1rem;
     }
+
+    li {
+      padding: 6px 0;
+      border-bottom: 1px solid #222;
+    }
+
     li.ok {
       color: #00cc66;
     }
+
     li.broken {
       color: #ff4444;
     }
+
+    .empty {
+      color: #888;
+      margin-top: 1rem;
+    }
+
+    .note {
+      font-size: 0.95rem;
+      color: #9a9a9a;
+      margin-top: 1rem;
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #2a2a2a;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .footer a {
+      margin: 0 8px;
+      color: #33ff99;
+    }
   </style>
 </head>
+
 <body>
 
-  <h1>Typing Speed Hub – Link Checker</h1>
-  <p>Click the button to check if your main pages are working.</p>
+  <h1>Link Checker Tool</h1>
+
+  <div class="info-box">
+    <p>
+      This is an internal tool used to quickly check whether important pages on the site are accessible.
+      It sends lightweight requests to each page and shows the response status.
+    </p>
+
+    <p>
+      This tool is mainly for maintenance and debugging. It is not intended for general visitors.
+    </p>
+  </div>
+
+  <p>Click the button below to check your main pages:</p>
+
   <button onclick="checkLinks()">Check All Links</button>
 
   <ul id="results"></ul>
+
+  <p id="emptyMessage" class="empty">No results yet.</p>
+
+  <p class="note">
+    Tip: If a page shows an error, double-check the file name, path, and whether the file exists in your repository.
+  </p>
 
   <script>
     const linksToCheck = [
       "index.html",
       "about.html",
       "contact.html",
-      "typing-tips.html",
+      "typing-tips-guides.html",
       "privacy-policy.html",
       "terms-and-conditions.html",
       "common-typing-mistakes.html",
@@ -65,15 +145,28 @@
 
     async function checkLinks() {
       const list = document.getElementById("results");
+      const empty = document.getElementById("emptyMessage");
+
       list.innerHTML = "";
+      empty.style.display = "none";
+
       for (let path of linksToCheck) {
         const url = location.origin + "/" + path;
+
         try {
           const response = await fetch(url, { method: 'HEAD' });
+
           const li = document.createElement("li");
           li.textContent = `${path}: ${response.status}`;
-          li.className = response.ok ? "ok" : "broken";
+
+          if (response.ok) {
+            li.className = "ok";
+          } else {
+            li.className = "broken";
+          }
+
           list.appendChild(li);
+
         } catch (e) {
           const li = document.createElement("li");
           li.textContent = `${path}: ERROR`;
@@ -83,6 +176,13 @@
       }
     }
   </script>
+
+  <div class="footer">
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="contact.html">Contact</a> |
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </div>
 
 </body>
 </html>
