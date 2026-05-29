@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>WPM Calculator: Calculate Your Typing Speed | Typing Speed Hub</title>
+  <meta name="description" content="Use this free WPM calculator to estimate your typing speed from characters, words, and time. Learn how WPM is calculated and how to improve your typing speed." />
+  <meta name="author" content="Typing Speed Hub" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://typingspeedhub.com/wpm-calculator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Typing Speed Hub" />
+  <meta property="og:title" content="WPM Calculator: Calculate Your Typing Speed" />
+  <meta property="og:description" content="Free WPM calculator for typing speed. Enter your characters, words, and time to estimate gross WPM and adjusted WPM." />
+  <meta property="og:url" content="https://typingspeedhub.com/wpm-calculator.html" />
+  <meta property="og:image" content="https://typingspeedhub.com/images/wpm-calculator.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WPM Calculator: Calculate Your Typing Speed" />
+  <meta name="twitter:description" content="Estimate your typing speed with this free WPM calculator and learn how words per minute is calculated." />
+  <meta name="twitter:image" content="https://typingspeedhub.com/images/wpm-calculator.png" />
+
+  <!-- Structured data: WebApplication + FAQ + Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "WPM Calculator",
+        "url": "https://typingspeedhub.com/wpm-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "description": "A free online WPM calculator that estimates typing speed from characters, words, time, and optional errors.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Typing Speed Hub",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://typingspeedhub.com/images/logo.png"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://typingspeedhub.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Typing Tools",
+            "item": "https://typingspeedhub.com/tools.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "WPM Calculator",
+            "item": "https://typingspeedhub.com/wpm-calculator.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does WPM mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WPM means words per minute. In typing tests, one standard word is often counted as five characters, including spaces and punctuation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is typing WPM calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A common typing speed formula is total characters divided by five, then divided by the number of minutes typed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between gross WPM and net WPM?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Gross WPM estimates typing speed before mistakes are considered. Net or adjusted WPM reduces the score based on errors."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this WPM calculator free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. This WPM calculator is free to use and does not require registration."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #121212;
+      --card: #1e1e1e;
+      --card-soft: rgba(255,255,255,.04);
+      --text: #e0e0e0;
+      --muted: #b8b8b8;
+      --green: #4CAF50;
+      --green-light: #66ff99;
+      --link: #33ff99;
+      --border: rgba(255,255,255,.10);
+      --danger: #ff7777;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+      line-height: 1.8;
+      max-width: 940px;
+      margin: auto;
+    }
+
+    h1 {
+      color: var(--green);
+      font-size: 2.35rem;
+      margin: 0 0 1rem;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    h2 {
+      color: var(--green);
+      font-size: 1.65rem;
+      margin-top: 2.3rem;
+      line-height: 1.35;
+    }
+
+    h3 {
+      color: var(--green-light);
+      margin-top: 1rem;
+      line-height: 1.4;
+    }
+
+    p {
+      font-size: 1.05rem;
+      margin: 0.8rem 0;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: underline;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    code {
+      color: #c6ffc6;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--green-light);
+      font-weight: 700;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.28);
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: rgba(102,255,153,.65);
+      box-shadow: 0 0 0 3px rgba(102,255,153,.12);
+    }
+
+    button {
+      display: inline-block;
+      border: 0;
+      border-radius: 10px;
+      padding: 0.8rem 1.1rem;
+      background: var(--green);
+      color: #071107;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 0.8rem;
+    }
+
+    button:hover {
+      filter: brightness(1.08);
+    }
+
+    .intro {
+      font-size: 1.08rem;
+    }
+
+    .calculator-box,
+    .step,
+    .faq,
+    .toc,
+    .summary-box,
+    .cta-box,
+    .note-box,
+    .related-box,
+    .result-box,
+    .formula-box {
+      border-radius: 12px;
+    }
+
+    .calculator-box {
+      margin: 1.6rem 0;
+      padding: 1.2rem;
+      border: 1px solid rgba(102,255,153,.35);
+      background: rgba(76,175,80,.08);
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .field-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 0.25rem;
+      line-height: 1.5;
+    }
+
+    .result-box {
+      margin-top: 1.2rem;
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(102,255,153,.45);
+      background: rgba(0,0,0,.28);
+    }
+
+    .result-main {
+      font-size: 2.1rem;
+      color: var(--green-light);
+      font-weight: 800;
+      margin: 0.2rem 0;
+      line-height: 1.25;
+    }
+
+    .result-secondary {
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .error-message {
+      color: var(--danger);
+      font-weight: 700;
+      margin-top: 0.8rem;
+    }
+
+    .step {
+      background-color: var(--card);
+      border-left: 4px solid var(--green);
+      padding: 1rem 1.15rem;
+      margin: 1.25rem 0;
+    }
+
+    .toc {
+      margin: 1.4rem 0 1.9rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      background: var(--card-soft);
+    }
+
+    .toc h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .toc ul {
+      margin-bottom: 0;
+    }
+
+    .summary-box {
+      margin: 1.4rem 0;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(102,255,153,.35);
+      background: rgba(76,175,80,.08);
+    }
+
+    .summary-box strong {
+      color: var(--green-light);
+    }
+
+    .cta-box {
+      margin: 1.6rem 0 1.35rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(102,255,153,.45);
+      background: rgba(0,0,0,.22);
+    }
+
+    .cta-box strong {
+      color: var(--green-light);
+    }
+
+    .note-box {
+      margin: 1.3rem 0;
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+
+    .formula-box {
+      margin: 1.2rem 0;
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      overflow-x: auto;
+    }
+
+    .formula-box strong {
+      color: var(--green-light);
+    }
+
+    .faq {
+      margin-top: 2rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(76,175,80,.35);
+      background: rgba(255,255,255,.03);
+    }
+
+    .faq p {
+      margin: .5rem 0;
+    }
+
+    .related-box {
+      margin: 1.4rem 0;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #888;
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 1rem;
+    }
+
+    footer a {
+      color: #a7ffd0;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(51,255,153,.25);
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      border-bottom-color: var(--link);
+      color: var(--link);
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 1.1rem;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      h2 {
+        font-size: 1.42rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .calculator-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-main {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>WPM Calculator</h1>
+
+<p class="intro">
+Use this free <strong>WPM calculator</strong> to estimate your typing speed in words per minute.
+Enter how many characters or words you typed, add the time, and the calculator will show your estimated typing speed.
+</p>
+
+<p>
+WPM means <strong>words per minute</strong>. In many typing tests, one standard word is counted as five characters,
+including spaces and punctuation. This makes WPM easier to compare across different texts, even when the actual words
+are different lengths.
+</p>
+
+<div class="summary-box" aria-label="Key takeaway">
+  <strong>Key takeaway:</strong>
+  WPM is useful, but it should not be the only number you track. For real improvement, compare your speed together with
+  your typing accuracy, error count, and consistency over time.
+</div>
+
+<div class="toc" aria-label="Table of contents">
+  <h2>On this page</h2>
+  <ul>
+    <li><a href="#calculator">WPM calculator</a></li>
+    <li><a href="#how-to-use">How to use this calculator</a></li>
+    <li><a href="#formula">WPM formula</a></li>
+    <li><a href="#gross-vs-net">Gross WPM vs adjusted WPM</a></li>
+    <li><a href="#what-is-good">What is a good WPM?</a></li>
+    <li><a href="#improve">How to improve your WPM</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</div>
+
+<h2 id="calculator">WPM Calculator</h2>
+
+<div class="calculator-box">
+  <p>
+    You can calculate WPM in two ways. If you know the total number of characters typed, choose
+    <strong>characters</strong>. If you only know the number of words typed, choose <strong>words</strong>.
+  </p>
+
+  <div class="calculator-grid">
+    <div>
+      <label for="method">Calculation method</label>
+      <select id="method">
+        <option value="characters">Characters typed</option>
+        <option value="words">Words typed</option>
+      </select>
+      <div class="field-note">Use characters for the most common typing-test style calculation.</div>
+    </div>
+
+    <div>
+      <label for="amount">Characters or words typed</label>
+      <input id="amount" type="number" min="0" step="1" placeholder="Example: 250" />
+      <div class="field-note">Example: 250 characters or 50 words.</div>
+    </div>
+
+    <div>
+      <label for="minutes">Minutes</label>
+      <input id="minutes" type="number" min="0" step="1" placeholder="Example: 1" />
+      <div class="field-note">Enter the full minutes typed.</div>
+    </div>
+
+    <div>
+      <label for="seconds">Seconds</label>
+      <input id="seconds" type="number" min="0" max="59" step="1" placeholder="Example: 0" />
+      <div class="field-note">Use this if the test was not exactly a full minute.</div>
+    </div>
+
+    <div>
+      <label for="errors">Errors / mistakes</label>
+      <input id="errors" type="number" min="0" step="1" placeholder="Optional" />
+      <div class="field-note">Optional. Used to estimate adjusted WPM.</div>
+    </div>
+  </div>
+
+  <button type="button" onclick="calculateWPM()">Calculate WPM</button>
+
+  <div id="message" class="error-message" aria-live="polite"></div>
+
+  <div class="result-box" id="resultBox" style="display:none;" aria-live="polite">
+    <p><strong>Your estimated typing speed:</strong></p>
+    <div class="result-main" id="grossResult">0 WPM</div>
+    <p class="result-secondary" id="netResult"></p>
+    <p class="result-secondary" id="detailResult"></p>
+  </div>
+</div>
+
+<h2 id="how-to-use">How to Use This WPM Calculator</h2>
+
+<div class="step">
+  <h3>1. Choose characters or words</h3>
+  <p>
+    If your typing test shows the number of characters typed, choose <strong>Characters typed</strong>.
+    This is usually the better option because WPM is commonly based on five-character word units.
+  </p>
+</div>
+
+<div class="step">
+  <h3>2. Enter your typing time</h3>
+  <p>
+    Add the number of minutes and seconds you typed. For example, if you typed for 1 minute and 30 seconds,
+    enter <strong>1</strong> in minutes and <strong>30</strong> in seconds.
+  </p>
+</div>
+
+<div class="step">
+  <h3>3. Add errors if you want an adjusted score</h3>
+  <p>
+    The error field is optional. If you enter mistakes, the calculator will show a simple adjusted WPM estimate.
+    This helps you avoid focusing only on speed while ignoring accuracy.
+  </p>
+</div>
+
+<h2 id="formula">WPM Formula</h2>
+
+<p>
+The most common WPM formula uses five characters as one standard word. This means that 250 typed characters in
+one minute equals about 50 WPM.
+</p>
+
+<div class="formula-box">
+  <p><strong>Formula using characters:</strong></p>
+  <p><code>WPM = (characters typed / 5) / minutes</code></p>
+</div>
+
+<div class="formula-box">
+  <p><strong>Formula using words:</strong></p>
+  <p><code>WPM = words typed / minutes</code></p>
+</div>
+
+<p>
+For example, if you typed 300 characters in 2 minutes, the calculation would be:
+</p>
+
+<div class="formula-box">
+  <p><code>(300 / 5) / 2 = 30 WPM</code></p>
+</div>
+
+<h2 id="gross-vs-net">Gross WPM vs Adjusted WPM</h2>
+
+<p>
+Typing speed can look better than it really is if mistakes are ignored. That is why it is useful to understand
+the difference between gross WPM and adjusted WPM.
+</p>
+
+<div class="step">
+  <h3>Gross WPM</h3>
+  <p>
+    Gross WPM is your typing speed before mistakes are considered. It answers this question:
+    <strong>How fast did you type?</strong>
+  </p>
+</div>
+
+<div class="step">
+  <h3>Adjusted WPM</h3>
+  <p>
+    Adjusted WPM reduces your score based on mistakes. It gives a more realistic estimate of useful typing speed,
+    especially if you made several errors during the test.
+  </p>
+</div>
+
+<div class="note-box">
+  <p>
+    <strong>Note:</strong> Different typing platforms may calculate WPM and errors slightly differently.
+    This calculator is designed as a practical estimate, not an official certification score.
+  </p>
+</div>
+
+<h2 id="what-is-good">What Is a Good WPM?</h2>
+
+<p>
+A “good” WPM depends on your goal. A beginner may be happy with 25–35 WPM, while an office worker, student,
+programmer, writer, or data-entry user may want a higher and more consistent speed.
+</p>
+
+<div class="step">
+  <ul>
+    <li><strong>20–30 WPM:</strong> beginner level for many learners</li>
+    <li><strong>40–50 WPM:</strong> comfortable everyday typing speed</li>
+    <li><strong>60–70 WPM:</strong> strong typing speed for many work and study tasks</li>
+    <li><strong>80+ WPM:</strong> fast typing, especially if accuracy stays high</li>
+  </ul>
+</div>
+
+<p>
+Speed alone is not the full goal. A person typing 65 WPM with high accuracy may be more productive than someone
+typing 80 WPM with constant corrections.
+</p>
+
+<div class="cta-box" aria-label="Typing speed test suggestion">
+  <strong>Want to test yourself?</strong>
+  Try the <a href="index.html">Typing Speed Test</a> to measure your WPM and accuracy in a real practice session.
+</div>
+
+<h2 id="improve">How to Improve Your WPM</h2>
+
+<p>
+The best way to improve WPM is not to rush every practice session. Good typing speed usually comes from better rhythm,
+fewer mistakes, stronger finger habits, and regular short practice.
+</p>
+
+<div class="step">
+  <h3>Focus on accuracy first</h3>
+  <p>
+    If your accuracy is low, higher speed will not help much. Slow down slightly and aim for cleaner typing.
+    When errors decrease, your usable WPM usually becomes more stable.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Practice in short sessions</h3>
+  <p>
+    Ten focused minutes can be more useful than a long, distracted session. Use short drills, review mistakes,
+    and repeat difficult words or letter combinations.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Watch your repeated mistakes</h3>
+  <p>
+    Many typing problems come from the same repeated errors. If you often miss the same letters, slow down and
+    practice those combinations until they feel natural.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Keep your hands relaxed</h3>
+  <p>
+    Tense hands can reduce rhythm and increase mistakes. Keep your wrists neutral, shoulders relaxed, and fingers
+    close to the home row.
+  </p>
+</div>
+
+<p>
+For more detailed practice advice, read
+<a href="typing-accuracy-tips.html">Typing Accuracy Tips</a> and
+<a href="common-typing-mistakes.html">Common Typing Mistakes and How to Fix Them</a>.
+</p>
+
+<h2 id="faq">FAQ</h2>
+
+<div class="faq">
+  <h3>What does WPM mean?</h3>
+  <p>
+    WPM means words per minute. It is a common way to measure typing speed.
+  </p>
+
+  <h3>How many characters are in one WPM?</h3>
+  <p>
+    In many typing tests, one standard word is counted as five characters. This includes letters, spaces, and punctuation.
+  </p>
+
+  <h3>Is 40 WPM good?</h3>
+  <p>
+    Yes, 40 WPM is a solid everyday typing speed for many people. For work, school, writing, or data entry,
+    improving accuracy and consistency can be just as important as increasing speed.
+  </p>
+
+  <h3>Is 60 WPM fast?</h3>
+  <p>
+    60 WPM is a strong typing speed for many everyday tasks, especially if your accuracy is high.
+  </p>
+
+  <h3>Should I practice speed or accuracy first?</h3>
+  <p>
+    Accuracy should usually come first. Once you make fewer mistakes, your real typing speed can improve more naturally.
+  </p>
+
+  <h3>Why is my WPM different on different websites?</h3>
+  <p>
+    Different typing websites may use different text difficulty, time limits, error rules, and WPM formulas.
+    For the best comparison, test yourself with the same tool over time.
+  </p>
+</div>
+
+<div class="related-box">
+  <h2>Related Typing Tools and Guides</h2>
+  <ul>
+    <li><a href="index.html">Typing Speed Test</a></li>
+    <li><a href="tools.html">Typing Tools</a></li>
+    <li><a href="typing-accuracy-tips.html">Typing Accuracy Tips</a></li>
+    <li><a href="common-typing-mistakes.html">Common Typing Mistakes</a></li>
+    <li><a href="improve-typing-speed-to-100-wpm.html">Improve Typing Speed to 100 WPM</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p>&copy; 2026 Typing Speed Hub</p>
+  <p>
+    <a href="index.html">Home</a>
+    <a href="tools.html">Typing Tools</a>
+    <a href="typing-tips.html">Typing Tips</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html">Contact</a>
+  </p>
+</footer>
+
+<script>
+  function calculateWPM() {
+    const method = document.getElementById("method").value;
+    const amount = parseFloat(document.getElementById("amount").value);
+    const minutes = parseFloat(document.getElementById("minutes").value) || 0;
+    const seconds = parseFloat(document.getElementById("seconds").value) || 0;
+    const errors = parseFloat(document.getElementById("errors").value) || 0;
+
+    const message = document.getElementById("message");
+    const resultBox = document.getElementById("resultBox");
+    const grossResult = document.getElementById("grossResult");
+    const netResult = document.getElementById("netResult");
+    const detailResult = document.getElementById("detailResult");
+
+    message.textContent = "";
+    resultBox.style.display = "none";
+
+    const totalMinutes = minutes + (seconds / 60);
+
+    if (!amount || amount <= 0) {
+      message.textContent = "Please enter the number of characters or words typed.";
+      return;
+    }
+
+    if (totalMinutes <= 0) {
+      message.textContent = "Please enter a typing time greater than zero.";
+      return;
+    }
+
+    if (seconds < 0 || seconds > 59) {
+      message.textContent = "Seconds should be between 0 and 59.";
+      return;
+    }
+
+    let grossWPM;
+
+    if (method === "characters") {
+      grossWPM = (amount / 5) / totalMinutes;
+    } else {
+      grossWPM = amount / totalMinutes;
+    }
+
+    let adjustedWPM = grossWPM - (errors / totalMinutes);
+
+    if (adjustedWPM < 0) {
+      adjustedWPM = 0;
+    }
+
+    grossResult.textContent = grossWPM.toFixed(1) + " WPM";
+    netResult.textContent = "Adjusted estimate with errors: " + adjustedWPM.toFixed(1) + " WPM";
+    detailResult.textContent = "Typed for " + totalMinutes.toFixed(2) + " minute(s). Errors entered: " + errors + ".";
+
+    resultBox.style.display = "block";
+  }
+</script>
+
+</body>
+</html>
