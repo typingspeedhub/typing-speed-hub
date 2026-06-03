@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>WPM to KPH Calculator: Convert Words Per Minute to Keystrokes Per Hour | Typing Speed Hub</title>
+  <meta name="description" content="Use this free WPM to KPH calculator to convert words per minute into estimated keystrokes per hour. Learn the WPM to KPH formula, compare typing speed, and understand how accuracy affects real typing output." />
+  <meta name="author" content="Typing Speed Hub" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://typingspeedhub.com/wpm-to-kph-calculator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Typing Speed Hub" />
+  <meta property="og:title" content="WPM to KPH Calculator: Convert Words Per Minute to Keystrokes Per Hour" />
+  <meta property="og:description" content="Free WPM to KPH calculator. Convert typing speed from words per minute to estimated keystrokes per hour using the standard 5-character word method." />
+  <meta property="og:url" content="https://typingspeedhub.com/wpm-to-kph-calculator.html" />
+  <meta property="og:image" content="https://typingspeedhub.com/images/wpm-to-kph-calculator.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WPM to KPH Calculator: Convert WPM to KPH" />
+  <meta name="twitter:description" content="Convert words per minute into estimated keystrokes per hour and learn how WPM, KPH, and typing accuracy are connected." />
+  <meta name="twitter:image" content="https://typingspeedhub.com/images/wpm-to-kph-calculator.png" />
+
+  <!-- Structured data: WebApplication + FAQ + Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "WPM to KPH Calculator",
+        "url": "https://typingspeedhub.com/wpm-to-kph-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "description": "A free online calculator that converts words per minute into estimated keystrokes per hour using the standard typing conversion method.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Typing Speed Hub",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://typingspeedhub.com/images/logo.png"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://typingspeedhub.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Typing Tools",
+            "item": "https://typingspeedhub.com/tools.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "WPM to KPH Calculator",
+            "item": "https://typingspeedhub.com/wpm-to-kph-calculator.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does KPH mean in typing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In typing, KPH usually means keystrokes per hour. It estimates how many keyboard entries a person can type in one hour."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you convert WPM to KPH?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A common conversion is WPM multiplied by 5 characters per word, then multiplied by 60 minutes. This means KPH equals WPM times 300."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many KPH is 40 WPM?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Using the standard 5-character word method, 40 WPM is about 12,000 keystrokes per hour."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is WPM or KPH better for typing speed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WPM is easier for general typing tests, while KPH can be useful for data entry, office work, and productivity estimates. Both are estimates and should be viewed with typing accuracy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does typing accuracy affect KPH?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. A high gross KPH may look good, but mistakes reduce real productivity. This calculator can also show an accuracy-adjusted KPH estimate."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #121212;
+      --card: #1e1e1e;
+      --card-soft: rgba(255,255,255,.04);
+      --text: #e0e0e0;
+      --muted: #b8b8b8;
+      --green: #4CAF50;
+      --green-light: #66ff99;
+      --link: #33ff99;
+      --border: rgba(255,255,255,.10);
+      --danger: #ff7777;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+      line-height: 1.8;
+      max-width: 940px;
+      margin: auto;
+    }
+
+    h1 {
+      color: var(--green);
+      font-size: 2.35rem;
+      margin: 0 0 1rem;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    h2 {
+      color: var(--green);
+      font-size: 1.65rem;
+      margin-top: 2.3rem;
+      line-height: 1.35;
+    }
+
+    h3 {
+      color: var(--green-light);
+      margin-top: 1rem;
+      line-height: 1.4;
+    }
+
+    p {
+      font-size: 1.05rem;
+      margin: 0.8rem 0;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: underline;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    code {
+      color: #c6ffc6;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--green-light);
+      font-weight: 700;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.28);
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: rgba(102,255,153,.65);
+      box-shadow: 0 0 0 3px rgba(102,255,153,.12);
+    }
+
+    button {
+      display: inline-block;
+      border: 0;
+      border-radius: 10px;
+      padding: 0.8rem 1.1rem;
+      background: var(--green);
+      color: #071107;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 0.8rem;
+    }
+
+    button:hover {
+      filter: brightness(1.08);
+    }
+
+    .intro {
+      font-size: 1.08rem;
+    }
+
+    .calculator-box,
+    .step,
+    .faq,
+    .toc,
+    .summary-box,
+    .cta-box,
+    .note-box,
+    .related-box,
+    .result-box,
+    .formula-box {
+      border-radius: 12px;
+    }
+
+    .calculator-box {
+      margin: 1.6rem 0;
+      padding: 1.2rem;
+      border: 1px solid rgba(102,255,153,.35);
+      background: rgba(76,175,80,.08);
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .field-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 0.25rem;
+      line-height: 1.5;
+    }
+
+    .result-box {
+      margin-top: 1.2rem;
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(102,255,153,.45);
+      background: rgba(0,0,0,.28);
+    }
+
+    .result-main {
+      font-size: 2.1rem;
+      color: var(--green-light);
+      font-weight: 800;
+      margin: 0.2rem 0;
+      line-height: 1.25;
+    }
+
+    .result-secondary {
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .error-message {
+      color: var(--danger);
+      font-weight: 700;
+      margin-top: 0.8rem;
+    }
+
+    .step {
+      background-color: var(--card);
+      border-left: 4px solid var(--green);
+      padding: 1rem 1.15rem;
+      margin: 1.25rem 0;
+    }
+
+    .toc {
+      margin: 1.4rem 0 1.9rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      background: var(--card-soft);
+    }
+
+    .toc h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .toc ul {
+      margin-bottom: 0;
+    }
+
+    .summary-box {
+      margin: 1.4rem 0;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(102,255,153,.35);
+      background: rgba(76,175,80,.08);
+    }
+
+    .summary-box strong {
+      color: var(--green-light);
+    }
+
+    .cta-box {
+      margin: 1.6rem 0 1.35rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(102,255,153,.45);
+      background: rgba(0,0,0,.22);
+    }
+
+    .cta-box strong {
+      color: var(--green-light);
+    }
+
+    .note-box {
+      margin: 1.3rem 0;
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+
+    .formula-box {
+      margin: 1.2rem 0;
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      overflow-x: auto;
+    }
+
+    .formula-box strong {
+      color: var(--green-light);
+    }
+
+    .faq {
+      margin-top: 2rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(76,175,80,.35);
+      background: rgba(255,255,255,.03);
+    }
+
+    .faq p {
+      margin: .5rem 0;
+    }
+
+    .related-box {
+      margin: 1.4rem 0;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #888;
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 1rem;
+    }
+
+    footer a {
+      color: #a7ffd0;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(51,255,153,.25);
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      border-bottom-color: var(--link);
+      color: var(--link);
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 1.1rem;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      h2 {
+        font-size: 1.42rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .calculator-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-main {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>WPM to KPH Calculator</h1>
+
+<p class="intro">
+Use this free <strong>WPM to KPH calculator</strong> to convert your typing speed from
+<strong>words per minute</strong> into estimated <strong>keystrokes per hour</strong>.
+This can help you compare typing test results, data entry speed, office productivity, and practice progress.
+</p>
+
+<p>
+WPM is the most common typing speed measurement, but some jobs, training programs, and data entry tasks may use KPH.
+Because one standard typing word is often treated as five characters or keystrokes, a simple estimate can be made by
+multiplying WPM by 300.
+</p>
+
+<div class="summary-box" aria-label="Key takeaway">
+  <strong>Key takeaway:</strong>
+  The standard estimate is <strong>KPH = WPM × 300</strong>. For example, 40 WPM is about 12,000 keystrokes per hour.
+  If you include accuracy, your real productive KPH may be lower than your gross KPH.
+</div>
+
+<div class="toc" aria-label="Table of contents">
+  <h2>On this page</h2>
+  <ul>
+    <li><a href="#calculator">WPM to KPH calculator</a></li>
+    <li><a href="#how-to-use">How to use this calculator</a></li>
+    <li><a href="#formula">WPM to KPH formula</a></li>
+    <li><a href="#examples">WPM to KPH examples</a></li>
+    <li><a href="#what-is-good">What is a good KPH score?</a></li>
+    <li><a href="#wpm-vs-kph">WPM vs KPH</a></li>
+    <li><a href="#improve">How to improve your real typing speed</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</div>
+
+<h2 id="calculator">WPM to KPH Calculator</h2>
+
+<div class="calculator-box">
+  <p>
+    Enter your WPM score from a typing test. You can also add your typing accuracy if you want to estimate your
+    accuracy-adjusted KPH.
+  </p>
+
+  <div class="calculator-grid">
+    <div>
+      <label for="wpm">Words per minute</label>
+      <input id="wpm" type="number" min="0" step="0.1" placeholder="Example: 45" />
+      <div class="field-note">Enter your gross or test-reported WPM score.</div>
+    </div>
+
+    <div>
+      <label for="accuracy">Accuracy percentage</label>
+      <input id="accuracy" type="number" min="0" max="100" step="0.1" placeholder="Optional: 96" />
+      <div class="field-note">Optional. Leave blank to calculate gross KPH only.</div>
+    </div>
+  </div>
+
+  <button type="button" onclick="calculateKPH()">Convert WPM to KPH</button>
+
+  <div id="message" class="error-message" aria-live="polite"></div>
+
+  <div class="result-box" id="resultBox" style="display:none;" aria-live="polite">
+    <p><strong>Your estimated keystrokes per hour:</strong></p>
+    <div class="result-main" id="kphResult">0 KPH</div>
+    <p class="result-secondary" id="detailResult"></p>
+    <p class="result-secondary" id="accuracyResult"></p>
+    <p class="result-secondary" id="adviceResult"></p>
+  </div>
+</div>
+
+<h2 id="how-to-use">How to Use This WPM to KPH Calculator</h2>
+
+<div class="step">
+  <h3>1. Enter your WPM score</h3>
+  <p>
+    Type your words per minute result into the calculator. You can use the score from a typing test, practice session,
+    or your own timed typing exercise.
+  </p>
+</div>
+
+<div class="step">
+  <h3>2. Add accuracy if you know it</h3>
+  <p>
+    Accuracy is optional, but it gives a more realistic estimate. A person typing 50 WPM with 90% accuracy may have
+    less real output than someone typing slightly slower with fewer mistakes.
+  </p>
+</div>
+
+<div class="step">
+  <h3>3. Read your KPH estimate</h3>
+  <p>
+    The calculator shows your estimated gross KPH. If accuracy is entered, it also shows an adjusted KPH estimate.
+    This is useful because mistakes take time to correct and can reduce real productivity.
+  </p>
+</div>
+
+<h2 id="formula">WPM to KPH Formula</h2>
+
+<p>
+The most common WPM to KPH conversion uses the standard typing assumption that one word equals five characters or
+keystrokes. Since there are 60 minutes in an hour, the calculation is simple.
+</p>
+
+<div class="formula-box">
+  <p><strong>Standard formula:</strong></p>
+  <p><code>KPH = WPM × 5 × 60</code></p>
+</div>
+
+<div class="formula-box">
+  <p><strong>Simplified formula:</strong></p>
+  <p><code>KPH = WPM × 300</code></p>
+</div>
+
+<p>
+For example, if your typing speed is 40 WPM, your estimated KPH is:
+</p>
+
+<div class="formula-box">
+  <p><code>40 × 300 = 12,000 KPH</code></p>
+</div>
+
+<p>
+If you want to estimate accuracy-adjusted KPH, multiply the gross KPH by your accuracy percentage.
+</p>
+
+<div class="formula-box">
+  <p><strong>Accuracy-adjusted formula:</strong></p>
+  <p><code>Adjusted KPH = Gross KPH × (Accuracy ÷ 100)</code></p>
+</div>
+
+<div class="note-box">
+  <p>
+    <strong>Note:</strong> KPH is an estimate. Different typing tests, employers, or data entry tasks may use different
+    counting rules. Some count every keystroke, some count only valid entries, and some measure corrected or uncorrected
+    errors differently.
+  </p>
+</div>
+
+<h2 id="examples">WPM to KPH Examples</h2>
+
+<p>
+Here are common WPM to KPH conversions using the standard 5-character word method.
+</p>
+
+<div class="step">
+  <ul>
+    <li><strong>20 WPM</strong> = about <strong>6,000 KPH</strong></li>
+    <li><strong>30 WPM</strong> = about <strong>9,000 KPH</strong></li>
+    <li><strong>40 WPM</strong> = about <strong>12,000 KPH</strong></li>
+    <li><strong>50 WPM</strong> = about <strong>15,000 KPH</strong></li>
+    <li><strong>60 WPM</strong> = about <strong>18,000 KPH</strong></li>
+    <li><strong>70 WPM</strong> = about <strong>21,000 KPH</strong></li>
+    <li><strong>80 WPM</strong> = about <strong>24,000 KPH</strong></li>
+  </ul>
+</div>
+
+<p>
+These numbers are helpful for comparison, but they should not be viewed alone. A high KPH score is most useful when
+your accuracy is also strong.
+</p>
+
+<div class="cta-box" aria-label="Typing accuracy calculator suggestion">
+  <strong>Want to check your accuracy too?</strong>
+  Use the <a href="typing-accuracy-calculator.html">Typing Accuracy Calculator</a> to estimate how clean your typing is,
+  then compare it with your KPH result.
+</div>
+
+<h2 id="what-is-good">What Is a Good KPH Score?</h2>
+
+<p>
+A good KPH score depends on the purpose. Casual typing, school work, office work, transcription, coding, and data entry
+can all require different levels of speed and accuracy.
+</p>
+
+<div class="step">
+  <ul>
+    <li><strong>Below 9,000 KPH:</strong> beginner or slow typing range; focus on keyboard familiarity and accuracy</li>
+    <li><strong>9,000–12,000 KPH:</strong> practical everyday typing range for many learners</li>
+    <li><strong>12,000–15,000 KPH:</strong> solid typing speed for office work and regular writing tasks</li>
+    <li><strong>15,000–18,000 KPH:</strong> strong typing speed if accuracy stays high</li>
+    <li><strong>18,000+ KPH:</strong> advanced speed range, especially useful when paired with 97%+ accuracy</li>
+  </ul>
+</div>
+
+<p>
+If you are practicing for work or data entry, do not chase KPH alone. A lower KPH with fewer errors may be more valuable
+than a high score with many corrections.
+</p>
+
+<h2 id="wpm-vs-kph">WPM vs KPH: What Is the Difference?</h2>
+
+<p>
+WPM and KPH both describe typing speed, but they look at the result from different angles.
+</p>
+
+<div class="step">
+  <h3>WPM measures words per minute</h3>
+  <p>
+    WPM is easy to understand and is commonly used by typing test websites. It gives a quick estimate of how fast you
+    can type normal text.
+  </p>
+</div>
+
+<div class="step">
+  <h3>KPH measures keystrokes per hour</h3>
+  <p>
+    KPH is often more useful for data entry and productivity estimates because it focuses on the number of keyboard
+    inputs over a longer period.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Accuracy changes the real value</h3>
+  <p>
+    A high WPM or KPH score can be misleading if accuracy is low. The best typing result is a balance of speed,
+    rhythm, and clean input.
+  </p>
+</div>
+
+<h2 id="improve">How to Improve Your Real Typing Speed</h2>
+
+<p>
+Improving KPH is not only about moving your fingers faster. Real typing speed improves when you reduce hesitation,
+avoid repeated mistakes, and build a steady rhythm.
+</p>
+
+<div class="step">
+  <h3>Practice with short timed tests</h3>
+  <p>
+    Start with one-minute or three-minute typing tests. Short tests make it easier to track your WPM, KPH, and accuracy
+    without getting tired too quickly.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Keep accuracy above 95%</h3>
+  <p>
+    If your accuracy drops too much, slow down slightly. Clean typing builds better muscle memory and usually leads to
+    better long-term speed.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Train weak letter patterns</h3>
+  <p>
+    Many typists lose speed on the same letter combinations, punctuation marks, numbers, or capital letters.
+    Practicing weak patterns can improve both WPM and KPH.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Use consistent posture and finger placement</h3>
+  <p>
+    Good posture, relaxed shoulders, and consistent home row position can reduce mistakes and help you type longer
+    without losing control.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Track progress weekly</h3>
+  <p>
+    Compare your WPM, KPH, and accuracy over time. One test can be random, but weekly averages show whether your real
+    typing skill is improving.
+  </p>
+</div>
+
+<p>
+For more practice, try the
+<a href="index.html">Typing Speed Test</a>,
+<a href="wpm-calculator.html">WPM Calculator</a>,
+<a href="typing-accuracy-calculator.html">Typing Accuracy Calculator</a>,
+<a href="10-minute-typing-drill.html">10-Minute Typing Drill</a>, and
+<a href="increase-typing-speed-7days.html">7-Day Typing Plan</a>.
+</p>
+
+<h2 id="faq">FAQ</h2>
+
+<div class="faq">
+  <h3>What does KPH mean in typing?</h3>
+  <p>
+    KPH means keystrokes per hour. It estimates how many keyboard entries you can make in one hour.
+  </p>
+
+  <h3>How do you convert WPM to KPH?</h3>
+  <p>
+    A common formula is WPM multiplied by 300. This comes from 5 characters per word multiplied by 60 minutes per hour.
+  </p>
+
+  <h3>How many KPH is 40 WPM?</h3>
+  <p>
+    40 WPM is about 12,000 KPH using the standard formula: 40 × 300 = 12,000.
+  </p>
+
+  <h3>How many KPH is 50 WPM?</h3>
+  <p>
+    50 WPM is about 15,000 KPH using the standard 5-character word method.
+  </p>
+
+  <h3>Is KPH more accurate than WPM?</h3>
+  <p>
+    Not always. KPH and WPM are both estimates. KPH can be useful for data entry and productivity, while WPM is easier
+    for general typing tests. Accuracy should be checked with either measurement.
+  </p>
+
+  <h3>Does this calculator count spaces?</h3>
+  <p>
+    This calculator uses the common typing conversion where one standard word equals five characters or keystrokes.
+    In many typing contexts, spaces may be included as keystrokes, but exact counting rules can vary by test or employer.
+  </p>
+
+  <h3>Should I use gross KPH or adjusted KPH?</h3>
+  <p>
+    Gross KPH shows your estimated raw speed. Adjusted KPH is usually more realistic because it includes typing accuracy.
+    For practice and real work, adjusted KPH is often more useful.
+  </p>
+</div>
+
+<div class="related-box">
+  <h2>Related Typing Tools and Guides</h2>
+  <ul>
+    <li><a href="index.html">Typing Speed Test</a></li>
+    <li><a href="tools.html">Typing Tools</a></li>
+    <li><a href="wpm-calculator.html">WPM Calculator</a></li>
+    <li><a href="typing-accuracy-calculator.html">Typing Accuracy Calculator</a></li>
+    <li><a href="typing-accuracy-tips.html">Typing Accuracy Tips</a></li>
+    <li><a href="common-typing-mistakes.html">Common Typing Mistakes</a></li>
+    <li><a href="10-minute-typing-drill.html">10-Minute Typing Drill</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p>&copy; 2026 Typing Speed Hub</p>
+  <p>
+    <a href="index.html">Home</a>
+    <a href="tools.html">Typing Tools</a>
+    <a href="typing-tips.html">Typing Tips</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html">Contact</a>
+  </p>
+</footer>
+
+<script>
+  function calculateKPH() {
+    const wpm = parseFloat(document.getElementById("wpm").value);
+    const accuracyInput = document.getElementById("accuracy").value;
+    const accuracy = accuracyInput === "" ? null : parseFloat(accuracyInput);
+
+    const message = document.getElementById("message");
+    const resultBox = document.getElementById("resultBox");
+    const kphResult = document.getElementById("kphResult");
+    const detailResult = document.getElementById("detailResult");
+    const accuracyResult = document.getElementById("accuracyResult");
+    const adviceResult = document.getElementById("adviceResult");
+
+    message.textContent = "";
+    resultBox.style.display = "none";
+
+    if (isNaN(wpm) || wpm <= 0) {
+      message.textContent = "Please enter a valid WPM score.";
+      return;
+    }
+
+    if (accuracy !== null && (isNaN(accuracy) || accuracy < 0 || accuracy > 100)) {
+      message.textContent = "Please enter an accuracy percentage between 0 and 100, or leave it blank.";
+      return;
+    }
+
+    const grossKPH = wpm * 300;
+    const roundedGrossKPH = Math.round(grossKPH);
+
+    kphResult.textContent = roundedGrossKPH.toLocaleString("en-US") + " KPH";
+
+    detailResult.textContent =
+      wpm + " WPM × 300 = " + roundedGrossKPH.toLocaleString("en-US") + " estimated keystrokes per hour.";
+
+    if (accuracy !== null) {
+      const adjustedKPH = grossKPH * (accuracy / 100);
+      const roundedAdjustedKPH = Math.round(adjustedKPH);
+
+      accuracyResult.textContent =
+        "With " + accuracy + "% accuracy, your adjusted estimate is about " +
+        roundedAdjustedKPH.toLocaleString("en-US") + " KPH.";
+    } else {
+      accuracyResult.textContent =
+        "No accuracy percentage was entered, so this result shows gross estimated KPH only.";
+    }
+
+    let advice = "";
+
+    if (grossKPH < 9000) {
+      advice = "This is a beginner or slower typing range. Focus on accuracy, home row control, and short daily practice.";
+    } else if (grossKPH < 12000) {
+      advice = "This is a practical everyday typing range. Keep building rhythm and reduce repeated mistakes.";
+    } else if (grossKPH < 15000) {
+      advice = "This is a solid typing range for many office and study tasks, especially if your accuracy is high.";
+    } else if (grossKPH < 18000) {
+      advice = "This is a strong typing range. Try to maintain accuracy while increasing speed gradually.";
+    } else {
+      advice = "This is an advanced typing range. Accuracy and consistency are the main things to protect at this speed.";
+    }
+
+    adviceResult.textContent = advice;
+    resultBox.style.display = "block";
+  }
+</script>
+
+</body>
+</html>
