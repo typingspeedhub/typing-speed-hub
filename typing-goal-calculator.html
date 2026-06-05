@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Typing Goal Calculator: Set a WPM Target and Practice Plan | Typing Speed Hub</title>
+  <meta name="description" content="Use this free Typing Goal Calculator to set a realistic WPM target, estimate your weekly typing improvement goal, and create a simple practice plan based on your current speed, target speed, and available practice time." />
+  <meta name="author" content="Typing Speed Hub" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://typingspeedhub.com/typing-goal-calculator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Typing Speed Hub" />
+  <meta property="og:title" content="Typing Goal Calculator: Set a WPM Target and Practice Plan" />
+  <meta property="og:description" content="Set a realistic typing speed goal, calculate your WPM gap, and build a simple weekly typing practice plan." />
+  <meta property="og:url" content="https://typingspeedhub.com/typing-goal-calculator.html" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Typing Goal Calculator" />
+  <meta name="twitter:description" content="Calculate your WPM target, weekly improvement goal, and typing practice plan." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Typing Goal Calculator",
+        "url": "https://typingspeedhub.com/typing-goal-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "description": "A free typing goal calculator that helps users set a WPM target, estimate weekly improvement, and plan typing practice time.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a typing goal?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A typing goal is a target typing speed or accuracy level you want to reach after a period of practice. It can be measured in words per minute, accuracy percentage, consistency, or reduced typing mistakes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I set a realistic WPM goal?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A realistic WPM goal depends on your current speed, accuracy, practice time, and deadline. A small weekly improvement is usually easier to maintain than a large sudden jump."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much should I practice typing each day?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Short daily typing practice sessions of 10 to 20 minutes can be enough for many learners. Consistency, accuracy, and focused correction are usually more useful than long random practice sessions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I focus on speed or accuracy first?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Accuracy should usually come first. If you type too fast with many mistakes, your real productivity may be lower because corrections take extra time."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --panel: #151515;
+      --panel-soft: #111;
+      --text: #00ff66;
+      --muted: #b8ffd2;
+      --link: #33ff99;
+      --border: rgba(0, 255, 102, 0.28);
+      --border-soft: rgba(0, 255, 102, 0.16);
+      --danger: #ff8080;
+      --white-soft: rgba(255,255,255,.04);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 1.4rem;
+      background-image: radial-gradient(#00ff66 1px, transparent 1px);
+      background-size: 26px 26px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.82);
+      z-index: -1;
+    }
+
+    h1, h2, h3 {
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    h1 {
+      font-size: 2.35rem;
+      margin: 1rem auto 1rem;
+      max-width: 960px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.65rem;
+      margin-top: 2.3rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .4rem;
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      margin-bottom: .4rem;
+    }
+
+    p, ul, ol {
+      font-size: 1.05rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(51,255,153,.35);
+    }
+
+    a:hover {
+      border-bottom-color: var(--link);
+    }
+
+    code {
+      background: rgba(255,255,255,.07);
+      padding: .12rem .35rem;
+      border-radius: 4px;
+      color: #d7ffe6;
+    }
+
+    .intro,
+    .toc,
+    .calculator-box,
+    .summary-box,
+    .step,
+    .formula-box,
+    .note-box,
+    .cta-box,
+    .faq,
+    .related-box {
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .intro {
+      font-size: 1.13rem;
+      color: var(--muted);
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .summary-box {
+      margin-top: 1.4rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      background: rgba(0,255,102,.06);
+      border-radius: 12px;
+    }
+
+    .toc {
+      margin-top: 1.6rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border-soft);
+      background: rgba(255,255,255,.03);
+      border-radius: 12px;
+    }
+
+    .toc h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .toc ul {
+      margin-bottom: 0;
+    }
+
+    .calculator-box {
+      background: rgba(12, 12, 12, 0.96);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.3rem;
+      box-shadow: 0 0 22px rgba(0,255,102,.08);
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: .35rem;
+      color: #d7ffe6;
+    }
+
+    input, select {
+      width: 100%;
+      padding: .85rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #070707;
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--link);
+      box-shadow: 0 0 0 3px rgba(51,255,153,.12);
+    }
+
+    .field-note {
+      color: #9deebb;
+      font-size: .92rem;
+      margin-top: .25rem;
+    }
+
+    button {
+      margin-top: 1.2rem;
+      width: 100%;
+      padding: .95rem 1rem;
+      border: 0;
+      border-radius: 10px;
+      background: var(--text);
+      color: #031006;
+      font-size: 1.05rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #6dffad;
+    }
+
+    .error-message {
+      color: var(--danger);
+      margin-top: .9rem;
+      font-weight: bold;
+    }
+
+    .result-box {
+      margin-top: 1.2rem;
+      padding: 1rem 1.1rem;
+      background: rgba(0,255,102,.07);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .result-main {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #d7ffe6;
+      margin: .2rem 0 .4rem;
+    }
+
+    .result-secondary {
+      margin: .45rem 0;
+      color: var(--muted);
+    }
+
+    .step,
+    .formula-box,
+    .note-box,
+    .cta-box,
+    .faq,
+    .related-box {
+      background: rgba(12, 12, 12, .94);
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .formula-box {
+      background: rgba(255,255,255,.035);
+    }
+
+    .note-box {
+      border-color: rgba(255,255,255,.14);
+      color: var(--muted);
+    }
+
+    .cta-box {
+      background: rgba(0,255,102,.055);
+      border-color: var(--border);
+    }
+
+    .faq h3 {
+      margin-top: 1.25rem;
+    }
+
+    .faq h3:first-child {
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #888;
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 1rem;
+    }
+
+    footer a {
+      color: #a7ffd0;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(51,255,153,.25);
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      border-bottom-color: var(--link);
+      color: var(--link);
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 1.1rem;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      h2 {
+        font-size: 1.42rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .calculator-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-main {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Typing Goal Calculator</h1>
+
+<p class="intro">
+Use this free <strong>Typing Goal Calculator</strong> to set a realistic typing speed target,
+estimate your <strong>WPM improvement goal</strong>, and build a simple practice plan based on your current typing speed,
+target speed, deadline, and available practice time.
+</p>
+
+<p class="intro">
+Typing improvement is easier to track when you have a clear goal. Instead of only thinking “I want to type faster,”
+you can calculate how many words per minute you need to gain each week and how much focused practice time you can use.
+</p>
+
+<div class="summary-box" aria-label="Key takeaway">
+  <strong>Key takeaway:</strong>
+  A good typing goal should include your current WPM, target WPM, accuracy, practice schedule, and deadline.
+  Small weekly improvements are usually more realistic than trying to make a large speed jump overnight.
+</div>
+
+<div class="toc" aria-label="Table of contents">
+  <h2>On this page</h2>
+  <ul>
+    <li><a href="#calculator">Typing goal calculator</a></li>
+    <li><a href="#how-to-use">How to use this calculator</a></li>
+    <li><a href="#formula">Typing goal formula</a></li>
+    <li><a href="#examples">Typing goal examples</a></li>
+    <li><a href="#realistic-goals">What is a realistic typing goal?</a></li>
+    <li><a href="#accuracy">Why accuracy matters</a></li>
+    <li><a href="#practice-plan">How to build a typing practice plan</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</div>
+
+<h2 id="calculator">Typing Goal Calculator</h2>
+
+<div class="calculator-box">
+  <p>
+    Enter your current typing speed, your target typing speed, and how much time you can practice.
+    The calculator will estimate your WPM gap, weekly improvement target, total practice time, and a simple goal summary.
+  </p>
+
+  <div class="calculator-grid">
+    <div>
+      <label for="currentWpm">Current WPM</label>
+      <input id="currentWpm" type="number" min="0" step="0.1" placeholder="Example: 38" />
+      <div class="field-note">Enter your current words per minute score.</div>
+    </div>
+
+    <div>
+      <label for="targetWpm">Target WPM</label>
+      <input id="targetWpm" type="number" min="0" step="0.1" placeholder="Example: 55" />
+      <div class="field-note">Enter the WPM score you want to reach.</div>
+    </div>
+
+    <div>
+      <label for="currentAccuracy">Current accuracy percentage</label>
+      <input id="currentAccuracy" type="number" min="0" max="100" step="0.1" placeholder="Optional: 94" />
+      <div class="field-note">Optional, but useful for a more realistic goal.</div>
+    </div>
+
+    <div>
+      <label for="goalWeeks">Goal deadline in weeks</label>
+      <input id="goalWeeks" type="number" min="1" step="1" placeholder="Example: 8" />
+      <div class="field-note">How many weeks do you want to practice?</div>
+    </div>
+
+    <div>
+      <label for="daysPerWeek">Practice days per week</label>
+      <input id="daysPerWeek" type="number" min="1" max="7" step="1" placeholder="Example: 5" />
+      <div class="field-note">Choose a realistic number from 1 to 7.</div>
+    </div>
+
+    <div>
+      <label for="minutesPerSession">Minutes per practice session</label>
+      <input id="minutesPerSession" type="number" min="1" step="1" placeholder="Example: 15" />
+      <div class="field-note">Short focused sessions can work well.</div>
+    </div>
+  </div>
+
+  <button type="button" onclick="calculateTypingGoal()">Calculate My Typing Goal</button>
+
+  <div id="message" class="error-message" aria-live="polite"></div>
+
+  <div class="result-box" id="resultBox" style="display:none;" aria-live="polite">
+    <p><strong>Your typing goal summary:</strong></p>
+    <div class="result-main" id="mainResult">0 WPM goal</div>
+    <p class="result-secondary" id="gapResult"></p>
+    <p class="result-secondary" id="weeklyResult"></p>
+    <p class="result-secondary" id="practiceResult"></p>
+    <p class="result-secondary" id="accuracyResult"></p>
+    <p class="result-secondary" id="adviceResult"></p>
+  </div>
+</div>
+
+<h2 id="how-to-use">How to Use This Typing Goal Calculator</h2>
+
+<div class="step">
+  <h3>1. Enter your current WPM</h3>
+  <p>
+    Start with a recent typing test result. For a better estimate, take two or three short tests and use your average score.
+    One test can be random, but an average gives a more stable starting point.
+  </p>
+</div>
+
+<div class="step">
+  <h3>2. Enter your target WPM</h3>
+  <p>
+    Your target WPM should be challenging but realistic. For example, moving from 35 WPM to 45 WPM may be a good first goal,
+    while jumping from 35 WPM to 90 WPM in a short time may be too aggressive for most learners.
+  </p>
+</div>
+
+<div class="step">
+  <h3>3. Add your deadline and practice schedule</h3>
+  <p>
+    Choose how many weeks you want to practice, how many days per week you can practice, and how long each session will be.
+    The calculator uses this to estimate your weekly WPM improvement target and total practice time.
+  </p>
+</div>
+
+<div class="step">
+  <h3>4. Review the goal advice</h3>
+  <p>
+    The result gives you a simple typing goal summary. If the weekly improvement target looks too high,
+    extend the deadline, reduce the target WPM, or increase your practice consistency.
+  </p>
+</div>
+
+<h2 id="formula">Typing Goal Formula</h2>
+
+<p>
+This calculator uses a simple planning method. It does not promise a guaranteed result, because typing improvement depends
+on accuracy, keyboard familiarity, practice quality, posture, fatigue, and consistency.
+</p>
+
+<div class="formula-box">
+  <p><strong>WPM gap:</strong></p>
+  <p><code>WPM gap = Target WPM - Current WPM</code></p>
+</div>
+
+<div class="formula-box">
+  <p><strong>Weekly improvement target:</strong></p>
+  <p><code>Weekly WPM gain = WPM gap ÷ Number of weeks</code></p>
+</div>
+
+<div class="formula-box">
+  <p><strong>Total practice time:</strong></p>
+  <p><code>Total practice minutes = Weeks × Practice days per week × Minutes per session</code></p>
+</div>
+
+<div class="note-box">
+  <p>
+    <strong>Note:</strong> This calculator is an educational planning tool. It gives an estimate, not a guarantee.
+    Some people improve faster, while others need more time to build accuracy and muscle memory.
+  </p>
+</div>
+
+<h2 id="examples">Typing Goal Examples</h2>
+
+<p>
+Here are a few simple examples of how typing goals can be planned.
+</p>
+
+<div class="step">
+  <h3>Example 1: Beginner improvement goal</h3>
+  <p>
+    If your current speed is 28 WPM and your target is 40 WPM in 8 weeks, your WPM gap is 12.
+    That means you would need to improve by about 1.5 WPM per week.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Example 2: Office typing goal</h3>
+  <p>
+    If your current speed is 42 WPM and your target is 55 WPM in 10 weeks, your WPM gap is 13.
+    That means your weekly improvement target is about 1.3 WPM.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Example 3: Accuracy-focused goal</h3>
+  <p>
+    If you already type 60 WPM but your accuracy is only 90%, your best goal may not be more speed.
+    A better first target may be keeping 60 WPM while raising accuracy to 96% or higher.
+  </p>
+</div>
+
+<div class="cta-box" aria-label="Typing speed test suggestion">
+  <strong>Need a starting WPM score?</strong>
+  Take a quick <a href="index.html">Typing Speed Test</a> first, then return to this calculator and set your target.
+</div>
+
+<h2 id="realistic-goals">What Is a Realistic Typing Goal?</h2>
+
+<p>
+A realistic typing goal depends on your current level. Beginners may improve quickly at first because they are learning
+basic key positions and rhythm. Intermediate typists may improve more slowly because they need to fix specific mistakes,
+weak letter patterns, and consistency problems.
+</p>
+
+<div class="step">
+  <ul>
+    <li><strong>Beginner goal:</strong> improve keyboard familiarity and reach a comfortable everyday typing speed</li>
+    <li><strong>Intermediate goal:</strong> increase WPM while keeping accuracy stable</li>
+    <li><strong>Office goal:</strong> type emails, documents, and work notes faster with fewer corrections</li>
+    <li><strong>Data entry goal:</strong> focus on accuracy, numbers, symbols, and consistency</li>
+    <li><strong>Advanced goal:</strong> improve speed without losing rhythm or control</li>
+  </ul>
+</div>
+
+<p>
+For many learners, a goal of about 1 to 2 WPM improvement per week can be a reasonable planning range.
+However, the best target depends on your starting level, practice method, and how consistently you train.
+</p>
+
+<h2 id="accuracy">Why Accuracy Matters in a Typing Goal</h2>
+
+<p>
+Typing speed alone can be misleading. A high WPM score with many mistakes may not be useful in real work,
+because every correction takes extra time and attention.
+</p>
+
+<div class="step">
+  <h3>Accuracy protects real productivity</h3>
+  <p>
+    If you type quickly but make frequent errors, your real output may be lower than your test score suggests.
+    Clean typing is usually more useful than fast typing with constant corrections.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Accuracy builds better muscle memory</h3>
+  <p>
+    Repeating mistakes can train the wrong movement patterns. Slowing down slightly and typing cleanly can help you build
+    better long-term speed.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Accuracy makes speed easier to maintain</h3>
+  <p>
+    When your accuracy is stable, increasing speed becomes safer. You can gradually type faster without losing control.
+  </p>
+</div>
+
+<div class="cta-box" aria-label="Typing accuracy calculator suggestion">
+  <strong>Want to measure your accuracy?</strong>
+  Use the <a href="typing-accuracy-calculator.html">Typing Accuracy Calculator</a> to estimate your error rate and clean typing percentage.
+</div>
+
+<h2 id="practice-plan">How to Build a Typing Practice Plan</h2>
+
+<p>
+A good typing practice plan should be simple enough to follow. Long practice sessions are not always necessary.
+Short, focused sessions can be more effective when they target real weaknesses.
+</p>
+
+<div class="step">
+  <h3>Practice in short sessions</h3>
+  <p>
+    Try 10 to 20 minutes per session. This is long enough to build rhythm, but short enough to avoid too much fatigue.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Track weekly averages</h3>
+  <p>
+    Do not judge progress from one test. Track your average WPM and accuracy each week.
+    Weekly averages are more useful than random single results.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Train weak keys and patterns</h3>
+  <p>
+    If you often miss the same letters, numbers, punctuation marks, or capital letters, practice those patterns directly.
+    Targeted practice usually works better than only repeating random tests.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Balance speed and accuracy</h3>
+  <p>
+    If your accuracy drops below your normal level, slow down slightly. A strong typing goal should improve speed
+    without making your typing messy.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Use a simple weekly routine</h3>
+  <p>
+    A practical routine can include one short warm-up, one focused accuracy drill, one timed typing test,
+    and one review of your mistakes.
+  </p>
+</div>
+
+<p>
+For more practice, try the
+<a href="index.html">Typing Speed Test</a>,
+<a href="wpm-calculator.html">WPM Calculator</a>,
+<a href="wpm-to-kph-calculator.html">WPM to KPH Calculator</a>,
+<a href="typing-accuracy-calculator.html">Typing Accuracy Calculator</a>,
+<a href="10-minute-typing-drill.html">10-Minute Typing Drill</a>, and
+<a href="increase-typing-speed-7days.html">7-Day Typing Plan</a>.
+</p>
+
+<h2 id="faq">FAQ</h2>
+
+<div class="faq">
+  <h3>What is a typing goal?</h3>
+  <p>
+    A typing goal is a clear target for improving your typing skill. It can be a WPM target, an accuracy target,
+    a consistency target, or a practice habit you want to build.
+  </p>
+
+  <h3>How do I set a realistic WPM goal?</h3>
+  <p>
+    Start with your current WPM, choose a target WPM, and give yourself enough weeks to practice.
+    A smaller weekly improvement goal is usually easier to reach than an unrealistic speed jump.
+  </p>
+
+  <h3>Is 40 WPM a good typing goal?</h3>
+  <p>
+    For many beginners, 40 WPM can be a useful first goal. It is often enough for basic everyday typing,
+    school tasks, and many simple office tasks.
+  </p>
+
+  <h3>Is 60 WPM a good typing goal?</h3>
+  <p>
+    Yes. For many people, 60 WPM with strong accuracy is a solid typing speed for office work, writing,
+    email, study, and general computer use.
+  </p>
+
+  <h3>How long does it take to improve typing speed?</h3>
+  <p>
+    It depends on your starting level and how consistently you practice. Some beginners improve within a few weeks,
+    while higher-level typists may need more time to improve smaller details.
+  </p>
+
+  <h3>Should I practice typing every day?</h3>
+  <p>
+    Daily practice can help, but it does not need to be long. A short focused session on most days is often better
+    than one long session once in a while.
+  </p>
+
+  <h3>Should I focus on WPM or accuracy?</h3>
+  <p>
+    Accuracy should usually come first. Once your accuracy is stable, you can increase speed gradually.
+    Fast typing with many mistakes is usually less useful than clean typing with steady rhythm.
+  </p>
+
+  <h3>Can this calculator guarantee my typing improvement?</h3>
+  <p>
+    No. This calculator gives an estimate and a planning guide. Your real progress depends on practice quality,
+    consistency, keyboard familiarity, accuracy, and personal learning speed.
+  </p>
+</div>
+
+<div class="related-box">
+  <h2>Related Typing Tools and Guides</h2>
+  <ul>
+    <li><a href="index.html">Typing Speed Test</a></li>
+    <li><a href="tools.html">Typing Tools</a></li>
+    <li><a href="wpm-calculator.html">WPM Calculator</a></li>
+    <li><a href="wpm-to-kph-calculator.html">WPM to KPH Calculator</a></li>
+    <li><a href="typing-accuracy-calculator.html">Typing Accuracy Calculator</a></li>
+    <li><a href="typing-accuracy-tips.html">Typing Accuracy Tips</a></li>
+    <li><a href="common-typing-mistakes.html">Common Typing Mistakes</a></li>
+    <li><a href="10-minute-typing-drill.html">10-Minute Typing Drill</a></li>
+    <li><a href="increase-typing-speed-7days.html">7-Day Typing Plan</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p>&copy; 2026 Typing Speed Hub</p>
+  <p>
+    <a href="index.html">Home</a>
+    <a href="tools.html">Typing Tools</a>
+    <a href="typing-tips.html">Typing Tips</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html">Contact</a>
+  </p>
+</footer>
+
+<script>
+  function calculateTypingGoal() {
+    const currentWpm = parseFloat(document.getElementById("currentWpm").value);
+    const targetWpm = parseFloat(document.getElementById("targetWpm").value);
+    const currentAccuracyInput = document.getElementById("currentAccuracy").value;
+    const currentAccuracy = currentAccuracyInput === "" ? null : parseFloat(currentAccuracyInput);
+    const goalWeeks = parseInt(document.getElementById("goalWeeks").value, 10);
+    const daysPerWeek = parseInt(document.getElementById("daysPerWeek").value, 10);
+    const minutesPerSession = parseInt(document.getElementById("minutesPerSession").value, 10);
+
+    const message = document.getElementById("message");
+    const resultBox = document.getElementById("resultBox");
+    const mainResult = document.getElementById("mainResult");
+    const gapResult = document.getElementById("gapResult");
+    const weeklyResult = document.getElementById("weeklyResult");
+    const practiceResult = document.getElementById("practiceResult");
+    const accuracyResult = document.getElementById("accuracyResult");
+    const adviceResult = document.getElementById("adviceResult");
+
+    message.textContent = "";
+    resultBox.style.display = "none";
+
+    if (isNaN(currentWpm) || currentWpm <= 0) {
+      message.textContent = "Please enter a valid current WPM score.";
+      return;
+    }
+
+    if (isNaN(targetWpm) || targetWpm <= 0) {
+      message.textContent = "Please enter a valid target WPM score.";
+      return;
+    }
+
+    if (targetWpm <= currentWpm) {
+      message.textContent = "Your target WPM should be higher than your current WPM.";
+      return;
+    }
+
+    if (currentAccuracy !== null && (isNaN(currentAccuracy) || currentAccuracy < 0 || currentAccuracy > 100)) {
+      message.textContent = "Please enter an accuracy percentage between 0 and 100, or leave it blank.";
+      return;
+    }
+
+    if (isNaN(goalWeeks) || goalWeeks < 1) {
+      message.textContent = "Please enter a valid goal deadline in weeks.";
+      return;
+    }
+
+    if (isNaN(daysPerWeek) || daysPerWeek < 1 || daysPerWeek > 7) {
+      message.textContent = "Please enter practice days per week between 1 and 7.";
+      return;
+    }
+
+    if (isNaN(minutesPerSession) || minutesPerSession < 1) {
+      message.textContent = "Please enter valid minutes per practice session.";
+      return;
+    }
+
+    const wpmGap = targetWpm - currentWpm;
+    const weeklyGain = wpmGap / goalWeeks;
+    const totalSessions = goalWeeks * daysPerWeek;
+    const totalMinutes = totalSessions * minutesPerSession;
+    const totalHours = totalMinutes / 60;
+    const minutesPerWeek = daysPerWeek * minutesPerSession;
+
+    mainResult.textContent =
+      currentWpm.toFixed(1).replace(".0", "") + " WPM → " +
+      targetWpm.toFixed(1).replace(".0", "") + " WPM";
+
+    gapResult.textContent =
+      "You need to improve by " + wpmGap.toFixed(1).replace(".0", "") +
+      " WPM to reach your target.";
+
+    weeklyResult.textContent =
+      "Over " + goalWeeks + " weeks, your weekly improvement target is about " +
+      weeklyGain.toFixed(2) + " WPM per week.";
+
+    practiceResult.textContent =
+      "Your plan includes " + totalSessions + " practice sessions, about " +
+      totalMinutes.toLocaleString("en-US") + " total minutes, or about " +
+      totalHours.toFixed(1) + " total hours of practice. That is " +
+      minutesPerWeek + " minutes per week.";
+
+    if (currentAccuracy !== null) {
+      if (currentAccuracy < 90) {
+        accuracyResult.textContent =
+          "Your entered accuracy is " + currentAccuracy + "%. Before chasing a higher WPM target, focus on cleaner typing and fewer repeated mistakes.";
+      } else if (currentAccuracy < 95) {
+        accuracyResult.textContent =
+          "Your entered accuracy is " + currentAccuracy + "%. This is workable, but improving accuracy may make your speed goal easier to maintain.";
+      } else {
+        accuracyResult.textContent =
+          "Your entered accuracy is " + currentAccuracy + "%. This is a strong base for building speed gradually.";
+      }
+    } else {
+      accuracyResult.textContent =
+        "No accuracy percentage was entered. For a better goal, track accuracy together with WPM.";
+    }
+
+    let advice = "";
+
+    if (weeklyGain <= 1) {
+      advice =
+        "This looks like a gentle and realistic goal for many learners. Keep your sessions consistent and review your mistakes weekly.";
+    } else if (weeklyGain <= 2) {
+      advice =
+        "This is a moderate goal. It may be realistic if you practice consistently and keep accuracy under control.";
+    } else if (weeklyGain <= 4) {
+      advice =
+        "This is an ambitious goal. Consider extending the deadline or increasing focused practice time if accuracy starts to drop.";
+    } else {
+      advice =
+        "This is a very aggressive goal. For most learners, it may be better to choose a longer deadline or a smaller first target.";
+    }
+
+    adviceResult.textContent = advice;
+    resultBox.style.display = "block";
+  }
+</script>
+
+</body>
+</html>
