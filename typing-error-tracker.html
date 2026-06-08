@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Typing Error Tracker: Track Mistakes and Improve Accuracy | Typing Speed Hub</title>
+  <meta name="description" content="Use this free Typing Error Tracker to count typing mistakes, estimate your error rate, review weak areas, and build a simple accuracy-focused typing practice plan." />
+  <meta name="author" content="Typing Speed Hub" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://typingspeedhub.com/typing-error-tracker.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Typing Speed Hub" />
+  <meta property="og:title" content="Typing Error Tracker: Track Mistakes and Improve Accuracy" />
+  <meta property="og:description" content="Track typing mistakes, calculate your error rate, and find out what to practice next." />
+  <meta property="og:url" content="https://typingspeedhub.com/typing-error-tracker.html" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Typing Error Tracker" />
+  <meta name="twitter:description" content="Track typing errors, estimate your mistake rate, and improve typing accuracy." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Typing Error Tracker",
+        "url": "https://typingspeedhub.com/typing-error-tracker.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "description": "A free typing error tracker that helps users count mistakes, estimate error rate, identify weak areas, and plan accuracy-focused typing practice.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a typing error tracker?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A typing error tracker is a tool that helps you record and analyze typing mistakes. It can show your total mistakes, error rate, most common error type, and what you should practice next."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I track typing mistakes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can track typing mistakes by counting wrong letters, missing spaces, punctuation mistakes, capitalization mistakes, number mistakes, and corrected errors during a typing session."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why are typing mistakes important?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Typing mistakes matter because every correction takes extra time and attention. A high WPM score with many errors may be less useful than a slightly lower speed with strong accuracy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I focus on speed or accuracy first?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Accuracy should usually come first. Clean typing builds better muscle memory and makes it easier to increase speed later without repeating the same mistakes."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --panel: #151515;
+      --panel-soft: #111;
+      --text: #00ff66;
+      --muted: #b8ffd2;
+      --link: #33ff99;
+      --border: rgba(0, 255, 102, 0.28);
+      --border-soft: rgba(0, 255, 102, 0.16);
+      --danger: #ff8080;
+      --white-soft: rgba(255,255,255,.04);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 1.4rem;
+      background-image: radial-gradient(#00ff66 1px, transparent 1px);
+      background-size: 26px 26px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.82);
+      z-index: -1;
+    }
+
+    h1, h2, h3 {
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    h1 {
+      font-size: 2.35rem;
+      margin: 1rem auto 1rem;
+      max-width: 960px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.65rem;
+      margin-top: 2.3rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .4rem;
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      margin-bottom: .4rem;
+    }
+
+    p, ul, ol {
+      font-size: 1.05rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(51,255,153,.35);
+    }
+
+    a:hover {
+      border-bottom-color: var(--link);
+    }
+
+    code {
+      background: rgba(255,255,255,.07);
+      padding: .12rem .35rem;
+      border-radius: 4px;
+      color: #d7ffe6;
+    }
+
+    .intro,
+    .toc,
+    .calculator-box,
+    .summary-box,
+    .step,
+    .formula-box,
+    .note-box,
+    .cta-box,
+    .faq,
+    .related-box {
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .intro {
+      font-size: 1.13rem;
+      color: var(--muted);
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .summary-box {
+      margin-top: 1.4rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      background: rgba(0,255,102,.06);
+      border-radius: 12px;
+    }
+
+    .toc {
+      margin-top: 1.6rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border-soft);
+      background: rgba(255,255,255,.03);
+      border-radius: 12px;
+    }
+
+    .toc h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .toc ul {
+      margin-bottom: 0;
+    }
+
+    .calculator-box {
+      background: rgba(12, 12, 12, 0.96);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.3rem;
+      box-shadow: 0 0 22px rgba(0,255,102,.08);
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: .35rem;
+      color: #d7ffe6;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: .85rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #070707;
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--link);
+      box-shadow: 0 0 0 3px rgba(51,255,153,.12);
+    }
+
+    .field-note {
+      color: #9deebb;
+      font-size: .92rem;
+      margin-top: .25rem;
+    }
+
+    button {
+      margin-top: 1.2rem;
+      width: 100%;
+      padding: .95rem 1rem;
+      border: 0;
+      border-radius: 10px;
+      background: var(--text);
+      color: #031006;
+      font-size: 1.05rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #6dffad;
+    }
+
+    .secondary-button {
+      background: transparent;
+      color: var(--link);
+      border: 1px solid var(--border);
+      margin-top: .7rem;
+    }
+
+    .secondary-button:hover {
+      background: rgba(0,255,102,.08);
+      color: #d7ffe6;
+    }
+
+    .error-message {
+      color: var(--danger);
+      margin-top: .9rem;
+      font-weight: bold;
+    }
+
+    .result-box {
+      margin-top: 1.2rem;
+      padding: 1rem 1.1rem;
+      background: rgba(0,255,102,.07);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .result-main {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #d7ffe6;
+      margin: .2rem 0 .4rem;
+    }
+
+    .result-secondary {
+      margin: .45rem 0;
+      color: var(--muted);
+    }
+
+    .result-list {
+      color: var(--muted);
+      margin-top: .8rem;
+    }
+
+    .step,
+    .formula-box,
+    .note-box,
+    .cta-box,
+    .faq,
+    .related-box {
+      background: rgba(12, 12, 12, .94);
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .formula-box {
+      background: rgba(255,255,255,.035);
+    }
+
+    .note-box {
+      border-color: rgba(255,255,255,.14);
+      color: var(--muted);
+    }
+
+    .cta-box {
+      background: rgba(0,255,102,.055);
+      border-color: var(--border);
+    }
+
+    .faq h3 {
+      margin-top: 1.25rem;
+    }
+
+    .faq h3:first-child {
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #888;
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 1rem;
+    }
+
+    footer a {
+      color: #a7ffd0;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(51,255,153,.25);
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      border-bottom-color: var(--link);
+      color: var(--link);
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 1.1rem;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      h2 {
+        font-size: 1.42rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .calculator-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-main {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Typing Error Tracker</h1>
+
+<p class="intro">
+Use this free <strong>Typing Error Tracker</strong> to count your typing mistakes,
+estimate your <strong>typing error rate</strong>, identify weak areas, and build a simple practice plan for better accuracy.
+</p>
+
+<p class="intro">
+Typing speed is useful, but accuracy decides how clean your real typing is. If you often fix the same letters,
+miss spaces, hit the wrong keys, or struggle with punctuation, tracking those mistakes can show you exactly what to practice next.
+</p>
+
+<div class="summary-box" aria-label="Key takeaway">
+  <strong>Key takeaway:</strong>
+  A good typing practice routine should track more than WPM. Count your mistakes by type, review the patterns,
+  and practice the weak areas before chasing higher speed.
+</div>
+
+<div class="toc" aria-label="Table of contents">
+  <h2>On this page</h2>
+  <ul>
+    <li><a href="#tracker">Typing error tracker</a></li>
+    <li><a href="#how-to-use">How to use this error tracker</a></li>
+    <li><a href="#formula">Typing error rate formula</a></li>
+    <li><a href="#examples">Typing error examples</a></li>
+    <li><a href="#mistake-types">Common typing mistake types</a></li>
+    <li><a href="#accuracy-plan">How to improve typing accuracy</a></li>
+    <li><a href="#weekly-review">Weekly typing mistake review</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</div>
+
+<h2 id="tracker">Typing Error Tracker</h2>
+
+<div class="calculator-box">
+  <p>
+    Enter your typing session details and count the mistakes you noticed.
+    The tracker will estimate your total errors, error rate, accuracy, errors per minute,
+    and the main area you should practice next.
+  </p>
+
+  <div class="calculator-grid">
+    <div>
+      <label for="typedCharacters">Total typed characters</label>
+      <input id="typedCharacters" type="number" min="1" step="1" placeholder="Example: 1200" />
+      <div class="field-note">Include letters, numbers, spaces, and punctuation if possible.</div>
+    </div>
+
+    <div>
+      <label for="sessionMinutes">Session length in minutes</label>
+      <input id="sessionMinutes" type="number" min="0.1" step="0.1" placeholder="Example: 5" />
+      <div class="field-note">Enter how long the typing session lasted.</div>
+    </div>
+
+    <div>
+      <label for="letterErrors">Wrong letter errors</label>
+      <input id="letterErrors" type="number" min="0" step="1" placeholder="Example: 8" />
+      <div class="field-note">Wrong key, swapped letter, or incorrect character.</div>
+    </div>
+
+    <div>
+      <label for="spaceErrors">Space errors</label>
+      <input id="spaceErrors" type="number" min="0" step="1" placeholder="Example: 3" />
+      <div class="field-note">Missing spaces, extra spaces, or spacing mistakes.</div>
+    </div>
+
+    <div>
+      <label for="punctuationErrors">Punctuation errors</label>
+      <input id="punctuationErrors" type="number" min="0" step="1" placeholder="Example: 2" />
+      <div class="field-note">Comma, period, apostrophe, quote mark, or symbol mistakes.</div>
+    </div>
+
+    <div>
+      <label for="capitalErrors">Capitalization errors</label>
+      <input id="capitalErrors" type="number" min="0" step="1" placeholder="Example: 2" />
+      <div class="field-note">Missing capitals or accidental capital letters.</div>
+    </div>
+
+    <div>
+      <label for="numberErrors">Number and symbol errors</label>
+      <input id="numberErrors" type="number" min="0" step="1" placeholder="Example: 1" />
+      <div class="field-note">Mistakes with numbers, symbols, or special characters.</div>
+    </div>
+
+    <div>
+      <label for="correctionErrors">Extra corrections or backspaces</label>
+      <input id="correctionErrors" type="number" min="0" step="1" placeholder="Example: 5" />
+      <div class="field-note">Optional: corrections, backspaces, or repeated fixes.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem;">
+    <label for="mistakeNotes">Mistake notes</label>
+    <textarea id="mistakeNotes" placeholder="Optional: write the keys, words, or patterns you missed most often. Example: th, ing, capital I, comma, numbers, left hand keys..."></textarea>
+    <div class="field-note">This note is only for your own review. It is not saved or sent anywhere by this page.</div>
+  </div>
+
+  <button type="button" onclick="calculateTypingErrors()">Analyze My Typing Mistakes</button>
+  <button type="button" class="secondary-button" onclick="clearTypingTracker()">Clear Tracker</button>
+
+  <div id="message" class="error-message" aria-live="polite"></div>
+
+  <div class="result-box" id="resultBox" style="display:none;" aria-live="polite">
+    <p><strong>Your typing error summary:</strong></p>
+    <div class="result-main" id="mainResult">0 errors</div>
+    <p class="result-secondary" id="accuracyResult"></p>
+    <p class="result-secondary" id="rateResult"></p>
+    <p class="result-secondary" id="speedResult"></p>
+    <p class="result-secondary" id="focusResult"></p>
+    <p class="result-secondary" id="adviceResult"></p>
+
+    <ul class="result-list" id="breakdownResult"></ul>
+  </div>
+</div>
+
+<h2 id="how-to-use">How to Use This Typing Error Tracker</h2>
+
+<div class="step">
+  <h3>1. Take a short typing test first</h3>
+  <p>
+    Start with a short typing session. A 1-minute, 3-minute, or 5-minute test is enough.
+    Try to type naturally instead of forcing maximum speed. This gives you a more useful picture of your real mistakes.
+  </p>
+</div>
+
+<div class="step">
+  <h3>2. Count your typed characters</h3>
+  <p>
+    Enter the approximate number of characters you typed. Characters include letters, numbers, spaces, and punctuation.
+    If your test shows only words per minute, you can estimate characters by multiplying words by 5.
+  </p>
+</div>
+
+<div class="step">
+  <h3>3. Count mistakes by type</h3>
+  <p>
+    Separate your mistakes into categories such as wrong letters, missing spaces, punctuation mistakes,
+    capitalization errors, number errors, and extra corrections. This is more useful than only counting the final total.
+  </p>
+</div>
+
+<div class="step">
+  <h3>4. Review your main weak area</h3>
+  <p>
+    The tracker highlights the mistake category with the highest count. Use that result to choose your next practice drill.
+    If most errors are punctuation errors, practice punctuation. If most errors are letter errors, practice weak letter patterns.
+  </p>
+</div>
+
+<h2 id="formula">Typing Error Rate Formula</h2>
+
+<p>
+This tracker uses simple estimates. It does not judge your typing skill permanently. It helps you review one session
+and decide what to practice next.
+</p>
+
+<div class="formula-box">
+  <p><strong>Total typing errors:</strong></p>
+  <p><code>Total errors = Letter errors + Space errors + Punctuation errors + Capitalization errors + Number errors + Correction errors</code></p>
+</div>
+
+<div class="formula-box">
+  <p><strong>Typing error rate:</strong></p>
+  <p><code>Error rate = Total errors ÷ Total typed characters × 100</code></p>
+</div>
+
+<div class="formula-box">
+  <p><strong>Estimated typing accuracy:</strong></p>
+  <p><code>Accuracy = 100 - Error rate</code></p>
+</div>
+
+<div class="formula-box">
+  <p><strong>Errors per minute:</strong></p>
+  <p><code>Errors per minute = Total errors ÷ Session minutes</code></p>
+</div>
+
+<div class="note-box">
+  <p>
+    <strong>Note:</strong> Different typing tests may count mistakes in different ways.
+    Use this tracker as a practical review tool, not as an official testing standard.
+    The most important goal is to notice repeated patterns and reduce them over time.
+  </p>
+</div>
+
+<h2 id="examples">Typing Error Examples</h2>
+
+<p>
+Here are a few examples of how typing mistake tracking can help.
+</p>
+
+<div class="step">
+  <h3>Example 1: High WPM but many corrections</h3>
+  <p>
+    You type quickly, but you press backspace often. Your final text may look correct,
+    but the extra corrections slow you down. In this case, track correction errors and practice slower clean typing.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Example 2: Good letters, weak punctuation</h3>
+  <p>
+    You may type normal words well but lose accuracy when commas, periods, apostrophes, or quote marks appear.
+    In this case, punctuation drills are more useful than repeating easy word tests.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Example 3: Missing spaces between words</h3>
+  <p>
+    If your main problem is missing or adding spaces, your rhythm may be uneven.
+    Practice short phrases and focus on a steady spacebar rhythm between words.
+  </p>
+</div>
+
+<div class="cta-box" aria-label="Typing speed test suggestion">
+  <strong>Need a fresh test result?</strong>
+  Take a quick <a href="index.html">Typing Speed Test</a> first, then return to this tracker and review your mistakes.
+</div>
+
+<h2 id="mistake-types">Common Typing Mistake Types</h2>
+
+<p>
+Typing errors are easier to fix when you know what kind of error you make most often.
+A general “I make too many mistakes” is not specific enough. A better review is “I often miss punctuation”
+or “I often hit the wrong key with my left hand.”
+</p>
+
+<div class="step">
+  <h3>Wrong letter errors</h3>
+  <p>
+    These happen when you press the wrong key, reverse letters, or type a nearby character.
+    Common causes include weak finger placement, typing too fast, or not using consistent hand position.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Space errors</h3>
+  <p>
+    Space errors include missing spaces, double spaces, and spaces in the wrong place.
+    These mistakes often happen when your rhythm changes or when you rush between words.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Punctuation errors</h3>
+  <p>
+    Punctuation errors include missing commas, periods, apostrophes, quotation marks, and other symbols.
+    They are common because punctuation often requires extra reach, shift keys, or different finger movement.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Capitalization errors</h3>
+  <p>
+    Capitalization mistakes happen when you miss the shift key, hold it too long, or forget a capital letter.
+    These errors can be common when typing names, the word “I,” titles, or the start of sentences.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Number and symbol errors</h3>
+  <p>
+    Numbers and symbols are often slower because many people practice letters more than the top row.
+    If you type passwords, data, forms, or code-like text, number and symbol accuracy becomes more important.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Correction errors</h3>
+  <p>
+    Correction errors are not always visible in the final text, but they matter.
+    If you use backspace constantly, your final WPM may look lower and your typing flow may feel interrupted.
+  </p>
+</div>
+
+<h2 id="accuracy-plan">How to Improve Typing Accuracy</h2>
+
+<p>
+Improving typing accuracy does not always mean practicing longer. Often, it means practicing more carefully.
+The goal is to reduce repeated mistakes and make correct movements automatic.
+</p>
+
+<div class="step">
+  <h3>Slow down before you speed up</h3>
+  <p>
+    If your error rate is high, reduce speed slightly and focus on clean movement.
+    Speed built on repeated mistakes can create bad habits that are harder to fix later.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Practice your most common error type</h3>
+  <p>
+    Do not practice everything equally. If punctuation is your weakest area, practice punctuation.
+    If numbers are your weakest area, practice number-row drills. Targeted practice usually saves time.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Use short focused drills</h3>
+  <p>
+    A 10-minute focused drill can be more useful than a long random typing session.
+    Choose one weak pattern and repeat it carefully until it feels more natural.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Review mistakes after each test</h3>
+  <p>
+    After a typing test, do not only look at WPM. Review what went wrong.
+    Write down the letters, words, or symbols that caused the most problems.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Track weekly progress</h3>
+  <p>
+    One test can be random. Weekly averages are more useful.
+    Track your total errors, error rate, and most common mistake type once or twice per week.
+  </p>
+</div>
+
+<div class="cta-box" aria-label="Typing accuracy calculator suggestion">
+  <strong>Want a simple accuracy percentage?</strong>
+  Use the <a href="typing-accuracy-calculator.html">Typing Accuracy Calculator</a> to estimate clean typing percentage from total characters and mistakes.
+</div>
+
+<h2 id="weekly-review">Weekly Typing Mistake Review</h2>
+
+<p>
+A weekly mistake review can help you improve without guessing. Use the same type of typing test each week,
+then compare your results.
+</p>
+
+<div class="step">
+  <h3>Simple weekly review checklist</h3>
+  <ul>
+    <li>Take one short typing test at a normal pace.</li>
+    <li>Write down total typed characters and session length.</li>
+    <li>Count letter, space, punctuation, capitalization, number, and correction errors.</li>
+    <li>Use this tracker to calculate your error rate and main weak area.</li>
+    <li>Choose one focused drill for the next few practice sessions.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3>What to track over time</h3>
+  <ul>
+    <li><strong>Total errors:</strong> the full number of mistakes in one session</li>
+    <li><strong>Error rate:</strong> mistakes compared with total typed characters</li>
+    <li><strong>Errors per minute:</strong> how often mistakes happen during typing</li>
+    <li><strong>Main error type:</strong> the category that needs the most attention</li>
+    <li><strong>Practice focus:</strong> the drill or pattern you will practice next</li>
+  </ul>
+</div>
+
+<p>
+For more practice, try the
+<a href="index.html">Typing Speed Test</a>,
+<a href="wpm-calculator.html">WPM Calculator</a>,
+<a href="wpm-to-kph-calculator.html">WPM to KPH Calculator</a>,
+<a href="typing-accuracy-calculator.html">Typing Accuracy Calculator</a>,
+<a href="typing-goal-calculator.html">Typing Goal Calculator</a>,
+<a href="10-minute-typing-drill.html">10-Minute Typing Drill</a>, and
+<a href="increase-typing-speed-7days.html">7-Day Typing Plan</a>.
+</p>
+
+<h2 id="faq">FAQ</h2>
+
+<div class="faq">
+  <h3>What is a typing error tracker?</h3>
+  <p>
+    A typing error tracker is a tool that helps you record and analyze your typing mistakes.
+    Instead of only looking at WPM, it helps you understand what kind of errors you make most often.
+  </p>
+
+  <h3>How do I track typing mistakes?</h3>
+  <p>
+    Start with a short typing test, then count the mistakes by category.
+    You can track wrong letters, missing spaces, punctuation mistakes, capitalization errors, number errors, and extra corrections.
+  </p>
+
+  <h3>What is a good typing error rate?</h3>
+  <p>
+    A lower error rate is better, but the best target depends on your level and purpose.
+    For everyday typing, a small number of mistakes with steady rhythm is usually more useful than fast typing with constant corrections.
+  </p>
+
+  <h3>Why do I make more mistakes when I type faster?</h3>
+  <p>
+    When you increase speed too quickly, your fingers may move before your accuracy is stable.
+    Slowing down slightly can help you rebuild control and reduce repeated errors.
+  </p>
+
+  <h3>Should I count corrected mistakes?</h3>
+  <p>
+    Yes, corrected mistakes are useful to track. Even if the final text looks correct, frequent backspaces and corrections still interrupt your typing flow.
+  </p>
+
+  <h3>How often should I review my typing mistakes?</h3>
+  <p>
+    A weekly review is enough for many learners. You can take one short test, count the errors, and choose one weak area to practice during the next week.
+  </p>
+
+  <h3>Is accuracy more important than WPM?</h3>
+  <p>
+    Both matter, but accuracy should usually come first. Clean typing makes your speed more useful in real work, study, writing, and everyday computer use.
+  </p>
+
+  <h3>Can this tool save my results?</h3>
+  <p>
+    No. This simple tracker does not save your results. You can copy your result into your own notes or spreadsheet if you want to track progress over time.
+  </p>
+</div>
+
+<div class="related-box">
+  <h2>Related Typing Tools and Guides</h2>
+  <ul>
+    <li><a href="index.html">Typing Speed Test</a></li>
+    <li><a href="tools.html">Typing Tools</a></li>
+    <li><a href="wpm-calculator.html">WPM Calculator</a></li>
+    <li><a href="wpm-to-kph-calculator.html">WPM to KPH Calculator</a></li>
+    <li><a href="typing-accuracy-calculator.html">Typing Accuracy Calculator</a></li>
+    <li><a href="typing-goal-calculator.html">Typing Goal Calculator</a></li>
+    <li><a href="typing-accuracy-tips.html">Typing Accuracy Tips</a></li>
+    <li><a href="common-typing-mistakes.html">Common Typing Mistakes</a></li>
+    <li><a href="10-minute-typing-drill.html">10-Minute Typing Drill</a></li>
+    <li><a href="increase-typing-speed-7days.html">7-Day Typing Plan</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p>&copy; 2026 Typing Speed Hub</p>
+  <p>
+    <a href="index.html">Home</a>
+    <a href="tools.html">Typing Tools</a>
+    <a href="typing-tips.html">Typing Tips</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html">Contact</a>
+  </p>
+</footer>
+
+<script>
+  function getNumberValue(id) {
+    const value = document.getElementById(id).value;
+    if (value === "") {
+      return 0;
+    }
+    return parseFloat(value);
+  }
+
+  function formatNumber(value, decimals) {
+    return Number(value).toLocaleString("en-US", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: decimals
+    });
+  }
+
+  function calculateTypingErrors() {
+    const typedCharacters = parseInt(document.getElementById("typedCharacters").value, 10);
+    const sessionMinutes = parseFloat(document.getElementById("sessionMinutes").value);
+
+    const letterErrors = getNumberValue("letterErrors");
+    const spaceErrors = getNumberValue("spaceErrors");
+    const punctuationErrors = getNumberValue("punctuationErrors");
+    const capitalErrors = getNumberValue("capitalErrors");
+    const numberErrors = getNumberValue("numberErrors");
+    const correctionErrors = getNumberValue("correctionErrors");
+
+    const message = document.getElementById("message");
+    const resultBox = document.getElementById("resultBox");
+    const mainResult = document.getElementById("mainResult");
+    const accuracyResult = document.getElementById("accuracyResult");
+    const rateResult = document.getElementById("rateResult");
+    const speedResult = document.getElementById("speedResult");
+    const focusResult = document.getElementById("focusResult");
+    const adviceResult = document.getElementById("adviceResult");
+    const breakdownResult = document.getElementById("breakdownResult");
+
+    message.textContent = "";
+    resultBox.style.display = "none";
+    breakdownResult.innerHTML = "";
+
+    if (isNaN(typedCharacters) || typedCharacters <= 0) {
+      message.textContent = "Please enter a valid number of typed characters.";
+      return;
+    }
+
+    if (isNaN(sessionMinutes) || sessionMinutes <= 0) {
+      message.textContent = "Please enter a valid session length in minutes.";
+      return;
+    }
+
+    const errorValues = [
+      letterErrors,
+      spaceErrors,
+      punctuationErrors,
+      capitalErrors,
+      numberErrors,
+      correctionErrors
+    ];
+
+    for (let i = 0; i < errorValues.length; i++) {
+      if (isNaN(errorValues[i]) || errorValues[i] < 0) {
+        message.textContent = "Please enter zero or a positive number for each mistake category.";
+        return;
+      }
+    }
+
+    const totalErrors =
+      letterErrors +
+      spaceErrors +
+      punctuationErrors +
+      capitalErrors +
+      numberErrors +
+      correctionErrors;
+
+    if (totalErrors > typedCharacters) {
+      message.textContent = "Total errors should not be higher than total typed characters. Please check your numbers.";
+      return;
+    }
+
+    const errorRate = (totalErrors / typedCharacters) * 100;
+    const estimatedAccuracy = Math.max(0, 100 - errorRate);
+    const errorsPerMinute = totalErrors / sessionMinutes;
+
+    const categories = [
+      { name: "wrong letter errors", value: letterErrors, advice: "Practice slow letter patterns and nearby-key control." },
+      { name: "space errors", value: spaceErrors, advice: "Practice short phrases and focus on steady spacebar rhythm." },
+      { name: "punctuation errors", value: punctuationErrors, advice: "Practice commas, periods, apostrophes, and quotation marks in short sentences." },
+      { name: "capitalization errors", value: capitalErrors, advice: "Practice shift-key timing and sentence starts." },
+      { name: "number and symbol errors", value: numberErrors, advice: "Practice the number row and common symbols slowly." },
+      { name: "extra corrections or backspaces", value: correctionErrors, advice: "Slow down slightly and aim for clean first-time typing." }
+    ];
+
+    let topCategory = categories[0];
+
+    for (let i = 1; i < categories.length; i++) {
+      if (categories[i].value > topCategory.value) {
+        topCategory = categories[i];
+      }
+    }
+
+    mainResult.textContent =
+      formatNumber(totalErrors, 0) + " total " + (totalErrors === 1 ? "error" : "errors");
+
+    accuracyResult.textContent =
+      "Estimated accuracy: " + estimatedAccuracy.toFixed(2) + "%.";
+
+    rateResult.textContent =
+      "Typing error rate: " + errorRate.toFixed(2) + "% of typed characters.";
+
+    speedResult.textContent =
+      "Errors per minute: about " + errorsPerMinute.toFixed(2) + ".";
+
+    if (totalErrors === 0) {
+      focusResult.textContent =
+        "Main focus: no errors were entered. Great result for this session.";
+    } else {
+      focusResult.textContent =
+        "Main focus: your highest category is " + topCategory.name + " (" + topCategory.value + "). " + topCategory.advice;
+    }
+
+    let advice = "";
+
+    if (totalErrors === 0) {
+      advice =
+        "Excellent clean session. To keep improving, repeat the test with a slightly harder text or a longer session.";
+    } else if (errorRate <= 1) {
+      advice =
+        "This is a strong accuracy result. Keep practicing at this pace and increase speed gradually.";
+    } else if (errorRate <= 3) {
+      advice =
+        "This is a workable error rate. Choose one mistake category and practice it for a few short sessions.";
+    } else if (errorRate <= 6) {
+      advice =
+        "This error rate suggests that accuracy should be your main focus before increasing WPM.";
+    } else {
+      advice =
+        "This is a high error rate. Slow down, shorten the practice text, and focus on clean typing before speed.";
+    }
+
+    adviceResult.textContent = advice;
+
+    categories.forEach(function(category) {
+      const item = document.createElement("li");
+      const percentOfErrors = totalErrors > 0 ? (category.value / totalErrors) * 100 : 0;
+      item.textContent =
+        category.name.charAt(0).toUpperCase() +
+        category.name.slice(1) +
+        ": " +
+        category.value +
+        " (" +
+        percentOfErrors.toFixed(1) +
+        "% of total errors)";
+      breakdownResult.appendChild(item);
+    });
+
+    resultBox.style.display = "block";
+  }
+
+  function clearTypingTracker() {
+    const fields = [
+      "typedCharacters",
+      "sessionMinutes",
+      "letterErrors",
+      "spaceErrors",
+      "punctuationErrors",
+      "capitalErrors",
+      "numberErrors",
+      "correctionErrors",
+      "mistakeNotes"
+    ];
+
+    fields.forEach(function(id) {
+      document.getElementById(id).value = "";
+    });
+
+    document.getElementById("message").textContent = "";
+    document.getElementById("resultBox").style.display = "none";
+    document.getElementById("breakdownResult").innerHTML = "";
+  }
+</script>
+
+</body>
+</html>
