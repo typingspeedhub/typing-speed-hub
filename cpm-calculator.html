@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CPM Calculator: Calculate Characters Per Minute | Typing Speed Hub</title>
+  <meta name="description" content="Use this free CPM calculator to calculate your typing speed in characters per minute. Enter typed characters, time, and optional errors to estimate CPM, WPM, and accuracy." />
+  <meta name="author" content="Typing Speed Hub" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://typingspeedhub.com/cpm-calculator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Typing Speed Hub" />
+  <meta property="og:title" content="CPM Calculator: Calculate Characters Per Minute" />
+  <meta property="og:description" content="Free CPM calculator for typing speed. Enter characters typed and time to calculate characters per minute, estimated WPM, and accuracy." />
+  <meta property="og:url" content="https://typingspeedhub.com/cpm-calculator.html" />
+  <meta property="og:image" content="https://typingspeedhub.com/images/cpm-calculator.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CPM Calculator: Calculate Characters Per Minute" />
+  <meta name="twitter:description" content="Calculate your typing speed in CPM and convert characters per minute into an estimated WPM score." />
+  <meta name="twitter:image" content="https://typingspeedhub.com/images/cpm-calculator.png" />
+
+  <!-- Structured data: WebApplication + FAQ + Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "CPM Calculator",
+        "url": "https://typingspeedhub.com/cpm-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "description": "A free online CPM calculator that estimates typing speed in characters per minute from typed characters, time, and optional errors.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Typing Speed Hub",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://typingspeedhub.com/images/logo.png"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://typingspeedhub.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Typing Tools",
+            "item": "https://typingspeedhub.com/tools.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "CPM Calculator",
+            "item": "https://typingspeedhub.com/cpm-calculator.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does CPM mean in typing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CPM means characters per minute. It measures how many characters you type in one minute, including letters, numbers, spaces, and punctuation depending on the test."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you calculate CPM?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CPM is calculated by dividing the number of characters typed by the number of minutes typed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is CPM different from WPM?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CPM measures characters per minute, while WPM measures words per minute. A common estimate is that one word equals five characters, so WPM can be estimated by dividing CPM by five."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this CPM calculator free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. This CPM calculator is free to use and does not require registration."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #121212;
+      --card: #1e1e1e;
+      --card-soft: rgba(255,255,255,.04);
+      --text: #e0e0e0;
+      --muted: #b8b8b8;
+      --green: #4CAF50;
+      --green-light: #66ff99;
+      --link: #33ff99;
+      --border: rgba(255,255,255,.10);
+      --danger: #ff7777;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+      line-height: 1.8;
+      max-width: 940px;
+      margin: auto;
+    }
+
+    h1 {
+      color: var(--green);
+      font-size: 2.35rem;
+      margin: 0 0 1rem;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    h2 {
+      color: var(--green);
+      font-size: 1.65rem;
+      margin-top: 2.3rem;
+      line-height: 1.35;
+    }
+
+    h3 {
+      color: var(--green-light);
+      margin-top: 1rem;
+      line-height: 1.4;
+    }
+
+    p {
+      font-size: 1.05rem;
+      margin: 0.8rem 0;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: underline;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    code {
+      color: #c6ffc6;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--green-light);
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.28);
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: rgba(102,255,153,.65);
+      box-shadow: 0 0 0 3px rgba(102,255,153,.12);
+    }
+
+    button {
+      display: inline-block;
+      border: 0;
+      border-radius: 10px;
+      padding: 0.8rem 1.1rem;
+      background: var(--green);
+      color: #071107;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 0.8rem;
+    }
+
+    button:hover {
+      filter: brightness(1.08);
+    }
+
+    .intro {
+      font-size: 1.08rem;
+    }
+
+    .calculator-box,
+    .step,
+    .faq,
+    .toc,
+    .summary-box,
+    .cta-box,
+    .note-box,
+    .related-box,
+    .result-box,
+    .formula-box {
+      border-radius: 12px;
+    }
+
+    .calculator-box {
+      margin: 1.6rem 0;
+      padding: 1.2rem;
+      border: 1px solid rgba(102,255,153,.35);
+      background: rgba(76,175,80,.08);
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .field-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 0.25rem;
+      line-height: 1.5;
+    }
+
+    .result-box {
+      margin-top: 1.2rem;
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(102,255,153,.45);
+      background: rgba(0,0,0,.28);
+    }
+
+    .result-main {
+      font-size: 2.1rem;
+      color: var(--green-light);
+      font-weight: 800;
+      margin: 0.2rem 0;
+      line-height: 1.25;
+    }
+
+    .result-secondary {
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .error-message {
+      color: var(--danger);
+      font-weight: 700;
+      margin-top: 0.8rem;
+    }
+
+    .step {
+      background-color: var(--card);
+      border-left: 4px solid var(--green);
+      padding: 1rem 1.15rem;
+      margin: 1.25rem 0;
+    }
+
+    .toc {
+      margin: 1.4rem 0 1.9rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      background: var(--card-soft);
+    }
+
+    .toc h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .toc ul {
+      margin-bottom: 0;
+    }
+
+    .summary-box {
+      margin: 1.4rem 0;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(102,255,153,.35);
+      background: rgba(76,175,80,.08);
+    }
+
+    .summary-box strong {
+      color: var(--green-light);
+    }
+
+    .cta-box {
+      margin: 1.6rem 0 1.35rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(102,255,153,.45);
+      background: rgba(0,0,0,.22);
+    }
+
+    .cta-box strong {
+      color: var(--green-light);
+    }
+
+    .note-box {
+      margin: 1.3rem 0;
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+
+    .formula-box {
+      margin: 1.2rem 0;
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      overflow-x: auto;
+    }
+
+    .formula-box strong {
+      color: var(--green-light);
+    }
+
+    .faq {
+      margin-top: 2rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(76,175,80,.35);
+      background: rgba(255,255,255,.03);
+    }
+
+    .faq p {
+      margin: .5rem 0;
+    }
+
+    .related-box {
+      margin: 1.4rem 0;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #888;
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 1rem;
+    }
+
+    footer a {
+      color: #a7ffd0;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(51,255,153,.25);
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      border-bottom-color: var(--link);
+      color: var(--link);
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 1.1rem;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      h2 {
+        font-size: 1.42rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .calculator-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-main {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>CPM Calculator</h1>
+
+<p class="intro">
+Use this free <strong>CPM calculator</strong> to calculate your typing speed in
+<strong>characters per minute</strong>. Enter how many characters you typed, add the typing time,
+and the calculator will estimate your CPM, WPM, and accuracy.
+</p>
+
+<p>
+CPM means <strong>characters per minute</strong>. It is a typing speed measurement that counts how many
+characters you type in one minute. Depending on the typing test, characters may include letters, numbers,
+spaces, punctuation marks, and symbols.
+</p>
+
+<div class="summary-box" aria-label="Key takeaway">
+  <strong>Key takeaway:</strong>
+  CPM is useful when you want a more detailed typing speed score than WPM. It shows raw character output,
+  while WPM usually converts characters into standard five-character word units.
+</div>
+
+<div class="toc" aria-label="Table of contents">
+  <h2>On this page</h2>
+  <ul>
+    <li><a href="#calculator">CPM calculator</a></li>
+    <li><a href="#how-to-use">How to use this calculator</a></li>
+    <li><a href="#formula">CPM formula</a></li>
+    <li><a href="#cpm-vs-wpm">CPM vs WPM</a></li>
+    <li><a href="#what-is-good">What is a good CPM?</a></li>
+    <li><a href="#improve">How to improve your CPM</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</div>
+
+<h2 id="calculator">CPM Calculator</h2>
+
+<div class="calculator-box">
+  <p>
+    Enter the total number of characters you typed and the amount of time you typed for.
+    If you know how many incorrect characters or mistakes you made, you can add them as well.
+  </p>
+
+  <div class="calculator-grid">
+    <div>
+      <label for="characters">Characters typed</label>
+      <input id="characters" type="number" min="0" step="1" placeholder="Example: 300" />
+      <div class="field-note">Enter the total number of characters typed.</div>
+    </div>
+
+    <div>
+      <label for="errors">Incorrect characters / errors</label>
+      <input id="errors" type="number" min="0" step="1" placeholder="Optional" />
+      <div class="field-note">Optional. Used to estimate adjusted CPM and accuracy.</div>
+    </div>
+
+    <div>
+      <label for="minutes">Minutes</label>
+      <input id="minutes" type="number" min="0" step="1" placeholder="Example: 1" />
+      <div class="field-note">Enter the full minutes typed.</div>
+    </div>
+
+    <div>
+      <label for="seconds">Seconds</label>
+      <input id="seconds" type="number" min="0" max="59" step="1" placeholder="Example: 0" />
+      <div class="field-note">Use this if the test was not exactly a full minute.</div>
+    </div>
+  </div>
+
+  <button type="button" onclick="calculateCPM()">Calculate CPM</button>
+
+  <div id="message" class="error-message" aria-live="polite"></div>
+
+  <div class="result-box" id="resultBox" style="display:none;" aria-live="polite">
+    <p><strong>Your estimated typing speed:</strong></p>
+    <div class="result-main" id="cpmResult">0 CPM</div>
+    <p class="result-secondary" id="adjustedResult"></p>
+    <p class="result-secondary" id="wpmResult"></p>
+    <p class="result-secondary" id="accuracyResult"></p>
+    <p class="result-secondary" id="detailResult"></p>
+  </div>
+</div>
+
+<h2 id="how-to-use">How to Use This CPM Calculator</h2>
+
+<div class="step">
+  <h3>1. Enter the number of characters typed</h3>
+  <p>
+    Add the total number of characters you typed during your typing test or practice session.
+    Some tests count spaces and punctuation, while others count only letters and numbers.
+    For best comparison, use the same counting method each time.
+  </p>
+</div>
+
+<div class="step">
+  <h3>2. Enter your typing time</h3>
+  <p>
+    Add the number of minutes and seconds you typed. For example, if your typing session lasted
+    1 minute and 30 seconds, enter <strong>1</strong> in minutes and <strong>30</strong> in seconds.
+  </p>
+</div>
+
+<div class="step">
+  <h3>3. Add errors if you want an adjusted estimate</h3>
+  <p>
+    The error field is optional. If you enter incorrect characters or mistakes, the calculator will estimate
+    adjusted CPM and accuracy. This gives a more realistic view of your useful typing performance.
+  </p>
+</div>
+
+<h2 id="formula">CPM Formula</h2>
+
+<p>
+The basic CPM formula is simple. Divide the total number of characters typed by the total number of minutes typed.
+</p>
+
+<div class="formula-box">
+  <p><strong>CPM formula:</strong></p>
+  <p><code>CPM = characters typed / minutes</code></p>
+</div>
+
+<p>
+For example, if you typed 300 characters in 1 minute, your typing speed would be:
+</p>
+
+<div class="formula-box">
+  <p><code>300 / 1 = 300 CPM</code></p>
+</div>
+
+<p>
+If you typed 450 characters in 1 minute and 30 seconds, the time is 1.5 minutes:
+</p>
+
+<div class="formula-box">
+  <p><code>450 / 1.5 = 300 CPM</code></p>
+</div>
+
+<h2 id="cpm-vs-wpm">CPM vs WPM</h2>
+
+<p>
+CPM and WPM both measure typing speed, but they do it in different ways.
+</p>
+
+<div class="step">
+  <h3>CPM: characters per minute</h3>
+  <p>
+    CPM measures how many individual characters you type per minute. It is useful when you want a more precise
+    typing speed number, especially for short tests, coding practice, data entry, or text that contains many symbols.
+  </p>
+</div>
+
+<div class="step">
+  <h3>WPM: words per minute</h3>
+  <p>
+    WPM measures typing speed in words per minute. In many typing tests, one standard word is counted as
+    five characters. That means an estimated WPM score can be calculated from CPM.
+  </p>
+</div>
+
+<div class="formula-box">
+  <p><strong>Estimated WPM from CPM:</strong></p>
+  <p><code>WPM = CPM / 5</code></p>
+</div>
+
+<p>
+For example, 250 CPM is about 50 WPM because:
+</p>
+
+<div class="formula-box">
+  <p><code>250 / 5 = 50 WPM</code></p>
+</div>
+
+<div class="note-box">
+  <p>
+    <strong>Note:</strong> Different typing websites may calculate characters, words, spaces, and errors differently.
+    Use this calculator as a practical estimate and compare your results using the same method over time.
+  </p>
+</div>
+
+<h2 id="what-is-good">What Is a Good CPM?</h2>
+
+<p>
+A good CPM depends on your goal, typing experience, keyboard familiarity, and accuracy. For many everyday typing tasks,
+a steady and accurate score is more useful than a very high score with many mistakes.
+</p>
+
+<div class="step">
+  <ul>
+    <li><strong>100–150 CPM:</strong> beginner typing range for many learners</li>
+    <li><strong>200–250 CPM:</strong> comfortable everyday typing range</li>
+    <li><strong>300–350 CPM:</strong> strong typing speed for work, study, and regular writing</li>
+    <li><strong>400+ CPM:</strong> fast typing, especially when accuracy stays high</li>
+  </ul>
+</div>
+
+<p>
+Because WPM is often estimated by dividing CPM by five, 300 CPM is roughly equal to 60 WPM.
+However, this is only an estimate. Real word length, punctuation, and error rules can change the final score.
+</p>
+
+<div class="cta-box" aria-label="Typing speed test suggestion">
+  <strong>Want to measure your typing speed?</strong>
+  Try the <a href="index.html">Typing Speed Test</a> to check your WPM, accuracy, and typing consistency.
+</div>
+
+<h2 id="improve">How to Improve Your CPM</h2>
+
+<p>
+Improving CPM does not mean pressing keys as fast as possible. Real improvement usually comes from better rhythm,
+fewer corrections, relaxed hands, and regular short practice.
+</p>
+
+<div class="step">
+  <h3>Improve accuracy first</h3>
+  <p>
+    If you make many mistakes, your raw CPM may look high but your useful typing speed will be lower.
+    Slow down slightly, reduce repeated errors, and build cleaner typing habits.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Practice difficult character patterns</h3>
+  <p>
+    CPM can drop when you meet numbers, punctuation, capital letters, or unfamiliar letter combinations.
+    Practice the characters that slow you down instead of repeating only easy text.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Use short focused drills</h3>
+  <p>
+    A 5-minute or 10-minute typing drill can be enough to improve rhythm and confidence.
+    Short sessions are also easier to repeat consistently.
+  </p>
+</div>
+
+<div class="step">
+  <h3>Track progress over time</h3>
+  <p>
+    Do not judge your typing by one test only. Track CPM, WPM, accuracy, and errors across several sessions.
+    This helps you see whether your typing is really improving.
+  </p>
+</div>
+
+<p>
+For more practice help, read
+<a href="typing-accuracy-tips.html">Typing Accuracy Tips</a>,
+<a href="common-typing-mistakes.html">Common Typing Mistakes</a>, and
+<a href="10-minute-typing-drill.html">10 Minute Typing Drill</a>.
+</p>
+
+<h2 id="faq">FAQ</h2>
+
+<div class="faq">
+  <h3>What does CPM mean in typing?</h3>
+  <p>
+    CPM means characters per minute. It measures how many characters you type in one minute.
+  </p>
+
+  <h3>How do I calculate characters per minute?</h3>
+  <p>
+    Divide the total number of characters typed by the number of minutes typed.
+    For example, 300 characters in 1 minute equals 300 CPM.
+  </p>
+
+  <h3>Does CPM include spaces?</h3>
+  <p>
+    It depends on the typing test. Many typing tools count spaces and punctuation as characters,
+    while others may count only letters and numbers. For consistent tracking, use the same method every time.
+  </p>
+
+  <h3>How do I convert CPM to WPM?</h3>
+  <p>
+    A common estimate is to divide CPM by five. For example, 250 CPM is about 50 WPM.
+  </p>
+
+  <h3>Is 300 CPM good?</h3>
+  <p>
+    Yes, 300 CPM is a strong everyday typing speed for many users. It is roughly equal to 60 WPM using the
+    common five-character word estimate.
+  </p>
+
+  <h3>Should I track CPM or WPM?</h3>
+  <p>
+    Both can be useful. CPM gives a more detailed character-based score, while WPM is easier to compare with
+    common typing speed benchmarks.
+  </p>
+
+  <h3>Why is my CPM high but my WPM lower?</h3>
+  <p>
+    CPM counts characters, while WPM converts characters into standard word units. Text difficulty, punctuation,
+    word length, and errors can all affect the final WPM estimate.
+  </p>
+</div>
+
+<div class="related-box">
+  <h2>Related Typing Tools and Guides</h2>
+  <ul>
+    <li><a href="index.html">Typing Speed Test</a></li>
+    <li><a href="tools.html">Typing Tools</a></li>
+    <li><a href="wpm-calculator.html">WPM Calculator</a></li>
+    <li><a href="wpm-to-kph-calculator.html">WPM to KPH Calculator</a></li>
+    <li><a href="typing-accuracy-calculator.html">Typing Accuracy Calculator</a></li>
+    <li><a href="typing-error-tracker.html">Typing Error Tracker</a></li>
+    <li><a href="typing-accuracy-tips.html">Typing Accuracy Tips</a></li>
+    <li><a href="common-typing-mistakes.html">Common Typing Mistakes</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p>&copy; 2026 Typing Speed Hub</p>
+  <p>
+    <a href="index.html">Home</a>
+    <a href="tools.html">Typing Tools</a>
+    <a href="typing-tips.html">Typing Tips</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html">Contact</a>
+  </p>
+</footer>
+
+<script>
+  function calculateCPM() {
+    const characters = parseFloat(document.getElementById("characters").value);
+    const errors = parseFloat(document.getElementById("errors").value) || 0;
+    const minutes = parseFloat(document.getElementById("minutes").value) || 0;
+    const seconds = parseFloat(document.getElementById("seconds").value) || 0;
+
+    const message = document.getElementById("message");
+    const resultBox = document.getElementById("resultBox");
+    const cpmResult = document.getElementById("cpmResult");
+    const adjustedResult = document.getElementById("adjustedResult");
+    const wpmResult = document.getElementById("wpmResult");
+    const accuracyResult = document.getElementById("accuracyResult");
+    const detailResult = document.getElementById("detailResult");
+
+    message.textContent = "";
+    resultBox.style.display = "none";
+
+    const totalMinutes = minutes + (seconds / 60);
+
+    if (!characters || characters <= 0) {
+      message.textContent = "Please enter the number of characters typed.";
+      return;
+    }
+
+    if (totalMinutes <= 0) {
+      message.textContent = "Please enter a typing time greater than zero.";
+      return;
+    }
+
+    if (seconds < 0 || seconds > 59) {
+      message.textContent = "Seconds should be between 0 and 59.";
+      return;
+    }
+
+    if (errors < 0) {
+      message.textContent = "Errors cannot be negative.";
+      return;
+    }
+
+    if (errors > characters) {
+      message.textContent = "Errors cannot be higher than the number of characters typed.";
+      return;
+    }
+
+    const grossCPM = characters / totalMinutes;
+    const adjustedCharacters = characters - errors;
+    const adjustedCPM = adjustedCharacters / totalMinutes;
+    const estimatedWPM = grossCPM / 5;
+    const adjustedWPM = adjustedCPM / 5;
+    const accuracy = (adjustedCharacters / characters) * 100;
+
+    cpmResult.textContent = grossCPM.toFixed(1) + " CPM";
+    adjustedResult.textContent = "Adjusted estimate with errors: " + adjustedCPM.toFixed(1) + " CPM";
+    wpmResult.textContent = "Estimated WPM: " + estimatedWPM.toFixed(1) + " WPM" +
+      " | Adjusted WPM: " + adjustedWPM.toFixed(1) + " WPM";
+    accuracyResult.textContent = "Estimated accuracy: " + accuracy.toFixed(1) + "%";
+    detailResult.textContent = "Typed for " + totalMinutes.toFixed(2) + " minute(s). Errors entered: " + errors + ".";
+
+    resultBox.style.display = "block";
+  }
+</script>
+
+</body>
+</html>
