@@ -60,13 +60,20 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+   <loc>https://typingspeedhub.com/cpm-calculator.html</loc>
+   <lastmod>2026-06-10</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.8</priority>
+  </url>
+  
     <url>
     <loc>https://typingspeedhub.com/wpm-to-kph-calculator.html</loc>
     <lastmod>2026-06-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
+ 
   <url>
     <loc>https://typingspeedhub.com/typing-goal-calculator.html</loc>
     <lastmod>2026-06-05</lastmod>
