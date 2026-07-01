@@ -71,7 +71,6 @@
       line-height: 1.6;
     }
 
-    /* Bal/jobb oldali listák – fix két szélen, nem nyomják le a közepet */
     .top-links {
       position: fixed;
       top: 56px;
@@ -155,7 +154,6 @@
       font-size: 0.9rem;
     }
 
-    /* Nyelvváltó – felül középen, saját kis zászló SVG-kkel */
     .langbar {
       position: fixed;
       top: 8px;
@@ -193,7 +191,6 @@
       display: inline-block;
     }
 
-    /* ===== Eredmények táblázat ===== */
     #results{
       max-width: var(--panel-width) !important;
       margin: .5rem auto 1.25rem;
@@ -249,7 +246,6 @@
       background: #0d0d0d;
     }
 
-    /* ===== AdSense-barát szöveg blokk ===== */
     #homepage-content {
       max-width: var(--panel-width);
       margin: 0 auto 1rem;
@@ -276,7 +272,6 @@
       margin: .55rem 0;
     }
 
-    /* ===== Featured card ===== */
     #featured-article {
       max-width: var(--panel-width);
       margin: 0 auto 1rem;
@@ -297,7 +292,113 @@
       margin: .55rem 0;
     }
 
-    /* ===== Mobil ===== */
+    .practice-path-card {
+      max-width: var(--panel-width);
+      margin: 1rem auto;
+      background: #1e1e1e;
+      border: 1px solid rgba(0, 255, 102, 0.35);
+      border-radius: 14px;
+      padding: 1.25rem;
+      box-shadow: 0 0 18px rgba(0, 255, 102, 0.28);
+    }
+
+    .practice-path-card h2 {
+      margin-top: 0;
+      color: #00ff66;
+      font-size: 1.55rem;
+      line-height: 1.3;
+    }
+
+    .practice-path-card p {
+      color: #e6ffe6;
+      line-height: 1.65;
+    }
+
+    .practice-path-steps {
+      display: grid;
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+
+    .practice-step {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      padding: 0.9rem;
+      background: #101010;
+      border: 1px solid rgba(0, 255, 102, 0.22);
+      border-radius: 12px;
+      color: #e6ffe6;
+      text-decoration: none;
+    }
+
+    .practice-step:hover {
+      border-color: #00ff66;
+      box-shadow: 0 0 10px rgba(0, 255, 102, 0.25);
+      text-decoration: none;
+    }
+
+    .step-number {
+      flex: 0 0 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(0, 255, 102, 0.14);
+      border: 1px solid rgba(0, 255, 102, 0.55);
+      color: #00ff66;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .step-content {
+      display: grid;
+      gap: 0.2rem;
+    }
+
+    .step-content strong {
+      color: #00ff66;
+      font-size: 1.03rem;
+    }
+
+    .step-content span {
+      color: #d8ffd8;
+      font-size: 0.96rem;
+      line-height: 1.45;
+    }
+
+    .practice-path-note {
+      margin-bottom: 0;
+      color: #caffca;
+      font-size: 0.98rem;
+    }
+
+    #footer .social {
+      margin: .5rem 0;
+    }
+
+    #footer .fb-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      border: 1px solid #00ff66;
+      border-radius: 999px;
+      padding: .2rem .55rem;
+      color: #00ff66;
+      text-decoration: none;
+    }
+
+    #footer .fb-badge:hover {
+      background: #00ff66;
+      color: #0d0d0d;
+    }
+
+    #footer .fb-icon {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
     @media (max-width: 900px){
       .top-links {
         position: static;
@@ -328,7 +429,8 @@
       .typing-test,
       #results,
       #homepage-content,
-      #featured-article {
+      #featured-article,
+      .practice-path-card {
         max-width: 100% !important;
         margin: 1rem;
       }
@@ -346,168 +448,24 @@
         font-size: 1rem;
         margin-bottom: 1rem;
       }
+
+      .practice-path-card {
+        padding: 1rem;
+      }
+
+      .practice-step {
+        padding: 0.8rem;
+      }
     }
-
-    /* Footer – Facebook badge */
-    #footer .social {
-      margin: .5rem 0;
-    }
-
-    #footer .fb-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      border: 1px solid #00ff66;
-      border-radius: 999px;
-      padding: .2rem .55rem;
-      color: #00ff66;
-      text-decoration: none;
-    }
-
-    #footer .fb-badge:hover {
-      background: #00ff66;
-      color: #0d0d0d;
-    }
-
-    #footer .fb-icon {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
-
-.practice-path-card {
-  max-width: var(--panel-width);
-  margin: 1.2rem auto 1.5rem;
-  background: #1e1e1e;
-  border: 1px solid rgba(0, 255, 102, 0.35);
-  border-radius: 14px;
-  padding: 1.25rem;
-  box-shadow: 0 0 18px rgba(0, 255, 102, 0.22);
-}
-
-.practice-path-card h2 {
-  margin-top: 0;
-  color: #00ff66;
-  font-size: 1.55rem;
-  line-height: 1.3;
-}
-
-.practice-path-card p {
-  color: #e6ffe6;
-  line-height: 1.65;
-}
-
-.practice-path-steps {
-  display: grid;
-  gap: 0.8rem;
-  margin: 1rem 0;
-}
-
-.practice-step {
-  display: flex;
-  gap: 0.85rem;
-  align-items: flex-start;
-  padding: 0.9rem;
-  background: #101010;
-  border: 1px solid rgba(0, 255, 102, 0.22);
-  border-radius: 12px;
-  color: #e6ffe6;
-  text-decoration: none;
-}
-
-.practice-step:hover {
-  border-color: #00ff66;
-  box-shadow: 0 0 10px rgba(0, 255, 102, 0.25);
-  text-decoration: none;
-}
-
-.step-number {
-  flex: 0 0 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(0, 255, 102, 0.14);
-  border: 1px solid rgba(0, 255, 102, 0.55);
-  color: #00ff66;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-}
-
-.step-content {
-  display: grid;
-  gap: 0.2rem;
-}
-
-.step-content strong {
-  color: #00ff66;
-  font-size: 1.03rem;
-}
-
-.step-content span {
-  color: #d8ffd8;
-  font-size: 0.96rem;
-  line-height: 1.45;
-}
-
-.practice-path-note {
-  margin-bottom: 0;
-  color: #caffca;
-  font-size: 0.98rem;
-}
-
-@media (max-width: 700px) {
-  .practice-path-card {
-    margin: 1rem;
-    padding: 1rem;
-  }
-
-  .practice-step {
-    padding: 0.8rem;
-  }
-}
-    
   </style>
 </head>
 
 <body>
 
-  <!-- Nyelvváltó (középen felül) -->
   <div class="langbar">
-    <a href="?lang=en" data-lang="en" aria-label="English">
-      <svg class="flag" viewBox="0 0 60 40" aria-hidden="true">
-        <rect width="60" height="40" fill="#012169"/>
-        <rect x="24" width="12" height="40" fill="#fff"/>
-        <rect y="14" width="60" height="12" fill="#fff"/>
-        <rect x="27" width="6" height="40" fill="#C8102E"/>
-        <rect y="17" width="60" height="6" fill="#C8102E"/>
-        <polygon fill="#fff" points="0,0 8,0 60,30 60,40 52,40 0,10"/>
-        <polygon fill="#fff" points="60,0 52,0 0,30 0,40 8,40 60,10"/>
-        <polygon fill="#C8102E" points="60,0 46,0 60,8"/>
-        <polygon fill="#C8102E" points="0,0 0,8 14,0"/>
-        <polygon fill="#C8102E" points="60,40 60,32 46,40"/>
-        <polygon fill="#C8102E" points="0,40 14,40 0,32"/>
-      </svg>
-      EN
-    </a>
-
-    <a href="?lang=hu" data-lang="hu" aria-label="Magyar">
-      <svg class="flag" viewBox="0 0 3 2" aria-hidden="true">
-        <rect width="3" height="2" fill="#fff"/>
-        <rect width="3" height="0.6667" y="0" fill="#CE2939"/>
-        <rect width="3" height="0.6667" y="1.3333" fill="#477050"/>
-      </svg>
-      HU
-    </a>
-
-    <a href="?lang=de" data-lang="de" aria-label="Deutsch">
-      <svg class="flag" viewBox="0 0 3 2" aria-hidden="true">
-        <rect width="3" height="2" fill="#ffce00"/>
-        <rect width="3" height="0.6667" y="0" fill="#000"/>
-        <rect width="3" height="0.6667" y="0.6667" fill="#DD0000"/>
-      </svg>
-      DE
-    </a>
+    <a href="?lang=en" data-lang="en" aria-label="English">EN</a>
+    <a href="?lang=hu" data-lang="hu" aria-label="Magyar">HU</a>
+    <a href="?lang=de" data-lang="de" aria-label="Deutsch">DE</a>
   </div>
 
   <div class="top-links">
@@ -564,7 +522,6 @@
     <p id="timerDisplay"></p>
     <p id="sentenceDisplay"></p>
     <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
-
     <p id="resultDisplay"></p>
   </div>
 
@@ -626,7 +583,6 @@
   </section>
 
   <section id="homepage-content" aria-label="Typing Speed Hub information">
-    
     <h2>Improve Your Typing Speed with Typing Speed Hub</h2>
 
     <p>
@@ -647,6 +603,7 @@
       and test duration before starting. Once the test begins, you type a given text while the system tracks your typing speed, accuracy,
       and error rate.
     </p>
+
     <p>
       At the end of each test, you receive clear results including words per minute (WPM) and accuracy percentage.
       These metrics help you understand your current level and identify areas that need improvement.
@@ -659,6 +616,7 @@
       you can see how regular practice improves your speed and accuracy. Consistent training is one of the most effective ways
       to develop long-term typing skills, and monitoring your progress helps maintain motivation.
     </p>
+
     <p>
       You can export your results and use them to set realistic goals for future practice sessions.
       Whether your goal is professional productivity, academic work, or personal development, structured tracking makes improvement easier
@@ -671,6 +629,7 @@
       keyboard layouts, and speed-building strategies. These resources are designed to complement hands-on practice by explaining the
       principles behind efficient typing.
     </p>
+
     <p>
       Understanding correct finger placement, posture, and rhythm can significantly reduce errors and fatigue.
       Our articles are written to be accessible for beginners while still offering useful insights for advanced users.
@@ -681,6 +640,7 @@
       Typing Speed Hub is suitable for students, professionals, programmers, writers, and anyone who uses a keyboard regularly.
       It is also helpful for children and beginners who want to learn typing in a structured and user-friendly environment.
     </p>
+
     <p>
       The platform is web-based and works across modern browsers, making it easy to practice anytime without installing additional software.
       Whether you want to test your current typing speed or commit to long-term improvement, Typing Speed Hub offers a practical and
@@ -716,14 +676,15 @@
       <strong>Quick next steps:</strong>
       <a href="index.html">take a 1-minute typing test</a>,
       then follow the <a href="10-minute-typing-drill.html">10-minute drill</a>
-     or the <a href="increase-typing-speed-7days.html">7-day plan</a>.
+      or the <a href="increase-typing-speed-7days.html">7-day plan</a>.
     </p>
-    
+
     <p>
-    <strong>Need a quick calculation?</strong>
-    Use the <a href="wpm-calculator.html">WPM Calculator</a>
-    to estimate your typing speed from characters, words, time, and optional errors.
+      <strong>Need a quick calculation?</strong>
+      Use the <a href="wpm-calculator.html">WPM Calculator</a>
+      to estimate your typing speed from characters, words, time, and optional errors.
     </p>
+
     <hr style="border:0;border-top:1px solid rgba(0,255,102,.2);margin:1rem 0;">
 
     <p>
@@ -770,9 +731,6 @@
          target="_blank"
          rel="noopener noreferrer"
          aria-label="Typing Speed Hub on Facebook">
-        <svg class="fb-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.3.2 2.3.2v2.6h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/>
-        </svg>
         Facebook
       </a>
     </p>
@@ -807,18 +765,7 @@
           "Accuracy is more important than speed.",
           "Take short breaks between sessions.",
           "Use both hands when typing.",
-          "Typing gets easier with time.",
-          "Focus on hitting the right keys.",
-          "Keep a steady rhythm while typing.",
-          "Relax your hands and shoulders.",
-          "Press the keys gently.",
-          "Look ahead, not at your fingers.",
-          "Try to type without stopping.",
-          "Stay calm and focused.",
-          "Slow typing builds good habits.",
-          "Check your posture often.",
-          "Practice a little every day.",
-          "Correct mistakes carefully."
+          "Typing gets easier with time."
         ],
         intermediate: [
           "Typing helps improve brain-hand coordination.",
@@ -835,18 +782,7 @@
           "Stretch your hands before and after typing.",
           "Type without pausing to think about keys.",
           "Use varied content to challenge yourself.",
-          "Stay relaxed and maintain good posture.",
-          "Track your mistakes and correct them consciously.",
-          "Increase speed gradually without losing accuracy.",
-          "Practice typing under light time pressure.",
-          "Develop a steady rhythm across longer sessions.",
-          "Challenge yourself with unfamiliar words.",
-          "Focus on smooth and continuous keystrokes.",
-          "Review difficult keys and combinations regularly.",
-          "Type complete paragraphs, not just single lines.",
-          "Balance speed, accuracy, and endurance.",
-          "Notice patterns in your typing mistakes.",
-          "Build confidence through consistent practice."
+          "Stay relaxed and maintain good posture."
         ],
         advanced: [
           "Touch typing boosts creativity.",
@@ -863,18 +799,7 @@
           "Fluent typing supports real-time collaboration.",
           "Typing speed supports multitasking and flow.",
           "Typing becomes second nature with practice.",
-          "Typing mastery enhances digital communication.",
-          "Expert typists rarely think about the keyboard.",
-          "Advanced typists maintain speed without sacrificing precision.",
-          "Typing fluently allows ideas to flow uninterrupted.",
-          "High-level typing reduces friction between thought and text.",
-          "Expert typing supports sustained creative output.",
-          "Mastering typing improves efficiency across digital tasks.",
-          "Fluent keystrokes enable faster problem solving.",
-          "Professional typists adapt instantly to complex text.",
-          "Typing at speed enhances focus and cognitive momentum.",
-          "Expert-level practice builds long-term endurance.",
-          "Seamless typing transforms ideas into action."
+          "Typing mastery enhances digital communication."
         ]
       },
       de: {
@@ -1188,7 +1113,3 @@
   </script>
 </body>
 </html>
-
-
-
- 
