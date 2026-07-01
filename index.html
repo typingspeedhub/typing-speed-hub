@@ -374,6 +374,99 @@
       height: 18px;
       fill: currentColor;
     }
+
+.practice-path-card {
+  max-width: var(--panel-width);
+  margin: 1.2rem auto 1.5rem;
+  background: #1e1e1e;
+  border: 1px solid rgba(0, 255, 102, 0.35);
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: 0 0 18px rgba(0, 255, 102, 0.22);
+}
+
+.practice-path-card h2 {
+  margin-top: 0;
+  color: #00ff66;
+  font-size: 1.55rem;
+  line-height: 1.3;
+}
+
+.practice-path-card p {
+  color: #e6ffe6;
+  line-height: 1.65;
+}
+
+.practice-path-steps {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.practice-step {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 0.9rem;
+  background: #101010;
+  border: 1px solid rgba(0, 255, 102, 0.22);
+  border-radius: 12px;
+  color: #e6ffe6;
+  text-decoration: none;
+}
+
+.practice-step:hover {
+  border-color: #00ff66;
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.25);
+  text-decoration: none;
+}
+
+.step-number {
+  flex: 0 0 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 255, 102, 0.14);
+  border: 1px solid rgba(0, 255, 102, 0.55);
+  color: #00ff66;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.step-content {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.step-content strong {
+  color: #00ff66;
+  font-size: 1.03rem;
+}
+
+.step-content span {
+  color: #d8ffd8;
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
+
+.practice-path-note {
+  margin-bottom: 0;
+  color: #caffca;
+  font-size: 0.98rem;
+}
+
+@media (max-width: 700px) {
+  .practice-path-card {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .practice-step {
+    padding: 0.8rem;
+  }
+}
+    
   </style>
 </head>
 
@@ -471,10 +564,69 @@
     <p id="timerDisplay"></p>
     <p id="sentenceDisplay"></p>
     <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
+
     <p id="resultDisplay"></p>
   </div>
 
+  <section class="practice-path-card" aria-labelledby="practice-path-title">
+    <h2 id="practice-path-title">Recommended Typing Practice Path</h2>
+
+    <p>
+      Typing Speed Hub is more than a typing test. Follow this simple step-by-step path
+      to measure your current typing speed, understand your accuracy, identify common
+      mistakes, and build a realistic practice routine.
+    </p>
+
+    <div class="practice-path-steps">
+      <a href="typing-speed-test.html" class="practice-step">
+        <span class="step-number">1</span>
+        <span class="step-content">
+          <strong>Take a 1-minute typing test</strong>
+          <span>Start with a quick test to measure your current words per minute and baseline performance.</span>
+        </span>
+      </a>
+
+      <a href="wpm-calculator.html" class="practice-step">
+        <span class="step-number">2</span>
+        <span class="step-content">
+          <strong>Check your WPM and accuracy</strong>
+          <span>Use your result to understand your real typing speed and compare it with practical benchmarks.</span>
+        </span>
+      </a>
+
+      <a href="typing-error-tracker.html" class="practice-step">
+        <span class="step-number">3</span>
+        <span class="step-content">
+          <strong>Find your common typing errors</strong>
+          <span>Track repeated mistakes so you can focus on the letters, words, or habits that slow you down.</span>
+        </span>
+      </a>
+
+      <a href="typing-goal-calculator.html" class="practice-step">
+        <span class="step-number">4</span>
+        <span class="step-content">
+          <strong>Set a realistic WPM goal</strong>
+          <span>Create a practical typing speed target based on your current level, accuracy, and practice time.</span>
+        </span>
+      </a>
+
+      <a href="7-day-typing-plan.html" class="practice-step">
+        <span class="step-number">5</span>
+        <span class="step-content">
+          <strong>Follow a 7-day practice plan</strong>
+          <span>Build a simple daily routine to improve typing speed, accuracy, consistency, and confidence.</span>
+        </span>
+      </a>
+    </div>
+
+    <p class="practice-path-note">
+      This guided path helps you turn typing practice into a measurable learning process:
+      test your speed, understand your errors, set a goal, and improve step by step.
+    </p>
+  </section>
+
   <section id="homepage-content" aria-label="Typing Speed Hub information">
+    
     <h2>Improve Your Typing Speed with Typing Speed Hub</h2>
 
     <p>
