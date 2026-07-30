@@ -1073,14 +1073,18 @@
         <a href="about.html">About</a>
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="terms-and-conditions.html">Terms</a>
+        <a href="disclaimer.html">Disclaimer</a>
         <a href="impressum.html">Impressum</a>
         <a href="contact.html">Contact</a>
       </div>
-      <p class="small">© 2025–2026 Typing Speed Hub. All rights reserved.</p>
+     <p class="small">© <span id="year"></span> Typing Speed Hub. All rights reserved.</p>
     </footer>
 
   </main>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
-```
+
 
