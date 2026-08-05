@@ -40,58 +40,17 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        "name": "Typing Error Tracker",
-        "url": "https://typingspeedhub.com/typing-error-tracker.html",
-        "applicationCategory": "EducationalApplication",
-        "operatingSystem": "Any",
-        "description": "A free typing error tracker that helps users count mistakes, estimate error rate, identify weak areas, and plan accuracy-focused typing practice.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is a typing error tracker?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "A typing error tracker is a tool that helps you record and analyze typing mistakes. It can show your total mistakes, error rate, most common error type, and what you should practice next."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I track typing mistakes?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "You can track typing mistakes by counting wrong letters, missing spaces, punctuation mistakes, capitalization mistakes, number mistakes, and corrected errors during a typing session."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why are typing mistakes important?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Typing mistakes matter because every correction takes extra time and attention. A high WPM score with many errors may be less useful than a slightly lower speed with strong accuracy."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Should I focus on speed or accuracy first?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Accuracy should usually come first. Clean typing builds better muscle memory and makes it easier to increase speed later without repeating the same mistakes."
-            }
-          }
-        ]
-      }
-    ]
+    "@type": "WebApplication",
+    "name": "Typing Error Tracker",
+    "url": "https://typingspeedhub.com/typing-error-tracker.html",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "description": "A free typing error tracker that helps users count mistakes, estimate error rate, identify weak areas, and plan accuracy-focused typing practice.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
   }
   </script>
 
@@ -510,7 +469,7 @@ miss spaces, hit the wrong keys, or struggle with punctuation, tracking those mi
     <div>
       <label for="correctionErrors">Extra corrections or backspaces</label>
       <input id="correctionErrors" type="number" min="0" step="1" placeholder="Example: 5" />
-      <div class="field-note">Optional: corrections, backspaces, or repeated fixes.</div>
+      <div class="field-note">Optional: corrections and backspaces are reported separately and do not reduce the estimated accuracy twice.</div>
     </div>
   </div>
 
@@ -531,6 +490,7 @@ miss spaces, hit the wrong keys, or struggle with punctuation, tracking those mi
     <p class="result-secondary" id="accuracyResult"></p>
     <p class="result-secondary" id="rateResult"></p>
     <p class="result-secondary" id="speedResult"></p>
+    <p class="result-secondary" id="correctionResult"></p>
     <p class="result-secondary" id="focusResult"></p>
     <p class="result-secondary" id="adviceResult"></p>
 
@@ -580,13 +540,13 @@ and decide what to practice next.
 </p>
 
 <div class="formula-box">
-  <p><strong>Total typing errors:</strong></p>
-  <p><code>Total errors = Letter errors + Space errors + Punctuation errors + Capitalization errors + Number errors + Correction errors</code></p>
+  <p><strong>Counted typing errors:</strong></p>
+  <p><code>Counted errors = Letter errors + Space errors + Punctuation errors + Capitalization errors + Number errors</code></p>
 </div>
 
 <div class="formula-box">
   <p><strong>Typing error rate:</strong></p>
-  <p><code>Error rate = Total errors ÷ Total typed characters × 100</code></p>
+  <p><code>Error rate = Counted errors ÷ Total typed characters × 100</code></p>
 </div>
 
 <div class="formula-box">
@@ -596,22 +556,20 @@ and decide what to practice next.
 
 <div class="formula-box">
   <p><strong>Errors per minute:</strong></p>
-  <p><code>Errors per minute = Total errors ÷ Session minutes</code></p>
+  <p><code>Errors per minute = Counted errors ÷ Session minutes</code></p>
 </div>
 
 <div class="note-box">
   <p>
-    <strong>Note:</strong> Different typing tests may count mistakes in different ways.
-    Use this tracker as a practical review tool, not as an official testing standard.
-    The most important goal is to notice repeated patterns and reduce them over time.
+    <strong>Note:</strong> Corrections and backspaces are shown separately so the same mistake is not automatically counted twice.
+    Different typing tests may count mistakes in different ways. Use this tracker as a practical review tool,
+    not as an official testing standard.
   </p>
 </div>
 
 <h2 id="examples">Typing Error Examples</h2>
 
-<p>
-Here are a few examples of how typing mistake tracking can help.
-</p>
+<p>Here are a few examples of how typing mistake tracking can help.</p>
 
 <div class="step">
   <h3>Example 1: High WPM but many corrections</h3>
@@ -652,50 +610,32 @@ or “I often hit the wrong key with my left hand.”
 
 <div class="step">
   <h3>Wrong letter errors</h3>
-  <p>
-    These happen when you press the wrong key, reverse letters, or type a nearby character.
-    Common causes include weak finger placement, typing too fast, or not using consistent hand position.
-  </p>
+  <p>These happen when you press the wrong key, reverse letters, or type a nearby character.</p>
 </div>
 
 <div class="step">
   <h3>Space errors</h3>
-  <p>
-    Space errors include missing spaces, double spaces, and spaces in the wrong place.
-    These mistakes often happen when your rhythm changes or when you rush between words.
-  </p>
+  <p>Space errors include missing spaces, double spaces, and spaces in the wrong place.</p>
 </div>
 
 <div class="step">
   <h3>Punctuation errors</h3>
-  <p>
-    Punctuation errors include missing commas, periods, apostrophes, quotation marks, and other symbols.
-    They are common because punctuation often requires extra reach, shift keys, or different finger movement.
-  </p>
+  <p>Punctuation errors include missing commas, periods, apostrophes, quotation marks, and other symbols.</p>
 </div>
 
 <div class="step">
   <h3>Capitalization errors</h3>
-  <p>
-    Capitalization mistakes happen when you miss the shift key, hold it too long, or forget a capital letter.
-    These errors can be common when typing names, the word “I,” titles, or the start of sentences.
-  </p>
+  <p>Capitalization mistakes happen when you miss the shift key, hold it too long, or forget a capital letter.</p>
 </div>
 
 <div class="step">
   <h3>Number and symbol errors</h3>
-  <p>
-    Numbers and symbols are often slower because many people practice letters more than the top row.
-    If you type passwords, data, forms, or code-like text, number and symbol accuracy becomes more important.
-  </p>
+  <p>Numbers and symbols are often slower because many people practice letters more than the top row.</p>
 </div>
 
 <div class="step">
   <h3>Correction errors</h3>
-  <p>
-    Correction errors are not always visible in the final text, but they matter.
-    If you use backspace constantly, your final WPM may look lower and your typing flow may feel interrupted.
-  </p>
+  <p>Correction errors are not always visible in the final text, but frequent backspaces can interrupt typing flow.</p>
 </div>
 
 <h2 id="accuracy-plan">How to Improve Typing Accuracy</h2>
@@ -707,47 +647,32 @@ The goal is to reduce repeated mistakes and make correct movements automatic.
 
 <div class="step">
   <h3>Slow down before you speed up</h3>
-  <p>
-    If your error rate is high, reduce speed slightly and focus on clean movement.
-    Speed built on repeated mistakes can create bad habits that are harder to fix later.
-  </p>
+  <p>If your error rate is high, reduce speed slightly and focus on clean movement.</p>
 </div>
 
 <div class="step">
   <h3>Practice your most common error type</h3>
-  <p>
-    Do not practice everything equally. If punctuation is your weakest area, practice punctuation.
-    If numbers are your weakest area, practice number-row drills. Targeted practice usually saves time.
-  </p>
+  <p>Do not practice everything equally. Target your weakest error category.</p>
 </div>
 
 <div class="step">
   <h3>Use short focused drills</h3>
-  <p>
-    A 10-minute focused drill can be more useful than a long random typing session.
-    Choose one weak pattern and repeat it carefully until it feels more natural.
-  </p>
+  <p>A 10-minute focused drill can be more useful than a long random typing session.</p>
 </div>
 
 <div class="step">
   <h3>Review mistakes after each test</h3>
-  <p>
-    After a typing test, do not only look at WPM. Review what went wrong.
-    Write down the letters, words, or symbols that caused the most problems.
-  </p>
+  <p>After a typing test, review the letters, words, or symbols that caused the most problems.</p>
 </div>
 
 <div class="step">
   <h3>Track weekly progress</h3>
-  <p>
-    One test can be random. Weekly averages are more useful.
-    Track your total errors, error rate, and most common mistake type once or twice per week.
-  </p>
+  <p>Track total errors, error rate, and your most common mistake type once or twice per week.</p>
 </div>
 
 <div class="cta-box" aria-label="Typing accuracy calculator suggestion">
   <strong>Want a simple accuracy percentage?</strong>
-  Use the <a href="typing-accuracy-calculator.html">Typing Accuracy Calculator</a> to estimate clean typing percentage from total characters and mistakes.
+  Use the <a href="typing-accuracy-calculator.html">Typing Accuracy Calculator</a>.
 </div>
 
 <h2 id="weekly-review">Weekly Typing Mistake Review</h2>
@@ -771,11 +696,11 @@ then compare your results.
 <div class="step">
   <h3>What to track over time</h3>
   <ul>
-    <li><strong>Total errors:</strong> the full number of mistakes in one session</li>
-    <li><strong>Error rate:</strong> mistakes compared with total typed characters</li>
-    <li><strong>Errors per minute:</strong> how often mistakes happen during typing</li>
+    <li><strong>Counted errors:</strong> mistakes used in the estimated accuracy formula</li>
+    <li><strong>Corrections:</strong> backspaces and extra fixes reported separately</li>
+    <li><strong>Error rate:</strong> counted mistakes compared with total typed characters</li>
+    <li><strong>Errors per minute:</strong> how often counted mistakes happen</li>
     <li><strong>Main error type:</strong> the category that needs the most attention</li>
-    <li><strong>Practice focus:</strong> the drill or pattern you will practice next</li>
   </ul>
 </div>
 
@@ -794,48 +719,28 @@ For more practice, try the
 
 <div class="faq">
   <h3>What is a typing error tracker?</h3>
-  <p>
-    A typing error tracker is a tool that helps you record and analyze your typing mistakes.
-    Instead of only looking at WPM, it helps you understand what kind of errors you make most often.
-  </p>
+  <p>A typing error tracker helps you record and analyze typing mistakes instead of only looking at WPM.</p>
 
   <h3>How do I track typing mistakes?</h3>
-  <p>
-    Start with a short typing test, then count the mistakes by category.
-    You can track wrong letters, missing spaces, punctuation mistakes, capitalization errors, number errors, and extra corrections.
-  </p>
+  <p>Take a short typing test, then count mistakes by category.</p>
 
   <h3>What is a good typing error rate?</h3>
-  <p>
-    A lower error rate is better, but the best target depends on your level and purpose.
-    For everyday typing, a small number of mistakes with steady rhythm is usually more useful than fast typing with constant corrections.
-  </p>
+  <p>A lower error rate is better, but the most useful target depends on your level and purpose.</p>
 
   <h3>Why do I make more mistakes when I type faster?</h3>
-  <p>
-    When you increase speed too quickly, your fingers may move before your accuracy is stable.
-    Slowing down slightly can help you rebuild control and reduce repeated errors.
-  </p>
+  <p>When speed increases before accuracy is stable, your fingers may move before the correct pattern is automatic.</p>
 
   <h3>Should I count corrected mistakes?</h3>
-  <p>
-    Yes, corrected mistakes are useful to track. Even if the final text looks correct, frequent backspaces and corrections still interrupt your typing flow.
-  </p>
+  <p>Yes. This tracker reports corrections separately so they remain useful without automatically reducing accuracy twice.</p>
 
   <h3>How often should I review my typing mistakes?</h3>
-  <p>
-    A weekly review is enough for many learners. You can take one short test, count the errors, and choose one weak area to practice during the next week.
-  </p>
+  <p>A weekly review is enough for many learners.</p>
 
   <h3>Is accuracy more important than WPM?</h3>
-  <p>
-    Both matter, but accuracy should usually come first. Clean typing makes your speed more useful in real work, study, writing, and everyday computer use.
-  </p>
+  <p>Both matter, but accuracy should usually come first.</p>
 
   <h3>Can this tool save my results?</h3>
-  <p>
-    No. This simple tracker does not save your results. You can copy your result into your own notes or spreadsheet if you want to track progress over time.
-  </p>
+  <p>No. This tracker does not save results.</p>
 </div>
 
 <div class="related-box">
@@ -862,6 +767,8 @@ For more practice, try the
     <a href="typing-tips.html">Typing Tips</a>
     <a href="privacy.html">Privacy Policy</a>
     <a href="terms.html">Terms</a>
+    <a href="disclaimer.html">Disclaimer</a>
+    <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </p>
 </footer>
@@ -899,6 +806,7 @@ For more practice, try the
     const accuracyResult = document.getElementById("accuracyResult");
     const rateResult = document.getElementById("rateResult");
     const speedResult = document.getElementById("speedResult");
+    const correctionResult = document.getElementById("correctionResult");
     const focusResult = document.getElementById("focusResult");
     const adviceResult = document.getElementById("adviceResult");
     const breakdownResult = document.getElementById("breakdownResult");
@@ -933,30 +841,28 @@ For more practice, try the
       }
     }
 
-    const totalErrors =
+    const countedErrors =
       letterErrors +
       spaceErrors +
       punctuationErrors +
       capitalErrors +
-      numberErrors +
-      correctionErrors;
+      numberErrors;
 
-    if (totalErrors > typedCharacters) {
-      message.textContent = "Total errors should not be higher than total typed characters. Please check your numbers.";
+    if (countedErrors > typedCharacters) {
+      message.textContent = "Counted errors should not be higher than total typed characters. Please check your numbers.";
       return;
     }
 
-    const errorRate = (totalErrors / typedCharacters) * 100;
+    const errorRate = (countedErrors / typedCharacters) * 100;
     const estimatedAccuracy = Math.max(0, 100 - errorRate);
-    const errorsPerMinute = totalErrors / sessionMinutes;
+    const errorsPerMinute = countedErrors / sessionMinutes;
 
     const categories = [
       { name: "wrong letter errors", value: letterErrors, advice: "Practice slow letter patterns and nearby-key control." },
       { name: "space errors", value: spaceErrors, advice: "Practice short phrases and focus on steady spacebar rhythm." },
       { name: "punctuation errors", value: punctuationErrors, advice: "Practice commas, periods, apostrophes, and quotation marks in short sentences." },
       { name: "capitalization errors", value: capitalErrors, advice: "Practice shift-key timing and sentence starts." },
-      { name: "number and symbol errors", value: numberErrors, advice: "Practice the number row and common symbols slowly." },
-      { name: "extra corrections or backspaces", value: correctionErrors, advice: "Slow down slightly and aim for clean first-time typing." }
+      { name: "number and symbol errors", value: numberErrors, advice: "Practice the number row and common symbols slowly." }
     ];
 
     let topCategory = categories[0];
@@ -968,7 +874,7 @@ For more practice, try the
     }
 
     mainResult.textContent =
-      formatNumber(totalErrors, 0) + " total " + (totalErrors === 1 ? "error" : "errors");
+      formatNumber(countedErrors, 0) + " counted " + (countedErrors === 1 ? "error" : "errors");
 
     accuracyResult.textContent =
       "Estimated accuracy: " + estimatedAccuracy.toFixed(2) + "%.";
@@ -979,9 +885,14 @@ For more practice, try the
     speedResult.textContent =
       "Errors per minute: about " + errorsPerMinute.toFixed(2) + ".";
 
-    if (totalErrors === 0) {
+    correctionResult.textContent =
+      "Extra corrections or backspaces: " + formatNumber(correctionErrors, 0) + ".";
+
+    if (countedErrors === 0) {
       focusResult.textContent =
-        "Main focus: no errors were entered. Great result for this session.";
+        correctionErrors > 0
+          ? "Main focus: no counted errors were entered, but you reported corrections. Practice cleaner first-time typing."
+          : "Main focus: no counted errors were entered. Great result for this session.";
     } else {
       focusResult.textContent =
         "Main focus: your highest category is " + topCategory.name + " (" + topCategory.value + "). " + topCategory.advice;
@@ -989,9 +900,9 @@ For more practice, try the
 
     let advice = "";
 
-    if (totalErrors === 0) {
+    if (countedErrors === 0 && correctionErrors === 0) {
       advice =
-        "Excellent clean session. To keep improving, repeat the test with a slightly harder text or a longer session.";
+        "Excellent clean session. Repeat the test with a slightly harder text or a longer session.";
     } else if (errorRate <= 1) {
       advice =
         "This is a strong accuracy result. Keep practicing at this pace and increase speed gradually.";
@@ -1010,7 +921,7 @@ For more practice, try the
 
     categories.forEach(function(category) {
       const item = document.createElement("li");
-      const percentOfErrors = totalErrors > 0 ? (category.value / totalErrors) * 100 : 0;
+      const percentOfErrors = countedErrors > 0 ? (category.value / countedErrors) * 100 : 0;
       item.textContent =
         category.name.charAt(0).toUpperCase() +
         category.name.slice(1) +
@@ -1018,9 +929,14 @@ For more practice, try the
         category.value +
         " (" +
         percentOfErrors.toFixed(1) +
-        "% of total errors)";
+        "% of counted errors)";
       breakdownResult.appendChild(item);
     });
+
+    const correctionItem = document.createElement("li");
+    correctionItem.textContent =
+      "Extra corrections or backspaces: " + correctionErrors + " (reported separately)";
+    breakdownResult.appendChild(correctionItem);
 
     resultBox.style.display = "block";
   }
