@@ -292,6 +292,78 @@
       margin: .55rem 0;
     }
 
+    .practice-nav-link {
+      margin-top: .35rem;
+      padding: .28rem .55rem;
+      border: 1px solid #00ff66;
+      border-radius: 7px;
+      background: rgba(0, 255, 102, 0.10);
+      box-shadow: 0 0 9px rgba(0, 255, 102, 0.22);
+      text-decoration: none;
+    }
+
+    .practice-nav-link:hover {
+      background: #00ff66;
+      color: #0d0d0d;
+      text-decoration: none;
+    }
+
+    .practice-feature-card {
+      max-width: var(--panel-width);
+      margin: 1rem auto;
+      background: #1e1e1e;
+      border: 2px solid rgba(0, 255, 102, 0.72);
+      border-radius: 14px;
+      padding: 1.25rem 1.4rem;
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.34);
+      line-height: 1.6;
+    }
+
+    .practice-feature-card h2 {
+      margin: 0 0 .65rem;
+      color: #00ff66;
+      font-size: 1.6rem;
+      line-height: 1.3;
+    }
+
+    .practice-feature-card p {
+      margin: .55rem 0;
+      color: #e6ffe6;
+    }
+
+    .practice-feature-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .55rem .9rem;
+      margin: 1rem 0;
+    }
+
+    .practice-feature-point {
+      background: #101010;
+      border: 1px solid rgba(0, 255, 102, 0.25);
+      border-radius: 9px;
+      padding: .65rem .75rem;
+      color: #d8ffd8;
+    }
+
+    .practice-feature-button {
+      display: inline-block;
+      margin-top: .3rem;
+      padding: .65rem 1rem;
+      border: 1px solid #00ff66;
+      border-radius: 7px;
+      background: #00ff66;
+      color: #0d0d0d;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .practice-feature-button:hover {
+      background: #0d0d0d;
+      color: #00ff66;
+      text-decoration: none;
+    }
+
     .practice-path-card {
       max-width: var(--panel-width);
       margin: 1rem auto;
@@ -430,6 +502,7 @@
       #results,
       #homepage-content,
       #featured-article,
+      .practice-feature-card,
       .practice-path-card {
         max-width: 100% !important;
         margin: 1rem;
@@ -449,8 +522,13 @@
         margin-bottom: 1rem;
       }
 
+      .practice-feature-card,
       .practice-path-card {
         padding: 1rem;
+      }
+
+      .practice-feature-points {
+        grid-template-columns: 1fr;
       }
 
       .practice-step {
@@ -476,7 +554,7 @@
       <a href="typing-tips.html">⌨️ Typing Tips</a><br/>
       <a href="statistics.html">📊 Statistics</a><br/>
       <a href="tools.html">🛠 Tools</a><br/>
-      <a href="typing-practice.html">🎯 Typing Practice</a><br/>
+      <a href="typing-practice.html" class="practice-nav-link">🎯 Typing Practice</a><br/>
     </div>
 
     <div>
@@ -525,6 +603,31 @@
     <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
     <p id="resultDisplay"></p>
   </div>
+
+  <section class="practice-feature-card" aria-labelledby="timed-practice-title">
+    <h2 id="timed-practice-title">🎯 Timed Typing Practice</h2>
+
+    <p>
+      Want more than a quick typing test? Use our timed practice mode to type continuously
+      for <strong>1, 5, or 10 minutes</strong> and build real typing speed, accuracy, and endurance.
+    </p>
+
+    <p>
+      Your practice results are saved in your browser so you can follow your progress
+      and work toward better personal bests over time.
+    </p>
+
+    <div class="practice-feature-points" aria-label="Timed typing practice features">
+      <div class="practice-feature-point"><strong>⏱ 1, 5 or 10 minutes</strong><br>Choose a session length that fits your available practice time.</div>
+      <div class="practice-feature-point"><strong>⚡ WPM tracking</strong><br>See how your typing speed develops during focused practice.</div>
+      <div class="practice-feature-point"><strong>✓ Accuracy tracking</strong><br>Improve speed without sacrificing clean, accurate typing.</div>
+      <div class="practice-feature-point"><strong>🏆 Personal progress</strong><br>Track your best results and total practice time on your device.</div>
+    </div>
+
+    <a href="typing-practice.html" class="practice-feature-button">
+      Start Timed Typing Practice →
+    </a>
+  </section>
 
   <section class="practice-path-card" aria-labelledby="practice-path-title">
     <h2 id="practice-path-title">Recommended Typing Practice Path</h2>
