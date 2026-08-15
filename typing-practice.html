@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Timed Typing Practice – 1, 5 or 10 Minutes | Typing Speed Hub</title>
+  <meta name="description" content="Practice typing continuously for 1, 5 or 10 minutes. Track live WPM, accuracy, errors, personal bests, total practice time and recent sessions." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://typingspeedhub.com/typing-practice.html" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-68ZVCW4FWK");
+  </script>
+
+  <!-- Google AdSense -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1607876440670769"
+    crossorigin="anonymous"></script>
+
+
+  <style>
+    :root{
+      --bg:#050805;
+      --panel:#1f1f1f;
+      --panel-2:#151815;
+      --text:#e9f7ee;
+      --muted:#a7b5ab;
+      --green:#00ff66;
+      --green-soft:rgba(0,255,102,.18);
+      --border:rgba(0,255,102,.55);
+      --danger:#ff5c73;
+      --warning:#ffd166;
+      --shadow:0 0 18px rgba(0,255,102,.22);
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background-color:var(--bg);
+      background-image:radial-gradient(rgba(0,255,102,.72) .8px, transparent .8px);
+      background-size:15px 15px;
+      line-height:1.6;
+    }
+
+    a{color:var(--green)}
+
+    .layout{
+      width:100%;
+      min-height:100vh;
+      display:grid;
+      grid-template-columns:220px minmax(0,1fr) 220px;
+      gap:24px;
+      padding:24px 18px 50px;
+    }
+
+    .side{
+      position:sticky;
+      top:20px;
+      align-self:start;
+      padding-top:4px;
+    }
+
+    .side h2{
+      margin:0 0 8px;
+      color:var(--green);
+      font-size:1.1rem;
+    }
+
+    .side a{
+      display:block;
+      width:max-content;
+      max-width:100%;
+      margin:5px 0;
+      font-weight:700;
+      text-decoration:underline;
+    }
+
+    .side.right{text-align:right}
+    .side.right a{margin-left:auto}
+
+    main{
+      width:100%;
+      max-width:860px;
+      margin:0 auto;
+    }
+
+    .lang-pills{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      margin-bottom:8px;
+    }
+
+    .lang-pills button{
+      border:1px solid var(--green);
+      background:#06160c;
+      color:var(--green);
+      border-radius:999px;
+      padding:3px 9px;
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    .lang-pills button.active{
+      background:var(--green);
+      color:#001b0b;
+    }
+
+    .hero{
+      text-align:center;
+      margin:6px 0 16px;
+    }
+
+    .hero h1{
+      color:var(--green);
+      margin:0 0 8px;
+      font-size:clamp(2rem,5vw,3rem);
+      text-shadow:0 0 14px rgba(0,255,102,.18);
+    }
+
+    .hero p{
+      margin:0 auto;
+      max-width:720px;
+      color:#d5e8da;
+      font-size:.98rem;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(34,34,34,.98), rgba(24,26,24,.98));
+      border:1px solid rgba(0,255,102,.32);
+      border-radius:14px;
+      box-shadow:var(--shadow);
+      padding:18px;
+      margin:14px 0;
+    }
+
+    .card h2,.card h3{
+      color:var(--green);
+      margin-top:0;
+    }
+
+    .mode-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin:10px 0 16px;
+    }
+
+    .mode-btn{
+      border:1px solid var(--green);
+      background:#07130b;
+      color:var(--green);
+      padding:13px 8px;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:1rem;
+      font-weight:800;
+    }
+
+    .mode-btn.active{
+      background:var(--green);
+      color:#001b0b;
+      box-shadow:0 0 18px rgba(0,255,102,.28);
+    }
+
+    .controls{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    label{
+      display:block;
+      color:var(--green);
+      font-size:.9rem;
+      margin-bottom:5px;
+    }
+
+    select, textarea, button.action{
+      width:100%;
+      border:1px solid var(--green);
+      background:#080b08;
+      color:var(--text);
+      border-radius:6px;
+      padding:10px 11px;
+      font-size:.96rem;
+    }
+
+    .action-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:13px;
+    }
+
+    button.action{
+      cursor:pointer;
+      color:var(--green);
+      font-weight:800;
+    }
+
+    button.action.primary{
+      background:#061b0d;
+    }
+
+    button.action:hover,.mode-btn:hover{
+      box-shadow:0 0 14px rgba(0,255,102,.25);
+    }
+
+    button:disabled{
+      opacity:.45;
+      cursor:not-allowed;
+    }
+
+    .live-stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:9px;
+      margin-bottom:12px;
+    }
+
+    .stat{
+      background:#0d100d;
+      border:1px solid rgba(0,255,102,.28);
+      border-radius:8px;
+      text-align:center;
+      padding:10px 6px;
+    }
+
+    .stat .label{
+      display:block;
+      color:var(--muted);
+      font-size:.78rem;
+    }
+
+    .stat strong{
+      color:var(--green);
+      display:block;
+      font-size:1.25rem;
+      margin-top:2px;
+    }
+
+    .practice-text{
+      min-height:190px;
+      max-height:270px;
+      overflow-y:auto;
+      padding:16px;
+      border:1px solid rgba(0,255,102,.4);
+      border-radius:8px;
+      background:#0a0d0a;
+      font-size:1.11rem;
+      line-height:1.9;
+      letter-spacing:.01em;
+      margin-bottom:12px;
+      user-select:none;
+    }
+
+    .char.correct{color:#8cffb8}
+    .char.incorrect{
+      color:#fff;
+      background:rgba(255,92,115,.72);
+      border-radius:2px;
+    }
+    .char.current{
+      color:#001b0b;
+      background:var(--green);
+      border-radius:2px;
+      box-shadow:0 0 8px rgba(0,255,102,.35);
+    }
+    .char.pending{color:#7f8c83}
+
+    #typingInput{
+      min-height:105px;
+      resize:vertical;
+      outline:none;
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.55;
+    }
+
+    #typingInput:focus{
+      box-shadow:0 0 0 2px rgba(0,255,102,.12);
+    }
+
+    .hint{
+      color:var(--muted);
+      font-size:.88rem;
+      margin:8px 0 0;
+    }
+
+    .result-box{
+      display:none;
+      border:1px solid var(--green);
+      background:#07130b;
+      border-radius:10px;
+      padding:16px;
+      margin-top:14px;
+    }
+
+    .result-box.show{display:block}
+
+    .result-main{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+      margin:12px 0;
+    }
+
+    .result-main div{
+      background:#0d100d;
+      border-radius:8px;
+      padding:10px;
+      text-align:center;
+    }
+
+    .result-main strong{
+      color:var(--green);
+      display:block;
+      font-size:1.35rem;
+    }
+
+    .new-best{
+      color:var(--warning);
+      font-weight:800;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+
+    .stats-grid .box{
+      border:1px solid rgba(0,255,102,.26);
+      background:#0d100d;
+      border-radius:8px;
+      padding:12px;
+    }
+
+    .stats-grid .box span{
+      display:block;
+      color:var(--muted);
+      font-size:.82rem;
+    }
+
+    .stats-grid .box strong{
+      color:var(--green);
+      font-size:1.2rem;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:12px;
+    }
+
+    th,td{
+      border-bottom:1px solid rgba(255,255,255,.10);
+      padding:9px 7px;
+      text-align:left;
+    }
+
+    th{color:var(--green)}
+
+    .summary{
+      border-left:4px solid var(--green);
+      padding:12px 14px;
+      background:rgba(0,255,102,.07);
+      border-radius:6px;
+    }
+
+    .faq-item{
+      padding:10px 0;
+      border-bottom:1px solid rgba(255,255,255,.09);
+    }
+
+    .faq-item:last-child{border-bottom:0}
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:.88rem;
+      padding:20px 0 0;
+    }
+
+    .danger{
+      border-color:rgba(255,92,115,.8)!important;
+      color:#ff9aaa!important;
+    }
+
+    @media (max-width:1120px){
+      .layout{
+        grid-template-columns:170px minmax(0,1fr);
+      }
+      .side.right{display:none}
+    }
+
+    @media (max-width:780px){
+      .layout{
+        display:block;
+        padding:14px 12px 35px;
+      }
+      .side{position:static}
+      .side.left{
+        display:flex;
+        gap:10px;
+        flex-wrap:wrap;
+        margin-bottom:12px;
+      }
+      .side.left h2{width:100%}
+      .side.left a{margin:0}
+      .controls,.action-row{grid-template-columns:1fr}
+      .live-stats{grid-template-columns:repeat(2,1fr)}
+      .result-main{grid-template-columns:repeat(2,1fr)}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .hero h1{font-size:2rem}
+    }
+
+    @media (max-width:480px){
+      .mode-grid{grid-template-columns:1fr}
+      .stats-grid{grid-template-columns:1fr}
+      .practice-text{font-size:1rem}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="layout">
+
+    <aside class="side left">
+      <h2>Explore</h2>
+      <a href="articles.html">📄 Articles</a>
+      <a href="guides.html">📖 Guides</a>
+      <a href="typing-tips.html">⌨️ Typing Tips</a>
+      <a href="statistics.html">📊 Statistics</a>
+      <a href="tools.html">🛠 Tools</a>
+      <a href="typing-practice.html" aria-current="page">🎯 Typing Practice</a>
+    </aside>
+
+    <main>
+      <div class="lang-pills" aria-label="Language selector">
+        <button type="button" class="active" data-lang="en">EN</button>
+        <button type="button" data-lang="hu">HU</button>
+        <button type="button" data-lang="de">DE</button>
+      </div>
+
+      <section class="hero">
+        <h1>Timed Typing Practice</h1>
+        <p>Practice continuously for 1, 5 or 10 minutes. Track your live WPM, accuracy, errors and personal bests without creating an account.</p>
+      </section>
+
+      <section class="card" aria-labelledby="setupTitle">
+        <h2 id="setupTitle">Choose Your Practice</h2>
+
+        <div class="mode-grid" aria-label="Practice duration">
+          <button type="button" class="mode-btn active" data-minutes="1">1 Minute</button>
+          <button type="button" class="mode-btn" data-minutes="5">5 Minutes</button>
+          <button type="button" class="mode-btn" data-minutes="10">10 Minutes</button>
+        </div>
+
+        <div class="controls">
+          <div>
+            <label for="languageSelect">Language</label>
+            <select id="languageSelect">
+              <option value="en">English</option>
+              <option value="hu">Hungarian</option>
+              <option value="de">German</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="levelSelect">Level</label>
+            <select id="levelSelect">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button type="button" class="action primary" id="prepareBtn">Prepare Practice</button>
+          <button type="button" class="action" id="newTextBtn">New Text</button>
+        </div>
+
+        <p class="hint">The timer starts when you type the first character. The text automatically continues, so fast typists will not run out of material.</p>
+      </section>
+
+      <section class="card" id="practiceCard" aria-labelledby="practiceTitle">
+        <h2 id="practiceTitle">Practice Area</h2>
+
+        <div class="live-stats">
+          <div class="stat">
+            <span class="label">Time Left</span>
+            <strong id="timeLeft">1:00</strong>
+          </div>
+          <div class="stat">
+            <span class="label">WPM</span>
+            <strong id="liveWpm">0</strong>
+          </div>
+          <div class="stat">
+            <span class="label">Accuracy</span>
+            <strong id="liveAccuracy">100%</strong>
+          </div>
+          <div class="stat">
+            <span class="label">Errors</span>
+            <strong id="liveErrors">0</strong>
+          </div>
+        </div>
+
+        <div class="practice-text" id="practiceText" aria-live="polite"></div>
+
+        <label for="typingInput">Start typing here</label>
+        <textarea
+          id="typingInput"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          placeholder="The timer will start with your first keystroke..."
+        ></textarea>
+
+        <div class="action-row">
+          <button type="button" class="action" id="restartBtn">Restart</button>
+          <button type="button" class="action" id="finishBtn">Finish Practice</button>
+        </div>
+
+        <div class="result-box" id="resultBox">
+          <h3>Practice Complete</h3>
+          <p id="bestMessage" class="new-best"></p>
+
+          <div class="result-main">
+            <div><strong id="resultWpm">0</strong>WPM</div>
+            <div><strong id="resultAccuracy">0%</strong>Accuracy</div>
+            <div><strong id="resultErrors">0</strong>Errors</div>
+            <div><strong id="resultChars">0</strong>Characters</div>
+          </div>
+
+          <button type="button" class="action primary" id="practiceAgainBtn">Practice Again</button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="statsTitle">
+        <h2 id="statsTitle">Your Practice Stats</h2>
+
+        <div class="stats-grid">
+          <div class="box"><span>Best 1 Minute WPM</span><strong id="best1">0</strong></div>
+          <div class="box"><span>Best 5 Minute WPM</span><strong id="best5">0</strong></div>
+          <div class="box"><span>Best 10 Minute WPM</span><strong id="best10">0</strong></div>
+          <div class="box"><span>Average Accuracy</span><strong id="avgAccuracy">0%</strong></div>
+          <div class="box"><span>Total Practice Time</span><strong id="totalTime">0m</strong></div>
+          <div class="box"><span>Sessions Completed</span><strong id="totalSessions">0</strong></div>
+        </div>
+
+        <h3 style="margin-top:20px;">Last 10 Sessions</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Duration</th>
+                <th>WPM</th>
+                <th>Accuracy</th>
+              </tr>
+            </thead>
+            <tbody id="historyBody">
+              <tr><td colspan="4">No completed sessions yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="action-row">
+          <button type="button" class="action danger" id="resetStatsBtn">Reset Statistics</button>
+          <span></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>How This Typing Practice Works</h2>
+        <div class="summary">
+          <strong>Key takeaway:</strong> Choose a 1, 5 or 10 minute session, start typing, and focus on maintaining both speed and accuracy. Your personal statistics are saved only in your browser using localStorage.
+        </div>
+
+        <p>This practice tool uses the standard typing convention of five characters per word. Your WPM is calculated from correctly typed characters, while accuracy compares correct keystrokes with your total typed characters.</p>
+
+        <h3>Which Practice Time Should You Choose?</h3>
+        <p><strong>1 minute:</strong> useful for a quick daily speed check. <strong>5 minutes:</strong> a balanced practice session for speed and consistency. <strong>10 minutes:</strong> better for endurance and maintaining accuracy over a longer period.</p>
+
+        <h3>How WPM Is Calculated</h3>
+        <p><code>WPM = correct characters ÷ 5 ÷ elapsed minutes</code></p>
+
+        <h3>Tips for Better Practice</h3>
+        <p>Keep your eyes on the practice text, use a relaxed hand position, avoid chasing speed at the expense of accuracy, and repeat shorter sessions regularly instead of forcing very long sessions.</p>
+      </section>
+
+      <section class="card">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <h3>Do I need to create an account?</h3>
+          <p>No. Your practice statistics are stored locally in your browser.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Will my results be saved after I close the page?</h3>
+          <p>Yes, as long as your browser keeps localStorage data for this page. Clearing browser site data will remove the saved statistics.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Which duration is best for daily practice?</h3>
+          <p>Five minutes is a practical default for many users because it is long enough to measure consistency while remaining easy to repeat regularly.</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>About This Tool</h2>
+        <p>This timed typing practice tool was created for Typing Speed Hub to help users build speed, accuracy and endurance with simple 1, 5 and 10 minute sessions. It works entirely in the browser and does not require registration.</p>
+      </section>
+
+      <footer>
+        © 2025–2026 Typing Speed Hub. All rights reserved.
+      </footer>
+    </main>
+
+    <aside class="side right">
+      <h2>Info</h2>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+      <a href="impressum.html">Impressum</a>
+    </aside>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const STORAGE_KEY = "typingSpeedHubPracticeStatsV1";
+
+      const textBanks = {
+        en: {
+          beginner: [
+            "Good typing starts with calm hands and steady rhythm. Keep your eyes on the text and press each key with light, controlled movement.",
+            "Practice a little every day. Accuracy comes first, and speed usually follows when your fingers learn the correct movements.",
+            "Sit comfortably and keep your shoulders relaxed. Use both hands and try to return your fingers to the home row after each word.",
+            "Short sessions can be very effective. Focus on clean typing, simple words, and an even pace from the beginning to the end.",
+            "Typing is easier when you avoid rushing. Read a few words ahead, breathe normally, and let your fingers follow the text."
+          ],
+          intermediate: [
+            "Consistent typing speed depends on rhythm, accuracy, and efficient correction habits. A smooth pace is often more useful than short bursts of very high speed.",
+            "When you notice repeated errors, slow down for a moment and identify the key combination that causes trouble. Repeating difficult patterns can improve control.",
+            "A practical typing routine combines short speed checks with longer endurance sessions. This helps you develop both confidence and stable performance.",
+            "Good keyboard technique reduces unnecessary movement. Keep your wrists neutral, use light keystrokes, and allow each finger to handle its usual area.",
+            "Accuracy matters because every correction interrupts your rhythm. Building reliable muscle memory can make faster typing feel easier and more natural."
+          ],
+          advanced: [
+            "Experienced typists improve by balancing speed with precision under sustained attention. The goal is not merely to produce a high peak score but to maintain efficient performance throughout the entire session.",
+            "Advanced practice becomes more useful when you examine error patterns instead of focusing only on average words per minute. Difficult transitions, punctuation, and uncommon letter combinations often reveal the next area to train.",
+            "A stable typing rhythm reduces cognitive load because familiar key sequences become increasingly automatic. This allows more attention to remain on meaning, structure, and the words that are coming next.",
+            "Longer sessions test endurance, posture, concentration, and error recovery. Maintaining accuracy for ten minutes can provide a more realistic measure of everyday typing ability than a very short sprint.",
+            "Efficient typists rarely force the keyboard. Light keystrokes, small finger movements, neutral wrists, and consistent pacing generally support both comfort and long-term performance."
+          ]
+        },
+        hu: {
+          beginner: [
+            "A jó gépelés nyugodt kéztartással és egyenletes ritmussal kezdődik. Figyeld a szöveget, és könnyed mozdulatokkal nyomd le a billentyűket.",
+            "Gyakorolj minden nap egy keveset. Először a pontosságra figyelj, mert a sebesség később természetesen javulhat.",
+            "Ülj kényelmesen, a vállad legyen laza. Használd mindkét kezed, és próbáld az ujjaidat visszavinni az alapsorra.",
+            "A rövid gyakorlások is sokat érhetnek. Gépelj tisztán, egyenletes tempóban, és ne kapkodj.",
+            "Könnyebb pontosan írni, ha nem sietsz. Olvass néhány szót előre, és hagyd, hogy az ujjaid kövessék a szöveget."
+          ],
+          intermediate: [
+            "Az egyenletes gépelési sebességhez ritmus, pontosság és jó javítási szokások kellenek. A stabil tempó sokszor többet ér, mint egy rövid gyors szakasz.",
+            "Ha ugyanazokat a hibákat ismétled, lassíts egy kicsit, és figyeld meg, melyik billentyűkapcsolat okozza a problémát.",
+            "Egy jó gyakorlási rutin rövid sebességmérést és hosszabb kitartási gyakorlást is tartalmazhat.",
+            "A hatékony billentyűhasználat csökkenti a felesleges mozgást. Tartsd semlegesen a csuklódat, és könnyedén üsd le a billentyűket.",
+            "A pontosság azért fontos, mert minden javítás megtöri a ritmust. A biztos izommemória később gyorsabb gépelést tesz lehetővé."
+          ],
+          advanced: [
+            "A tapasztalt gépelők számára a fejlődés kulcsa a sebesség és a pontosság tartós egyensúlya. Nem csak a csúcseredmény számít, hanem az is, hogy a teljes gyakorlás alatt mennyire marad stabil a teljesítmény.",
+            "A haladó gyakorlás akkor igazán hasznos, ha az átlagos percenkénti szószám mellett a hibamintákat is figyeled.",
+            "A stabil gépelési ritmus csökkenti a mentális terhelést, mert az ismerős billentyűsorozatok egyre automatikusabbá válnak.",
+            "A hosszabb gyakorlás próbára teszi az állóképességet, a testtartást, a koncentrációt és a hibák utáni visszaállást.",
+            "A hatékony gépeléshez nincs szükség erős billentyűleütésekre. A könnyű mozdulatok és az egyenletes tempó kényelmesebb és tartósabb teljesítményt adhat."
+          ]
+        },
+        de: {
+          beginner: [
+            "Gutes Tippen beginnt mit ruhigen Händen und einem gleichmäßigen Rhythmus. Schaue auf den Text und drücke jede Taste leicht und kontrolliert.",
+            "Übe jeden Tag ein wenig. Achte zuerst auf Genauigkeit, denn die Geschwindigkeit verbessert sich oft mit der Zeit.",
+            "Sitze bequem und halte die Schultern locker. Benutze beide Hände und führe die Finger nach jedem Wort zur Grundreihe zurück.",
+            "Kurze Übungen können sehr wirksam sein. Tippe sauber, gleichmäßig und ohne unnötige Eile.",
+            "Genaues Tippen wird leichter, wenn du nicht hetzt. Lies einige Wörter voraus und lasse deine Finger dem Text folgen."
+          ],
+          intermediate: [
+            "Eine gleichmäßige Tippgeschwindigkeit hängt von Rhythmus, Genauigkeit und guten Korrekturgewohnheiten ab. Ein stabiles Tempo ist oft wertvoller als kurze sehr schnelle Phasen.",
+            "Wenn sich bestimmte Fehler wiederholen, werde kurz langsamer und beobachte, welche Tastenkombination Schwierigkeiten verursacht.",
+            "Eine praktische Übungsroutine verbindet kurze Geschwindigkeitstests mit längeren Einheiten für Ausdauer und Konzentration.",
+            "Eine gute Tastaturtechnik vermeidet unnötige Bewegungen. Halte die Handgelenke neutral und tippe mit leichten Anschlägen.",
+            "Genauigkeit ist wichtig, weil jede Korrektur den Rhythmus unterbricht. Sicheres Muskelgedächtnis macht schnelles Tippen später leichter."
+          ],
+          advanced: [
+            "Erfahrene Schreiber verbessern sich, indem sie Geschwindigkeit und Präzision über längere Zeit im Gleichgewicht halten. Nicht nur der höchste Spitzenwert, sondern auch die stabile Leistung während der gesamten Übung ist wichtig.",
+            "Fortgeschrittenes Training wird besonders nützlich, wenn du Fehlermuster untersuchst und dich nicht nur auf die durchschnittlichen Wörter pro Minute konzentrierst.",
+            "Ein stabiler Tipprhythmus senkt die mentale Belastung, weil vertraute Tastenfolgen zunehmend automatisch ausgeführt werden.",
+            "Längere Einheiten testen Ausdauer, Haltung, Konzentration und die Fähigkeit, nach einem Fehler schnell in den Rhythmus zurückzufinden.",
+            "Effiziente Schreiber erzwingen nichts auf der Tastatur. Leichte Anschläge, kleine Fingerbewegungen und ein gleichmäßiges Tempo unterstützen Komfort und Leistung."
+          ]
+        }
+      };
+
+      const modeButtons = [...document.querySelectorAll(".mode-btn")];
+      const langPills = [...document.querySelectorAll(".lang-pills button")];
+
+      const languageSelect = document.getElementById("languageSelect");
+      const levelSelect = document.getElementById("levelSelect");
+      const prepareBtn = document.getElementById("prepareBtn");
+      const newTextBtn = document.getElementById("newTextBtn");
+      const restartBtn = document.getElementById("restartBtn");
+      const finishBtn = document.getElementById("finishBtn");
+      const practiceAgainBtn = document.getElementById("practiceAgainBtn");
+      const resetStatsBtn = document.getElementById("resetStatsBtn");
+
+      const practiceText = document.getElementById("practiceText");
+      const typingInput = document.getElementById("typingInput");
+      const timeLeftEl = document.getElementById("timeLeft");
+      const liveWpmEl = document.getElementById("liveWpm");
+      const liveAccuracyEl = document.getElementById("liveAccuracy");
+      const liveErrorsEl = document.getElementById("liveErrors");
+
+      const resultBox = document.getElementById("resultBox");
+      const resultWpm = document.getElementById("resultWpm");
+      const resultAccuracy = document.getElementById("resultAccuracy");
+      const resultErrors = document.getElementById("resultErrors");
+      const resultChars = document.getElementById("resultChars");
+      const bestMessage = document.getElementById("bestMessage");
+
+      const best1El = document.getElementById("best1");
+      const best5El = document.getElementById("best5");
+      const best10El = document.getElementById("best10");
+      const avgAccuracyEl = document.getElementById("avgAccuracy");
+      const totalTimeEl = document.getElementById("totalTime");
+      const totalSessionsEl = document.getElementById("totalSessions");
+      const historyBody = document.getElementById("historyBody");
+
+      let selectedMinutes = 1;
+      let targetText = "";
+      let startTime = null;
+      let timerId = null;
+      let finished = false;
+      let lastSecondShown = null;
+
+      function defaultStats(){
+        return {
+          best1:0,
+          best5:0,
+          best10:0,
+          totalPracticeSeconds:0,
+          totalSessions:0,
+          accuracySum:0,
+          history:[]
+        };
+      }
+
+      function getStats(){
+        try{
+          const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY));
+          return {...defaultStats(), ...(parsed || {})};
+        }catch{
+          return defaultStats();
+        }
+      }
+
+      function saveStats(stats){
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
+      }
+
+      function formatTime(seconds){
+        const safe = Math.max(0, Math.ceil(seconds));
+        const m = Math.floor(safe / 60);
+        const s = safe % 60;
+        return `${m}:${String(s).padStart(2,"0")}`;
+      }
+
+      function formatTotal(seconds){
+        if(seconds < 60) return `${seconds}s`;
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        if(h > 0) return `${h}h ${m}m`;
+        return `${m}m`;
+      }
+
+      function pickText(){
+        const lang = languageSelect.value;
+        const level = levelSelect.value;
+        const bank = textBanks[lang][level];
+        let parts = [];
+        for(let round=0; round<22; round++){
+          const shuffled = [...bank].sort(() => Math.random() - .5);
+          parts.push(...shuffled);
+        }
+        targetText = parts.join(" ");
+        renderTarget();
+      }
+
+      function renderTarget(){
+        const typed = typingInput.value;
+        const frag = document.createDocumentFragment();
+
+        for(let i=0; i<targetText.length; i++){
+          const span = document.createElement("span");
+          span.className = "char";
+          span.textContent = targetText[i];
+
+          if(i < typed.length){
+            span.classList.add(typed[i] === targetText[i] ? "correct" : "incorrect");
+          }else if(i === typed.length){
+            span.classList.add("current");
+          }else{
+            span.classList.add("pending");
+          }
+          frag.appendChild(span);
+        }
+
+        practiceText.replaceChildren(frag);
+
+        const current = practiceText.querySelector(".current");
+        if(current){
+          const containerRect = practiceText.getBoundingClientRect();
+          const currentRect = current.getBoundingClientRect();
+          if(currentRect.bottom > containerRect.bottom - 25){
+            practiceText.scrollTop += currentRect.bottom - containerRect.bottom + 65;
+          }
+        }
+      }
+
+      function calculateMetrics(){
+        const typed = typingInput.value;
+        let correct = 0;
+        let errors = 0;
+
+        for(let i=0; i<typed.length; i++){
+          if(typed[i] === targetText[i]) correct++;
+          else errors++;
+        }
+
+        const now = Date.now();
+        const elapsedSeconds = startTime ? Math.max(.1, (now - startTime) / 1000) : 0;
+        const elapsedMinutes = elapsedSeconds / 60;
+        const wpm = elapsedMinutes > 0 ? Math.round((correct / 5) / elapsedMinutes) : 0;
+        const accuracy = typed.length > 0 ? (correct / typed.length) * 100 : 100;
+
+        return {typed, correct, errors, elapsedSeconds, wpm, accuracy};
+      }
+
+      function updateLive(){
+        if(!startTime || finished) return;
+
+        const totalSeconds = selectedMinutes * 60;
+        const elapsed = (Date.now() - startTime) / 1000;
+        const remaining = totalSeconds - elapsed;
+
+        if(remaining <= 0){
+          timeLeftEl.textContent = "0:00";
+          finishSession(true);
+          return;
+        }
+
+        const metrics = calculateMetrics();
+        liveWpmEl.textContent = metrics.wpm;
+        liveAccuracyEl.textContent = `${metrics.accuracy.toFixed(1)}%`;
+        liveErrorsEl.textContent = metrics.errors;
+
+        const sec = Math.ceil(remaining);
+        if(sec !== lastSecondShown){
+          timeLeftEl.textContent = formatTime(remaining);
+          lastSecondShown = sec;
+        }
+      }
+
+      function startTimerIfNeeded(){
+        if(startTime || finished) return;
+        startTime = Date.now();
+        timerId = setInterval(updateLive, 200);
+      }
+
+      function resetSession({newText=false} = {}){
+        if(timerId) clearInterval(timerId);
+        timerId = null;
+        startTime = null;
+        finished = false;
+        lastSecondShown = null;
+        typingInput.disabled = false;
+        typingInput.value = "";
+        resultBox.classList.remove("show");
+        bestMessage.textContent = "";
+        timeLeftEl.textContent = formatTime(selectedMinutes * 60);
+        liveWpmEl.textContent = "0";
+        liveAccuracyEl.textContent = "100%";
+        liveErrorsEl.textContent = "0";
+        practiceText.scrollTop = 0;
+        if(newText || !targetText) pickText();
+        else renderTarget();
+        typingInput.focus();
+      }
+
+      function finishSession(autoFinish=false){
+        if(finished) return;
+        finished = true;
+
+        if(timerId) clearInterval(timerId);
+        timerId = null;
+
+        const metrics = calculateMetrics();
+        typingInput.disabled = true;
+
+        const officialSeconds = autoFinish
+          ? selectedMinutes * 60
+          : Math.min(selectedMinutes * 60, Math.max(1, Math.round(metrics.elapsedSeconds)));
+
+        const officialMinutes = officialSeconds / 60;
+        const finalWpm = officialMinutes > 0 ? Math.round((metrics.correct / 5) / officialMinutes) : 0;
+        const finalAccuracy = metrics.typed.length > 0
+          ? (metrics.correct / metrics.typed.length) * 100
+          : 0;
+
+        resultWpm.textContent = finalWpm;
+        resultAccuracy.textContent = `${finalAccuracy.toFixed(1)}%`;
+        resultErrors.textContent = metrics.errors;
+        resultChars.textContent = metrics.typed.length;
+
+        if(metrics.typed.length > 0){
+          const stats = getStats();
+          const bestKey = `best${selectedMinutes}`;
+          const wasBest = finalWpm > (stats[bestKey] || 0);
+
+          if(wasBest){
+            stats[bestKey] = finalWpm;
+            bestMessage.textContent = `New ${selectedMinutes}-minute personal best! 🎉`;
+          }else{
+            bestMessage.textContent = "";
+          }
+
+          stats.totalPracticeSeconds += officialSeconds;
+          stats.totalSessions += 1;
+          stats.accuracySum += finalAccuracy;
+
+          stats.history.unshift({
+            date: new Date().toLocaleDateString(),
+            minutes:selectedMinutes,
+            wpm:finalWpm,
+            accuracy:Number(finalAccuracy.toFixed(1))
+          });
+
+          stats.history = stats.history.slice(0,10);
+          saveStats(stats);
+          renderStats();
+        }
+
+        resultBox.classList.add("show");
+        resultBox.scrollIntoView({behavior:"smooth", block:"nearest"});
+      }
+
+      function renderStats(){
+        const stats = getStats();
+        best1El.textContent = stats.best1 || 0;
+        best5El.textContent = stats.best5 || 0;
+        best10El.textContent = stats.best10 || 0;
+
+        const avg = stats.totalSessions > 0
+          ? stats.accuracySum / stats.totalSessions
+          : 0;
+
+        avgAccuracyEl.textContent = `${avg.toFixed(1)}%`;
+        totalTimeEl.textContent = formatTotal(stats.totalPracticeSeconds || 0);
+        totalSessionsEl.textContent = stats.totalSessions || 0;
+
+        historyBody.innerHTML = "";
+        if(!stats.history || stats.history.length === 0){
+          historyBody.innerHTML = '<tr><td colspan="4">No completed sessions yet.</td></tr>';
+          return;
+        }
+
+        for(const item of stats.history){
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${item.date}</td>
+            <td>${item.minutes} min</td>
+            <td>${item.wpm}</td>
+            <td>${Number(item.accuracy).toFixed(1)}%</td>
+          `;
+          historyBody.appendChild(tr);
+        }
+      }
+
+      modeButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          selectedMinutes = Number(btn.dataset.minutes);
+          modeButtons.forEach(b => b.classList.toggle("active", b === btn));
+          resetSession({newText:false});
+        });
+      });
+
+      langPills.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const lang = btn.dataset.lang;
+          languageSelect.value = lang;
+          langPills.forEach(b => b.classList.toggle("active", b === btn));
+          resetSession({newText:true});
+        });
+      });
+
+      languageSelect.addEventListener("change", () => {
+        langPills.forEach(b => b.classList.toggle("active", b.dataset.lang === languageSelect.value));
+        resetSession({newText:true});
+      });
+
+      levelSelect.addEventListener("change", () => resetSession({newText:true}));
+      prepareBtn.addEventListener("click", () => resetSession({newText:true}));
+      newTextBtn.addEventListener("click", () => resetSession({newText:true}));
+      restartBtn.addEventListener("click", () => resetSession({newText:false}));
+      practiceAgainBtn.addEventListener("click", () => resetSession({newText:true}));
+
+      finishBtn.addEventListener("click", () => {
+        if(!startTime){
+          alert("Start typing first.");
+          return;
+        }
+        finishSession(false);
+      });
+
+      typingInput.addEventListener("input", () => {
+        if(finished) return;
+        startTimerIfNeeded();
+
+        if(typingInput.value.length >= targetText.length - 1000){
+          const lang = languageSelect.value;
+          const level = levelSelect.value;
+          const bank = textBanks[lang][level];
+          targetText += " " + [...bank].sort(() => Math.random() - .5).join(" ");
+        }
+
+        renderTarget();
+        updateLive();
+      });
+
+      typingInput.addEventListener("paste", e => e.preventDefault());
+
+      resetStatsBtn.addEventListener("click", () => {
+        const ok = confirm("Reset all saved typing practice statistics on this browser?");
+        if(!ok) return;
+        localStorage.removeItem(STORAGE_KEY);
+        renderStats();
+      });
+
+      pickText();
+      renderStats();
+      resetSession({newText:false});
+    })();
+  </script>
+</body>
+</html>
