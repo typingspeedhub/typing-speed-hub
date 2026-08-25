@@ -963,7 +963,7 @@
             accuracy:Number(finalAccuracy.toFixed(1))
           });
 
-          stats.history = stats.history.slice(0,10);
+          stats.history = stats.history.slice(0,50);
           saveStats(stats);
           renderStats();
         }
