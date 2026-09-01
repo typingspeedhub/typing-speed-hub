@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Numbers & Symbols Typing Practice | Typing Speed Hub</title>
+  <meta name="description" content="Practice numbers and keyboard symbols step by step with 12 progressive typing lessons, timed drills, live error highlighting, WPM, accuracy, and finger guidance.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://typingspeedhub.com/numbers-symbols-practice.html">
+
+  <style>
+    :root {
+      --bg:#0d0d0d; --panel:#1e1e1e; --green:#00ff66; --soft-green:#b8ffd2;
+      --text:#eaffef; --muted:#a8c7b2; --red:#ff4d4d; --yellow:#ffd166;
+      --panel-width:920px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family:Arial,sans-serif;background-color:var(--bg);color:var(--green);
+      background-image:radial-gradient(var(--green) 1px,transparent 1px);background-size:20px 20px;
+    }
+    a{color:var(--green)}
+    .page{max-width:1100px;margin:0 auto;padding:26px 18px 50px}
+    .topbar{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+    .brand{font-weight:800;font-size:1.2rem;text-decoration:none}
+    .back-link{text-decoration:none;border:1px solid rgba(0,255,102,.45);padding:.5rem .8rem;border-radius:8px;background:rgba(0,255,102,.06)}
+    .hero,.panel{max-width:var(--panel-width);margin:0 auto 16px;background:var(--panel);border:1px solid rgba(0,255,102,.35);border-radius:14px;box-shadow:0 0 18px rgba(0,255,102,.22)}
+    .hero{padding:1.35rem 1.45rem;text-align:center}
+    h1{margin:0 0 .65rem;font-size:2rem;line-height:1.2}
+    .hero p{color:var(--text);line-height:1.6;margin:.35rem auto;max-width:790px}
+    .panel{padding:1.2rem 1.3rem}
+    .panel h2{margin:0 0 .8rem;font-size:1.4rem}
+    .lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+    .lesson-card{background:#111;border:1px solid rgba(0,255,102,.22);border-radius:12px;padding:.9rem;cursor:pointer;min-height:145px;transition:.15s ease}
+    .lesson-card:hover{border-color:var(--green);transform:translateY(-1px)}
+    .lesson-card.active{border-color:var(--green);box-shadow:0 0 12px rgba(0,255,102,.28)}
+    .lesson-card.locked{opacity:.42;cursor:not-allowed}
+    .lesson-number{font-size:.85rem;color:var(--muted);margin-bottom:.35rem}
+    .lesson-keys{font-size:1.35rem;font-weight:800;letter-spacing:.1rem;margin-bottom:.4rem;word-break:break-word}
+    .lesson-card p{margin:0;color:var(--text);font-size:.91rem;line-height:1.43}
+    .lesson-badge{display:inline-block;margin-top:.5rem;padding:.18rem .42rem;border:1px solid rgba(0,255,102,.35);border-radius:999px;color:var(--soft-green);font-size:.75rem}
+    .controls{display:grid;grid-template-columns:1fr auto;gap:.8rem;align-items:end;margin-bottom:1rem}
+    label{display:block;margin-bottom:.35rem;font-weight:700}
+    select,button{width:100%;background:#0d0d0d;color:var(--green);border:1px solid var(--green);border-radius:7px;padding:.7rem .8rem;font-size:1rem}
+    button{width:auto;min-width:150px;font-weight:800;cursor:pointer}
+    button:hover{background:var(--green);color:var(--bg)}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-bottom:1rem}
+    .stat{background:#111;border:1px solid rgba(0,255,102,.2);border-radius:10px;padding:.75rem;text-align:center}
+    .stat-value{display:block;font-size:1.35rem;font-weight:800;margin-top:.2rem}
+    .stat-label{color:var(--muted);font-size:.85rem}
+    .mode-note{margin:-.15rem 0 .85rem;color:var(--soft-green);font-size:.94rem;line-height:1.5}
+    .target-box{background:#0d0d0d;border:1px solid rgba(0,255,102,.35);border-radius:12px;padding:1rem;min-height:116px;font-family:"Courier New",monospace;font-size:1.45rem;line-height:1.8;letter-spacing:.08rem;white-space:pre-wrap;word-break:break-word;margin-bottom:.8rem}
+    .char.correct{color:var(--green);background:rgba(0,255,102,.08)}
+    .char.wrong{color:white;background:var(--red);border-radius:3px}
+    .char.current{background:rgba(255,209,102,.25);color:var(--yellow);border-bottom:2px solid var(--yellow)}
+    .typing-input{width:100%;min-height:105px;resize:vertical;background:#090909;color:var(--text);border:1px solid var(--green);border-radius:10px;padding:.9rem;font-size:1.23rem;font-family:"Courier New",monospace;line-height:1.55;outline:none}
+    .typing-input:focus{box-shadow:0 0 12px rgba(0,255,102,.25)}
+    .typing-input:disabled{opacity:.55;cursor:not-allowed}
+    .message{margin-top:.9rem;padding:.8rem .9rem;border-radius:10px;background:#111;color:var(--text);border:1px solid rgba(0,255,102,.2);min-height:48px;line-height:1.5}
+    .message.success{border-color:var(--green)} .message.fail{border-color:var(--red)}
+    .help{color:var(--text);line-height:1.65}.help strong{color:var(--green)}
+    .finger-guide{display:flex;justify-content:center;gap:.45rem;flex-wrap:wrap;margin:.25rem 0 1rem}
+    .key{min-width:64px;padding:.65rem .42rem;text-align:center;border:1px solid rgba(0,255,102,.38);border-radius:8px;background:#111;font-weight:800}
+    .key.new-key{border-color:var(--yellow);box-shadow:0 0 8px rgba(255,209,102,.2)}
+    .key small{display:block;color:var(--muted);font-weight:400;margin-top:.25rem;font-size:.7rem}
+    .progress-wrap{margin:.7rem 0 1rem}.progress-label{display:flex;justify-content:space-between;gap:.7rem;color:var(--muted);font-size:.85rem;margin-bottom:.35rem}
+    .progress-track{height:9px;background:#0d0d0d;border:1px solid rgba(0,255,102,.25);border-radius:999px;overflow:hidden}
+    .progress-bar{height:100%;width:0;background:var(--green);transition:width .2s ease}
+    .footer{max-width:var(--panel-width);margin:22px auto 0;text-align:center;color:var(--muted);font-size:.9rem}
+    @media(max-width:760px){.lesson-grid,.stats{grid-template-columns:1fr}.controls{grid-template-columns:1fr}button{width:100%}.target-box{font-size:1.18rem;letter-spacing:.04rem}h1{font-size:1.65rem}}
+  </style>
+</head>
+<body>
+<main class="page">
+  <div class="topbar">
+    <a class="brand" href="index.html">Typing Speed Hub</a>
+    <a class="back-link" href="index.html">← Back to Typing Speed Hub</a>
+  </div>
+
+  <section class="hero">
+    <h1>Numbers &amp; Symbols Practice</h1>
+    <p>Build confidence with the number row and common keyboard symbols through 12 progressive lessons. Start with simple number pairs, then add punctuation, Shift symbols, prices, percentages, dates, times, and mixed real-world patterns.</p>
+    <p>Complete a lesson with at least <strong>90% accuracy</strong> to unlock the next lesson. Aim for <strong>95% or higher</strong> before moving on when possible.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Choose a lesson</h2>
+    <div class="progress-wrap">
+      <div class="progress-label"><span>Your course progress</span><span id="progressText">1 / 12 unlocked</span></div>
+      <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+    </div>
+    <div class="lesson-grid" id="lessonGrid"></div>
+  </section>
+
+  <section class="panel">
+    <h2 id="lessonTitle">Lesson 1 – 1 and 2</h2>
+    <div class="finger-guide" id="fingerGuide"></div>
+    <p class="mode-note" id="modeNote"></p>
+
+    <div class="controls">
+      <div>
+        <label for="duration">Practice time</label>
+        <select id="duration">
+          <option value="60">1 minute</option>
+          <option value="180">3 minutes</option>
+          <option value="300">5 minutes</option>
+        </select>
+      </div>
+      <button id="startBtn" type="button">Start Lesson</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span class="stat-label">Time</span><span class="stat-value" id="timeStat">1:00</span></div>
+      <div class="stat"><span class="stat-label">WPM</span><span class="stat-value" id="wpmStat">0</span></div>
+      <div class="stat"><span class="stat-label">Accuracy</span><span class="stat-value" id="accuracyStat">100%</span></div>
+      <div class="stat"><span class="stat-label">Errors</span><span class="stat-value" id="errorStat">0</span></div>
+    </div>
+
+    <div class="target-box" id="targetBox" aria-live="polite"></div>
+    <textarea id="typingInput" class="typing-input" placeholder="Press Start Lesson, then type the text shown above..." disabled spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+    <div class="message" id="message">Select a lesson and press <strong>Start Lesson</strong>.</div>
+  </section>
+
+  <section class="panel help">
+    <h2>How to practice numbers and symbols</h2>
+    <p>Keep your hands close to the <strong>home row</strong> and reach upward to the number row without looking down. After each key press, return your finger to its normal position.</p>
+    <p>For symbols that require <strong>Shift</strong>, use the Shift key with the opposite hand whenever practical. For example, type a left-side symbol with the right Shift key. This helps maintain balance and touch-typing technique.</p>
+    <p>The final lessons use practical combinations such as <strong>25%</strong>, <strong>$19.99</strong>, <strong>2026-09-01</strong>, <strong>1:30</strong>, and <strong>5+5=10</strong>. Accuracy matters more than speed, especially when learning symbols.</p>
+  </section>
+
+  <div class="footer">© 2026 Typing Speed Hub</div>
+</main>
+
+<script>
+const LESSONS = [
+  {add:["1","2"], title:"1 and 2", desc:"Start the number row with the left little and ring fingers.", guide:[["1","Left little"],["2","Left ring"]]},
+  {add:["3","4"], title:"3 and 4", desc:"Add the left middle and index fingers.", guide:[["3","Left middle"],["4","Left index"]]},
+  {add:["5","6"], title:"5 and 6", desc:"Practice the center number-row reach with both index fingers.", guide:[["5","Left index"],["6","Right index"]]},
+  {add:["7","8"], title:"7 and 8", desc:"Add the right index and middle fingers.", guide:[["7","Right index"],["8","Right middle"]]},
+  {add:["9","0"], title:"9 and 0", desc:"Complete the main number row.", guide:[["9","Right ring"],["0","Right little"]]},
+  {add:["-","="], title:"Minus and Equals", desc:"Add two common calculation and data-entry keys.", guide:[["-","Right little"],["=","Right little"]]},
+  {add:[",",".","/"], title:"Comma, Period and Slash", desc:"Practice common punctuation and numeric separators.", guide:[[",","Right middle"],[".","Right ring"],["/","Right little"]]},
+  {add:[";","'"], title:"Semicolon and Apostrophe", desc:"Add common right-hand punctuation keys.", guide:[[";","Right little"],["'","Right little"]]},
+  {add:["!","@","#","$","%"], title:"Shift Symbols 1", desc:"Practice the most common left-side Shift symbols.", guide:[["!","1 + Shift"],["@","2 + Shift"],["#","3 + Shift"],["$","4 + Shift"],["%","5 + Shift"]]},
+  {add:["^","&","*","(",")"], title:"Shift Symbols 2", desc:"Complete the Shift symbols above 6 through 0.", guide:[["^","6 + Shift"],["&","7 + Shift"],["*","8 + Shift"],["(","9 + Shift"],[")","0 + Shift"]]},
+  {add:[":","?","_","+"], title:"More Shift Symbols", desc:"Add shifted punctuation and calculation symbols.", guide:[[":","; + Shift"],["?","/ + Shift"],["_","- + Shift"],["+","= + Shift"]]},
+  {add:[], title:"Mixed Numbers & Symbols", desc:"Use all learned keys in practical real-world patterns.", guide:[["25%","Percentage"],["$19.99","Price"],["1:30","Time"],["5+5=10","Math"]]}
+];
+
+const STORAGE_KEY = "tsh_numbers_symbols_unlock_v1";
+let selectedLesson=0,targetText="",timer=null,secondsLeft=60,startedAt=null,running=false,totalErrors=0,comparedLength=0;
+
+const lessonGrid=document.getElementById("lessonGrid"),lessonTitle=document.getElementById("lessonTitle"),
+fingerGuide=document.getElementById("fingerGuide"),modeNote=document.getElementById("modeNote"),
+durationSelect=document.getElementById("duration"),startBtn=document.getElementById("startBtn"),
+typingInput=document.getElementById("typingInput"),targetBox=document.getElementById("targetBox"),
+timeStat=document.getElementById("timeStat"),wpmStat=document.getElementById("wpmStat"),
+accuracyStat=document.getElementById("accuracyStat"),errorStat=document.getElementById("errorStat"),
+message=document.getElementById("message"),progressBar=document.getElementById("progressBar"),
+progressText=document.getElementById("progressText");
+
+function allowedKeysForLesson(index){return LESSONS.slice(0,index+1).flatMap(l=>l.add)}
+function getUnlockedLesson(){const s=parseInt(localStorage.getItem(STORAGE_KEY)||"0",10);return Number.isFinite(s)?Math.min(s,LESSONS.length-1):0}
+function setUnlockedLesson(index){const c=getUnlockedLesson();if(index>c)localStorage.setItem(STORAGE_KEY,String(Math.min(index,LESSONS.length-1)))}
+function displayKeys(index){
+  if(index===11)return "0–9 + Symbols";
+  return allowedKeysForLesson(index).join(" ");
+}
+function buildLessonCards(){
+  const unlocked=getUnlockedLesson();
+  lessonGrid.innerHTML=LESSONS.map((l,i)=>`
+    <article class="lesson-card ${i===selectedLesson?"active":""} ${i>unlocked?"locked":""}" data-lesson="${i}">
+      <div class="lesson-number">Lesson ${i+1}</div>
+      <div class="lesson-keys">${escapeHtml(displayKeys(i))}</div>
+      <p><strong>${i===11?"Practice":"New"}:</strong> ${i===11?"Real-world combinations":escapeHtml(l.add.join(" + "))}<br>${l.desc}</p>
+      <span class="lesson-badge">${i<5?"Number drill":i<9?"Numbers + punctuation":i<11?"Shift symbols":"Mixed practice"}</span>
+    </article>`).join("");
+  document.querySelectorAll(".lesson-card").forEach(c=>c.addEventListener("click",()=>chooseLesson(parseInt(c.dataset.lesson,10))));
+  const count=unlocked+1; progressText.textContent=`${count} / ${LESSONS.length} unlocked`;progressBar.style.width=`${count/LESSONS.length*100}%`;
+}
+function chooseLesson(index){
+  if(index>getUnlockedLesson()){message.className="message fail";message.textContent="Complete the previous lesson first to unlock this lesson.";return}
+  if(running)finishLesson(false);
+  selectedLesson=index;renderLesson();buildLessonCards();
+}
+function renderLesson(){
+  const l=LESSONS[selectedLesson];
+  lessonTitle.textContent=`Lesson ${selectedLesson+1} – ${l.title}`;
+  fingerGuide.innerHTML=l.guide.map(([k,f])=>`<div class="key new-key">${escapeHtml(k)}<small>${escapeHtml(f)}</small></div>`).join("");
+  if(selectedLesson===11){
+    modeNote.innerHTML="Final mixed practice uses <strong>numbers, punctuation, Shift symbols, prices, percentages, dates, times, and simple calculations</strong>.";
+  }else{
+    modeNote.innerHTML=`This lesson practices the learned keys: <strong>${escapeHtml(allowedKeysForLesson(selectedLesson).join(", "))}</strong>.`;
+  }
+  targetText=generatePracticeText(selectedLesson,240);typingInput.value="";typingInput.disabled=true;totalErrors=0;comparedLength=0;
+  secondsLeft=parseInt(durationSelect.value,10);timeStat.textContent=formatTime(secondsLeft);wpmStat.textContent="0";accuracyStat.textContent="100%";errorStat.textContent="0";
+  renderTarget("");message.className="message";message.innerHTML='Press <strong>Start Lesson</strong> when you are ready.';
+}
+const PRACTICAL = [
+  "25% 50% 75% 100%","$9.99 $19.99 $49.95 $100.00","2026-09-01 2026-12-31 01/09/2026",
+  "1:30 8:45 12:00 23:15","5+5=10 12-4=8 6*7=42 20/4=5","(10+5)*2=30",
+  "user@example.com #123 @home","A/B 3/4 1/2 99.9%","$25.00 + $15.50 = $40.50",
+  "10% 20% 30% 40% 50%","1,000 10,000 100,000 1,000,000","ready? yes! score: 98%"
+];
+function randomGroup(keys){
+  const len=Math.floor(Math.random()*5)+2;let g="";
+  for(let i=0;i<len;i++)g+=keys[Math.floor(Math.random()*keys.length)];
+  return g;
+}
+function generatePracticeText(index,minLen){
+  const parts=[];let total=0;
+  if(index===11){
+    while(total<minLen){const p=PRACTICAL[Math.floor(Math.random()*PRACTICAL.length)];parts.push(p);total+=p.length+1}
+    return parts.join(" ");
+  }
+  const keys=allowedKeysForLesson(index);
+  while(total<minLen){
+    let p;
+    if(index<=4){
+      if(Math.random()<.45){p=String(Math.floor(Math.random()*99999)+1).split("").filter(ch=>keys.includes(ch)).join("")||randomGroup(keys)}
+      else p=randomGroup(keys);
+    }else if(index<=7){
+      p=Math.random()<.5?randomGroup(keys):makeNumericPattern(keys);
+    }else{
+      p=Math.random()<.6?randomGroup(keys):makeSymbolPattern(keys);
+    }
+    parts.push(p);total+=p.length+1;
+  }
+  return parts.join(" ");
+}
+function makeNumericPattern(keys){
+  const nums=keys.filter(k=>/\d/.test(k)),punct=keys.filter(k=>!/\d/.test(k));
+  if(!nums.length||!punct.length)return randomGroup(keys);
+  const a=nums[Math.floor(Math.random()*nums.length)],b=nums[Math.floor(Math.random()*nums.length)],s=punct[Math.floor(Math.random()*punct.length)];
+  return `${a}${b}${s}${a}${b}`;
+}
+function makeSymbolPattern(keys){
+  const nums=keys.filter(k=>/\d/.test(k)),symbols=keys.filter(k=>!/\d/.test(k));
+  const n=nums.length?nums[Math.floor(Math.random()*nums.length)]:"5";
+  const s=symbols[Math.floor(Math.random()*symbols.length)];
+  return Math.random()<.5?`${s}${n}${n}`:`${n}${n}${s}`;
+}
+function startLesson(){
+  clearInterval(timer);targetText=generatePracticeText(selectedLesson,1000);typingInput.value="";typingInput.disabled=false;typingInput.focus();
+  totalErrors=0;comparedLength=0;running=true;secondsLeft=parseInt(durationSelect.value,10);startedAt=Date.now();
+  timeStat.textContent=formatTime(secondsLeft);wpmStat.textContent="0";accuracyStat.textContent="100%";errorStat.textContent="0";renderTarget("");
+  message.className="message";message.textContent="Type exactly what you see. Wrong characters are marked in red.";startBtn.textContent="Restart Lesson";
+  timer=setInterval(()=>{secondsLeft--;timeStat.textContent=formatTime(Math.max(secondsLeft,0));updateLiveStats();if(secondsLeft<=0)finishLesson(true)},1000);
+}
+startBtn.addEventListener("click",startLesson);
+durationSelect.addEventListener("change",()=>{if(!running){secondsLeft=parseInt(durationSelect.value,10);timeStat.textContent=formatTime(secondsLeft)}});
+typingInput.addEventListener("input",()=>{
+  if(!running)return;const typed=typingInput.value;
+  if(typed.length>targetText.length-160)targetText+=" "+generatePracticeText(selectedLesson,650);
+  if(typed.length>comparedLength){for(let i=comparedLength;i<typed.length;i++)if(typed[i]!==targetText[i])totalErrors++;comparedLength=typed.length}else comparedLength=typed.length;
+  renderTarget(typed);updateLiveStats();
+});
+function renderTarget(typed){
+  const start=Math.max(0,typed.length-15),end=Math.min(targetText.length,start+170),frag=targetText.slice(start,end);targetBox.innerHTML="";
+  for(let li=0;li<frag.length;li++){
+    const gi=start+li,sp=document.createElement("span");sp.className="char";sp.textContent=targetText[gi];
+    if(gi<typed.length)sp.classList.add(typed[gi]===targetText[gi]?"correct":"wrong");else if(gi===typed.length)sp.classList.add("current");
+    targetBox.appendChild(sp);
+  }
+}
+function updateLiveStats(){
+  const typed=typingInput.value,mins=Math.max((Date.now()-startedAt)/60000,1/60000),wpm=Math.round((typed.length/5)/mins);let correct=0;
+  for(let i=0;i<typed.length;i++)if(typed[i]===targetText[i])correct++;
+  const acc=typed.length?Math.max(0,Math.round(correct/typed.length*100)):100;
+  wpmStat.textContent=Number.isFinite(wpm)?wpm:0;accuracyStat.textContent=acc+"%";errorStat.textContent=totalErrors;
+}
+function finishLesson(naturalEnd){
+  if(!running)return;clearInterval(timer);running=false;typingInput.disabled=true;startBtn.textContent="Start Lesson";updateLiveStats();
+  const acc=parseInt(accuracyStat.textContent,10)||0,passed=naturalEnd&&acc>=90;
+  if(passed){
+    const next=selectedLesson+1,rating=acc>=98?"Excellent":acc>=95?"Great":"Passed";
+    if(next<LESSONS.length){setUnlockedLesson(next);message.className="message success";message.innerHTML=`<strong>${rating}!</strong> Accuracy: ${acc}% · Errors: ${totalErrors}. Lesson ${next+1} is now unlocked.`}
+    else{message.className="message success";message.innerHTML=`<strong>Course complete!</strong> You have completed the Numbers &amp; Symbols Practice course. Accuracy: ${acc}% · Errors: ${totalErrors}.`}
+  }else{
+    message.className="message fail";
+    message.innerHTML=naturalEnd?`<strong>Try this lesson again.</strong> You need at least 90% accuracy to unlock the next lesson. Result: ${acc}% accuracy · ${totalErrors} errors.`:"Lesson stopped. Press Start Lesson when you want to try again.";
+  }
+  buildLessonCards();
+}
+function formatTime(s){return `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+buildLessonCards();renderLesson();
+</script>
+</body>
+</html>
