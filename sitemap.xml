@@ -45,6 +45,14 @@
     <priority>0.8</priority>
   </url>
 
+    <!-- Free typing starter guide -->
+  <url>
+    <loc>https://typingspeedhub.com/free-typing-speed-starter-guide.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Main tools & key guides -->
   <url>
   <loc>https://typingspeedhub.com/touch-typing-lessons.html</loc>
