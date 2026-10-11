@@ -1183,7 +1183,10 @@
       document.getElementById("inputArea").classList.add("hidden");
 
       const level = document.getElementById("levelSelect").value;
-      const duration = parseInt(document.getElementById("durationSelect").value, 10);
+            const duration = Math.round(elapsedSeconds);
+
+      startTime = null;
+      document.getElementById("inputArea").oninput = null;
 
       saveResult({
         date: new Date().toLocaleString(),
