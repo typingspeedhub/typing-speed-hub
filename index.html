@@ -15,17 +15,12 @@
     crossorigin="anonymous"></script>
 
   <!-- Structured data -->
-  <script type="application/ld+json">
+   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Typing Speed Hub",
-    "url": "https://typingspeedhub.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://typingspeedhub.com/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "url": "https://typingspeedhub.com/"
   }
   </script>
 
@@ -1141,12 +1136,16 @@
         }
       }, 1000);
 
-      inputArea.oninput = function(){
-        const typed = inputArea.value.trim();
-        if (typed === currentSentence.trim()) {
-          clearInterval(timerInterval);
-          finishTest();
+           inputArea.oninput = function(){
+        while (inputArea.value.length >= currentSentence.length - 20) {
+          const nextSentence =
+            sentencePool[Math.floor(Math.random() * sentencePool.length)];
+
+          currentSentence += " " + nextSentence;
         }
+
+        document.getElementById("sentenceDisplay").textContent =
+          currentSentence;
       };
     }
 
