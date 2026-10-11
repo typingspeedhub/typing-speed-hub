@@ -944,7 +944,12 @@
         if(metrics.typed.length > 0){
           const stats = getStats();
           const bestKey = `best${selectedMinutes}`;
-          const wasBest = finalWpm > (stats[bestKey] || 0);
+          const completedFullDuration =
+          metrics.elapsedSeconds >= selectedMinutes * 60;
+
+          const wasBest =
+            completedFullDuration &&
+            finalWpm > (stats[bestKey] || 0);
 
           if(wasBest){
             stats[bestKey] = finalWpm;
@@ -959,7 +964,7 @@
 
           stats.history.unshift({
             date: new Date().toLocaleDateString(),
-            minutes:selectedMinutes,
+            minutes:officialSeconds / 60,
             wpm:finalWpm,
             accuracy:Number(finalAccuracy.toFixed(1))
           });
@@ -997,7 +1002,7 @@
           const tr = document.createElement("tr");
           tr.innerHTML = `
             <td>${item.date}</td>
-            <td>${item.minutes} min</td>
+            <td>${Math.round(item.minutes * 60)} s</td>
             <td>${item.wpm}</td>
             <td>${Number(item.accuracy).toFixed(1)}%</td>
           `;
