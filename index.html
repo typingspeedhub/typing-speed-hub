@@ -1154,18 +1154,28 @@
       if (!startTime) return;
 
       clearInterval(timerInterval);
-      const typedText = document.getElementById("inputArea").value;
-      const wordsTyped = typedText.trim().split(/\s+/).filter(w => w.length > 0).length;
-      const timeTaken = (Date.now() - startTime) / 1000 / 60;
-      const wpm = timeTaken > 0 ? Math.round(wordsTyped / timeTaken) : 0;
+            const typedText = document.getElementById("inputArea").value;
+      const selectedDuration = parseInt(
+        document.getElementById("durationSelect").value, 10
+      );
+
+      const elapsedSeconds = Math.min(
+        selectedDuration,
+        Math.max(0.1, (Date.now() - startTime) / 1000)
+      );
+      const timeTaken = elapsedSeconds / 60;
 
       let correctChars = 0;
-      for (let i = 0; i < Math.min(typedText.length, currentSentence.length); i++) {
-        if (typedText[i] === currentSentence[i]) correctChars++;
+      for (let i = 0; i < typedText.length; i++) {
+        if (typedText[i] === currentSentence[i]) {
+          correctChars++;
+        }
       }
 
-      const accuracy = currentSentence.length > 0
-        ? Math.round((correctChars / currentSentence.length) * 100)
+      const wpm = Math.round((correctChars / 5) / timeTaken);
+
+      const accuracy = typedText.length > 0
+        ? Math.round((correctChars / typedText.length) * 100)
         : 0;
 
       document.getElementById("resultDisplay").textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
