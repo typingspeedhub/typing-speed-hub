@@ -414,7 +414,9 @@
         start on the home row, add new keys gradually, and build accuracy before speed.
       </p>
       <p>
-        Complete a lesson with at least <strong>90% accuracy</strong> to unlock the next lesson.
+      Practice for the full selected time and type at least
+      <strong>30 characters</strong> with at least
+      <strong>90% accuracy</strong> to unlock the next lesson.
         Aim for <strong>95% or higher</strong> as your accuracy improves.
       </p>
     </section>
@@ -834,22 +836,25 @@
       }
     }
 
-    function updateLiveStats() {
+       function updateLiveStats() {
       const typed = typingInput.value;
-      const elapsedMinutes = Math.max((Date.now() - startedAt) / 60000, 1 / 60000);
-      const wpm = Math.round((typed.length / 5) / elapsedMinutes);
+      const elapsedMinutes = Math.max(
+        (Date.now() - startedAt) / 60000,
+        0.1 / 60
+      );
 
       let correct = 0;
       for (let i = 0; i < typed.length; i++) {
         if (typed[i] === targetText[i]) correct++;
       }
 
+      const wpm = Math.round((correct / 5) / elapsedMinutes);
       const accuracy = typed.length
-        ? Math.max(0, Math.round((correct / typed.length) * 100))
-        : 100;
+        ? (correct / typed.length) * 100
+        : 0;
 
       wpmStat.textContent = Number.isFinite(wpm) ? wpm : 0;
-      accuracyStat.textContent = accuracy + "%";
+      accuracyStat.textContent = accuracy.toFixed(1) + "%";
       errorStat.textContent = totalErrors;
     }
 
@@ -862,8 +867,22 @@
       startBtn.textContent = "Start Lesson";
       updateLiveStats();
 
-      const accuracy = parseInt(accuracyStat.textContent, 10) || 0;
-      const passed = naturalEnd && accuracy >= 90;
+          const typed = typingInput.value;
+
+      let correct = 0;
+      for (let i = 0; i < typed.length; i++) {
+        if (typed[i] === targetText[i]) correct++;
+      }
+
+      const accuracy = typed.length
+        ? (correct / typed.length) * 100
+        : 0;
+
+      const minimumCharacters = 30;
+      const passed =
+        naturalEnd &&
+        typed.length >= minimumCharacters &&
+        accuracy >= 90;
 
       if (passed) {
         const nextLesson = selectedLesson + 1;
@@ -888,7 +907,7 @@
           message.textContent = "Lesson stopped. Press Start Lesson when you want to try again.";
         } else {
           message.innerHTML =
-            `<strong>Try this lesson again.</strong> You need at least 90% accuracy to unlock the next lesson. ` +
+            `<strong>Try this lesson again.</strong> Complete the selected time and type at least 30 characters with at least 90% accuracy to unlock the next lesson. ` +
             `Result: ${accuracy}% accuracy · ${totalErrors} errors.`;
         }
       }
