@@ -528,9 +528,13 @@ are different lengths.
     </div>
 
     <div>
-      <label for="errors">Errors / mistakes</label>
-      <input id="errors" type="number" min="0" step="1" placeholder="Optional" />
-      <div class="field-note">Optional. Used to estimate adjusted WPM.</div>
+      <label for="errors">Incorrect characters or words</label>
+<input id="errors" type="number" min="0" step="1" placeholder="Optional" />
+<div class="field-note">
+  In Characters mode, enter incorrect characters remaining in the text.
+  In Words mode, enter incorrect words remaining in the text.
+  Include these in your total typed count. Leave blank for gross speed only.
+</div>
     </div>
   </div>
 
@@ -565,10 +569,13 @@ are different lengths.
 </div>
 
 <div class="step">
-  <h3>3. Add errors if you want an adjusted score</h3>
+  <h3>3. Add incorrect characters or words</h3>
   <p>
-    The error field is optional. If you enter mistakes, the calculator will show a simple adjusted WPM estimate.
-    This helps you avoid focusing only on speed while ignoring accuracy.
+    This field is optional. In Characters mode, count incorrect characters
+    remaining in your final text. In Words mode, count incorrect words.
+    Your total typed count must include both correct and incorrect entries.
+    Do not include mistakes that you already corrected.
+    Leave the field blank to calculate gross speed only.
   </p>
 </div>
 
@@ -585,8 +592,13 @@ one minute equals about 50 WPM.
 </div>
 
 <div class="formula-box">
-  <p><strong>Formula using words:</strong></p>
-  <p><code>WPM = words typed / minutes</code></p>
+  <p><strong>Formula using actual words:</strong></p>
+  <p><code>Actual words per minute = words typed / minutes</code></p>
+  <p>
+    Actual words vary in length, so this result is not directly comparable
+    to standardized WPM based on five-character word units.
+    Use Characters mode when comparing typing-test results.
+  </p>
 </div>
 
 <p>
@@ -613,10 +625,19 @@ the difference between gross WPM and adjusted WPM.
 </div>
 
 <div class="step">
-  <h3>Adjusted WPM</h3>
+  <h3>Adjusted speed</h3>
   <p>
-    Adjusted WPM reduces your score based on mistakes. It gives a more realistic estimate of useful typing speed,
-    especially if you made several errors during the test.
+    This calculator subtracts incorrect entries from your total typed count.
+    In Characters mode, adjusted WPM uses correct characters divided by five,
+    then divided by the elapsed time in minutes.
+    In Words mode, it calculates correct actual words per minute.
+  </p>
+  <p>
+    <code>Adjusted WPM = ((total characters − incorrect characters) / 5) / minutes</code>
+  </p>
+  <p>
+    Example: 250 characters with 5 incorrect characters in one minute
+    gives 50 gross WPM and 49 adjusted WPM.
   </p>
 </div>
 
@@ -766,27 +787,87 @@ For more detailed practice advice, read
 
 <script>
   function calculateWPM() {
-    const method = document.getElementById("method").value;
-    const amount = parseFloat(document.getElementById("amount").value);
-    const minutes = parseFloat(document.getElementById("minutes").value) || 0;
-    const seconds = parseFloat(document.getElementById("seconds").value) || 0;
-    const errors = parseFloat(document.getElementById("errors").value) || 0;
+  const method = document.getElementById("method").value;
 
-    const message = document.getElementById("message");
-    const resultBox = document.getElementById("resultBox");
-    const grossResult = document.getElementById("grossResult");
-    const netResult = document.getElementById("netResult");
-    const detailResult = document.getElementById("detailResult");
+  const amountText = document.getElementById("amount").value.trim();
+  const minutesText = document.getElementById("minutes").value.trim();
+  const secondsText = document.getElementById("seconds").value.trim();
+  const errorsText = document.getElementById("errors").value.trim();
 
-    message.textContent = "";
-    resultBox.style.display = "none";
+  const amount = Number(amountText);
+  const minutes = minutesText === "" ? 0 : Number(minutesText);
+  const seconds = secondsText === "" ? 0 : Number(secondsText);
+  const errors = errorsText === "" ? 0 : Number(errorsText);
+  const hasErrors = errorsText !== "";
 
-    const totalMinutes = minutes + (seconds / 60);
+  const message = document.getElementById("message");
+  const resultBox = document.getElementById("resultBox");
+  const grossResult = document.getElementById("grossResult");
+  const netResult = document.getElementById("netResult");
+  const detailResult = document.getElementById("detailResult");
 
-    if (!amount || amount <= 0) {
-      message.textContent = "Please enter the number of characters or words typed.";
-      return;
-    }
+  message.textContent = "";
+  resultBox.style.display = "none";
+
+  if(method !== "characters" && method !== "words") {
+    message.textContent = "Please choose a valid calculation method.";
+    return;
+  }
+
+  if(amountText === "" || !Number.isSafeInteger(amount) || amount <= 0) {
+    message.textContent =
+      "Enter a positive whole number of characters or words.";
+    return;
+  }
+
+  if(!Number.isSafeInteger(minutes) || minutes < 0) {
+    message.textContent = "Minutes must be a non-negative whole number.";
+    return;
+  }
+
+  if(!Number.isSafeInteger(seconds) || seconds < 0 || seconds > 59) {
+    message.textContent = "Seconds must be a whole number from 0 to 59.";
+    return;
+  }
+
+  if(!Number.isSafeInteger(errors) || errors < 0 || errors > amount) {
+    message.textContent =
+      "Incorrect characters or words must be a whole number between zero and the total typed count.";
+    return;
+  }
+
+  const totalSeconds = minutes * 60 + seconds;
+
+  if(!Number.isSafeInteger(totalSeconds) || totalSeconds <= 0) {
+    message.textContent = "Enter a valid typing time greater than zero.";
+    return;
+  }
+
+  const totalMinutes = totalSeconds / 60;
+  const divisor = method === "characters" ? 5 : 1;
+
+  const grossWPM = (amount / divisor) / totalMinutes;
+  const adjustedWPM = ((amount - errors) / divisor) / totalMinutes;
+  const unit = method === "characters" ? "characters" : "words";
+
+  grossResult.textContent =
+    grossWPM.toFixed(1) +
+    (method === "characters"
+      ? " WPM (gross)"
+      : " actual words/min (gross)");
+
+  netResult.textContent = hasErrors
+    ? "Adjusted speed: " + adjustedWPM.toFixed(1) +
+      (method === "characters" ? " WPM" : " correct words/min")
+    : "No error count entered. Gross speed only.";
+
+  detailResult.textContent =
+    "Time: " + minutes + " min " + seconds + " sec. " +
+    "Total typed: " + amount + " " + unit + ". " +
+    (hasErrors ? "Incorrect: " + errors + "." : "");
+
+  resultBox.style.display = "block";
+}
 
     if (totalMinutes <= 0) {
       message.textContent = "Please enter a typing time greater than zero.";
