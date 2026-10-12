@@ -82,7 +82,7 @@
   <section class="hero">
     <h1>Numbers &amp; Symbols Practice</h1>
     <p>Build confidence with the number row and common keyboard symbols through 12 progressive lessons. Start with simple number pairs, then add punctuation, Shift symbols, prices, percentages, dates, times, and mixed real-world patterns.</p>
-    <p>Complete a lesson with at least <strong>90% accuracy</strong> to unlock the next lesson. Aim for <strong>95% or higher</strong> before moving on when possible.</p>
+    <p>Complete the full selected practice time, type at least <strong>30 characters</strong>, and achieve at least <strong>90% accuracy</strong> to unlock the next lesson. Aim for <strong>95% or higher</strong> before moving on when possible.</p>
   </section>
 
   <section class="panel">
@@ -125,6 +125,7 @@
 
   <section class="panel help">
     <h2>How to practice numbers and symbols</h2>
+    <p>The finger guidance and Shift combinations shown here are based on a <strong>US QWERTY keyboard layout</strong>. On other layouts, symbol positions and key combinations may differ.</p>
     <p>Keep your hands close to the <strong>home row</strong> and reach upward to the number row without looking down. After each key press, return your finger to its normal position.</p>
     <p>For symbols that require <strong>Shift</strong>, use the Shift key with the opposite hand whenever practical. For example, type a left-side symbol with the right Shift key. This helps maintain balance and touch-typing technique.</p>
     <p>The final lessons use practical combinations such as <strong>25%</strong>, <strong>$19.99</strong>, <strong>2026-09-01</strong>, <strong>1:30</strong>, and <strong>5+5=10</strong>. Accuracy matters more than speed, especially when learning symbols.</p>
@@ -247,7 +248,19 @@ function startLesson(){
   totalErrors=0;comparedLength=0;running=true;secondsLeft=parseInt(durationSelect.value,10);startedAt=Date.now();
   timeStat.textContent=formatTime(secondsLeft);wpmStat.textContent="0";accuracyStat.textContent="100%";errorStat.textContent="0";renderTarget("");
   message.className="message";message.textContent="Type exactly what you see. Wrong characters are marked in red.";startBtn.textContent="Restart Lesson";
-  timer=setInterval(()=>{secondsLeft--;timeStat.textContent=formatTime(Math.max(secondsLeft,0));updateLiveStats();if(secondsLeft<=0)finishLesson(true)},1000);
+  const lessonDuration = secondsLeft;
+
+timer = setInterval(() => {
+  const elapsedSeconds = (Date.now() - startedAt) / 1000;
+
+  secondsLeft = Math.max(0, Math.ceil(lessonDuration - elapsedSeconds));
+  timeStat.textContent = formatTime(secondsLeft);
+  updateLiveStats();
+
+  if(elapsedSeconds >= lessonDuration){
+    finishLesson(true);
+  }
+}, 100);
 }
 startBtn.addEventListener("click",startLesson);
 durationSelect.addEventListener("change",()=>{if(!running){secondsLeft=parseInt(durationSelect.value,10);timeStat.textContent=formatTime(secondsLeft)}});
@@ -266,23 +279,69 @@ function renderTarget(typed){
   }
 }
 function updateLiveStats(){
-  const typed=typingInput.value,mins=Math.max((Date.now()-startedAt)/60000,1/60000),wpm=Math.round((typed.length/5)/mins);let correct=0;
-  for(let i=0;i<typed.length;i++)if(typed[i]===targetText[i])correct++;
-  const acc=typed.length?Math.max(0,Math.round(correct/typed.length*100)):100;
-  wpmStat.textContent=Number.isFinite(wpm)?wpm:0;accuracyStat.textContent=acc+"%";errorStat.textContent=totalErrors;
+  const typed = typingInput.value;
+  const mins = Math.max((Date.now() - startedAt) / 60000, 0.1 / 60);
+
+  let correct = 0;
+  for(let i = 0; i < typed.length; i++){
+    if(typed[i] === targetText[i]) correct++;
+  }
+
+  const wpm = Math.round((correct / 5) / mins);
+  const acc = typed.length ? (correct / typed.length) * 100 : 0;
+
+  wpmStat.textContent = Number.isFinite(wpm) ? wpm : 0;
+  accuracyStat.textContent = acc.toFixed(1) + "%";
+  errorStat.textContent = totalErrors;
 }
 function finishLesson(naturalEnd){
-  if(!running)return;clearInterval(timer);running=false;typingInput.disabled=true;startBtn.textContent="Start Lesson";updateLiveStats();
-  const acc=parseInt(accuracyStat.textContent,10)||0,passed=naturalEnd&&acc>=90;
-  if(passed){
-    const next=selectedLesson+1,rating=acc>=98?"Excellent":acc>=95?"Great":"Passed";
-    if(next<LESSONS.length){setUnlockedLesson(next);message.className="message success";message.innerHTML=`<strong>${rating}!</strong> Accuracy: ${acc}% · Errors: ${totalErrors}. Lesson ${next+1} is now unlocked.`}
-    else{message.className="message success";message.innerHTML=`<strong>Course complete!</strong> You have completed the Numbers &amp; Symbols Practice course. Accuracy: ${acc}% · Errors: ${totalErrors}.`}
-  }else{
-    message.className="message fail";
-    message.innerHTML=naturalEnd?`<strong>Try this lesson again.</strong> You need at least 90% accuracy to unlock the next lesson. Result: ${acc}% accuracy · ${totalErrors} errors.`:"Lesson stopped. Press Start Lesson when you want to try again.";
+  if(!running) return;
+
+  clearInterval(timer);
+  running = false;
+  typingInput.disabled = true;
+  startBtn.textContent = "Start Lesson";
+  updateLiveStats();
+
+  const typed = typingInput.value;
+  let correct = 0;
+
+  for(let i = 0; i < typed.length; i++){
+    if(typed[i] === targetText[i]) correct++;
   }
+
+  const acc = typed.length ? (correct / typed.length) * 100 : 0;
+  const minimumCharacters = 30;
+  const passed =
+    naturalEnd &&
+    typed.length >= minimumCharacters &&
+    acc >= 90;
+
+  const result = acc.toFixed(1);
+
+  if(passed){
+    const next = selectedLesson + 1;
+    const rating = acc >= 98 ? "Excellent" : acc >= 95 ? "Great" : "Passed";
+
+    message.className = "message success";
+
+    if(next < LESSONS.length){
+      setUnlockedLesson(next);
+      message.innerHTML =
+        `<strong>${rating}!</strong> Accuracy: ${result}% · Errors: ${totalErrors}. Lesson ${next + 1} is now unlocked.`;
+    }else{
+      message.innerHTML =
+        `<strong>Course complete!</strong> You have completed the Numbers &amp; Symbols Practice course. Accuracy: ${result}% · Errors: ${totalErrors}.`;
+    }
+  }else{
+    message.className = "message fail";
+    message.innerHTML = naturalEnd
+      ? `<strong>Try this lesson again.</strong> Complete the full practice time, type at least 30 characters, and achieve at least 90% accuracy. Result: ${result}% accuracy · ${totalErrors} errors.`
+      : "Lesson stopped. Press Start Lesson when you want to try again.";
+  }
+
   buildLessonCards();
+
 }
 function formatTime(s){return `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`}
 function escapeHtml(v){return String(v).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
