@@ -123,7 +123,10 @@
         <div class="summary" id="progressSummary">Complete a few typing practice sessions to see your progress trend.</div>
         <div class="summary-grid" style="margin-top:12px">
           <div class="metric"><span>Recent WPM Change</span><strong id="wpmChange">—</strong></div>
-          <div class="metric"><span>Recent Accuracy Change</span><strong id="accuracyChange">—</strong></div>
+          <div class="metric">
+  <span>Recent Accuracy Change (percentage points)</span>
+  <strong id="accuracyChange">—</strong>
+</div>
           <div class="metric"><span>Current Trend</span><strong id="trend">No data</strong></div>
         </div>
       </section>
@@ -195,7 +198,17 @@
         <p>Five to ten recent sessions can already show a useful short-term trend. Keeping more history makes longer-term progress easier to see.</p>
       </section>
 
-      <footer>© 2025–2026 Typing Speed Hub. All rights reserved.</footer>
+     <footer>
+  <p>© 2025–2026 Typing Speed Hub. All rights reserved.</p>
+  <p>
+    <a href="index.html">Home</a> ·
+    <a href="about.html">About</a> ·
+    <a href="contact.html">Contact</a> ·
+    <a href="privacy-policy.html">Privacy Policy</a> ·
+    <a href="terms-and-conditions.html">Terms</a> ·
+    <a href="impressum.html">Impressum</a>
+  </p>
+</footer>
     </main>
 
     <aside class="side right">
@@ -214,12 +227,68 @@
   const PRACTICE_KEY = "typingSpeedHubPracticeStatsV1";
   const LESSON_KEY = "tsh_touch_typing_unlock_v2";
 
-  function getStats(){
+   function getStats(){
+    const empty = {
+      best1: 0,
+      best5: 0,
+      best10: 0,
+      totalPracticeSeconds: 0,
+      totalSessions: 0,
+      accuracySum: 0,
+      history: []
+    };
+
     try{
       const parsed = JSON.parse(localStorage.getItem(PRACTICE_KEY));
-      return parsed || {best1:0,best5:0,best10:0,totalPracticeSeconds:0,totalSessions:0,accuracySum:0,history:[]};
+
+      if(!parsed || typeof parsed !== "object" || Array.isArray(parsed)){
+        return empty;
+      }
+
+      function nonNegative(value){
+        return typeof value === "number" &&
+          Number.isFinite(value) &&
+          value >= 0
+            ? value
+            : 0;
+      }
+
+      const history = Array.isArray(parsed.history)
+        ? parsed.history.filter(item=>
+            item &&
+            typeof item === "object" &&
+            typeof item.wpm === "number" &&
+            Number.isFinite(item.wpm) &&
+            item.wpm >= 0 &&
+            typeof item.accuracy === "number" &&
+            Number.isFinite(item.accuracy) &&
+            item.accuracy >= 0 &&
+            item.accuracy <= 100 &&
+            typeof item.minutes === "number" &&
+            Number.isFinite(item.minutes) &&
+            item.minutes > 0
+          )
+        : [];
+
+      const totalSessions = Number.isSafeInteger(parsed.totalSessions)
+        && parsed.totalSessions >= 0
+          ? parsed.totalSessions
+          : 0;
+
+      return {
+        best1: nonNegative(parsed.best1),
+        best5: nonNegative(parsed.best5),
+        best10: nonNegative(parsed.best10),
+        totalPracticeSeconds: nonNegative(parsed.totalPracticeSeconds),
+        totalSessions,
+        accuracySum: Math.min(
+          nonNegative(parsed.accuracySum),
+          totalSessions * 100
+        ),
+        history
+      };
     }catch{
-      return {best1:0,best5:0,best10:0,totalPracticeSeconds:0,totalSessions:0,accuracySum:0,history:[]};
+      return empty;
     }
   }
 
@@ -297,12 +366,41 @@
     if(!history.length){
       tbody.innerHTML = '<tr><td colspan="5">No completed sessions yet.</td></tr>';
     } else {
-      [...history].reverse().slice(0,20).forEach((item,idx,arr)=>{
-        const next = arr[idx+1];
-        const change = next ? Number(item.wpm)-Number(next.wpm) : null;
-        const text = change === null ? "—" : `${change>0?"+":""}${change}`;
+            const newestFirst = [...history].reverse();
+
+      newestFirst.slice(0,20).forEach((item,idx)=>{
+        const previous = newestFirst[idx+1];
+
+        const change = previous
+          ? Number(item.wpm) - Number(previous.wpm)
+          : null;
+
+        const changeText = change === null
+          ? "—"
+          : `${change > 0 ? "+" : ""}${change.toFixed(1)}`;
+
+        const durationSeconds = Math.round(Number(item.minutes) * 60);
+
+        const durationText = durationSeconds >= 60
+          ? `${Math.floor(durationSeconds / 60)}m ${durationSeconds % 60}s`
+          : `${durationSeconds}s`;
+
+        const values = [
+          item.date || "—",
+          durationText,
+          Number(item.wpm).toFixed(1),
+          `${Number(item.accuracy).toFixed(1)}%`,
+          changeText
+        ];
+
         const tr = document.createElement("tr");
-        tr.innerHTML = `<td>${item.date||"—"}</td><td>${item.minutes||"—"} min</td><td>${item.wpm||0}</td><td>${Number(item.accuracy||0).toFixed(1)}%</td><td>${text}</td>`;
+
+        values.forEach(value=>{
+          const td = document.createElement("td");
+          td.textContent = value;
+          tr.appendChild(td);
+        });
+
         tbody.appendChild(tr);
       });
     }
@@ -317,7 +415,8 @@
     const trendEl = document.getElementById("trend");
     if(wpmChange !== null){
       wpmChangeEl.textContent = `${wpmChange>0?"+":""}${Math.round(wpmChange)} WPM`;
-      accChangeEl.textContent = `${accChange>0?"+":""}${Number(accChange).toFixed(1)}%`;
+      accChangeEl.textContent =
+      `${accChange > 0 ? "+" : ""}${Number(accChange).toFixed(1)} pp`;
       const cls = wpmChange > 1 ? "trend-up" : wpmChange < -1 ? "trend-down" : "trend-flat";
       const label = wpmChange > 1 ? "Improving ↑" : wpmChange < -1 ? "Declining ↓" : "Stable →";
       trendEl.textContent = label;
@@ -334,10 +433,27 @@
     const currentAcc = latest ? Number(latest.accuracy) : 0;
     document.getElementById("currentWpm").textContent = latest ? `${currentWpm} WPM` : "0 WPM";
     document.getElementById("accuracyRating").textContent = !latest ? "No data" : currentAcc >= 98 ? "Excellent" : currentAcc >= 95 ? "Very good" : currentAcc >= 90 ? "Good" : "Needs focus";
-    const goal = currentWpm ? Math.ceil((currentWpm + 1)/5)*5 + 5 : null;
-    document.getElementById("nextGoal").textContent = goal ? `${goal} WPM` : "Start practicing";
+   const goal = latest
+  ? (Math.floor(currentWpm / 5) + 1) * 5
+  : null;
 
-    const unlocked = Math.min(14, Math.max(0, parseInt(localStorage.getItem(LESSON_KEY) || "0",10)));
+document.getElementById("nextGoal").textContent = !latest
+  ? "Start practicing"
+  : currentAcc < 95
+    ? "Aim for 95% accuracy"
+    : `${goal} WPM`;
+
+   let savedLesson = 0;
+
+try {
+  savedLesson = Number(localStorage.getItem(LESSON_KEY) || "0");
+} catch {
+  savedLesson = 0;
+}
+
+const unlocked = Number.isInteger(savedLesson)
+  ? Math.min(14, Math.max(0, savedLesson))
+  : 0;
     const unlockedCount = unlocked + 1;
     document.getElementById("courseText").textContent = `${unlockedCount} / 15 lessons unlocked. ${unlockedCount < 15 ? `Next goal: unlock Lesson ${unlockedCount+1}.` : "Full course unlocked."}`;
     document.getElementById("courseBar").style.width = `${(unlockedCount/15)*100}%`;
