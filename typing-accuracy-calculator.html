@@ -30,104 +30,108 @@
   <meta name="twitter:image" content="https://typingspeedhub.com/images/typing-accuracy-calculator.png" />
 
   <!-- Structured data: WebApplication + FAQ + Breadcrumb -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        "name": "Typing Accuracy Calculator",
-        "url": "https://typingspeedhub.com/typing-accuracy-calculator.html",
-        "applicationCategory": "EducationalApplication",
-        "operatingSystem": "Any",
-        "description": "A free online typing accuracy calculator that estimates typing accuracy from total characters, correct characters, and mistakes.",
-        "datePublished": "2026-06-01",
-        "dateModified": "2026-08-03",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Typing Speed Hub",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://typingspeedhub.com/images/logo.png"
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Typing Accuracy Calculator",
+      "url": "https://typingspeedhub.com/typing-accuracy-calculator.html",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "description": "Calculate final-text typing accuracy from total characters or words and either correct or incorrect entries.",
+      "datePublished": "2026-06-01",
+      "dateModified": "2026-10-13",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Typing Speed Hub"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://typingspeedhub.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Typing Tools",
+          "item": "https://typingspeedhub.com/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Typing Accuracy Calculator",
+          "item": "https://typingspeedhub.com/typing-accuracy-calculator.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is typing accuracy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typing accuracy is the percentage of your typing that was correct. It can be based on characters, keystrokes, words, or test-specific rules."
           }
         },
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
+        {
+          "@type": "Question",
+          "name": "How do you calculate typing accuracy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A simple formula is: correct entries divided by total entries, multiplied by 100. If you know your mistakes, subtract mistakes from total entries first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is 95% typing accuracy good?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. 95% accuracy is a good practical goal for many learners. If you want to type faster for work, study, coding, writing, or data entry, aiming for 97% or higher can be even better."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is 100% typing accuracy possible?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but not every test will be perfect. The goal is not to be perfect every time. The goal is to reduce repeated mistakes and keep your accuracy stable while your WPM improves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I focus on typing accuracy before WPM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In most cases, yes. Better accuracy usually makes your real typing speed more useful because you spend less time correcting errors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my accuracy score change on different typing websites?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Different typing websites may count errors differently. Some count every wrong character, some count wrong words, and some ignore mistakes that you correct during the test."
+          }
         }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://typingspeedhub.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Typing Speed Test",
-            "item": "https://typingspeedhub.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Typing Accuracy Calculator",
-            "item": "https://typingspeedhub.com/typing-accuracy-calculator.html"
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is typing accuracy?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Typing accuracy is the percentage of characters, words, or keystrokes typed correctly during a typing test or practice session."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How is typing accuracy calculated?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "A common typing accuracy formula is correct entries divided by total entries, multiplied by 100."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is a good typing accuracy score?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "For most learners, 95% or higher is a good typing accuracy goal. Advanced typists often aim for 97% to 99% accuracy while maintaining speed."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Should I improve typing speed or accuracy first?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Accuracy should usually come first. When you make fewer mistakes, your real typing speed becomes more stable and useful."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is this typing accuracy calculator free?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. This typing accuracy calculator is free to use and does not require registration."
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
+      ]
+    }
+  ]
+}
+</script>
 
   <style>
     :root {
@@ -532,7 +536,7 @@ control. A high typing speed is useful only when you can keep mistakes low and a
     <div>
       <label for="unit">Unit type</label>
       <select id="unit">
-        <option value="characters">Characters / keystrokes</option>
+       <option value="characters">Characters</option>
         <option value="words">Words</option>
       </select>
       <div class="field-note">Characters are usually more precise than words.</div>
@@ -577,8 +581,15 @@ control. A high typing speed is useful only when you can keep mistakes low and a
 <div class="step">
   <h3>2. Choose characters or words</h3>
   <p>
-    For most typing tests, <strong>characters or keystrokes</strong> are more accurate than words.
-    A single wrong letter inside a word can affect your accuracy, even if the word count looks similar.
+    Use the same unit for both input fields.
+    In Characters mode, count characters, including spaces and punctuation.
+    In Words mode, count whole words; a word containing a mistake counts
+    as one incorrect word.
+  </p>
+  <p>
+    Characters and physical key presses are different measurements.
+    Do not count Shift, Backspace, or other control keys as typed characters.
+    Character accuracy and word accuracy can produce different results.
   </p>
 </div>
 
@@ -620,9 +631,15 @@ For example, if you typed 300 characters and made 12 mistakes, the calculation w
 
 <div class="note-box">
   <p>
-    <strong>Note:</strong> Different typing websites may count mistakes differently. Some count wrong characters,
-    some count incorrect words, and some count only uncorrected mistakes. This calculator is designed as a practical
-    estimate for learning and practice.
+    <strong>Counting rule:</strong> This calculator measures accuracy
+    in the final typed text. Total typed must include both correct and
+    incorrect entries. Count only mistakes still present in that text;
+    do not add mistakes that you already corrected.
+  </p>
+  <p>
+    Some typing tests count all mistakes made during a session, including
+    corrected mistakes. Those scores use a different counting method and
+    may not match this calculator.
   </p>
 </div>
 
@@ -873,24 +890,45 @@ For more practice ideas, read
 
 <script>
   const methodSelect = document.getElementById("method");
+  const unitSelect = document.getElementById("unit");
   const secondLabel = document.getElementById("secondLabel");
   const secondNote = document.getElementById("secondNote");
 
-  methodSelect.addEventListener("change", function() {
+  function clearAccuracyResult() {
+    document.getElementById("message").textContent = "";
+    document.getElementById("resultBox").style.display = "none";
+  }
+
+  function updateAccuracyFields() {
+    const unit = unitSelect.value === "characters" ? "characters" : "words";
+
     if (methodSelect.value === "errors") {
-      secondLabel.textContent = "Mistakes / errors";
-      secondNote.textContent = "Enter how many characters, keystrokes, or words were incorrect.";
+      secondLabel.textContent = "Incorrect " + unit;
+      secondNote.textContent =
+        "Count incorrect " + unit +
+        " remaining in the final text. Do not include corrected mistakes.";
     } else {
-      secondLabel.textContent = "Correct typed";
-      secondNote.textContent = "Enter how many characters, keystrokes, or words were typed correctly.";
+      secondLabel.textContent = "Correct " + unit;
+      secondNote.textContent =
+        "Count correct " + unit + " in the final text.";
     }
-  });
+
+    document.getElementById("secondValue").value = "";
+    clearAccuracyResult();
+  }
+
+  methodSelect.addEventListener("change", updateAccuracyFields);
+  unitSelect.addEventListener("change", updateAccuracyFields);
 
   function calculateAccuracy() {
-    const method = document.getElementById("method").value;
-    const unit = document.getElementById("unit").value;
-    const total = parseFloat(document.getElementById("total").value);
-    const secondValue = parseFloat(document.getElementById("secondValue").value);
+    const method = methodSelect.value;
+    const unit = unitSelect.value;
+
+    const totalText = document.getElementById("total").value.trim();
+    const secondText = document.getElementById("secondValue").value.trim();
+
+    const total = Number(totalText);
+    const secondValue = Number(secondText);
 
     const message = document.getElementById("message");
     const resultBox = document.getElementById("resultBox");
@@ -898,71 +936,84 @@ For more practice ideas, read
     const detailResult = document.getElementById("detailResult");
     const adviceResult = document.getElementById("adviceResult");
 
-    message.textContent = "";
-    resultBox.style.display = "none";
+    clearAccuracyResult();
 
-    if (!total || total <= 0) {
-      message.textContent = "Please enter the total amount typed.";
+    if (
+      !["errors", "correct"].includes(method) ||
+      !["characters", "words"].includes(unit)
+    ) {
+      message.textContent = "Please choose a valid method and unit.";
       return;
     }
 
-    if (isNaN(secondValue) || secondValue < 0) {
-      if (method === "errors") {
-        message.textContent = "Please enter the number of mistakes.";
-      } else {
-        message.textContent = "Please enter the number of correct typed entries.";
-      }
+    if (
+      totalText === "" ||
+      !Number.isSafeInteger(total) ||
+      total <= 0
+    ) {
+      message.textContent =
+        "Enter a positive whole number for the total typed count.";
       return;
     }
 
-    let correctTyped;
-    let mistakes;
-
-    if (method === "errors") {
-      mistakes = secondValue;
-      correctTyped = total - mistakes;
-
-      if (mistakes > total) {
-        message.textContent = "Mistakes cannot be greater than the total amount typed.";
-        return;
-      }
-    } else {
-      correctTyped = secondValue;
-      mistakes = total - correctTyped;
-
-      if (correctTyped > total) {
-        message.textContent = "Correct typed entries cannot be greater than the total amount typed.";
-        return;
-      }
+    if (
+      secondText === "" ||
+      !Number.isSafeInteger(secondValue) ||
+      secondValue < 0 ||
+      secondValue > total
+    ) {
+      message.textContent =
+        "Enter a whole number between zero and the total typed count.";
+      return;
     }
 
+    const correctTyped =
+      method === "errors" ? total - secondValue : secondValue;
+
+    const mistakes = total - correctTyped;
     const accuracy = (correctTyped / total) * 100;
-    const unitText = unit === "characters" ? "characters / keystrokes" : "words";
 
     accuracyResult.textContent = accuracy.toFixed(1) + "%";
 
     detailResult.textContent =
-      "Total typed: " + total + " " + unitText +
+      "Total: " + total + " " + unit +
       ". Correct: " + correctTyped +
-      ". Mistakes: " + mistakes + ".";
+      ". Incorrect: " + mistakes + ".";
 
-    let advice = "";
+    let advice;
 
     if (accuracy < 90) {
-      advice = "Accuracy is low. Slow down and focus on clean keystrokes before trying to increase speed.";
+      advice =
+        "Focus on accuracy: slow down and practice difficult patterns.";
     } else if (accuracy < 95) {
-      advice = "Accuracy is improving, but there is still room to reduce repeated mistakes.";
+      advice =
+        "Keep working toward the suggested practice target of 95% accuracy.";
     } else if (accuracy < 97) {
-      advice = "Good accuracy. Keep practicing while slowly increasing your WPM.";
+      advice =
+        "Good practice result. Maintain accuracy while gradually increasing speed.";
     } else if (accuracy < 99) {
-      advice = "Strong accuracy. This is a good range for productive typing practice.";
+      advice =
+        "Strong practice result. Aim for consistent accuracy across several sessions.";
     } else {
-      advice = "Excellent accuracy. Try to maintain this level while gradually increasing speed.";
+      advice =
+        "Excellent practice result. Maintain this accuracy as you build speed.";
     }
 
     adviceResult.textContent = advice;
     resultBox.style.display = "block";
   }
+
+  document.querySelectorAll("#total, #secondValue").forEach(function(field) {
+    field.addEventListener("input", clearAccuracyResult);
+
+    field.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        calculateAccuracy();
+      }
+    });
+  });
+
+  updateAccuracyFields();
 </script>
 
 </body>
