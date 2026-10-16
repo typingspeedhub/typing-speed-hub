@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="google-adsense-account" content="ca-pub-1607876440670769">
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-68ZVCW4FWK");
-  </script>
+  
+  
 
   <!-- Google AdSense -->
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1607876440670769"
-    crossorigin="anonymous"></script>
+  
   
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -455,6 +449,9 @@
       }
     }
   </style>
+
+  <!-- Shared privacy choices: optional Analytics loads only after opt-in. -->
+  <script defer src="assets/privacy.js" data-analytics="G-68ZVCW4FWK"></script>
 </head>
 
 <body>
@@ -868,47 +865,6 @@ For more detailed practice advice, read
 
   resultBox.style.display = "block";
 }
-
-    if (totalMinutes <= 0) {
-      message.textContent = "Please enter a typing time greater than zero.";
-      return;
-    }
-
-    if (minutes < 0) {
-      message.textContent = "Minutes cannot be negative.";
-      return;
-    }
-
-    if (seconds < 0 || seconds > 59) {
-      message.textContent = "Seconds should be between 0 and 59.";
-      return;
-    }
-
-    if (errors < 0) {
-      message.textContent = "Errors cannot be negative.";
-      return;
-    }
-
-    let grossWPM;
-
-    if (method === "characters") {
-      grossWPM = (amount / 5) / totalMinutes;
-    } else {
-      grossWPM = amount / totalMinutes;
-    }
-
-    let adjustedWPM = grossWPM - (errors / totalMinutes);
-
-    if (adjustedWPM < 0) {
-      adjustedWPM = 0;
-    }
-
-    grossResult.textContent = grossWPM.toFixed(1) + " WPM";
-    netResult.textContent = "Adjusted estimate with errors: " + adjustedWPM.toFixed(1) + " WPM";
-    detailResult.textContent = "Typed for " + totalMinutes.toFixed(2) + " minute(s). Errors entered: " + errors + ".";
-
-    resultBox.style.display = "block";
-  }
 
   document.querySelectorAll("#amount, #minutes, #seconds, #errors").forEach(function (field) {
     field.addEventListener("keydown", function (event) {
