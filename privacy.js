@@ -25,8 +25,7 @@
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
   window['ga-disable-G-68ZVCW4FWK'] = !granted();
   window.gtag('consent', 'default', {
-    analytics_storage: granted() ? 'granted' : 'denied',
-    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+    analytics_storage: granted() ? 'granted' : 'denied'
   });
 
   function eraseAnalyticsCookies() {
@@ -71,8 +70,7 @@
     try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (_) { persistent = false; }
     window['ga-disable-G-68ZVCW4FWK'] = !granted();
     window.gtag('consent', 'update', {
-      analytics_storage: granted() ? 'granted' : 'denied',
-      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+      analytics_storage: granted() ? 'granted' : 'denied'
     });
     if (!granted()) eraseAnalyticsCookies();
     if (granted()) loadAnalytics();
@@ -83,9 +81,9 @@
   }
   const language = new URL(location.href).searchParams.get('lang') || document.documentElement.lang;
   const translations = {
-    en: {title:'Privacy choices', intro:'Your typing tools work without optional analytics. Choose whether to allow Google Analytics to measure visits on pages that use it. Advertising is not loaded by this version of the site.', necessary:'Site functions', necessaryText:'Your browser keeps practice results and lesson progress for the tools you use. We also remember this privacy choice for up to 180 days. These are separate from optional analytics.', analytics:'Allow Google Analytics', analyticsText:'Optional visit statistics sent to Google. Analytics is not loaded before you opt in. Your typed practice text and saved scores are not deliberately sent as Analytics events.', reject:'Reject analytics', accept:'Accept analytics', save:'Save choice', close:'Close', settings:'Privacy settings', policy:'Read the Privacy Policy', saved:'Privacy choice saved.', temporary:'Choice applied for this page. Browser storage is unavailable; you may be asked again.'},
-    hu: {title:'Adatvédelmi beállítások', intro:'A gépelési eszközök opcionális analitika nélkül is működnek. Eldöntheted, engedélyezed-e a Google Analytics látogatottságmérését az azt használó oldalakon. Ez a verzió nem tölt be hirdetéseket.', necessary:'Az oldal funkciói', necessaryText:'A böngésződ tárolja a használt gyakorlók eredményeit és a leckék állapotát. Ezt az adatvédelmi választást legfeljebb 180 napig jegyezzük meg. Ezek elkülönülnek az opcionális analitikától.', analytics:'Google Analytics engedélyezése', analyticsText:'Opcionális látogatottsági adatok küldése a Google részére. Az analitika csak elfogadás után töltődik be. A begépelt gyakorlószöveget és a mentett pontszámokat nem küldjük külön Analytics-eseményként.', reject:'Analitika elutasítása', accept:'Analitika elfogadása', save:'Választás mentése', close:'Bezárás', settings:'Adatvédelem', policy:'Adatvédelmi tájékoztató', saved:'Adatvédelmi választás mentve.', temporary:'A választás erre az oldalra érvényes. A böngészős tárolás nem elérhető, ezért újra kérdezhetjük.'},
-    de: {title:'Datenschutzeinstellungen', intro:'Die Tippwerkzeuge funktionieren ohne optionale Analyse. Entscheiden Sie, ob Google Analytics auf Seiten, die es verwenden, Besuche messen darf. Diese Version lädt keine Werbung.', necessary:'Website-Funktionen', necessaryText:'Ihr Browser speichert Übungsergebnisse und den Lektionsfortschritt für die verwendeten Werkzeuge. Diese Datenschutzauswahl wird bis zu 180 Tage gespeichert, getrennt von optionaler Analyse.', analytics:'Google Analytics erlauben', analyticsText:'Optionale Besuchsstatistiken werden an Google gesendet. Analytics wird erst nach Zustimmung geladen. Übungstexte und gespeicherte Ergebnisse werden nicht gezielt als Analytics-Ereignisse gesendet.', reject:'Analyse ablehnen', accept:'Analyse akzeptieren', save:'Auswahl speichern', close:'Schließen', settings:'Datenschutz', policy:'Datenschutzerklärung lesen', saved:'Auswahl gespeichert.', temporary:'Auswahl für diese Seite angewendet. Browserspeicherung ist nicht verfügbar; wir fragen eventuell erneut.'}
+    en: {title:'Privacy choices', intro:'Your typing tools work without optional analytics. Choose whether to allow Google Analytics to measure visits on pages that use it. Advertising choices are managed separately by Google’s consent message where applicable. Use the advertising settings button below when available.', necessary:'Site functions', necessaryText:'Your browser keeps practice results and lesson progress for the tools you use. We also remember this privacy choice for up to 180 days. These are separate from optional analytics.', analytics:'Allow Google Analytics', analyticsText:'Optional visit statistics sent to Google. Analytics is not loaded before you opt in. Your typed practice text and saved scores are not deliberately sent as Analytics events.', reject:'Reject analytics', accept:'Accept analytics', save:'Save choice', close:'Close', settings:'Privacy settings', policy:'Read the Privacy Policy', saved:'Privacy choice saved.', temporary:'Choice applied for this page. Browser storage is unavailable; you may be asked again.'},
+    hu: {title:'Adatvédelmi beállítások', intro:'A gépelési eszközök opcionális analitika nélkül is működnek. Eldöntheted, engedélyezed-e a Google Analytics látogatottságmérését az azt használó oldalakon. A hirdetési hozzájárulást külön a Google üzenete kezeli, ahol alkalmazandó. A hirdetési beállítások alább érhetők el, ha rendelkezésre állnak.', necessary:'Az oldal funkciói', necessaryText:'A böngésződ tárolja a használt gyakorlók eredményeit és a leckék állapotát. Ezt az adatvédelmi választást legfeljebb 180 napig jegyezzük meg. Ezek elkülönülnek az opcionális analitikától.', analytics:'Google Analytics engedélyezése', analyticsText:'Opcionális látogatottsági adatok küldése a Google részére. Az analitika csak elfogadás után töltődik be. A begépelt gyakorlószöveget és a mentett pontszámokat nem küldjük külön Analytics-eseményként.', reject:'Analitika elutasítása', accept:'Analitika elfogadása', save:'Választás mentése', close:'Bezárás', settings:'Adatvédelem', policy:'Adatvédelmi tájékoztató', saved:'Adatvédelmi választás mentve.', temporary:'A választás erre az oldalra érvényes. A böngészős tárolás nem elérhető, ezért újra kérdezhetjük.'},
+    de: {title:'Datenschutzeinstellungen', intro:'Die Tippwerkzeuge funktionieren ohne optionale Analyse. Entscheiden Sie, ob Google Analytics auf Seiten, die es verwenden, Besuche messen darf. Werbeentscheidungen werden gegebenenfalls separat über Googles Einwilligungsnachricht verwaltet. Nutzen Sie die Werbeeinstellungen unten, sofern verfügbar.', necessary:'Website-Funktionen', necessaryText:'Ihr Browser speichert Übungsergebnisse und den Lektionsfortschritt für die verwendeten Werkzeuge. Diese Datenschutzauswahl wird bis zu 180 Tage gespeichert, getrennt von optionaler Analyse.', analytics:'Google Analytics erlauben', analyticsText:'Optionale Besuchsstatistiken werden an Google gesendet. Analytics wird erst nach Zustimmung geladen. Übungstexte und gespeicherte Ergebnisse werden nicht gezielt als Analytics-Ereignisse gesendet.', reject:'Analyse ablehnen', accept:'Analyse akzeptieren', save:'Auswahl speichern', close:'Schließen', settings:'Datenschutz', policy:'Datenschutzerklärung lesen', saved:'Auswahl gespeichert.', temporary:'Auswahl für diese Seite angewendet. Browserspeicherung ist nicht verfügbar; wir fragen eventuell erneut.'}
   };
   const text = translations[language] || translations.en;
   function openSettings() {
@@ -120,7 +118,26 @@
     document.body.appendChild(dialog);
     if (!granted()) eraseAnalyticsCookies();
     loadAnalytics();
-    if (!state) openSettings();
+    // Do not compete with Google's advertising consent message.
+    // Optional Analytics stays off unless the visitor opens this panel and opts in.
+    const adButton = document.createElement('button');
+    adButton.type = 'button';
+    adButton.hidden = true;
+    adButton.textContent = language === 'hu' ? 'Hirdetési adatvédelem' : language === 'de' ? 'Werbe-Datenschutz' : 'Advertising privacy settings';
+    adButton.addEventListener('click', function () {
+      closeSettings();
+      window.googlefc.callbackQueue.push({CONSENT_API_READY: function () {
+        window.googlefc.showRevocationMessage();
+      }});
+    });
+    dialog.appendChild(adButton);
+    if (document.querySelector('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]')) {
+      window.googlefc = window.googlefc || {};
+      window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+      window.googlefc.callbackQueue.push({CONSENT_API_READY: function () {
+        if (typeof window.googlefc.showRevocationMessage === 'function') adButton.hidden = false;
+      }});
+    }
   }
   window.TSHPrivacy = Object.freeze({open: openSettings});
   window.addEventListener('storage',function (event) { if (event.key === KEY || event.key === null) location.reload(); });
