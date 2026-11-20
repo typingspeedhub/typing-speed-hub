@@ -530,6 +530,56 @@
         padding: 0.8rem;
       }
     }
+
+    /* Featured premium guide: placed after the typing test, before free practice content. */
+    .premium-guide-card {
+      max-width: var(--panel-width);
+      margin: 1rem auto;
+      padding: 1.15rem 1.3rem;
+      border: 1px solid rgba(0,255,102,.7);
+      border-radius: 12px;
+      background: #1b1b1b;
+      box-shadow: 0 0 13px rgba(0,255,102,.24);
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      line-height: 1.55;
+    }
+    .premium-guide-icon {
+      flex: 0 0 80px;
+      min-height: 105px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(0,255,102,.4);
+      border-radius: 9px;
+      background: #101810;
+      font-size: 2.8rem;
+    }
+    .premium-guide-copy { min-width: 0; }
+    .premium-guide-copy h2 {
+      font-size: 1.35rem;
+      margin: 0 0 .35rem;
+      color: #00ff66;
+    }
+    .premium-guide-copy p {
+      margin: .35rem 0;
+      color: #e6ffe6;
+    }
+    .premium-guide-copy .premium-guide-note {
+      font-size: .91rem;
+      color: #c6eccf;
+    }
+    .premium-guide-card .practice-feature-button {
+      margin-top: .65rem;
+      padding: .55rem .9rem;
+    }
+    @media (max-width: 900px) {
+      .premium-guide-card { margin: 1rem; }
+    }
+    @media (max-width: 520px) {
+      .premium-guide-card { flex-direction: column; align-items: flex-start; }
+      .premium-guide-icon { min-height: 0; padding: .5rem .8rem; font-size: 1.8rem; }
+    }
   </style>
 
   <!-- Shared privacy choices: optional Analytics loads only after opt-in. -->
@@ -609,6 +659,18 @@
     <textarea id="inputArea" class="hidden" placeholder="Start typing here..."></textarea>
     <p id="resultDisplay"></p>
   </div>
+
+  <!-- Premium e-book promotion: link to the existing product-information page (Payhip checkout remains there). -->
+  <section class="premium-guide-card" aria-labelledby="premium-ebook-title">
+    <div class="premium-guide-icon" aria-hidden="true">📗</div>
+    <div class="premium-guide-copy">
+      <h2 id="premium-ebook-title">Want to Improve Your Typing Faster?</h2>
+      <p><strong>Premium Typing Master Guide</strong> — a 54-page PDF with a 30-day practice plan, short daily routines, technique tips, and printable WPM and accuracy trackers.</p>
+      <p><strong>One-time price: $7.99.</strong></p>
+      <a class="practice-feature-button" href="typing-master-guide.html">Explore the Premium E-book →</a>
+      <p class="premium-guide-note">Optional guide. All typing tests and free lessons remain free.</p>
+    </div>
+  </section>
 
   <section class="practice-feature-card" aria-labelledby="timed-practice-title">
     <h2 id="timed-practice-title">🎯 Timed Typing Practice</h2>
@@ -764,14 +826,7 @@
       Get the Free Typing Guide →
     </a>
   </section>
-  <!-- Premium ebook: informational link to a dedicated page; checkout is hosted by Payhip. -->
-  <section class="practice-path-card" aria-labelledby="premium-ebook-title">
-    <h2 id="premium-ebook-title">📗 Go Further with the Premium Typing Master Guide</h2>
-    <p>Ready for a more structured practice routine? Our 54-page PDF guide brings together a 30-day improvement program, 10-minute routines, technique advice, and printable WPM and accuracy tracking sheets.</p>
-    <p>Explore the contents and see whether the guide fits your goals. <strong>One-time price: $7.99.</strong> All free typing tests and lessons remain available.</p>
-    <a class="practice-feature-button" href="typing-master-guide.html">Explore the Premium Guide →</a>
-  </section>
-  <section id="homepage-content" aria-label="Typing Speed Hub information">
+<section id="homepage-content" aria-label="Typing Speed Hub information">
     <h2>Improve Your Typing Speed with Typing Speed Hub</h2>
 
     <p>
