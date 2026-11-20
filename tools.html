@@ -192,6 +192,14 @@ h1{
 font-size:1.8rem;
 }
 }
+
+/* Experimental analyzer demo: new featured card; existing tools remain unchanged. */
+.analyzer-feature{border:2px solid #00ff66;box-shadow:0 0 18px rgba(0,255,102,.28)}
+.analyzer-feature .status-label{display:inline-block;border:1px solid #00ff66;border-radius:999px;padding:4px 10px;background:#10261a;color:#b9ffd0;font-size:.85rem;font-weight:bold;margin-bottom:10px}
+.analyzer-feature p{color:#e0ffe6}
+.analyzer-feature .demo-button{display:inline-block;background:#00ff66;color:#0d0d0d;border:1px solid #00ff66;border-radius:7px;text-decoration:none;font-weight:700;padding:11px 17px;margin-top:7px}
+.analyzer-feature .demo-button:hover,.analyzer-feature .demo-button:focus{background:#0d0d0d;color:#00ff66}
+.analyzer-feature .demo-disclaimer{font-size:.93rem;color:#c4efce;margin-top:12px}
 </style>
 
 <script type="application/ld+json">
@@ -292,12 +300,21 @@ If you are a beginner, start with a simple typing speed test and focus on accura
 
 <p class="note">
 <strong>Quick start:</strong>
-Take a <a href="index.html">typing speed test</a> first.Then use the tools below to understand your accuracy, identify mistakes, set a goal, and improve step by step.
+Take a <a href="index.html">typing speed test</a> first. Then use the tools below to understand your accuracy, identify mistakes, set a goal, and improve step by step.
 </p>
 
 </section>
 
 </div>
+
+<section class="card analyzer-feature" aria-labelledby="analyzer-feature-title">
+  <span class="status-label">NEW · Free experimental demo</span>
+  <h2 id="analyzer-feature-title">Typing Performance Analyzer – Free Demo</h2>
+  <p>Try a 1- or 3-minute typing test that measures WPM and accuracy, highlights common position-based key errors, and suggests what to practice next.</p>
+  <p>Unlike a standard speed test, this prototype gives you a short breakdown of the mistakes in your typed text. You can use it without signing in.</p>
+  <a class="demo-button" href="typing-performance-analyzer.html">Try the Free Analyzer Demo →</a>
+  <p class="demo-disclaimer"><strong>Prototype notice:</strong> The error counts are simplified and based on character positions in the final text. Corrections during typing are not recorded as separate mistakes. The planned PRO version is not available for purchase.</p>
+</section>
 
 <div class="card">
 <h2>Choose the Right Typing Tool for Your Goal</h2>
@@ -414,6 +431,7 @@ Use this full list when you already know which tool or guide you need.
 
 <ul class="all-tools">
 <li><a href="index.html">Typing Speed Test</a></li>
+<li><a href="typing-performance-analyzer.html">Typing Performance Analyzer – Free Demo</a></li>
 <li><a href="typing-practice-guide.html">Typing Practice Guide</a></li>
 <li><a href="wpm-calculator.html">WPM Calculator</a></li>
 <li><a href="cpm-calculator.html">CPM Calculator</a></li>
