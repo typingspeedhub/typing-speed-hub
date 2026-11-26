@@ -3,7 +3,8 @@
   'use strict';
   if (window.TSHPrivacy) return;
   const script = document.currentScript;
-  const measurementId = script && script.dataset.analytics;
+  // Use the site's current GA4 property on every page loading this file.
+  const measurementId = 'G-3KYY6ZZ6XE';
   const privacyUrl = new URL('../privacy-policy.html', script.src).href;
   const KEY = 'tsh_privacy_choice_v1';
   const MAX_AGE = 180 * 24 * 60 * 60 * 1000;
@@ -23,7 +24,7 @@
   const granted = () => !!(state && state.analytics);
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-  window['ga-disable-G-68ZVCW4FWK'] = !granted();
+  window['ga-disable-' + measurementId] = !granted();
   window.gtag('consent', 'default', {
     analytics_storage: granted() ? 'granted' : 'denied'
   });
@@ -68,7 +69,7 @@
     state = {version: 1, analytics: !!value, savedAt: Date.now()};
     let persistent = true;
     try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (_) { persistent = false; }
-    window['ga-disable-G-68ZVCW4FWK'] = !granted();
+    window['ga-disable-' + measurementId] = !granted();
     window.gtag('consent', 'update', {
       analytics_storage: granted() ? 'granted' : 'denied'
     });
